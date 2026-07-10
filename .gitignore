@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.zip
+.DS_Store
+Thumbs.db
+
+# Local API keys and machine-specific config
+riot_api_key.txt
+claude_api_key.txt
+work/
+*.env
+.env
+CLAUDE_HANDOFF.md
+
+# Local-only BGM files. Keep assets/bgm/README.txt in git.
+assets/bgm/*.m4a
+assets/bgm/*.mp3
+assets/bgm/*.wav
+assets/bgm/*.flac
+
+# Browser/editor noise
+.vscode/
+.idea/

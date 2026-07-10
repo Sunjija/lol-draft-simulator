@@ -1,0 +1,1444 @@
+{
+  "metadata": {
+    "source": "https://op.gg/lol/champions?region=kr&tier=emerald_plus&position=top",
+    "site": "OP.GG",
+    "region": "kr",
+    "tier": "emerald_plus",
+    "position": "TOP",
+    "patch": "16.13",
+    "collectedAt": "2026-07-09T08:09:33.395388+00:00",
+    "note": "Each row's counters are champions OP.GG displays as difficult matchups for that row champion."
+  },
+  "champions": [
+    {
+      "rank": 1,
+      "championId": "gangplank",
+      "opggId": "gangplank",
+      "championName": "Gangplank",
+      "winRate": 51.61,
+      "pickRate": 7.71,
+      "banRate": 15.38,
+      "counters": [
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        },
+        {
+          "championId": "trundle",
+          "opggId": "trundle",
+          "championName": "Trundle"
+        },
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "championId": "malphite",
+      "opggId": "malphite",
+      "championName": "Malphite",
+      "winRate": 51.62,
+      "pickRate": 6.59,
+      "banRate": 14.64,
+      "counters": [
+        {
+          "championId": "anivia",
+          "opggId": "anivia",
+          "championName": "Anivia"
+        },
+        {
+          "championId": "cassiopeia",
+          "opggId": "cassiopeia",
+          "championName": "Cassiopeia"
+        },
+        {
+          "championId": "volibear",
+          "opggId": "volibear",
+          "championName": "Volibear"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "championId": "singed",
+      "opggId": "singed",
+      "championName": "Singed",
+      "winRate": 53.31,
+      "pickRate": 2.32,
+      "banRate": 0.75,
+      "counters": [
+        {
+          "championId": "xinZhao",
+          "opggId": "xinzhao",
+          "championName": "Xin Zhao"
+        },
+        {
+          "championId": "urgot",
+          "opggId": "urgot",
+          "championName": "Urgot"
+        },
+        {
+          "championId": "anivia",
+          "opggId": "anivia",
+          "championName": "Anivia"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "championId": "olaf",
+      "opggId": "olaf",
+      "championName": "Olaf",
+      "winRate": 52.33,
+      "pickRate": 3.29,
+      "banRate": 3.54,
+      "counters": [
+        {
+          "championId": "camille",
+          "opggId": "camille",
+          "championName": "Camille"
+        },
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        },
+        {
+          "championId": "malphite",
+          "opggId": "malphite",
+          "championName": "Malphite"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "championId": "jax",
+      "opggId": "jax",
+      "championName": "Jax",
+      "winRate": 50.62,
+      "pickRate": 7.37,
+      "banRate": 13.56,
+      "counters": [
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "kled",
+          "opggId": "kled",
+          "championName": "Kled"
+        },
+        {
+          "championId": "shen",
+          "opggId": "shen",
+          "championName": "Shen"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "championId": "garen",
+      "opggId": "garen",
+      "championName": "Garen",
+      "winRate": 51.71,
+      "pickRate": 4.4,
+      "banRate": 2.3,
+      "counters": [
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        },
+        {
+          "championId": "kayle",
+          "opggId": "kayle",
+          "championName": "Kayle"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "championId": "irelia",
+      "opggId": "irelia",
+      "championName": "Irelia",
+      "winRate": 50.73,
+      "pickRate": 5.82,
+      "banRate": 21.6,
+      "counters": [
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        },
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "zac",
+          "opggId": "zac",
+          "championName": "Zac"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "championId": "yone",
+      "opggId": "yone",
+      "championName": "Yone",
+      "winRate": 49.52,
+      "pickRate": 10.16,
+      "banRate": 9.14,
+      "counters": [
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "olaf",
+          "opggId": "olaf",
+          "championName": "Olaf"
+        },
+        {
+          "championId": "camille",
+          "opggId": "camille",
+          "championName": "Camille"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "championId": "shen",
+      "opggId": "shen",
+      "championName": "Shen",
+      "winRate": 52.12,
+      "pickRate": 2.59,
+      "banRate": 0.23,
+      "counters": [
+        {
+          "championId": "riven",
+          "opggId": "riven",
+          "championName": "Riven"
+        },
+        {
+          "championId": "kayle",
+          "opggId": "kayle",
+          "championName": "Kayle"
+        },
+        {
+          "championId": "trundle",
+          "opggId": "trundle",
+          "championName": "Trundle"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "championId": "jayce",
+      "opggId": "jayce",
+      "championName": "Jayce",
+      "winRate": 48.99,
+      "pickRate": 10.78,
+      "banRate": 18.36,
+      "counters": [
+        {
+          "championId": "zac",
+          "opggId": "zac",
+          "championName": "Zac"
+        },
+        {
+          "championId": "monkeyking",
+          "opggId": "monkeyking",
+          "championName": "Wukong"
+        },
+        {
+          "championId": "malphite",
+          "opggId": "malphite",
+          "championName": "Malphite"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "championId": "poppy",
+      "opggId": "poppy",
+      "championName": "Poppy",
+      "winRate": 52.21,
+      "pickRate": 1.69,
+      "banRate": 7.09,
+      "counters": [
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        },
+        {
+          "championId": "nasus",
+          "opggId": "nasus",
+          "championName": "Nasus"
+        },
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "championId": "warwick",
+      "opggId": "warwick",
+      "championName": "Warwick",
+      "winRate": 52.44,
+      "pickRate": 1.59,
+      "banRate": 0.65,
+      "counters": [
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "ryze",
+          "opggId": "ryze",
+          "championName": "Ryze"
+        },
+        {
+          "championId": "riven",
+          "opggId": "riven",
+          "championName": "Riven"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "championId": "yorick",
+      "opggId": "yorick",
+      "championName": "Yorick",
+      "winRate": 50.43,
+      "pickRate": 4.46,
+      "banRate": 8.13,
+      "counters": [
+        {
+          "championId": "volibear",
+          "opggId": "volibear",
+          "championName": "Volibear"
+        },
+        {
+          "championId": "aurora",
+          "opggId": "aurora",
+          "championName": "Aurora"
+        },
+        {
+          "championId": "kled",
+          "opggId": "kled",
+          "championName": "Kled"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "championId": "aatrox",
+      "opggId": "aatrox",
+      "championName": "Aatrox",
+      "winRate": 49.51,
+      "pickRate": 7.32,
+      "banRate": 4.08,
+      "counters": [
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        },
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "kayle",
+          "opggId": "kayle",
+          "championName": "Kayle"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "championId": "pantheon",
+      "opggId": "pantheon",
+      "championName": "Pantheon",
+      "winRate": 51.24,
+      "pickRate": 2.8,
+      "banRate": 1.33,
+      "counters": [
+        {
+          "championId": "heimerdinger",
+          "opggId": "heimerdinger",
+          "championName": "Heimerdinger"
+        },
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "championId": "darius",
+      "opggId": "darius",
+      "championName": "Darius",
+      "winRate": 50.42,
+      "pickRate": 4.28,
+      "banRate": 7.11,
+      "counters": [
+        {
+          "championId": "monkeyking",
+          "opggId": "monkeyking",
+          "championName": "Wukong"
+        },
+        {
+          "championId": "zac",
+          "opggId": "zac",
+          "championName": "Zac"
+        },
+        {
+          "championId": "akali",
+          "opggId": "akali",
+          "championName": "Akali"
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "championId": "sion",
+      "opggId": "sion",
+      "championName": "Sion",
+      "winRate": 50.07,
+      "pickRate": 4.93,
+      "banRate": 1.34,
+      "counters": [
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "masteryi",
+          "opggId": "masteryi",
+          "championName": "Master Yi"
+        },
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "championId": "teemo",
+      "opggId": "teemo",
+      "championName": "Teemo",
+      "winRate": 50.57,
+      "pickRate": 3.42,
+      "banRate": 9.16,
+      "counters": [
+        {
+          "championId": "ornn",
+          "opggId": "ornn",
+          "championName": "Ornn"
+        },
+        {
+          "championId": "maokai",
+          "opggId": "maokai",
+          "championName": "Maokai"
+        },
+        {
+          "championId": "anivia",
+          "opggId": "anivia",
+          "championName": "Anivia"
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "championId": "yasuo",
+      "opggId": "yasuo",
+      "championName": "Yasuo",
+      "winRate": 50.41,
+      "pickRate": 3.45,
+      "banRate": 9.85,
+      "counters": [
+        {
+          "championId": "poppy",
+          "opggId": "poppy",
+          "championName": "Poppy"
+        },
+        {
+          "championId": "maokai",
+          "opggId": "maokai",
+          "championName": "Maokai"
+        },
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "championId": "sett",
+      "opggId": "sett",
+      "championName": "Sett",
+      "winRate": 50.55,
+      "pickRate": 3.56,
+      "banRate": 0.86,
+      "counters": [
+        {
+          "championId": "maokai",
+          "opggId": "maokai",
+          "championName": "Maokai"
+        },
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "kennen",
+          "opggId": "kennen",
+          "championName": "Kennen"
+        }
+      ]
+    },
+    {
+      "rank": 21,
+      "championId": "renekton",
+      "opggId": "renekton",
+      "championName": "Renekton",
+      "winRate": 49.65,
+      "pickRate": 5.69,
+      "banRate": 4.33,
+      "counters": [
+        {
+          "championId": "monkeyking",
+          "opggId": "monkeyking",
+          "championName": "Wukong"
+        },
+        {
+          "championId": "rumble",
+          "opggId": "rumble",
+          "championName": "Rumble"
+        },
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        }
+      ]
+    },
+    {
+      "rank": 22,
+      "championId": "ornn",
+      "opggId": "ornn",
+      "championName": "Ornn",
+      "winRate": 51.01,
+      "pickRate": 2.55,
+      "banRate": 0.12,
+      "counters": [
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        },
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        }
+      ]
+    },
+    {
+      "rank": 23,
+      "championId": "camille",
+      "opggId": "camille",
+      "championName": "Camille",
+      "winRate": 51.12,
+      "pickRate": 2.22,
+      "banRate": 3.12,
+      "counters": [
+        {
+          "championId": "maokai",
+          "opggId": "maokai",
+          "championName": "Maokai"
+        },
+        {
+          "championId": "urgot",
+          "opggId": "urgot",
+          "championName": "Urgot"
+        },
+        {
+          "championId": "fiora",
+          "opggId": "fiora",
+          "championName": "Fiora"
+        }
+      ]
+    },
+    {
+      "rank": 24,
+      "championId": "gnar",
+      "opggId": "gnar",
+      "championName": "Gnar",
+      "winRate": 49.84,
+      "pickRate": 4.51,
+      "banRate": 1.86,
+      "counters": [
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        },
+        {
+          "championId": "poppy",
+          "opggId": "poppy",
+          "championName": "Poppy"
+        },
+        {
+          "championId": "pantheon",
+          "opggId": "pantheon",
+          "championName": "Pantheon"
+        }
+      ]
+    },
+    {
+      "rank": 25,
+      "championId": "drmundo",
+      "opggId": "drmundo",
+      "championName": "Dr. Mundo",
+      "winRate": 50.72,
+      "pickRate": 2.79,
+      "banRate": 0.4,
+      "counters": [
+        {
+          "championId": "monkeyking",
+          "opggId": "monkeyking",
+          "championName": "Wukong"
+        },
+        {
+          "championId": "kled",
+          "opggId": "kled",
+          "championName": "Kled"
+        },
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        }
+      ]
+    },
+    {
+      "rank": 26,
+      "championId": "urgot",
+      "opggId": "urgot",
+      "championName": "Urgot",
+      "winRate": 51.93,
+      "pickRate": 1.19,
+      "banRate": 0.14,
+      "counters": [
+        {
+          "championId": "varus",
+          "opggId": "varus",
+          "championName": "Varus"
+        },
+        {
+          "championId": "kennen",
+          "opggId": "kennen",
+          "championName": "Kennen"
+        },
+        {
+          "championId": "pantheon",
+          "opggId": "pantheon",
+          "championName": "Pantheon"
+        }
+      ]
+    },
+    {
+      "rank": 27,
+      "championId": "kled",
+      "opggId": "kled",
+      "championName": "Kled",
+      "winRate": 51.75,
+      "pickRate": 1.29,
+      "banRate": 0.32,
+      "counters": [
+        {
+          "championId": "heimerdinger",
+          "opggId": "heimerdinger",
+          "championName": "Heimerdinger"
+        },
+        {
+          "championId": "yasuo",
+          "opggId": "yasuo",
+          "championName": "Yasuo"
+        },
+        {
+          "championId": "vayne",
+          "opggId": "vayne",
+          "championName": "Vayne"
+        }
+      ]
+    },
+    {
+      "rank": 28,
+      "championId": "zaahen",
+      "opggId": "zaahen",
+      "championName": "Zaahen",
+      "winRate": 50.09,
+      "pickRate": 3.22,
+      "banRate": 0.82,
+      "counters": [
+        {
+          "championId": "volibear",
+          "opggId": "volibear",
+          "championName": "Volibear"
+        },
+        {
+          "championId": "garen",
+          "opggId": "garen",
+          "championName": "Garen"
+        },
+        {
+          "championId": "heimerdinger",
+          "opggId": "heimerdinger",
+          "championName": "Heimerdinger"
+        }
+      ]
+    },
+    {
+      "rank": 29,
+      "championId": "rumble",
+      "opggId": "rumble",
+      "championName": "Rumble",
+      "winRate": 50.29,
+      "pickRate": 2.77,
+      "banRate": 3.07,
+      "counters": [
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        },
+        {
+          "championId": "camille",
+          "opggId": "camille",
+          "championName": "Camille"
+        },
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        }
+      ]
+    },
+    {
+      "rank": 30,
+      "championId": "monkeyking",
+      "opggId": "monkeyking",
+      "championName": "Wukong",
+      "winRate": 52.14,
+      "pickRate": 0.92,
+      "banRate": 1.63,
+      "counters": [
+        {
+          "championId": "shen",
+          "opggId": "shen",
+          "championName": "Shen"
+        },
+        {
+          "championId": "mordekaiser",
+          "opggId": "mordekaiser",
+          "championName": "Mordekaiser"
+        },
+        {
+          "championId": "garen",
+          "opggId": "garen",
+          "championName": "Garen"
+        }
+      ]
+    },
+    {
+      "rank": 31,
+      "championId": "fiora",
+      "opggId": "fiora",
+      "championName": "Fiora",
+      "winRate": 49.73,
+      "pickRate": 3.39,
+      "banRate": 3.63,
+      "counters": [
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        },
+        {
+          "championId": "monkeyking",
+          "opggId": "monkeyking",
+          "championName": "Wukong"
+        },
+        {
+          "championId": "heimerdinger",
+          "opggId": "heimerdinger",
+          "championName": "Heimerdinger"
+        }
+      ]
+    },
+    {
+      "rank": 32,
+      "championId": "akali",
+      "opggId": "akali",
+      "championName": "Akali",
+      "winRate": 49.1,
+      "pickRate": 3.36,
+      "banRate": 19.5,
+      "counters": [
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "drmundo",
+          "opggId": "drmundo",
+          "championName": "Dr. Mundo"
+        },
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        }
+      ]
+    },
+    {
+      "rank": 33,
+      "championId": "anivia",
+      "opggId": "anivia",
+      "championName": "Anivia",
+      "winRate": 51.48,
+      "pickRate": 1.09,
+      "banRate": 2.66,
+      "counters": [
+        {
+          "championId": "riven",
+          "opggId": "riven",
+          "championName": "Riven"
+        },
+        {
+          "championId": "heimerdinger",
+          "opggId": "heimerdinger",
+          "championName": "Heimerdinger"
+        },
+        {
+          "championId": "garen",
+          "opggId": "garen",
+          "championName": "Garen"
+        }
+      ]
+    },
+    {
+      "rank": 34,
+      "championId": "vayne",
+      "opggId": "vayne",
+      "championName": "Vayne",
+      "winRate": 49.04,
+      "pickRate": 3.92,
+      "banRate": 9.55,
+      "counters": [
+        {
+          "championId": "aurora",
+          "opggId": "aurora",
+          "championName": "Aurora"
+        },
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "yorick",
+          "opggId": "yorick",
+          "championName": "Yorick"
+        }
+      ]
+    },
+    {
+      "rank": 35,
+      "championId": "ambessa",
+      "opggId": "ambessa",
+      "championName": "Ambessa",
+      "winRate": 48.74,
+      "pickRate": 4.56,
+      "banRate": 2.54,
+      "counters": [
+        {
+          "championId": "urgot",
+          "opggId": "urgot",
+          "championName": "Urgot"
+        },
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        }
+      ]
+    },
+    {
+      "rank": 36,
+      "championId": "riven",
+      "opggId": "riven",
+      "championName": "Riven",
+      "winRate": 50.23,
+      "pickRate": 2.05,
+      "banRate": 0.24,
+      "counters": [
+        {
+          "championId": "urgot",
+          "opggId": "urgot",
+          "championName": "Urgot"
+        },
+        {
+          "championId": "kayle",
+          "opggId": "kayle",
+          "championName": "Kayle"
+        },
+        {
+          "championId": "malphite",
+          "opggId": "malphite",
+          "championName": "Malphite"
+        }
+      ]
+    },
+    {
+      "rank": 37,
+      "championId": "tryndamere",
+      "opggId": "tryndamere",
+      "championName": "Tryndamere",
+      "winRate": 50.23,
+      "pickRate": 2.0,
+      "banRate": 0.74,
+      "counters": [
+        {
+          "championId": "chogath",
+          "opggId": "chogath",
+          "championName": "Cho'Gath"
+        },
+        {
+          "championId": "tahmkench",
+          "opggId": "tahmkench",
+          "championName": "Tahm Kench"
+        },
+        {
+          "championId": "vayne",
+          "opggId": "vayne",
+          "championName": "Vayne"
+        }
+      ]
+    },
+    {
+      "rank": 38,
+      "championId": "quinn",
+      "opggId": "quinn",
+      "championName": "Quinn",
+      "winRate": 51.98,
+      "pickRate": 0.69,
+      "banRate": 0.38,
+      "counters": [
+        {
+          "championId": "drmundo",
+          "opggId": "drmundo",
+          "championName": "Dr. Mundo"
+        },
+        {
+          "championId": "malphite",
+          "opggId": "malphite",
+          "championName": "Malphite"
+        },
+        {
+          "championId": "gragas",
+          "opggId": "gragas",
+          "championName": "Gragas"
+        }
+      ]
+    },
+    {
+      "rank": 39,
+      "championId": "gragas",
+      "opggId": "gragas",
+      "championName": "Gragas",
+      "winRate": 49.56,
+      "pickRate": 2.52,
+      "banRate": 0.26,
+      "counters": [
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "zac",
+          "opggId": "zac",
+          "championName": "Zac"
+        },
+        {
+          "championId": "heimerdinger",
+          "opggId": "heimerdinger",
+          "championName": "Heimerdinger"
+        }
+      ]
+    },
+    {
+      "rank": 40,
+      "championId": "volibear",
+      "opggId": "volibear",
+      "championName": "Volibear",
+      "winRate": 49.97,
+      "pickRate": 2.0,
+      "banRate": 0.75,
+      "counters": [
+        {
+          "championId": "kled",
+          "opggId": "kled",
+          "championName": "Kled"
+        },
+        {
+          "championId": "vladimir",
+          "opggId": "vladimir",
+          "championName": "Vladimir"
+        },
+        {
+          "championId": "poppy",
+          "opggId": "poppy",
+          "championName": "Poppy"
+        }
+      ]
+    },
+    {
+      "rank": 41,
+      "championId": "kayle",
+      "opggId": "kayle",
+      "championName": "Kayle",
+      "winRate": 50.99,
+      "pickRate": 1.11,
+      "banRate": 0.16,
+      "counters": [
+        {
+          "championId": "tryndamere",
+          "opggId": "tryndamere",
+          "championName": "Tryndamere"
+        },
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        },
+        {
+          "championId": "nasus",
+          "opggId": "nasus",
+          "championName": "Nasus"
+        }
+      ]
+    },
+    {
+      "rank": 42,
+      "championId": "illaoi",
+      "opggId": "illaoi",
+      "championName": "Illaoi",
+      "winRate": 49.74,
+      "pickRate": 1.89,
+      "banRate": 1.34,
+      "counters": [
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "fiora",
+          "opggId": "fiora",
+          "championName": "Fiora"
+        },
+        {
+          "championId": "locke",
+          "opggId": "locke",
+          "championName": "Locke"
+        }
+      ]
+    },
+    {
+      "rank": 43,
+      "championId": "lissandra",
+      "opggId": "lissandra",
+      "championName": "Lissandra",
+      "winRate": 51.29,
+      "pickRate": 0.77,
+      "banRate": 1.48,
+      "counters": [
+        {
+          "championId": "olaf",
+          "opggId": "olaf",
+          "championName": "Olaf"
+        },
+        {
+          "championId": "shen",
+          "opggId": "shen",
+          "championName": "Shen"
+        },
+        {
+          "championId": "fiora",
+          "opggId": "fiora",
+          "championName": "Fiora"
+        }
+      ]
+    },
+    {
+      "rank": 44,
+      "championId": "ksante",
+      "opggId": "ksante",
+      "championName": "K'Sante",
+      "winRate": 47.14,
+      "pickRate": 7.06,
+      "banRate": 4.81,
+      "counters": [
+        {
+          "championId": "kled",
+          "opggId": "kled",
+          "championName": "Kled"
+        },
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "vayne",
+          "opggId": "vayne",
+          "championName": "Vayne"
+        }
+      ]
+    },
+    {
+      "rank": 45,
+      "championId": "locke",
+      "opggId": "locke",
+      "championName": "Locke",
+      "winRate": 47.06,
+      "pickRate": 1.95,
+      "banRate": 70.67,
+      "counters": [
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        },
+        {
+          "championId": "heimerdinger",
+          "opggId": "heimerdinger",
+          "championName": "Heimerdinger"
+        },
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        }
+      ]
+    },
+    {
+      "rank": 46,
+      "championId": "kennen",
+      "opggId": "kennen",
+      "championName": "Kennen",
+      "winRate": 49.61,
+      "pickRate": 1.86,
+      "banRate": 1.67,
+      "counters": [
+        {
+          "championId": "nasus",
+          "opggId": "nasus",
+          "championName": "Nasus"
+        },
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        },
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        }
+      ]
+    },
+    {
+      "rank": 47,
+      "championId": "heimerdinger",
+      "opggId": "heimerdinger",
+      "championName": "Heimerdinger",
+      "winRate": 50.3,
+      "pickRate": 1.18,
+      "banRate": 1.79,
+      "counters": [
+        {
+          "championId": "lissandra",
+          "opggId": "lissandra",
+          "championName": "Lissandra"
+        },
+        {
+          "championId": "illaoi",
+          "opggId": "illaoi",
+          "championName": "Illaoi"
+        },
+        {
+          "championId": "yorick",
+          "opggId": "yorick",
+          "championName": "Yorick"
+        }
+      ]
+    },
+    {
+      "rank": 48,
+      "championId": "mordekaiser",
+      "opggId": "mordekaiser",
+      "championName": "Mordekaiser",
+      "winRate": 48.1,
+      "pickRate": 3.29,
+      "banRate": 1.36,
+      "counters": [
+        {
+          "championId": "aurora",
+          "opggId": "aurora",
+          "championName": "Aurora"
+        },
+        {
+          "championId": "cassiopeia",
+          "opggId": "cassiopeia",
+          "championName": "Cassiopeia"
+        },
+        {
+          "championId": "riven",
+          "opggId": "riven",
+          "championName": "Riven"
+        }
+      ]
+    },
+    {
+      "rank": 49,
+      "championId": "tahmkench",
+      "opggId": "tahmkench",
+      "championName": "Tahm Kench",
+      "winRate": 50.85,
+      "pickRate": 0.7,
+      "banRate": 0.4,
+      "counters": [
+        {
+          "championId": "nasus",
+          "opggId": "nasus",
+          "championName": "Nasus"
+        },
+        {
+          "championId": "illaoi",
+          "opggId": "illaoi",
+          "championName": "Illaoi"
+        },
+        {
+          "championId": "garen",
+          "opggId": "garen",
+          "championName": "Garen"
+        }
+      ]
+    },
+    {
+      "rank": 50,
+      "championId": "nasus",
+      "opggId": "nasus",
+      "championName": "Nasus",
+      "winRate": 48.66,
+      "pickRate": 2.25,
+      "banRate": 2.92,
+      "counters": [
+        {
+          "championId": "trundle",
+          "opggId": "trundle",
+          "championName": "Trundle"
+        },
+        {
+          "championId": "quinn",
+          "opggId": "quinn",
+          "championName": "Quinn"
+        },
+        {
+          "championId": "rumble",
+          "opggId": "rumble",
+          "championName": "Rumble"
+        }
+      ]
+    },
+    {
+      "rank": 51,
+      "championId": "vladimir",
+      "opggId": "vladimir",
+      "championName": "Vladimir",
+      "winRate": 49.2,
+      "pickRate": 1.63,
+      "banRate": 1.03,
+      "counters": [
+        {
+          "championId": "shen",
+          "opggId": "shen",
+          "championName": "Shen"
+        },
+        {
+          "championId": "yorick",
+          "opggId": "yorick",
+          "championName": "Yorick"
+        },
+        {
+          "championId": "tryndamere",
+          "opggId": "tryndamere",
+          "championName": "Tryndamere"
+        }
+      ]
+    },
+    {
+      "rank": 52,
+      "championId": "ryze",
+      "opggId": "ryze",
+      "championName": "Ryze",
+      "winRate": 49.19,
+      "pickRate": 1.62,
+      "banRate": 1.13,
+      "counters": [
+        {
+          "championId": "xinZhao",
+          "opggId": "xinzhao",
+          "championName": "Xin Zhao"
+        },
+        {
+          "championId": "irelia",
+          "opggId": "irelia",
+          "championName": "Irelia"
+        },
+        {
+          "championId": "locke",
+          "opggId": "locke",
+          "championName": "Locke"
+        }
+      ]
+    },
+    {
+      "rank": 53,
+      "championId": "gwen",
+      "opggId": "gwen",
+      "championName": "Gwen",
+      "winRate": 48.78,
+      "pickRate": 1.58,
+      "banRate": 0.69,
+      "counters": [
+        {
+          "championId": "warwick",
+          "opggId": "warwick",
+          "championName": "Warwick"
+        },
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        },
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        }
+      ]
+    },
+    {
+      "rank": 54,
+      "championId": "aurora",
+      "opggId": "aurora",
+      "championName": "Aurora",
+      "winRate": 50.43,
+      "pickRate": 0.61,
+      "banRate": 0.83,
+      "counters": [
+        {
+          "championId": "sett",
+          "opggId": "sett",
+          "championName": "Sett"
+        },
+        {
+          "championId": "akali",
+          "opggId": "akali",
+          "championName": "Akali"
+        },
+        {
+          "championId": "irelia",
+          "opggId": "irelia",
+          "championName": "Irelia"
+        }
+      ]
+    },
+    {
+      "rank": 55,
+      "championId": "zac",
+      "opggId": "zac",
+      "championName": "Zac",
+      "winRate": 49.86,
+      "pickRate": 0.67,
+      "banRate": 0.52,
+      "counters": [
+        {
+          "championId": "singed",
+          "opggId": "singed",
+          "championName": "Singed"
+        },
+        {
+          "championId": "vayne",
+          "opggId": "vayne",
+          "championName": "Vayne"
+        },
+        {
+          "championId": "illaoi",
+          "opggId": "illaoi",
+          "championName": "Illaoi"
+        }
+      ]
+    }
+  ]
+}

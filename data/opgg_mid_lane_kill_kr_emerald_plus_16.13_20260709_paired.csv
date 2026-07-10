@@ -1,0 +1,1129 @@
+﻿championAId,championAName,championALaneKillRate,championBId,championBName,championBLaneKillRate,laneKillDiff,favoredChampionId,favoredChampionName,favoredLaneKillRate,sampledDirections
+ahri,Ahri,50.52,akali,Akali,49.48,1.04,ahri,Ahri,50.52,2
+ahri,Ahri,53.37,akshan,Akshan,46.63,6.74,ahri,Ahri,53.37,2
+ahri,Ahri,49.18,anivia,Anivia,50.82,1.64,anivia,Anivia,50.82,2
+ahri,Ahri,52.95,annie,Annie,47.05,5.9,ahri,Ahri,52.95,2
+ahri,Ahri,63.2,aurelionsol,Aurelion Sol,36.8,26.4,ahri,Ahri,63.2,2
+ahri,Ahri,46.22,aurora,Aurora,53.78,7.56,aurora,Aurora,53.78,2
+ahri,Ahri,59.49,azir,Azir,40.51,18.98,ahri,Ahri,59.49,2
+ahri,Ahri,57.53,brand,Brand,42.47,15.06,ahri,Ahri,57.53,2
+ahri,Ahri,56.81,cassiopeia,Cassiopeia,43.19,13.62,ahri,Ahri,56.81,2
+ahri,Ahri,49.29,diana,Diana,50.71,1.42,diana,Diana,50.71,2
+ahri,Ahri,50.92,ekko,Ekko,49.08,1.84,ahri,Ahri,50.92,2
+ahri,Ahri,47.53,fizz,Fizz,52.47,4.94,fizz,Fizz,52.47,2
+ahri,Ahri,53.94,galio,Galio,46.06,7.88,ahri,Ahri,53.94,2
+ahri,Ahri,54.19,hwei,Hwei,45.81,8.38,ahri,Ahri,54.19,2
+ahri,Ahri,54.04,irelia,Irelia,45.96,8.08,ahri,Ahri,54.04,2
+ahri,Ahri,56.5,kassadin,Kassadin,43.5,13.0,ahri,Ahri,56.5,2
+ahri,Ahri,47.07,katarina,Katarina,52.93,5.86,katarina,Katarina,52.93,2
+ahri,Ahri,39.16,leblanc,LeBlanc,60.84,21.68,leblanc,LeBlanc,60.84,2
+ahri,Ahri,46.78,lissandra,Lissandra,53.22,6.44,lissandra,Lissandra,53.22,2
+ahri,Ahri,44.26,locke,Locke,55.74,11.48,locke,Locke,55.74,2
+ahri,Ahri,49.19,lux,Lux,50.81,1.62,lux,Lux,50.81,2
+ahri,Ahri,54.05,malphite,Malphite,45.95,8.1,ahri,Ahri,54.05,2
+ahri,Ahri,59.35,malzahar,Malzahar,40.65,18.7,ahri,Ahri,59.35,2
+ahri,Ahri,40.08,mel,Mel,59.92,19.84,mel,Mel,59.92,2
+ahri,Ahri,49.2,naafiri,Naafiri,50.8,1.6,naafiri,Naafiri,50.8,2
+ahri,Ahri,55.11,nunu,Nunu & Willump,44.89,10.22,ahri,Ahri,55.11,2
+ahri,Ahri,53.7,orianna,Orianna,46.3,7.4,ahri,Ahri,53.7,2
+ahri,Ahri,56.96,pantheon,Pantheon,43.04,13.92,ahri,Ahri,56.96,2
+ahri,Ahri,42.46,qiyana,Qiyana,57.54,15.08,qiyana,Qiyana,57.54,2
+ahri,Ahri,57.54,ryze,Ryze,42.46,15.08,ahri,Ahri,57.54,2
+ahri,Ahri,61.13,sion,Sion,38.87,22.26,ahri,Ahri,61.13,2
+ahri,Ahri,60.06,swain,Swain,39.94,20.12,ahri,Ahri,60.06,2
+ahri,Ahri,51.97,sylas,Sylas,48.03,3.94,ahri,Ahri,51.97,2
+ahri,Ahri,52.93,syndra,Syndra,47.07,5.86,ahri,Ahri,52.93,2
+ahri,Ahri,56.67,taliyah,Taliyah,43.33,13.34,ahri,Ahri,56.67,2
+ahri,Ahri,48.58,talon,Talon,51.42,2.84,talon,Talon,51.42,2
+ahri,Ahri,59.15,tristana,Tristana,40.85,18.3,ahri,Ahri,59.15,2
+ahri,Ahri,57.07,twistedfate,Twisted Fate,42.93,14.14,ahri,Ahri,57.07,2
+ahri,Ahri,52.25,veigar,Veigar,47.75,4.5,ahri,Ahri,52.25,2
+ahri,Ahri,50.63,vex,Vex,49.37,1.26,ahri,Ahri,50.63,2
+ahri,Ahri,56.72,viktor,Viktor,43.28,13.44,ahri,Ahri,56.72,2
+ahri,Ahri,51.8,vladimir,Vladimir,48.2,3.6,ahri,Ahri,51.8,2
+ahri,Ahri,49.45,xerath,Xerath,50.55,1.1,xerath,Xerath,50.55,2
+ahri,Ahri,54.67,yasuo,Yasuo,45.33,9.34,ahri,Ahri,54.67,2
+ahri,Ahri,61.66,yone,Yone,38.34,23.32,ahri,Ahri,61.66,2
+ahri,Ahri,46.9,zed,Zed,53.1,6.2,zed,Zed,53.1,2
+ahri,Ahri,44.21,zoe,Zoe,55.79,11.58,zoe,Zoe,55.79,2
+akali,Akali,53.77,akshan,Akshan,46.23,7.54,akali,Akali,53.77,2
+akali,Akali,46.73,anivia,Anivia,53.27,6.54,anivia,Anivia,53.27,2
+akali,Akali,54.73,annie,Annie,45.27,9.46,akali,Akali,54.73,2
+akali,Akali,56.29,aurelionsol,Aurelion Sol,43.71,12.58,akali,Akali,56.29,2
+akali,Akali,47.33,aurora,Aurora,52.67,5.34,aurora,Aurora,52.67,2
+akali,Akali,51.05,azir,Azir,48.95,2.1,akali,Akali,51.05,2
+akali,Akali,57.27,brand,Brand,42.73,14.54,akali,Akali,57.27,2
+akali,Akali,55.97,cassiopeia,Cassiopeia,44.03,11.94,akali,Akali,55.97,2
+akali,Akali,51.73,diana,Diana,48.27,3.46,akali,Akali,51.73,2
+akali,Akali,54.43,ekko,Ekko,45.57,8.86,akali,Akali,54.43,2
+akali,Akali,52.78,fizz,Fizz,47.22,5.56,akali,Akali,52.78,2
+akali,Akali,45.53,galio,Galio,54.47,8.94,galio,Galio,54.47,2
+akali,Akali,56.67,hwei,Hwei,43.33,13.34,akali,Akali,56.67,2
+akali,Akali,59.91,irelia,Irelia,40.09,19.82,akali,Akali,59.91,2
+akali,Akali,57.67,kassadin,Kassadin,42.33,15.34,akali,Akali,57.67,2
+akali,Akali,51.09,katarina,Katarina,48.91,2.18,akali,Akali,51.09,2
+akali,Akali,41.02,leblanc,LeBlanc,58.98,17.96,leblanc,LeBlanc,58.98,2
+akali,Akali,45.24,lissandra,Lissandra,54.76,9.52,lissandra,Lissandra,54.76,2
+akali,Akali,52.15,locke,Locke,47.85,4.3,akali,Akali,52.15,2
+akali,Akali,46.13,lux,Lux,53.87,7.74,lux,Lux,53.87,2
+akali,Akali,48.58,malphite,Malphite,51.42,2.84,malphite,Malphite,51.42,2
+akali,Akali,55.61,malzahar,Malzahar,44.39,11.22,akali,Akali,55.61,2
+akali,Akali,53.88,mel,Mel,46.12,7.76,akali,Akali,53.88,2
+akali,Akali,50.76,naafiri,Naafiri,49.24,1.52,akali,Akali,50.76,2
+akali,Akali,54.05,nunu,Nunu & Willump,45.95,8.1,akali,Akali,54.05,2
+akali,Akali,51.3,orianna,Orianna,48.7,2.6,akali,Akali,51.3,2
+akali,Akali,48.25,pantheon,Pantheon,51.75,3.5,pantheon,Pantheon,51.75,2
+akali,Akali,43.73,qiyana,Qiyana,56.27,12.54,qiyana,Qiyana,56.27,2
+akali,Akali,54.25,ryze,Ryze,45.75,8.5,akali,Akali,54.25,2
+akali,Akali,55.14,sion,Sion,44.86,10.28,akali,Akali,55.14,2
+akali,Akali,50.54,swain,Swain,49.46,1.08,akali,Akali,50.54,2
+akali,Akali,55.6,sylas,Sylas,44.4,11.2,akali,Akali,55.6,2
+akali,Akali,56.4,syndra,Syndra,43.6,12.8,akali,Akali,56.4,2
+akali,Akali,56.96,taliyah,Taliyah,43.04,13.92,akali,Akali,56.96,2
+akali,Akali,49.42,talon,Talon,50.58,1.16,talon,Talon,50.58,2
+akali,Akali,51.24,tristana,Tristana,48.76,2.48,akali,Akali,51.24,2
+akali,Akali,52.38,twistedfate,Twisted Fate,47.62,4.76,akali,Akali,52.38,2
+akali,Akali,53.88,veigar,Veigar,46.12,7.76,akali,Akali,53.88,2
+akali,Akali,45.86,vex,Vex,54.14,8.28,vex,Vex,54.14,2
+akali,Akali,58.5,viktor,Viktor,41.5,17.0,akali,Akali,58.5,2
+akali,Akali,53.6,vladimir,Vladimir,46.4,7.2,akali,Akali,53.6,2
+akali,Akali,54.9,xerath,Xerath,45.1,9.8,akali,Akali,54.9,2
+akali,Akali,57.2,yasuo,Yasuo,42.8,14.4,akali,Akali,57.2,2
+akali,Akali,59.81,yone,Yone,40.19,19.62,akali,Akali,59.81,2
+akali,Akali,49.3,zed,Zed,50.7,1.4,zed,Zed,50.7,2
+akali,Akali,48.53,zoe,Zoe,51.47,2.94,zoe,Zoe,51.47,2
+akshan,Akshan,42.19,anivia,Anivia,57.81,15.62,anivia,Anivia,57.81,2
+akshan,Akshan,46.13,annie,Annie,53.87,7.74,annie,Annie,53.87,2
+akshan,Akshan,62.34,aurelionsol,Aurelion Sol,37.66,24.68,akshan,Akshan,62.34,2
+akshan,Akshan,46.7,aurora,Aurora,53.3,6.6,aurora,Aurora,53.3,2
+akshan,Akshan,46.6,azir,Azir,53.4,6.8,azir,Azir,53.4,2
+akshan,Akshan,52.81,brand,Brand,47.19,5.62,akshan,Akshan,52.81,2
+akshan,Akshan,54.74,cassiopeia,Cassiopeia,45.26,9.48,akshan,Akshan,54.74,2
+akshan,Akshan,47.89,diana,Diana,52.11,4.22,diana,Diana,52.11,2
+akshan,Akshan,46.03,ekko,Ekko,53.97,7.94,ekko,Ekko,53.97,2
+akshan,Akshan,43.97,fizz,Fizz,56.03,12.06,fizz,Fizz,56.03,2
+akshan,Akshan,49.38,galio,Galio,50.63,1.25,galio,Galio,50.63,2
+akshan,Akshan,48.92,hwei,Hwei,51.08,2.16,hwei,Hwei,51.08,2
+akshan,Akshan,50.64,irelia,Irelia,49.36,1.28,akshan,Akshan,50.64,2
+akshan,Akshan,59.05,kassadin,Kassadin,40.95,18.1,akshan,Akshan,59.05,2
+akshan,Akshan,39.82,katarina,Katarina,60.18,20.36,katarina,Katarina,60.18,2
+akshan,Akshan,42.36,leblanc,LeBlanc,57.64,15.28,leblanc,LeBlanc,57.64,2
+akshan,Akshan,42.75,lissandra,Lissandra,57.25,14.5,lissandra,Lissandra,57.25,2
+akshan,Akshan,43.08,locke,Locke,56.92,13.84,locke,Locke,56.92,2
+akshan,Akshan,47.15,lux,Lux,52.85,5.7,lux,Lux,52.85,2
+akshan,Akshan,42.45,malphite,Malphite,57.55,15.1,malphite,Malphite,57.55,2
+akshan,Akshan,53.36,malzahar,Malzahar,46.64,6.72,akshan,Akshan,53.36,2
+akshan,Akshan,47.35,mel,Mel,52.65,5.3,mel,Mel,52.65,2
+akshan,Akshan,48.21,naafiri,Naafiri,51.79,3.58,naafiri,Naafiri,51.79,2
+akshan,Akshan,41.84,nunu,Nunu & Willump,58.16,16.32,nunu,Nunu & Willump,58.16,2
+akshan,Akshan,43.44,orianna,Orianna,56.56,13.12,orianna,Orianna,56.56,2
+akshan,Akshan,46.9,pantheon,Pantheon,53.1,6.2,pantheon,Pantheon,53.1,2
+akshan,Akshan,45.7,qiyana,Qiyana,54.3,8.6,qiyana,Qiyana,54.3,2
+akshan,Akshan,48.44,ryze,Ryze,51.56,3.12,ryze,Ryze,51.56,2
+akshan,Akshan,49.04,sion,Sion,50.96,1.92,sion,Sion,50.96,2
+akshan,Akshan,48.78,swain,Swain,51.22,2.44,swain,Swain,51.22,2
+akshan,Akshan,49.05,sylas,Sylas,50.95,1.9,sylas,Sylas,50.95,2
+akshan,Akshan,48.33,syndra,Syndra,51.67,3.34,syndra,Syndra,51.67,2
+akshan,Akshan,59.77,taliyah,Taliyah,40.23,19.54,akshan,Akshan,59.77,2
+akshan,Akshan,47.52,talon,Talon,52.48,4.96,talon,Talon,52.48,2
+akshan,Akshan,55.65,tristana,Tristana,44.35,11.3,akshan,Akshan,55.65,2
+akshan,Akshan,49.74,twistedfate,Twisted Fate,50.26,0.52,twistedfate,Twisted Fate,50.26,2
+akshan,Akshan,55.78,veigar,Veigar,44.22,11.56,akshan,Akshan,55.78,2
+akshan,Akshan,44.6,vex,Vex,55.4,10.8,vex,Vex,55.4,2
+akshan,Akshan,51.18,viktor,Viktor,48.82,2.36,akshan,Akshan,51.18,2
+akshan,Akshan,44.47,vladimir,Vladimir,55.53,11.06,vladimir,Vladimir,55.53,2
+akshan,Akshan,48.48,xerath,Xerath,51.52,3.04,xerath,Xerath,51.52,2
+akshan,Akshan,49.01,yasuo,Yasuo,50.99,1.98,yasuo,Yasuo,50.99,2
+akshan,Akshan,56.74,yone,Yone,43.26,13.48,akshan,Akshan,56.74,2
+akshan,Akshan,44.61,zed,Zed,55.39,10.78,zed,Zed,55.39,2
+akshan,Akshan,45.3,zoe,Zoe,54.7,9.4,zoe,Zoe,54.7,2
+anivia,Anivia,58.13,annie,Annie,41.88,16.25,anivia,Anivia,58.13,2
+anivia,Anivia,52.43,aurelionsol,Aurelion Sol,47.57,4.86,anivia,Anivia,52.43,2
+anivia,Anivia,45.15,aurora,Aurora,54.85,9.7,aurora,Aurora,54.85,2
+anivia,Anivia,54.0,azir,Azir,46.0,8.0,anivia,Anivia,54.0,2
+anivia,Anivia,62.5,brand,Brand,37.5,25.0,anivia,Anivia,62.5,2
+anivia,Anivia,61.51,cassiopeia,Cassiopeia,38.49,23.02,anivia,Anivia,61.51,2
+anivia,Anivia,57.89,diana,Diana,42.11,15.78,anivia,Anivia,57.89,2
+anivia,Anivia,55.59,ekko,Ekko,44.41,11.18,anivia,Anivia,55.59,2
+anivia,Anivia,53.43,fizz,Fizz,46.57,6.86,anivia,Anivia,53.43,2
+anivia,Anivia,59.75,galio,Galio,40.25,19.5,anivia,Anivia,59.75,2
+anivia,Anivia,53.1,hwei,Hwei,46.9,6.2,anivia,Anivia,53.1,2
+anivia,Anivia,58.02,irelia,Irelia,41.98,16.04,anivia,Anivia,58.02,2
+anivia,Anivia,70.45,kassadin,Kassadin,29.55,40.9,anivia,Anivia,70.45,2
+anivia,Anivia,53.2,katarina,Katarina,46.8,6.4,anivia,Anivia,53.2,2
+anivia,Anivia,43.15,leblanc,LeBlanc,56.85,13.7,leblanc,LeBlanc,56.85,2
+anivia,Anivia,52.6,lissandra,Lissandra,47.4,5.2,anivia,Anivia,52.6,2
+anivia,Anivia,47.49,locke,Locke,52.51,5.02,locke,Locke,52.51,2
+anivia,Anivia,55.31,lux,Lux,44.69,10.62,anivia,Anivia,55.31,2
+anivia,Anivia,51.72,malphite,Malphite,48.28,3.44,anivia,Anivia,51.72,2
+anivia,Anivia,57.93,malzahar,Malzahar,42.07,15.86,anivia,Anivia,57.93,2
+anivia,Anivia,52.6,mel,Mel,47.4,5.2,anivia,Anivia,52.6,2
+anivia,Anivia,42.58,naafiri,Naafiri,57.42,14.84,naafiri,Naafiri,57.42,2
+anivia,Anivia,57.51,nunu,Nunu & Willump,42.49,15.02,anivia,Anivia,57.51,2
+anivia,Anivia,57.58,orianna,Orianna,42.42,15.16,anivia,Anivia,57.58,2
+anivia,Anivia,53.23,pantheon,Pantheon,46.77,6.46,anivia,Anivia,53.23,2
+anivia,Anivia,49.72,qiyana,Qiyana,50.28,0.56,qiyana,Qiyana,50.28,2
+anivia,Anivia,60.6,ryze,Ryze,39.4,21.2,anivia,Anivia,60.6,2
+anivia,Anivia,62.94,sion,Sion,37.06,25.88,anivia,Anivia,62.94,2
+anivia,Anivia,55.0,swain,Swain,45.0,10.0,anivia,Anivia,55.0,2
+anivia,Anivia,56.01,sylas,Sylas,43.99,12.02,anivia,Anivia,56.01,2
+anivia,Anivia,54.93,syndra,Syndra,45.07,9.86,anivia,Anivia,54.93,2
+anivia,Anivia,57.03,taliyah,Taliyah,42.97,14.06,anivia,Anivia,57.03,2
+anivia,Anivia,53.82,talon,Talon,46.18,7.64,anivia,Anivia,53.82,2
+anivia,Anivia,60.87,tristana,Tristana,39.13,21.74,anivia,Anivia,60.87,2
+anivia,Anivia,59.28,twistedfate,Twisted Fate,40.72,18.56,anivia,Anivia,59.28,2
+anivia,Anivia,60.75,veigar,Veigar,39.25,21.5,anivia,Anivia,60.75,2
+anivia,Anivia,62.87,vex,Vex,37.13,25.74,anivia,Anivia,62.87,2
+anivia,Anivia,57.34,viktor,Viktor,42.66,14.68,anivia,Anivia,57.34,2
+anivia,Anivia,54.03,vladimir,Vladimir,45.97,8.06,anivia,Anivia,54.03,2
+anivia,Anivia,47.36,xerath,Xerath,52.64,5.28,xerath,Xerath,52.64,2
+anivia,Anivia,57.39,yasuo,Yasuo,42.61,14.78,anivia,Anivia,57.39,2
+anivia,Anivia,61.86,yone,Yone,38.14,23.72,anivia,Anivia,61.86,2
+anivia,Anivia,50.0,zed,Zed,50.0,0.0,,,,2
+anivia,Anivia,51.0,zoe,Zoe,49.0,2.0,anivia,Anivia,51.0,2
+annie,Annie,48.94,aurelionsol,Aurelion Sol,51.06,2.12,aurelionsol,Aurelion Sol,51.06,2
+annie,Annie,41.41,aurora,Aurora,58.59,17.18,aurora,Aurora,58.59,2
+annie,Annie,56.13,azir,Azir,43.87,12.26,annie,Annie,56.13,2
+annie,Annie,61.76,brand,Brand,38.24,23.52,annie,Annie,61.76,2
+annie,Annie,53.26,cassiopeia,Cassiopeia,46.74,6.52,annie,Annie,53.26,2
+annie,Annie,45.01,diana,Diana,54.99,9.98,diana,Diana,54.99,2
+annie,Annie,45.72,ekko,Ekko,54.28,8.56,ekko,Ekko,54.28,2
+annie,Annie,38.89,fizz,Fizz,61.11,22.22,fizz,Fizz,61.11,2
+annie,Annie,51.29,galio,Galio,48.71,2.58,annie,Annie,51.29,2
+annie,Annie,54.44,hwei,Hwei,45.56,8.88,annie,Annie,54.44,2
+annie,Annie,50.51,irelia,Irelia,49.49,1.02,annie,Annie,50.51,2
+annie,Annie,53.03,kassadin,Kassadin,46.97,6.06,annie,Annie,53.03,2
+annie,Annie,46.01,katarina,Katarina,53.99,7.98,katarina,Katarina,53.99,2
+annie,Annie,39.01,leblanc,LeBlanc,60.99,21.98,leblanc,LeBlanc,60.99,2
+annie,Annie,45.58,lissandra,Lissandra,54.42,8.84,lissandra,Lissandra,54.42,2
+annie,Annie,41.49,locke,Locke,58.51,17.02,locke,Locke,58.51,2
+annie,Annie,43.91,lux,Lux,56.09,12.18,lux,Lux,56.09,2
+annie,Annie,47.17,malphite,Malphite,52.83,5.66,malphite,Malphite,52.83,2
+annie,Annie,54.45,malzahar,Malzahar,45.55,8.9,annie,Annie,54.45,2
+annie,Annie,42.41,mel,Mel,57.59,15.18,mel,Mel,57.59,2
+annie,Annie,42.53,naafiri,Naafiri,57.47,14.94,naafiri,Naafiri,57.47,2
+annie,Annie,38.76,nunu,Nunu & Willump,61.24,22.48,nunu,Nunu & Willump,61.24,2
+annie,Annie,53.96,orianna,Orianna,46.04,7.92,annie,Annie,53.96,2
+annie,Annie,44.66,pantheon,Pantheon,55.34,10.68,pantheon,Pantheon,55.34,2
+annie,Annie,45.52,qiyana,Qiyana,54.48,8.96,qiyana,Qiyana,54.48,2
+annie,Annie,52.81,ryze,Ryze,47.19,5.62,annie,Annie,52.81,2
+annie,Annie,53.72,sion,Sion,46.28,7.44,annie,Annie,53.72,2
+annie,Annie,45.31,swain,Swain,54.69,9.38,swain,Swain,54.69,2
+annie,Annie,49.22,sylas,Sylas,50.78,1.56,sylas,Sylas,50.78,2
+annie,Annie,48.99,syndra,Syndra,51.01,2.02,syndra,Syndra,51.01,2
+annie,Annie,57.21,taliyah,Taliyah,42.79,14.42,annie,Annie,57.21,2
+annie,Annie,50.46,talon,Talon,49.54,0.92,annie,Annie,50.46,2
+annie,Annie,48.21,tristana,Tristana,51.79,3.58,tristana,Tristana,51.79,2
+annie,Annie,48.89,twistedfate,Twisted Fate,51.11,2.22,twistedfate,Twisted Fate,51.11,2
+annie,Annie,52.72,veigar,Veigar,47.28,5.44,annie,Annie,52.72,2
+annie,Annie,51.38,vex,Vex,48.62,2.76,annie,Annie,51.38,2
+annie,Annie,51.42,viktor,Viktor,48.58,2.84,annie,Annie,51.42,2
+annie,Annie,44.4,vladimir,Vladimir,55.6,11.2,vladimir,Vladimir,55.6,2
+annie,Annie,48.56,xerath,Xerath,51.44,2.88,xerath,Xerath,51.44,2
+annie,Annie,57.42,yasuo,Yasuo,42.58,14.84,annie,Annie,57.42,2
+annie,Annie,59.16,yone,Yone,40.84,18.32,annie,Annie,59.16,2
+annie,Annie,44.58,zed,Zed,55.42,10.84,zed,Zed,55.42,2
+annie,Annie,44.33,zoe,Zoe,55.67,11.34,zoe,Zoe,55.67,2
+aurelionsol,Aurelion Sol,41.98,aurora,Aurora,58.02,16.04,aurora,Aurora,58.02,2
+aurelionsol,Aurelion Sol,49.49,azir,Azir,50.51,1.02,azir,Azir,50.51,2
+aurelionsol,Aurelion Sol,53.57,brand,Brand,46.43,7.14,aurelionsol,Aurelion Sol,53.57,2
+aurelionsol,Aurelion Sol,49.15,cassiopeia,Cassiopeia,50.85,1.7,cassiopeia,Cassiopeia,50.85,2
+aurelionsol,Aurelion Sol,42.79,diana,Diana,57.21,14.42,diana,Diana,57.21,2
+aurelionsol,Aurelion Sol,43.04,ekko,Ekko,56.96,13.92,ekko,Ekko,56.96,2
+aurelionsol,Aurelion Sol,38.91,fizz,Fizz,61.09,22.18,fizz,Fizz,61.09,2
+aurelionsol,Aurelion Sol,38.05,galio,Galio,61.95,23.9,galio,Galio,61.95,2
+aurelionsol,Aurelion Sol,41.64,hwei,Hwei,58.36,16.72,hwei,Hwei,58.36,2
+aurelionsol,Aurelion Sol,38.41,irelia,Irelia,61.59,23.18,irelia,Irelia,61.59,2
+aurelionsol,Aurelion Sol,41.05,kassadin,Kassadin,58.95,17.9,kassadin,Kassadin,58.95,2
+aurelionsol,Aurelion Sol,43.78,katarina,Katarina,56.22,12.44,katarina,Katarina,56.22,2
+aurelionsol,Aurelion Sol,31.46,leblanc,LeBlanc,68.54,37.08,leblanc,LeBlanc,68.54,2
+aurelionsol,Aurelion Sol,39.29,lissandra,Lissandra,60.71,21.42,lissandra,Lissandra,60.71,2
+aurelionsol,Aurelion Sol,39.41,locke,Locke,60.59,21.18,locke,Locke,60.59,2
+aurelionsol,Aurelion Sol,40.0,lux,Lux,60.0,20.0,lux,Lux,60.0,2
+aurelionsol,Aurelion Sol,40.0,malphite,Malphite,60.0,20.0,malphite,Malphite,60.0,2
+aurelionsol,Aurelion Sol,47.28,malzahar,Malzahar,52.72,5.44,malzahar,Malzahar,52.72,2
+aurelionsol,Aurelion Sol,52.76,mel,Mel,47.24,5.52,aurelionsol,Aurelion Sol,52.76,2
+aurelionsol,Aurelion Sol,35.56,naafiri,Naafiri,64.44,28.88,naafiri,Naafiri,64.44,2
+aurelionsol,Aurelion Sol,27.94,nunu,Nunu & Willump,72.06,44.12,nunu,Nunu & Willump,72.06,2
+aurelionsol,Aurelion Sol,47.41,orianna,Orianna,52.59,5.18,orianna,Orianna,52.59,2
+aurelionsol,Aurelion Sol,64.52,pantheon,Pantheon,35.48,29.04,aurelionsol,Aurelion Sol,64.52,2
+aurelionsol,Aurelion Sol,33.08,qiyana,Qiyana,66.92,33.84,qiyana,Qiyana,66.92,2
+aurelionsol,Aurelion Sol,50.56,ryze,Ryze,49.44,1.12,aurelionsol,Aurelion Sol,50.56,2
+aurelionsol,Aurelion Sol,59.21,sion,Sion,40.79,18.42,aurelionsol,Aurelion Sol,59.21,2
+aurelionsol,Aurelion Sol,42.86,swain,Swain,57.14,14.28,swain,Swain,57.14,2
+aurelionsol,Aurelion Sol,41.91,sylas,Sylas,58.09,16.18,sylas,Sylas,58.09,2
+aurelionsol,Aurelion Sol,49.89,syndra,Syndra,50.11,0.22,syndra,Syndra,50.11,2
+aurelionsol,Aurelion Sol,52.63,taliyah,Taliyah,47.37,5.26,aurelionsol,Aurelion Sol,52.63,2
+aurelionsol,Aurelion Sol,43.02,talon,Talon,56.98,13.96,talon,Talon,56.98,2
+aurelionsol,Aurelion Sol,50.63,tristana,Tristana,49.37,1.26,aurelionsol,Aurelion Sol,50.63,2
+aurelionsol,Aurelion Sol,46.39,twistedfate,Twisted Fate,53.61,7.22,twistedfate,Twisted Fate,53.61,2
+aurelionsol,Aurelion Sol,39.77,veigar,Veigar,60.23,20.46,veigar,Veigar,60.23,2
+aurelionsol,Aurelion Sol,45.66,vex,Vex,54.34,8.68,vex,Vex,54.34,2
+aurelionsol,Aurelion Sol,49.4,viktor,Viktor,50.6,1.2,viktor,Viktor,50.6,2
+aurelionsol,Aurelion Sol,44.1,vladimir,Vladimir,55.9,11.8,vladimir,Vladimir,55.9,2
+aurelionsol,Aurelion Sol,42.42,xerath,Xerath,57.58,15.16,xerath,Xerath,57.58,2
+aurelionsol,Aurelion Sol,50.93,yasuo,Yasuo,49.07,1.86,aurelionsol,Aurelion Sol,50.93,2
+aurelionsol,Aurelion Sol,40.2,yone,Yone,59.8,19.6,yone,Yone,59.8,2
+aurelionsol,Aurelion Sol,35.04,zed,Zed,64.96,29.92,zed,Zed,64.96,2
+aurelionsol,Aurelion Sol,32.95,zoe,Zoe,67.05,34.1,zoe,Zoe,67.05,2
+aurora,Aurora,56.8,azir,Azir,43.2,13.6,aurora,Aurora,56.8,2
+aurora,Aurora,58.4,brand,Brand,41.6,16.8,aurora,Aurora,58.4,2
+aurora,Aurora,57.69,cassiopeia,Cassiopeia,42.31,15.38,aurora,Aurora,57.69,2
+aurora,Aurora,55.27,diana,Diana,44.73,10.54,aurora,Aurora,55.27,2
+aurora,Aurora,58.53,ekko,Ekko,41.47,17.06,aurora,Aurora,58.53,2
+aurora,Aurora,49.13,fizz,Fizz,50.88,1.75,fizz,Fizz,50.88,2
+aurora,Aurora,56.92,galio,Galio,43.08,13.84,aurora,Aurora,56.92,2
+aurora,Aurora,59.04,hwei,Hwei,40.96,18.08,aurora,Aurora,59.04,2
+aurora,Aurora,60.93,irelia,Irelia,39.07,21.86,aurora,Aurora,60.93,2
+aurora,Aurora,63.25,kassadin,Kassadin,36.75,26.5,aurora,Aurora,63.25,2
+aurora,Aurora,48.62,katarina,Katarina,51.38,2.76,katarina,Katarina,51.38,2
+aurora,Aurora,39.83,leblanc,LeBlanc,60.17,20.34,leblanc,LeBlanc,60.17,2
+aurora,Aurora,50.16,lissandra,Lissandra,49.84,0.32,aurora,Aurora,50.16,2
+aurora,Aurora,47.14,locke,Locke,52.86,5.72,locke,Locke,52.86,2
+aurora,Aurora,46.91,lux,Lux,53.09,6.18,lux,Lux,53.09,2
+aurora,Aurora,57.89,malphite,Malphite,42.11,15.78,aurora,Aurora,57.89,2
+aurora,Aurora,58.64,malzahar,Malzahar,41.36,17.28,aurora,Aurora,58.64,2
+aurora,Aurora,51.09,mel,Mel,48.91,2.18,aurora,Aurora,51.09,2
+aurora,Aurora,49.44,naafiri,Naafiri,50.56,1.12,naafiri,Naafiri,50.56,2
+aurora,Aurora,57.05,nunu,Nunu & Willump,42.95,14.1,aurora,Aurora,57.05,2
+aurora,Aurora,53.63,orianna,Orianna,46.37,7.26,aurora,Aurora,53.63,2
+aurora,Aurora,53.57,pantheon,Pantheon,46.43,7.14,aurora,Aurora,53.57,2
+aurora,Aurora,49.52,qiyana,Qiyana,50.48,0.96,qiyana,Qiyana,50.48,2
+aurora,Aurora,60.55,ryze,Ryze,39.45,21.1,aurora,Aurora,60.55,2
+aurora,Aurora,68.9,sion,Sion,31.1,37.8,aurora,Aurora,68.9,2
+aurora,Aurora,62.5,swain,Swain,37.5,25.0,aurora,Aurora,62.5,2
+aurora,Aurora,57.24,sylas,Sylas,42.76,14.48,aurora,Aurora,57.24,2
+aurora,Aurora,53.17,syndra,Syndra,46.83,6.34,aurora,Aurora,53.17,2
+aurora,Aurora,64.12,taliyah,Taliyah,35.88,28.24,aurora,Aurora,64.12,2
+aurora,Aurora,52.97,talon,Talon,47.03,5.94,aurora,Aurora,52.97,2
+aurora,Aurora,54.68,tristana,Tristana,45.32,9.36,aurora,Aurora,54.68,2
+aurora,Aurora,58.61,twistedfate,Twisted Fate,41.39,17.22,aurora,Aurora,58.61,2
+aurora,Aurora,62.37,veigar,Veigar,37.63,24.74,aurora,Aurora,62.37,2
+aurora,Aurora,50.97,vex,Vex,49.03,1.94,aurora,Aurora,50.97,2
+aurora,Aurora,58.77,viktor,Viktor,41.23,17.54,aurora,Aurora,58.77,2
+aurora,Aurora,65.62,vladimir,Vladimir,34.38,31.24,aurora,Aurora,65.62,2
+aurora,Aurora,50.38,xerath,Xerath,49.62,0.76,aurora,Aurora,50.38,2
+aurora,Aurora,60.14,yasuo,Yasuo,39.86,20.28,aurora,Aurora,60.14,2
+aurora,Aurora,61.87,yone,Yone,38.13,23.74,aurora,Aurora,61.87,2
+aurora,Aurora,51.22,zed,Zed,48.78,2.44,aurora,Aurora,51.22,2
+aurora,Aurora,49.39,zoe,Zoe,50.61,1.22,zoe,Zoe,50.61,2
+azir,Azir,55.0,brand,Brand,45.0,10.0,azir,Azir,55.0,2
+azir,Azir,52.17,cassiopeia,Cassiopeia,47.83,4.34,azir,Azir,52.17,2
+azir,Azir,46.82,diana,Diana,53.18,6.36,diana,Diana,53.18,2
+azir,Azir,37.04,ekko,Ekko,62.96,25.92,ekko,Ekko,62.96,2
+azir,Azir,47.64,fizz,Fizz,52.36,4.72,fizz,Fizz,52.36,2
+azir,Azir,48.26,galio,Galio,51.74,3.48,galio,Galio,51.74,2
+azir,Azir,48.61,hwei,Hwei,51.39,2.78,hwei,Hwei,51.39,2
+azir,Azir,52.46,irelia,Irelia,47.54,4.92,azir,Azir,52.46,2
+azir,Azir,46.15,kassadin,Kassadin,53.85,7.7,kassadin,Kassadin,53.85,2
+azir,Azir,44.96,katarina,Katarina,55.04,10.08,katarina,Katarina,55.04,2
+azir,Azir,31.62,leblanc,LeBlanc,68.38,36.76,leblanc,LeBlanc,68.38,2
+azir,Azir,39.95,lissandra,Lissandra,60.05,20.1,lissandra,Lissandra,60.05,2
+azir,Azir,37.98,locke,Locke,62.02,24.04,locke,Locke,62.02,2
+azir,Azir,45.9,lux,Lux,54.1,8.2,lux,Lux,54.1,2
+azir,Azir,34.04,malphite,Malphite,65.96,31.92,malphite,Malphite,65.96,2
+azir,Azir,54.64,malzahar,Malzahar,45.36,9.28,azir,Azir,54.64,2
+azir,Azir,41.18,mel,Mel,58.82,17.64,mel,Mel,58.82,2
+azir,Azir,48.44,naafiri,Naafiri,51.56,3.12,naafiri,Naafiri,51.56,2
+azir,Azir,36.71,nunu,Nunu & Willump,63.29,26.58,nunu,Nunu & Willump,63.29,2
+azir,Azir,48.37,orianna,Orianna,51.63,3.26,orianna,Orianna,51.63,2
+azir,Azir,36.11,pantheon,Pantheon,63.89,27.78,pantheon,Pantheon,63.89,2
+azir,Azir,33.33,qiyana,Qiyana,66.67,33.34,qiyana,Qiyana,66.67,2
+azir,Azir,53.12,ryze,Ryze,46.88,6.24,azir,Azir,53.12,2
+azir,Azir,48.45,sion,Sion,51.55,3.1,sion,Sion,51.55,2
+azir,Azir,40.63,swain,Swain,59.38,18.75,swain,Swain,59.38,2
+azir,Azir,46.68,sylas,Sylas,53.32,6.64,sylas,Sylas,53.32,2
+azir,Azir,46.68,syndra,Syndra,53.32,6.64,syndra,Syndra,53.32,2
+azir,Azir,56.89,taliyah,Taliyah,43.11,13.78,azir,Azir,56.89,2
+azir,Azir,39.0,talon,Talon,61.0,22.0,talon,Talon,61.0,2
+azir,Azir,44.55,tristana,Tristana,55.45,10.9,tristana,Tristana,55.45,2
+azir,Azir,50.89,twistedfate,Twisted Fate,49.11,1.78,azir,Azir,50.89,2
+azir,Azir,52.24,veigar,Veigar,47.76,4.48,azir,Azir,52.24,2
+azir,Azir,41.79,vex,Vex,58.21,16.42,vex,Vex,58.21,2
+azir,Azir,52.67,viktor,Viktor,47.33,5.34,azir,Azir,52.67,2
+azir,Azir,37.77,vladimir,Vladimir,62.23,24.46,vladimir,Vladimir,62.23,2
+azir,Azir,45.15,xerath,Xerath,54.85,9.7,xerath,Xerath,54.85,2
+azir,Azir,55.77,yasuo,Yasuo,44.23,11.54,azir,Azir,55.77,2
+azir,Azir,50.58,yone,Yone,49.42,1.16,azir,Azir,50.58,2
+azir,Azir,39.6,zed,Zed,60.4,20.8,zed,Zed,60.4,2
+azir,Azir,33.77,zoe,Zoe,66.23,32.46,zoe,Zoe,66.23,2
+brand,Brand,48.28,cassiopeia,Cassiopeia,51.72,3.44,cassiopeia,Cassiopeia,51.72,2
+brand,Brand,40.76,diana,Diana,59.24,18.48,diana,Diana,59.24,2
+brand,Brand,44.68,ekko,Ekko,55.32,10.64,ekko,Ekko,55.32,2
+brand,Brand,38.39,fizz,Fizz,61.61,23.22,fizz,Fizz,61.61,2
+brand,Brand,44.44,galio,Galio,55.56,11.12,galio,Galio,55.56,2
+brand,Brand,45.0,hwei,Hwei,55.0,10.0,hwei,Hwei,55.0,2
+brand,Brand,50.66,irelia,Irelia,49.34,1.32,brand,Brand,50.66,2
+brand,Brand,58.62,kassadin,Kassadin,41.38,17.24,brand,Brand,58.62,2
+brand,Brand,50.48,katarina,Katarina,49.52,0.96,brand,Brand,50.48,2
+brand,Brand,28.38,leblanc,LeBlanc,71.62,43.24,leblanc,LeBlanc,71.62,2
+brand,Brand,42.58,lissandra,Lissandra,57.42,14.84,lissandra,Lissandra,57.42,2
+brand,Brand,37.99,locke,Locke,62.01,24.02,locke,Locke,62.01,2
+brand,Brand,38.89,lux,Lux,61.11,22.22,lux,Lux,61.11,2
+brand,Brand,40.0,malphite,Malphite,60.0,20.0,malphite,Malphite,60.0,2
+brand,Brand,46.1,malzahar,Malzahar,53.9,7.8,malzahar,Malzahar,53.9,2
+brand,Brand,41.11,mel,Mel,58.89,17.78,mel,Mel,58.89,2
+brand,Brand,32.69,naafiri,Naafiri,67.31,34.62,naafiri,Naafiri,67.31,2
+brand,Brand,38.3,nunu,Nunu & Willump,61.7,23.4,nunu,Nunu & Willump,61.7,2
+brand,Brand,36.43,orianna,Orianna,63.57,27.14,orianna,Orianna,63.57,2
+brand,Brand,36.36,pantheon,Pantheon,63.64,27.28,pantheon,Pantheon,63.64,2
+brand,Brand,37.7,qiyana,Qiyana,62.3,24.6,qiyana,Qiyana,62.3,2
+brand,Brand,52.6,ryze,Ryze,47.4,5.2,brand,Brand,52.6,2
+brand,Brand,48.89,sion,Sion,51.11,2.22,sion,Sion,51.11,2
+brand,Brand,59.26,swain,Swain,40.74,18.52,brand,Brand,59.26,2
+brand,Brand,46.08,sylas,Sylas,53.92,7.84,sylas,Sylas,53.92,2
+brand,Brand,42.06,syndra,Syndra,57.94,15.88,syndra,Syndra,57.94,2
+brand,Brand,50.0,taliyah,Taliyah,50.0,0.0,,,,2
+brand,Brand,41.76,talon,Talon,58.24,16.48,talon,Talon,58.24,2
+brand,Brand,48.98,tristana,Tristana,51.02,2.04,tristana,Tristana,51.02,2
+brand,Brand,42.44,twistedfate,Twisted Fate,57.56,15.12,twistedfate,Twisted Fate,57.56,2
+brand,Brand,63.27,veigar,Veigar,36.73,26.54,brand,Brand,63.27,2
+brand,Brand,43.48,vex,Vex,56.52,13.04,vex,Vex,56.52,2
+brand,Brand,45.94,viktor,Viktor,54.06,8.12,viktor,Viktor,54.06,2
+brand,Brand,42.24,vladimir,Vladimir,57.76,15.52,vladimir,Vladimir,57.76,2
+brand,Brand,37.5,xerath,Xerath,62.5,25.0,xerath,Xerath,62.5,2
+brand,Brand,49.7,yasuo,Yasuo,50.3,0.6,yasuo,Yasuo,50.3,2
+brand,Brand,52.15,yone,Yone,47.85,4.3,brand,Brand,52.15,2
+brand,Brand,40.74,zed,Zed,59.26,18.52,zed,Zed,59.26,2
+brand,Brand,36.84,zoe,Zoe,63.16,26.32,zoe,Zoe,63.16,2
+cassiopeia,Cassiopeia,43.33,diana,Diana,56.67,13.34,diana,Diana,56.67,2
+cassiopeia,Cassiopeia,43.37,ekko,Ekko,56.63,13.26,ekko,Ekko,56.63,2
+cassiopeia,Cassiopeia,42.86,fizz,Fizz,57.14,14.28,fizz,Fizz,57.14,2
+cassiopeia,Cassiopeia,41.2,galio,Galio,58.8,17.6,galio,Galio,58.8,2
+cassiopeia,Cassiopeia,49.31,hwei,Hwei,50.69,1.38,hwei,Hwei,50.69,2
+cassiopeia,Cassiopeia,51.83,irelia,Irelia,48.17,3.66,cassiopeia,Cassiopeia,51.83,2
+cassiopeia,Cassiopeia,44.26,kassadin,Kassadin,55.74,11.48,kassadin,Kassadin,55.74,2
+cassiopeia,Cassiopeia,43.87,katarina,Katarina,56.13,12.26,katarina,Katarina,56.13,2
+cassiopeia,Cassiopeia,31.13,leblanc,LeBlanc,68.87,37.74,leblanc,LeBlanc,68.87,2
+cassiopeia,Cassiopeia,45.38,lissandra,Lissandra,54.62,9.24,lissandra,Lissandra,54.62,2
+cassiopeia,Cassiopeia,42.59,locke,Locke,57.41,14.82,locke,Locke,57.41,2
+cassiopeia,Cassiopeia,46.7,lux,Lux,53.3,6.6,lux,Lux,53.3,2
+cassiopeia,Cassiopeia,46.67,malphite,Malphite,53.33,6.66,malphite,Malphite,53.33,2
+cassiopeia,Cassiopeia,48.66,malzahar,Malzahar,51.34,2.68,malzahar,Malzahar,51.34,2
+cassiopeia,Cassiopeia,46.55,mel,Mel,53.45,6.9,mel,Mel,53.45,2
+cassiopeia,Cassiopeia,40.23,naafiri,Naafiri,59.77,19.54,naafiri,Naafiri,59.77,2
+cassiopeia,Cassiopeia,41.24,nunu,Nunu & Willump,58.76,17.52,nunu,Nunu & Willump,58.76,2
+cassiopeia,Cassiopeia,45.5,orianna,Orianna,54.5,9.0,orianna,Orianna,54.5,2
+cassiopeia,Cassiopeia,45.26,pantheon,Pantheon,54.74,9.48,pantheon,Pantheon,54.74,2
+cassiopeia,Cassiopeia,37.05,qiyana,Qiyana,62.95,25.9,qiyana,Qiyana,62.95,2
+cassiopeia,Cassiopeia,51.57,ryze,Ryze,48.43,3.14,cassiopeia,Cassiopeia,51.57,2
+cassiopeia,Cassiopeia,47.58,sion,Sion,52.42,4.84,sion,Sion,52.42,2
+cassiopeia,Cassiopeia,39.08,swain,Swain,60.92,21.84,swain,Swain,60.92,2
+cassiopeia,Cassiopeia,48.51,sylas,Sylas,51.49,2.98,sylas,Sylas,51.49,2
+cassiopeia,Cassiopeia,42.84,syndra,Syndra,57.16,14.32,syndra,Syndra,57.16,2
+cassiopeia,Cassiopeia,51.65,taliyah,Taliyah,48.35,3.3,cassiopeia,Cassiopeia,51.65,2
+cassiopeia,Cassiopeia,40.5,talon,Talon,59.5,19.0,talon,Talon,59.5,2
+cassiopeia,Cassiopeia,52.72,tristana,Tristana,47.28,5.44,cassiopeia,Cassiopeia,52.72,2
+cassiopeia,Cassiopeia,49.88,twistedfate,Twisted Fate,50.12,0.24,twistedfate,Twisted Fate,50.12,2
+cassiopeia,Cassiopeia,54.9,veigar,Veigar,45.1,9.8,cassiopeia,Cassiopeia,54.9,2
+cassiopeia,Cassiopeia,45.45,vex,Vex,54.55,9.1,vex,Vex,54.55,2
+cassiopeia,Cassiopeia,45.8,viktor,Viktor,54.2,8.4,viktor,Viktor,54.2,2
+cassiopeia,Cassiopeia,49.37,vladimir,Vladimir,50.63,1.26,vladimir,Vladimir,50.63,2
+cassiopeia,Cassiopeia,40.68,xerath,Xerath,59.32,18.64,xerath,Xerath,59.32,2
+cassiopeia,Cassiopeia,51.26,yasuo,Yasuo,48.74,2.52,cassiopeia,Cassiopeia,51.26,2
+cassiopeia,Cassiopeia,54.12,yone,Yone,45.88,8.24,cassiopeia,Cassiopeia,54.12,2
+cassiopeia,Cassiopeia,42.95,zed,Zed,57.05,14.1,zed,Zed,57.05,2
+cassiopeia,Cassiopeia,37.81,zoe,Zoe,62.19,24.38,zoe,Zoe,62.19,2
+diana,Diana,49.2,ekko,Ekko,50.8,1.6,ekko,Ekko,50.8,2
+diana,Diana,48.72,fizz,Fizz,51.28,2.56,fizz,Fizz,51.28,2
+diana,Diana,49.23,galio,Galio,50.77,1.54,galio,Galio,50.77,2
+diana,Diana,52.52,hwei,Hwei,47.48,5.04,diana,Diana,52.52,2
+diana,Diana,55.06,irelia,Irelia,44.94,10.12,diana,Diana,55.06,2
+diana,Diana,58.43,kassadin,Kassadin,41.57,16.86,diana,Diana,58.43,2
+diana,Diana,50.37,katarina,Katarina,49.63,0.74,diana,Diana,50.37,2
+diana,Diana,41.25,leblanc,LeBlanc,58.75,17.5,leblanc,LeBlanc,58.75,2
+diana,Diana,47.49,lissandra,Lissandra,52.51,5.02,lissandra,Lissandra,52.51,2
+diana,Diana,49.06,locke,Locke,50.94,1.88,locke,Locke,50.94,2
+diana,Diana,48.58,lux,Lux,51.42,2.84,lux,Lux,51.42,2
+diana,Diana,46.81,malphite,Malphite,53.19,6.38,malphite,Malphite,53.19,2
+diana,Diana,54.22,malzahar,Malzahar,45.78,8.44,diana,Diana,54.22,2
+diana,Diana,49.42,mel,Mel,50.58,1.16,mel,Mel,50.58,2
+diana,Diana,52.95,naafiri,Naafiri,47.05,5.9,diana,Diana,52.95,2
+diana,Diana,53.35,nunu,Nunu & Willump,46.65,6.7,diana,Diana,53.35,2
+diana,Diana,53.1,orianna,Orianna,46.9,6.2,diana,Diana,53.1,2
+diana,Diana,52.47,pantheon,Pantheon,47.53,4.94,diana,Diana,52.47,2
+diana,Diana,49.17,qiyana,Qiyana,50.83,1.66,qiyana,Qiyana,50.83,2
+diana,Diana,54.18,ryze,Ryze,45.82,8.36,diana,Diana,54.18,2
+diana,Diana,49.3,sion,Sion,50.7,1.4,sion,Sion,50.7,2
+diana,Diana,49.44,swain,Swain,50.56,1.12,swain,Swain,50.56,2
+diana,Diana,53.27,sylas,Sylas,46.73,6.54,diana,Diana,53.27,2
+diana,Diana,54.23,syndra,Syndra,45.77,8.46,diana,Diana,54.23,2
+diana,Diana,55.32,taliyah,Taliyah,44.68,10.64,diana,Diana,55.32,2
+diana,Diana,52.34,talon,Talon,47.66,4.68,diana,Diana,52.34,2
+diana,Diana,57.26,tristana,Tristana,42.74,14.52,diana,Diana,57.26,2
+diana,Diana,54.85,twistedfate,Twisted Fate,45.15,9.7,diana,Diana,54.85,2
+diana,Diana,62.16,veigar,Veigar,37.84,24.32,diana,Diana,62.16,2
+diana,Diana,48.05,vex,Vex,51.95,3.9,vex,Vex,51.95,2
+diana,Diana,54.07,viktor,Viktor,45.93,8.14,diana,Diana,54.07,2
+diana,Diana,49.59,vladimir,Vladimir,50.41,0.82,vladimir,Vladimir,50.41,2
+diana,Diana,48.36,xerath,Xerath,51.64,3.28,xerath,Xerath,51.64,2
+diana,Diana,55.22,yasuo,Yasuo,44.78,10.44,diana,Diana,55.22,2
+diana,Diana,61.34,yone,Yone,38.66,22.68,diana,Diana,61.34,2
+diana,Diana,48.98,zed,Zed,51.02,2.04,zed,Zed,51.02,2
+diana,Diana,50.82,zoe,Zoe,49.18,1.64,diana,Diana,50.82,2
+ekko,Ekko,48.04,fizz,Fizz,51.96,3.92,fizz,Fizz,51.96,2
+ekko,Ekko,55.5,galio,Galio,44.5,11.0,ekko,Ekko,55.5,2
+ekko,Ekko,57.34,hwei,Hwei,42.66,14.68,ekko,Ekko,57.34,2
+ekko,Ekko,56.51,irelia,Irelia,43.49,13.02,ekko,Ekko,56.51,2
+ekko,Ekko,62.65,kassadin,Kassadin,37.35,25.3,ekko,Ekko,62.65,2
+ekko,Ekko,47.94,katarina,Katarina,52.06,4.12,katarina,Katarina,52.06,2
+ekko,Ekko,35.37,leblanc,LeBlanc,64.63,29.26,leblanc,LeBlanc,64.63,2
+ekko,Ekko,42.36,lissandra,Lissandra,57.64,15.28,lissandra,Lissandra,57.64,2
+ekko,Ekko,49.9,locke,Locke,50.1,0.2,locke,Locke,50.1,2
+ekko,Ekko,42.86,lux,Lux,57.14,14.28,lux,Lux,57.14,2
+ekko,Ekko,46.43,malphite,Malphite,53.57,7.14,malphite,Malphite,53.57,2
+ekko,Ekko,55.31,malzahar,Malzahar,44.69,10.62,ekko,Ekko,55.31,2
+ekko,Ekko,47.41,mel,Mel,52.59,5.18,mel,Mel,52.59,2
+ekko,Ekko,53.16,naafiri,Naafiri,46.84,6.32,ekko,Ekko,53.16,2
+ekko,Ekko,45.63,nunu,Nunu & Willump,54.37,8.74,nunu,Nunu & Willump,54.37,2
+ekko,Ekko,48.76,orianna,Orianna,51.24,2.48,orianna,Orianna,51.24,2
+ekko,Ekko,54.26,pantheon,Pantheon,45.74,8.52,ekko,Ekko,54.26,2
+ekko,Ekko,48.89,qiyana,Qiyana,51.11,2.22,qiyana,Qiyana,51.11,2
+ekko,Ekko,55.73,ryze,Ryze,44.27,11.46,ekko,Ekko,55.73,2
+ekko,Ekko,52.0,sion,Sion,48.0,4.0,ekko,Ekko,52.0,2
+ekko,Ekko,55.07,swain,Swain,44.93,10.14,ekko,Ekko,55.07,2
+ekko,Ekko,49.18,sylas,Sylas,50.82,1.64,sylas,Sylas,50.82,2
+ekko,Ekko,52.48,syndra,Syndra,47.52,4.96,ekko,Ekko,52.48,2
+ekko,Ekko,65.99,taliyah,Taliyah,34.01,31.98,ekko,Ekko,65.99,2
+ekko,Ekko,50.56,talon,Talon,49.44,1.12,ekko,Ekko,50.56,2
+ekko,Ekko,63.44,tristana,Tristana,36.56,26.88,ekko,Ekko,63.44,2
+ekko,Ekko,52.9,twistedfate,Twisted Fate,47.1,5.8,ekko,Ekko,52.9,2
+ekko,Ekko,52.59,veigar,Veigar,47.41,5.18,ekko,Ekko,52.59,2
+ekko,Ekko,52.61,vex,Vex,47.39,5.22,ekko,Ekko,52.61,2
+ekko,Ekko,53.62,viktor,Viktor,46.38,7.24,ekko,Ekko,53.62,2
+ekko,Ekko,50.97,vladimir,Vladimir,49.03,1.94,ekko,Ekko,50.97,2
+ekko,Ekko,49.08,xerath,Xerath,50.92,1.84,xerath,Xerath,50.92,2
+ekko,Ekko,58.6,yasuo,Yasuo,41.4,17.2,ekko,Ekko,58.6,2
+ekko,Ekko,62.03,yone,Yone,37.97,24.06,ekko,Ekko,62.03,2
+ekko,Ekko,51.2,zed,Zed,48.8,2.4,ekko,Ekko,51.2,2
+ekko,Ekko,48.6,zoe,Zoe,51.4,2.8,zoe,Zoe,51.4,2
+fizz,Fizz,54.8,galio,Galio,45.2,9.6,fizz,Fizz,54.8,2
+fizz,Fizz,57.55,hwei,Hwei,42.45,15.1,fizz,Fizz,57.55,2
+fizz,Fizz,63.54,irelia,Irelia,36.46,27.08,fizz,Fizz,63.54,2
+fizz,Fizz,61.95,kassadin,Kassadin,38.05,23.9,fizz,Fizz,61.95,2
+fizz,Fizz,52.79,katarina,Katarina,47.21,5.58,fizz,Fizz,52.79,2
+fizz,Fizz,42.13,leblanc,LeBlanc,57.87,15.74,leblanc,LeBlanc,57.87,2
+fizz,Fizz,47.96,lissandra,Lissandra,52.04,4.08,lissandra,Lissandra,52.04,2
+fizz,Fizz,50.95,locke,Locke,49.05,1.9,fizz,Fizz,50.95,2
+fizz,Fizz,49.55,lux,Lux,50.45,0.9,lux,Lux,50.45,2
+fizz,Fizz,48.72,malphite,Malphite,51.28,2.56,malphite,Malphite,51.28,2
+fizz,Fizz,62.86,malzahar,Malzahar,37.14,25.72,fizz,Fizz,62.86,2
+fizz,Fizz,56.96,mel,Mel,43.04,13.92,fizz,Fizz,56.96,2
+fizz,Fizz,55.42,naafiri,Naafiri,44.58,10.84,fizz,Fizz,55.42,2
+fizz,Fizz,58.89,nunu,Nunu & Willump,41.11,17.78,fizz,Fizz,58.89,2
+fizz,Fizz,54.22,orianna,Orianna,45.78,8.44,fizz,Fizz,54.22,2
+fizz,Fizz,52.5,pantheon,Pantheon,47.5,5.0,fizz,Fizz,52.5,2
+fizz,Fizz,48.44,qiyana,Qiyana,51.56,3.12,qiyana,Qiyana,51.56,2
+fizz,Fizz,59.48,ryze,Ryze,40.52,18.96,fizz,Fizz,59.48,2
+fizz,Fizz,57.73,sion,Sion,42.27,15.46,fizz,Fizz,57.73,2
+fizz,Fizz,55.36,swain,Swain,44.64,10.72,fizz,Fizz,55.36,2
+fizz,Fizz,51.99,sylas,Sylas,48.01,3.98,fizz,Fizz,51.99,2
+fizz,Fizz,59.12,syndra,Syndra,40.88,18.24,fizz,Fizz,59.12,2
+fizz,Fizz,63.75,taliyah,Taliyah,36.25,27.5,fizz,Fizz,63.75,2
+fizz,Fizz,51.75,talon,Talon,48.25,3.5,fizz,Fizz,51.75,2
+fizz,Fizz,54.72,tristana,Tristana,45.28,9.44,fizz,Fizz,54.72,2
+fizz,Fizz,56.5,twistedfate,Twisted Fate,43.5,13.0,fizz,Fizz,56.5,2
+fizz,Fizz,58.44,veigar,Veigar,41.56,16.88,fizz,Fizz,58.44,2
+fizz,Fizz,49.67,vex,Vex,50.33,0.66,vex,Vex,50.33,2
+fizz,Fizz,58.68,viktor,Viktor,41.32,17.36,fizz,Fizz,58.68,2
+fizz,Fizz,58.27,vladimir,Vladimir,41.73,16.54,fizz,Fizz,58.27,2
+fizz,Fizz,57.41,xerath,Xerath,42.59,14.82,fizz,Fizz,57.41,2
+fizz,Fizz,60.48,yasuo,Yasuo,39.52,20.96,fizz,Fizz,60.48,2
+fizz,Fizz,59.09,yone,Yone,40.91,18.18,fizz,Fizz,59.09,2
+fizz,Fizz,51.61,zed,Zed,48.39,3.22,fizz,Fizz,51.61,2
+fizz,Fizz,48.98,zoe,Zoe,51.02,2.04,zoe,Zoe,51.02,2
+galio,Galio,52.11,hwei,Hwei,47.89,4.22,galio,Galio,52.11,2
+galio,Galio,57.06,irelia,Irelia,42.94,14.12,galio,Galio,57.06,2
+galio,Galio,53.06,kassadin,Kassadin,46.94,6.12,galio,Galio,53.06,2
+galio,Galio,51.93,katarina,Katarina,48.07,3.86,galio,Galio,51.93,2
+galio,Galio,36.37,leblanc,LeBlanc,63.63,27.26,leblanc,LeBlanc,63.63,2
+galio,Galio,48.4,lissandra,Lissandra,51.6,3.2,lissandra,Lissandra,51.6,2
+galio,Galio,48.13,locke,Locke,51.87,3.74,locke,Locke,51.87,2
+galio,Galio,45.09,lux,Lux,54.91,9.82,lux,Lux,54.91,2
+galio,Galio,49.65,malphite,Malphite,50.35,0.7,malphite,Malphite,50.35,2
+galio,Galio,51.98,malzahar,Malzahar,48.02,3.96,galio,Galio,51.98,2
+galio,Galio,50.1,mel,Mel,49.9,0.2,galio,Galio,50.1,2
+galio,Galio,43.86,naafiri,Naafiri,56.14,12.28,naafiri,Naafiri,56.14,2
+galio,Galio,53.81,nunu,Nunu & Willump,46.19,7.62,galio,Galio,53.81,2
+galio,Galio,47.22,orianna,Orianna,52.78,5.56,orianna,Orianna,52.78,2
+galio,Galio,51.12,pantheon,Pantheon,48.88,2.24,galio,Galio,51.12,2
+galio,Galio,46.65,qiyana,Qiyana,53.35,6.7,qiyana,Qiyana,53.35,2
+galio,Galio,55.44,ryze,Ryze,44.56,10.88,galio,Galio,55.44,2
+galio,Galio,49.39,sion,Sion,50.61,1.22,sion,Sion,50.61,2
+galio,Galio,50.84,swain,Swain,49.16,1.68,galio,Galio,50.84,2
+galio,Galio,53.47,sylas,Sylas,46.53,6.94,galio,Galio,53.47,2
+galio,Galio,52.18,syndra,Syndra,47.82,4.36,galio,Galio,52.18,2
+galio,Galio,52.99,taliyah,Taliyah,47.01,5.98,galio,Galio,52.99,2
+galio,Galio,48.89,talon,Talon,51.11,2.22,talon,Talon,51.11,2
+galio,Galio,55.64,tristana,Tristana,44.36,11.28,galio,Galio,55.64,2
+galio,Galio,52.92,twistedfate,Twisted Fate,47.08,5.84,galio,Galio,52.92,2
+galio,Galio,47.77,veigar,Veigar,52.23,4.46,veigar,Veigar,52.23,2
+galio,Galio,45.66,vex,Vex,54.34,8.68,vex,Vex,54.34,2
+galio,Galio,52.33,viktor,Viktor,47.67,4.66,galio,Galio,52.33,2
+galio,Galio,48.07,vladimir,Vladimir,51.93,3.86,vladimir,Vladimir,51.93,2
+galio,Galio,48.85,xerath,Xerath,51.15,2.3,xerath,Xerath,51.15,2
+galio,Galio,56.3,yasuo,Yasuo,43.7,12.6,galio,Galio,56.3,2
+galio,Galio,56.39,yone,Yone,43.61,12.78,galio,Galio,56.39,2
+galio,Galio,45.47,zed,Zed,54.53,9.06,zed,Zed,54.53,2
+galio,Galio,38.59,zoe,Zoe,61.41,22.82,zoe,Zoe,61.41,2
+hwei,Hwei,50.03,irelia,Irelia,49.97,0.06,hwei,Hwei,50.03,2
+hwei,Hwei,50.67,kassadin,Kassadin,49.33,1.34,hwei,Hwei,50.67,2
+hwei,Hwei,39.78,katarina,Katarina,60.22,20.44,katarina,Katarina,60.22,2
+hwei,Hwei,37.09,leblanc,LeBlanc,62.91,25.82,leblanc,LeBlanc,62.91,2
+hwei,Hwei,46.82,lissandra,Lissandra,53.18,6.36,lissandra,Lissandra,53.18,2
+hwei,Hwei,40.61,locke,Locke,59.39,18.78,locke,Locke,59.39,2
+hwei,Hwei,44.5,lux,Lux,55.5,11.0,lux,Lux,55.5,2
+hwei,Hwei,47.47,malphite,Malphite,52.53,5.06,malphite,Malphite,52.53,2
+hwei,Hwei,54.29,malzahar,Malzahar,45.71,8.58,hwei,Hwei,54.29,2
+hwei,Hwei,47.52,mel,Mel,52.48,4.96,mel,Mel,52.48,2
+hwei,Hwei,43.33,naafiri,Naafiri,56.67,13.34,naafiri,Naafiri,56.67,2
+hwei,Hwei,44.3,nunu,Nunu & Willump,55.7,11.4,nunu,Nunu & Willump,55.7,2
+hwei,Hwei,49.81,orianna,Orianna,50.19,0.38,orianna,Orianna,50.19,2
+hwei,Hwei,51.76,pantheon,Pantheon,48.24,3.52,hwei,Hwei,51.76,2
+hwei,Hwei,44.9,qiyana,Qiyana,55.1,10.2,qiyana,Qiyana,55.1,2
+hwei,Hwei,53.01,ryze,Ryze,46.99,6.02,hwei,Hwei,53.01,2
+hwei,Hwei,49.6,sion,Sion,50.4,0.8,sion,Sion,50.4,2
+hwei,Hwei,52.91,swain,Swain,47.09,5.82,hwei,Hwei,52.91,2
+hwei,Hwei,49.55,sylas,Sylas,50.45,0.9,sylas,Sylas,50.45,2
+hwei,Hwei,50.41,syndra,Syndra,49.59,0.82,hwei,Hwei,50.41,2
+hwei,Hwei,56.49,taliyah,Taliyah,43.51,12.98,hwei,Hwei,56.49,2
+hwei,Hwei,53.74,talon,Talon,46.26,7.48,hwei,Hwei,53.74,2
+hwei,Hwei,52.87,tristana,Tristana,47.13,5.74,hwei,Hwei,52.87,2
+hwei,Hwei,50.02,twistedfate,Twisted Fate,49.98,0.04,hwei,Hwei,50.02,2
+hwei,Hwei,51.4,veigar,Veigar,48.6,2.8,hwei,Hwei,51.4,2
+hwei,Hwei,48.32,vex,Vex,51.68,3.36,vex,Vex,51.68,2
+hwei,Hwei,52.19,viktor,Viktor,47.81,4.38,hwei,Hwei,52.19,2
+hwei,Hwei,50.48,vladimir,Vladimir,49.52,0.96,hwei,Hwei,50.48,2
+hwei,Hwei,43.24,xerath,Xerath,56.76,13.52,xerath,Xerath,56.76,2
+hwei,Hwei,51.64,yasuo,Yasuo,48.36,3.28,hwei,Hwei,51.64,2
+hwei,Hwei,53.35,yone,Yone,46.65,6.7,hwei,Hwei,53.35,2
+hwei,Hwei,42.86,zed,Zed,57.14,14.28,zed,Zed,57.14,2
+hwei,Hwei,42.0,zoe,Zoe,58.0,16.0,zoe,Zoe,58.0,2
+irelia,Irelia,51.89,kassadin,Kassadin,48.11,3.78,irelia,Irelia,51.89,2
+irelia,Irelia,44.67,katarina,Katarina,55.33,10.66,katarina,Katarina,55.33,2
+irelia,Irelia,36.18,leblanc,LeBlanc,63.82,27.64,leblanc,LeBlanc,63.82,2
+irelia,Irelia,40.21,lissandra,Lissandra,59.79,19.58,lissandra,Lissandra,59.79,2
+irelia,Irelia,40.44,locke,Locke,59.56,19.12,locke,Locke,59.56,2
+irelia,Irelia,50.61,lux,Lux,49.39,1.22,irelia,Irelia,50.61,2
+irelia,Irelia,37.89,malphite,Malphite,62.11,24.22,malphite,Malphite,62.11,2
+irelia,Irelia,48.41,malzahar,Malzahar,51.59,3.18,malzahar,Malzahar,51.59,2
+irelia,Irelia,45.08,mel,Mel,54.92,9.84,mel,Mel,54.92,2
+irelia,Irelia,42.64,naafiri,Naafiri,57.36,14.72,naafiri,Naafiri,57.36,2
+irelia,Irelia,51.67,nunu,Nunu & Willump,48.33,3.34,irelia,Irelia,51.67,2
+irelia,Irelia,47.34,orianna,Orianna,52.66,5.32,orianna,Orianna,52.66,2
+irelia,Irelia,43.69,pantheon,Pantheon,56.31,12.62,pantheon,Pantheon,56.31,2
+irelia,Irelia,37.24,qiyana,Qiyana,62.76,25.52,qiyana,Qiyana,62.76,2
+irelia,Irelia,48.82,ryze,Ryze,51.18,2.36,ryze,Ryze,51.18,2
+irelia,Irelia,43.16,sion,Sion,56.84,13.68,sion,Sion,56.84,2
+irelia,Irelia,41.26,swain,Swain,58.74,17.48,swain,Swain,58.74,2
+irelia,Irelia,42.02,sylas,Sylas,57.98,15.96,sylas,Sylas,57.98,2
+irelia,Irelia,48.75,syndra,Syndra,51.25,2.5,syndra,Syndra,51.25,2
+irelia,Irelia,53.61,taliyah,Taliyah,46.39,7.22,irelia,Irelia,53.61,2
+irelia,Irelia,46.86,talon,Talon,53.14,6.28,talon,Talon,53.14,2
+irelia,Irelia,49.45,tristana,Tristana,50.55,1.1,tristana,Tristana,50.55,2
+irelia,Irelia,46.22,twistedfate,Twisted Fate,53.78,7.56,twistedfate,Twisted Fate,53.78,2
+irelia,Irelia,51.22,veigar,Veigar,48.78,2.44,irelia,Irelia,51.22,2
+irelia,Irelia,43.75,vex,Vex,56.25,12.5,vex,Vex,56.25,2
+irelia,Irelia,47.73,viktor,Viktor,52.27,4.54,viktor,Viktor,52.27,2
+irelia,Irelia,43.76,vladimir,Vladimir,56.24,12.48,vladimir,Vladimir,56.24,2
+irelia,Irelia,48.33,xerath,Xerath,51.67,3.34,xerath,Xerath,51.67,2
+irelia,Irelia,51.85,yasuo,Yasuo,48.15,3.7,irelia,Irelia,51.85,2
+irelia,Irelia,53.25,yone,Yone,46.75,6.5,irelia,Irelia,53.25,2
+irelia,Irelia,44.29,zed,Zed,55.71,11.42,zed,Zed,55.71,2
+irelia,Irelia,41.17,zoe,Zoe,58.83,17.66,zoe,Zoe,58.83,2
+kassadin,Kassadin,41.21,katarina,Katarina,58.79,17.58,katarina,Katarina,58.79,2
+kassadin,Kassadin,30.82,leblanc,LeBlanc,69.18,38.36,leblanc,LeBlanc,69.18,2
+kassadin,Kassadin,41.11,lissandra,Lissandra,58.89,17.78,lissandra,Lissandra,58.89,2
+kassadin,Kassadin,42.29,locke,Locke,57.71,15.42,locke,Locke,57.71,2
+kassadin,Kassadin,49.0,lux,Lux,51.0,2.0,lux,Lux,51.0,2
+kassadin,Kassadin,48.48,malphite,Malphite,51.52,3.04,malphite,Malphite,51.52,2
+kassadin,Kassadin,51.25,malzahar,Malzahar,48.75,2.5,kassadin,Kassadin,51.25,2
+kassadin,Kassadin,45.63,mel,Mel,54.37,8.74,mel,Mel,54.37,2
+kassadin,Kassadin,41.23,naafiri,Naafiri,58.77,17.54,naafiri,Naafiri,58.77,2
+kassadin,Kassadin,39.71,nunu,Nunu & Willump,60.29,20.58,nunu,Nunu & Willump,60.29,2
+kassadin,Kassadin,50.0,orianna,Orianna,50.0,0.0,,,,2
+kassadin,Kassadin,40.43,pantheon,Pantheon,59.57,19.14,pantheon,Pantheon,59.57,2
+kassadin,Kassadin,26.12,qiyana,Qiyana,73.88,47.76,qiyana,Qiyana,73.88,2
+kassadin,Kassadin,49.76,ryze,Ryze,50.24,0.48,ryze,Ryze,50.24,2
+kassadin,Kassadin,45.59,sion,Sion,54.41,8.82,sion,Sion,54.41,2
+kassadin,Kassadin,36.0,swain,Swain,64.0,28.0,swain,Swain,64.0,2
+kassadin,Kassadin,49.24,sylas,Sylas,50.76,1.52,sylas,Sylas,50.76,2
+kassadin,Kassadin,49.13,syndra,Syndra,50.87,1.74,syndra,Syndra,50.87,2
+kassadin,Kassadin,43.24,taliyah,Taliyah,56.76,13.52,taliyah,Taliyah,56.76,2
+kassadin,Kassadin,40.56,talon,Talon,59.44,18.88,talon,Talon,59.44,2
+kassadin,Kassadin,41.94,tristana,Tristana,58.06,16.12,tristana,Tristana,58.06,2
+kassadin,Kassadin,53.32,twistedfate,Twisted Fate,46.68,6.64,kassadin,Kassadin,53.32,2
+kassadin,Kassadin,41.56,veigar,Veigar,58.44,16.88,veigar,Veigar,58.44,2
+kassadin,Kassadin,40.85,vex,Vex,59.15,18.3,vex,Vex,59.15,2
+kassadin,Kassadin,52.47,viktor,Viktor,47.53,4.94,kassadin,Kassadin,52.47,2
+kassadin,Kassadin,51.32,vladimir,Vladimir,48.68,2.64,kassadin,Kassadin,51.32,2
+kassadin,Kassadin,41.62,xerath,Xerath,58.38,16.76,xerath,Xerath,58.38,2
+kassadin,Kassadin,48.64,yasuo,Yasuo,51.36,2.72,yasuo,Yasuo,51.36,2
+kassadin,Kassadin,50.4,yone,Yone,49.6,0.8,kassadin,Kassadin,50.4,2
+kassadin,Kassadin,33.81,zed,Zed,66.19,32.38,zed,Zed,66.19,2
+kassadin,Kassadin,40.08,zoe,Zoe,59.92,19.84,zoe,Zoe,59.92,2
+katarina,Katarina,45.47,leblanc,LeBlanc,54.53,9.06,leblanc,LeBlanc,54.53,2
+katarina,Katarina,47.13,lissandra,Lissandra,52.87,5.74,lissandra,Lissandra,52.87,2
+katarina,Katarina,49.64,locke,Locke,50.36,0.72,locke,Locke,50.36,2
+katarina,Katarina,51.67,lux,Lux,48.33,3.34,katarina,Katarina,51.67,2
+katarina,Katarina,49.38,malphite,Malphite,50.62,1.24,malphite,Malphite,50.62,2
+katarina,Katarina,58.68,malzahar,Malzahar,41.32,17.36,katarina,Katarina,58.68,2
+katarina,Katarina,51.11,mel,Mel,48.89,2.22,katarina,Katarina,51.11,2
+katarina,Katarina,54.67,naafiri,Naafiri,45.33,9.34,katarina,Katarina,54.67,2
+katarina,Katarina,50.85,nunu,Nunu & Willump,49.15,1.7,katarina,Katarina,50.85,2
+katarina,Katarina,54.64,orianna,Orianna,45.36,9.28,katarina,Katarina,54.64,2
+katarina,Katarina,54.13,pantheon,Pantheon,45.87,8.26,katarina,Katarina,54.13,2
+katarina,Katarina,51.63,qiyana,Qiyana,48.37,3.26,katarina,Katarina,51.63,2
+katarina,Katarina,55.87,ryze,Ryze,44.13,11.74,katarina,Katarina,55.87,2
+katarina,Katarina,56.33,sion,Sion,43.67,12.66,katarina,Katarina,56.33,2
+katarina,Katarina,56.02,swain,Swain,43.98,12.04,katarina,Katarina,56.02,2
+katarina,Katarina,52.78,sylas,Sylas,47.22,5.56,katarina,Katarina,52.78,2
+katarina,Katarina,56.29,syndra,Syndra,43.71,12.58,katarina,Katarina,56.29,2
+katarina,Katarina,66.01,taliyah,Taliyah,33.99,32.02,katarina,Katarina,66.01,2
+katarina,Katarina,52.94,talon,Talon,47.06,5.88,katarina,Katarina,52.94,2
+katarina,Katarina,56.54,tristana,Tristana,43.46,13.08,katarina,Katarina,56.54,2
+katarina,Katarina,53.99,twistedfate,Twisted Fate,46.01,7.98,katarina,Katarina,53.99,2
+katarina,Katarina,63.71,veigar,Veigar,36.29,27.42,katarina,Katarina,63.71,2
+katarina,Katarina,49.78,vex,Vex,50.22,0.44,vex,Vex,50.22,2
+katarina,Katarina,57.33,viktor,Viktor,42.67,14.66,katarina,Katarina,57.33,2
+katarina,Katarina,50.08,vladimir,Vladimir,49.92,0.16,katarina,Katarina,50.08,2
+katarina,Katarina,54.8,xerath,Xerath,45.2,9.6,katarina,Katarina,54.8,2
+katarina,Katarina,58.35,yasuo,Yasuo,41.65,16.7,katarina,Katarina,58.35,2
+katarina,Katarina,62.21,yone,Yone,37.79,24.42,katarina,Katarina,62.21,2
+katarina,Katarina,50.76,zed,Zed,49.24,1.52,katarina,Katarina,50.76,2
+katarina,Katarina,47.77,zoe,Zoe,52.23,4.46,zoe,Zoe,52.23,2
+leblanc,LeBlanc,56.43,lissandra,Lissandra,43.57,12.86,leblanc,LeBlanc,56.43,2
+leblanc,LeBlanc,54.32,locke,Locke,45.68,8.64,leblanc,LeBlanc,54.32,2
+leblanc,LeBlanc,59.64,lux,Lux,40.36,19.28,leblanc,LeBlanc,59.64,2
+leblanc,LeBlanc,50.99,malphite,Malphite,49.01,1.98,leblanc,LeBlanc,50.99,2
+leblanc,LeBlanc,62.31,malzahar,Malzahar,37.69,24.62,leblanc,LeBlanc,62.31,2
+leblanc,LeBlanc,54.45,mel,Mel,45.55,8.9,leblanc,LeBlanc,54.45,2
+leblanc,LeBlanc,55.26,naafiri,Naafiri,44.74,10.52,leblanc,LeBlanc,55.26,2
+leblanc,LeBlanc,65.8,nunu,Nunu & Willump,34.2,31.6,leblanc,LeBlanc,65.8,2
+leblanc,LeBlanc,64.14,orianna,Orianna,35.86,28.28,leblanc,LeBlanc,64.14,2
+leblanc,LeBlanc,58.72,pantheon,Pantheon,41.28,17.44,leblanc,LeBlanc,58.72,2
+leblanc,LeBlanc,55.22,qiyana,Qiyana,44.78,10.44,leblanc,LeBlanc,55.22,2
+leblanc,LeBlanc,66.51,ryze,Ryze,33.49,33.02,leblanc,LeBlanc,66.51,2
+leblanc,LeBlanc,63.94,sion,Sion,36.06,27.88,leblanc,LeBlanc,63.94,2
+leblanc,LeBlanc,67.2,swain,Swain,32.8,34.4,leblanc,LeBlanc,67.2,2
+leblanc,LeBlanc,60.81,sylas,Sylas,39.19,21.62,leblanc,LeBlanc,60.81,2
+leblanc,LeBlanc,65.06,syndra,Syndra,34.94,30.12,leblanc,LeBlanc,65.06,2
+leblanc,LeBlanc,71.12,taliyah,Taliyah,28.88,42.24,leblanc,LeBlanc,71.12,2
+leblanc,LeBlanc,63.67,talon,Talon,36.33,27.34,leblanc,LeBlanc,63.67,2
+leblanc,LeBlanc,58.82,tristana,Tristana,41.18,17.64,leblanc,LeBlanc,58.82,2
+leblanc,LeBlanc,66.07,twistedfate,Twisted Fate,33.93,32.14,leblanc,LeBlanc,66.07,2
+leblanc,LeBlanc,68.03,veigar,Veigar,31.97,36.06,leblanc,LeBlanc,68.03,2
+leblanc,LeBlanc,55.19,vex,Vex,44.81,10.38,leblanc,LeBlanc,55.19,2
+leblanc,LeBlanc,63.96,viktor,Viktor,36.04,27.92,leblanc,LeBlanc,63.96,2
+leblanc,LeBlanc,59.85,vladimir,Vladimir,40.15,19.7,leblanc,LeBlanc,59.85,2
+leblanc,LeBlanc,61.46,xerath,Xerath,38.54,22.92,leblanc,LeBlanc,61.46,2
+leblanc,LeBlanc,66.3,yasuo,Yasuo,33.7,32.6,leblanc,LeBlanc,66.3,2
+leblanc,LeBlanc,70.32,yone,Yone,29.68,40.64,leblanc,LeBlanc,70.32,2
+leblanc,LeBlanc,54.13,zed,Zed,45.87,8.26,leblanc,LeBlanc,54.13,2
+leblanc,LeBlanc,53.78,zoe,Zoe,46.22,7.56,leblanc,LeBlanc,53.78,2
+lissandra,Lissandra,47.57,locke,Locke,52.43,4.86,locke,Locke,52.43,2
+lissandra,Lissandra,48.99,lux,Lux,51.01,2.02,lux,Lux,51.01,2
+lissandra,Lissandra,57.81,malphite,Malphite,42.19,15.62,lissandra,Lissandra,57.81,2
+lissandra,Lissandra,61.27,malzahar,Malzahar,38.73,22.54,lissandra,Lissandra,61.27,2
+lissandra,Lissandra,49.74,mel,Mel,50.26,0.52,mel,Mel,50.26,2
+lissandra,Lissandra,53.87,naafiri,Naafiri,46.13,7.74,lissandra,Lissandra,53.87,2
+lissandra,Lissandra,51.12,nunu,Nunu & Willump,48.88,2.24,lissandra,Lissandra,51.12,2
+lissandra,Lissandra,54.25,orianna,Orianna,45.75,8.5,lissandra,Lissandra,54.25,2
+lissandra,Lissandra,55.71,pantheon,Pantheon,44.29,11.42,lissandra,Lissandra,55.71,2
+lissandra,Lissandra,44.43,qiyana,Qiyana,55.57,11.14,qiyana,Qiyana,55.57,2
+lissandra,Lissandra,58.08,ryze,Ryze,41.92,16.16,lissandra,Lissandra,58.08,2
+lissandra,Lissandra,55.87,sion,Sion,44.13,11.74,lissandra,Lissandra,55.87,2
+lissandra,Lissandra,53.85,swain,Swain,46.15,7.7,lissandra,Lissandra,53.85,2
+lissandra,Lissandra,51.23,sylas,Sylas,48.77,2.46,lissandra,Lissandra,51.23,2
+lissandra,Lissandra,57.38,syndra,Syndra,42.62,14.76,lissandra,Lissandra,57.38,2
+lissandra,Lissandra,58.99,taliyah,Taliyah,41.01,17.98,lissandra,Lissandra,58.99,2
+lissandra,Lissandra,56.07,talon,Talon,43.93,12.14,lissandra,Lissandra,56.07,2
+lissandra,Lissandra,54.41,tristana,Tristana,45.59,8.82,lissandra,Lissandra,54.41,2
+lissandra,Lissandra,57.85,twistedfate,Twisted Fate,42.15,15.7,lissandra,Lissandra,57.85,2
+lissandra,Lissandra,61.13,veigar,Veigar,38.87,22.26,lissandra,Lissandra,61.13,2
+lissandra,Lissandra,53.44,vex,Vex,46.56,6.88,lissandra,Lissandra,53.44,2
+lissandra,Lissandra,56.01,viktor,Viktor,43.99,12.02,lissandra,Lissandra,56.01,2
+lissandra,Lissandra,53.72,vladimir,Vladimir,46.28,7.44,lissandra,Lissandra,53.72,2
+lissandra,Lissandra,49.02,xerath,Xerath,50.98,1.96,xerath,Xerath,50.98,2
+lissandra,Lissandra,61.61,yasuo,Yasuo,38.39,23.22,lissandra,Lissandra,61.61,2
+lissandra,Lissandra,63.02,yone,Yone,36.98,26.04,lissandra,Lissandra,63.02,2
+lissandra,Lissandra,51.39,zed,Zed,48.61,2.78,lissandra,Lissandra,51.39,2
+lissandra,Lissandra,47.45,zoe,Zoe,52.55,5.1,zoe,Zoe,52.55,2
+locke,Locke,53.71,lux,Lux,46.29,7.42,locke,Locke,53.71,2
+locke,Locke,55.59,malphite,Malphite,44.41,11.18,locke,Locke,55.59,2
+locke,Locke,63.28,malzahar,Malzahar,36.72,26.56,locke,Locke,63.28,2
+locke,Locke,55.64,mel,Mel,44.36,11.28,locke,Locke,55.64,2
+locke,Locke,52.66,naafiri,Naafiri,47.34,5.32,locke,Locke,52.66,2
+locke,Locke,51.01,nunu,Nunu & Willump,48.99,2.02,locke,Locke,51.01,2
+locke,Locke,63.3,orianna,Orianna,36.7,26.6,locke,Locke,63.3,2
+locke,Locke,55.4,pantheon,Pantheon,44.6,10.8,locke,Locke,55.4,2
+locke,Locke,50.37,qiyana,Qiyana,49.63,0.74,locke,Locke,50.37,2
+locke,Locke,60.46,ryze,Ryze,39.54,20.92,locke,Locke,60.46,2
+locke,Locke,58.31,sion,Sion,41.69,16.62,locke,Locke,58.31,2
+locke,Locke,57.7,swain,Swain,42.3,15.4,locke,Locke,57.7,2
+locke,Locke,52.16,sylas,Sylas,47.84,4.32,locke,Locke,52.16,2
+locke,Locke,61.64,syndra,Syndra,38.36,23.28,locke,Locke,61.64,2
+locke,Locke,63.76,taliyah,Taliyah,36.24,27.52,locke,Locke,63.76,2
+locke,Locke,51.83,talon,Talon,48.17,3.66,locke,Locke,51.83,2
+locke,Locke,55.5,tristana,Tristana,44.5,11.0,locke,Locke,55.5,2
+locke,Locke,60.1,twistedfate,Twisted Fate,39.9,20.2,locke,Locke,60.1,2
+locke,Locke,61.82,veigar,Veigar,38.18,23.64,locke,Locke,61.82,2
+locke,Locke,52.94,vex,Vex,47.06,5.88,locke,Locke,52.94,2
+locke,Locke,59.94,viktor,Viktor,40.06,19.88,locke,Locke,59.94,2
+locke,Locke,59.9,vladimir,Vladimir,40.1,19.8,locke,Locke,59.9,2
+locke,Locke,57.71,xerath,Xerath,42.29,15.42,locke,Locke,57.71,2
+locke,Locke,58.51,yasuo,Yasuo,41.49,17.02,locke,Locke,58.51,2
+locke,Locke,61.73,yone,Yone,38.27,23.46,locke,Locke,61.73,2
+locke,Locke,53.24,zed,Zed,46.76,6.48,locke,Locke,53.24,2
+locke,Locke,49.23,zoe,Zoe,50.77,1.54,zoe,Zoe,50.77,2
+lux,Lux,54.0,malphite,Malphite,46.0,8.0,lux,Lux,54.0,2
+lux,Lux,53.11,malzahar,Malzahar,46.89,6.22,lux,Lux,53.11,2
+lux,Lux,47.29,mel,Mel,52.71,5.42,mel,Mel,52.71,2
+lux,Lux,39.44,naafiri,Naafiri,60.56,21.12,naafiri,Naafiri,60.56,2
+lux,Lux,64.77,nunu,Nunu & Willump,35.23,29.54,lux,Lux,64.77,2
+lux,Lux,52.27,orianna,Orianna,47.73,4.54,lux,Lux,52.27,2
+lux,Lux,61.54,pantheon,Pantheon,38.46,23.08,lux,Lux,61.54,2
+lux,Lux,44.5,qiyana,Qiyana,55.5,11.0,qiyana,Qiyana,55.5,2
+lux,Lux,56.96,ryze,Ryze,43.04,13.92,lux,Lux,56.96,2
+lux,Lux,48.39,sion,Sion,51.61,3.22,sion,Sion,51.61,2
+lux,Lux,61.86,swain,Swain,38.14,23.72,lux,Lux,61.86,2
+lux,Lux,51.12,sylas,Sylas,48.88,2.24,lux,Lux,51.12,2
+lux,Lux,51.47,syndra,Syndra,48.53,2.94,lux,Lux,51.47,2
+lux,Lux,61.72,taliyah,Taliyah,38.28,23.44,lux,Lux,61.72,2
+lux,Lux,57.84,talon,Talon,42.16,15.68,lux,Lux,57.84,2
+lux,Lux,37.8,tristana,Tristana,62.2,24.4,tristana,Tristana,62.2,2
+lux,Lux,54.0,twistedfate,Twisted Fate,46.0,8.0,lux,Lux,54.0,2
+lux,Lux,50.77,veigar,Veigar,49.23,1.54,lux,Lux,50.77,2
+lux,Lux,48.28,vex,Vex,51.72,3.44,vex,Vex,51.72,2
+lux,Lux,54.05,viktor,Viktor,45.95,8.1,lux,Lux,54.05,2
+lux,Lux,50.89,vladimir,Vladimir,49.11,1.78,lux,Lux,50.89,2
+lux,Lux,45.89,xerath,Xerath,54.11,8.22,xerath,Xerath,54.11,2
+lux,Lux,52.74,yasuo,Yasuo,47.26,5.48,lux,Lux,52.74,2
+lux,Lux,60.92,yone,Yone,39.08,21.84,lux,Lux,60.92,2
+lux,Lux,49.24,zed,Zed,50.76,1.52,zed,Zed,50.76,2
+lux,Lux,49.55,zoe,Zoe,50.45,0.9,zoe,Zoe,50.45,2
+malphite,Malphite,52.63,malzahar,Malzahar,47.37,5.26,malphite,Malphite,52.63,2
+malphite,Malphite,48.19,mel,Mel,51.81,3.62,mel,Mel,51.81,2
+malphite,Malphite,56.82,naafiri,Naafiri,43.18,13.64,malphite,Malphite,56.82,2
+malphite,Malphite,35.71,nunu,Nunu & Willump,64.29,28.58,nunu,Nunu & Willump,64.29,2
+malphite,Malphite,49.51,orianna,Orianna,50.49,0.98,orianna,Orianna,50.49,2
+malphite,Malphite,55.38,pantheon,Pantheon,44.62,10.76,malphite,Malphite,55.38,2
+malphite,Malphite,52.13,qiyana,Qiyana,47.87,4.26,malphite,Malphite,52.13,2
+malphite,Malphite,61.06,ryze,Ryze,38.94,22.12,malphite,Malphite,61.06,2
+malphite,Malphite,59.26,sion,Sion,40.74,18.52,malphite,Malphite,59.26,2
+malphite,Malphite,48.57,swain,Swain,51.43,2.86,swain,Swain,51.43,2
+malphite,Malphite,49.01,sylas,Sylas,50.99,1.98,sylas,Sylas,50.99,2
+malphite,Malphite,62.09,syndra,Syndra,37.91,24.18,malphite,Malphite,62.09,2
+malphite,Malphite,59.09,taliyah,Taliyah,40.91,18.18,malphite,Malphite,59.09,2
+malphite,Malphite,56.39,talon,Talon,43.61,12.78,malphite,Malphite,56.39,2
+malphite,Malphite,48.44,tristana,Tristana,51.56,3.12,tristana,Tristana,51.56,2
+malphite,Malphite,56.57,twistedfate,Twisted Fate,43.43,13.14,malphite,Malphite,56.57,2
+malphite,Malphite,52.94,veigar,Veigar,47.06,5.88,malphite,Malphite,52.94,2
+malphite,Malphite,50.5,vex,Vex,49.5,1.0,malphite,Malphite,50.5,2
+malphite,Malphite,62.97,viktor,Viktor,37.03,25.94,malphite,Malphite,62.97,2
+malphite,Malphite,62.0,vladimir,Vladimir,38.0,24.0,malphite,Malphite,62.0,2
+malphite,Malphite,63.31,xerath,Xerath,36.69,26.62,malphite,Malphite,63.31,2
+malphite,Malphite,62.33,yasuo,Yasuo,37.67,24.66,malphite,Malphite,62.33,2
+malphite,Malphite,58.5,yone,Yone,41.5,17.0,malphite,Malphite,58.5,2
+malphite,Malphite,57.53,zed,Zed,42.47,15.06,malphite,Malphite,57.53,2
+malphite,Malphite,48.72,zoe,Zoe,51.28,2.56,zoe,Zoe,51.28,2
+malzahar,Malzahar,45.95,mel,Mel,54.05,8.1,mel,Mel,54.05,2
+malzahar,Malzahar,41.83,naafiri,Naafiri,58.17,16.34,naafiri,Naafiri,58.17,2
+malzahar,Malzahar,45.25,nunu,Nunu & Willump,54.75,9.5,nunu,Nunu & Willump,54.75,2
+malzahar,Malzahar,42.97,orianna,Orianna,57.03,14.06,orianna,Orianna,57.03,2
+malzahar,Malzahar,46.91,pantheon,Pantheon,53.09,6.18,pantheon,Pantheon,53.09,2
+malzahar,Malzahar,43.2,qiyana,Qiyana,56.8,13.6,qiyana,Qiyana,56.8,2
+malzahar,Malzahar,50.68,ryze,Ryze,49.32,1.36,malzahar,Malzahar,50.68,2
+malzahar,Malzahar,47.39,sion,Sion,52.61,5.22,sion,Sion,52.61,2
+malzahar,Malzahar,44.65,swain,Swain,55.35,10.7,swain,Swain,55.35,2
+malzahar,Malzahar,44.34,sylas,Sylas,55.66,11.32,sylas,Sylas,55.66,2
+malzahar,Malzahar,43.31,syndra,Syndra,56.69,13.38,syndra,Syndra,56.69,2
+malzahar,Malzahar,44.23,taliyah,Taliyah,55.77,11.54,taliyah,Taliyah,55.77,2
+malzahar,Malzahar,40.12,talon,Talon,59.88,19.76,talon,Talon,59.88,2
+malzahar,Malzahar,48.85,tristana,Tristana,51.15,2.3,tristana,Tristana,51.15,2
+malzahar,Malzahar,48.04,twistedfate,Twisted Fate,51.96,3.92,twistedfate,Twisted Fate,51.96,2
+malzahar,Malzahar,48.92,veigar,Veigar,51.08,2.16,veigar,Veigar,51.08,2
+malzahar,Malzahar,45.24,vex,Vex,54.76,9.52,vex,Vex,54.76,2
+malzahar,Malzahar,46.32,viktor,Viktor,53.68,7.36,viktor,Viktor,53.68,2
+malzahar,Malzahar,47.01,vladimir,Vladimir,52.99,5.98,vladimir,Vladimir,52.99,2
+malzahar,Malzahar,38.77,xerath,Xerath,61.23,22.46,xerath,Xerath,61.23,2
+malzahar,Malzahar,56.19,yasuo,Yasuo,43.81,12.38,malzahar,Malzahar,56.19,2
+malzahar,Malzahar,53.02,yone,Yone,46.98,6.04,malzahar,Malzahar,53.02,2
+malzahar,Malzahar,42.63,zed,Zed,57.37,14.74,zed,Zed,57.37,2
+malzahar,Malzahar,42.04,zoe,Zoe,57.96,15.92,zoe,Zoe,57.96,2
+mel,Mel,49.24,naafiri,Naafiri,50.76,1.52,naafiri,Naafiri,50.76,2
+mel,Mel,48.75,nunu,Nunu & Willump,51.25,2.5,nunu,Nunu & Willump,51.25,2
+mel,Mel,50.54,orianna,Orianna,49.46,1.08,mel,Mel,50.54,2
+mel,Mel,49.63,pantheon,Pantheon,50.37,0.74,pantheon,Pantheon,50.37,2
+mel,Mel,46.64,qiyana,Qiyana,53.36,6.72,qiyana,Qiyana,53.36,2
+mel,Mel,54.37,ryze,Ryze,45.63,8.74,mel,Mel,54.37,2
+mel,Mel,47.52,sion,Sion,52.48,4.96,sion,Sion,52.48,2
+mel,Mel,60.44,swain,Swain,39.56,20.88,mel,Mel,60.44,2
+mel,Mel,52.4,sylas,Sylas,47.6,4.8,mel,Mel,52.4,2
+mel,Mel,52.41,syndra,Syndra,47.59,4.82,mel,Mel,52.41,2
+mel,Mel,55.46,taliyah,Taliyah,44.54,10.92,mel,Mel,55.46,2
+mel,Mel,57.49,talon,Talon,42.51,14.98,mel,Mel,57.49,2
+mel,Mel,52.82,tristana,Tristana,47.18,5.64,mel,Mel,52.82,2
+mel,Mel,59.25,twistedfate,Twisted Fate,40.75,18.5,mel,Mel,59.25,2
+mel,Mel,50.65,veigar,Veigar,49.35,1.3,mel,Mel,50.65,2
+mel,Mel,57.21,vex,Vex,42.79,14.42,mel,Mel,57.21,2
+mel,Mel,50.78,viktor,Viktor,49.22,1.56,mel,Mel,50.78,2
+mel,Mel,53.08,vladimir,Vladimir,46.92,6.16,mel,Mel,53.08,2
+mel,Mel,44.84,xerath,Xerath,55.16,10.32,xerath,Xerath,55.16,2
+mel,Mel,57.05,yasuo,Yasuo,42.95,14.1,mel,Mel,57.05,2
+mel,Mel,63.14,yone,Yone,36.86,26.28,mel,Mel,63.14,2
+mel,Mel,49.87,zed,Zed,50.13,0.26,zed,Zed,50.13,2
+mel,Mel,51.93,zoe,Zoe,48.07,3.86,mel,Mel,51.93,2
+naafiri,Naafiri,57.45,nunu,Nunu & Willump,42.55,14.9,naafiri,Naafiri,57.45,2
+naafiri,Naafiri,51.52,orianna,Orianna,48.48,3.04,naafiri,Naafiri,51.52,2
+naafiri,Naafiri,50.59,pantheon,Pantheon,49.41,1.18,naafiri,Naafiri,50.59,2
+naafiri,Naafiri,42.33,qiyana,Qiyana,57.67,15.34,qiyana,Qiyana,57.67,2
+naafiri,Naafiri,59.65,ryze,Ryze,40.35,19.3,naafiri,Naafiri,59.65,2
+naafiri,Naafiri,50.44,sion,Sion,49.56,0.88,naafiri,Naafiri,50.44,2
+naafiri,Naafiri,41.56,swain,Swain,58.44,16.88,swain,Swain,58.44,2
+naafiri,Naafiri,58.94,sylas,Sylas,41.06,17.88,naafiri,Naafiri,58.94,2
+naafiri,Naafiri,55.56,syndra,Syndra,44.44,11.12,naafiri,Naafiri,55.56,2
+naafiri,Naafiri,53.48,taliyah,Taliyah,46.52,6.96,naafiri,Naafiri,53.48,2
+naafiri,Naafiri,45.53,talon,Talon,54.47,8.94,talon,Talon,54.47,2
+naafiri,Naafiri,43.37,tristana,Tristana,56.63,13.26,tristana,Tristana,56.63,2
+naafiri,Naafiri,59.22,twistedfate,Twisted Fate,40.78,18.44,naafiri,Naafiri,59.22,2
+naafiri,Naafiri,61.0,veigar,Veigar,39.0,22.0,naafiri,Naafiri,61.0,2
+naafiri,Naafiri,47.59,vex,Vex,52.41,4.82,vex,Vex,52.41,2
+naafiri,Naafiri,54.04,viktor,Viktor,45.96,8.08,naafiri,Naafiri,54.04,2
+naafiri,Naafiri,50.18,vladimir,Vladimir,49.82,0.36,naafiri,Naafiri,50.18,2
+naafiri,Naafiri,57.88,xerath,Xerath,42.12,15.76,naafiri,Naafiri,57.88,2
+naafiri,Naafiri,53.41,yasuo,Yasuo,46.59,6.82,naafiri,Naafiri,53.41,2
+naafiri,Naafiri,56.06,yone,Yone,43.94,12.12,naafiri,Naafiri,56.06,2
+naafiri,Naafiri,44.81,zed,Zed,55.19,10.38,zed,Zed,55.19,2
+naafiri,Naafiri,51.75,zoe,Zoe,48.25,3.5,naafiri,Naafiri,51.75,2
+nunu,Nunu & Willump,59.92,orianna,Orianna,40.08,19.84,nunu,Nunu & Willump,59.92,2
+nunu,Nunu & Willump,60.67,pantheon,Pantheon,39.33,21.34,nunu,Nunu & Willump,60.67,2
+nunu,Nunu & Willump,38.18,qiyana,Qiyana,61.82,23.64,qiyana,Qiyana,61.82,2
+nunu,Nunu & Willump,50.74,ryze,Ryze,49.26,1.48,nunu,Nunu & Willump,50.74,2
+nunu,Nunu & Willump,52.86,sion,Sion,47.14,5.72,nunu,Nunu & Willump,52.86,2
+nunu,Nunu & Willump,61.29,swain,Swain,38.71,22.58,nunu,Nunu & Willump,61.29,2
+nunu,Nunu & Willump,49.63,sylas,Sylas,50.37,0.74,sylas,Sylas,50.37,2
+nunu,Nunu & Willump,52.38,syndra,Syndra,47.62,4.76,nunu,Nunu & Willump,52.38,2
+nunu,Nunu & Willump,59.35,taliyah,Taliyah,40.65,18.7,nunu,Nunu & Willump,59.35,2
+nunu,Nunu & Willump,54.46,talon,Talon,45.54,8.92,nunu,Nunu & Willump,54.46,2
+nunu,Nunu & Willump,61.97,tristana,Tristana,38.03,23.94,nunu,Nunu & Willump,61.97,2
+nunu,Nunu & Willump,55.42,twistedfate,Twisted Fate,44.58,10.84,nunu,Nunu & Willump,55.42,2
+nunu,Nunu & Willump,63.73,veigar,Veigar,36.27,27.46,nunu,Nunu & Willump,63.73,2
+nunu,Nunu & Willump,57.24,vex,Vex,42.76,14.48,nunu,Nunu & Willump,57.24,2
+nunu,Nunu & Willump,57.89,viktor,Viktor,42.11,15.78,nunu,Nunu & Willump,57.89,2
+nunu,Nunu & Willump,54.85,vladimir,Vladimir,45.15,9.7,nunu,Nunu & Willump,54.85,2
+nunu,Nunu & Willump,48.94,xerath,Xerath,51.06,2.12,xerath,Xerath,51.06,2
+nunu,Nunu & Willump,60.66,yasuo,Yasuo,39.34,21.32,nunu,Nunu & Willump,60.66,2
+nunu,Nunu & Willump,56.53,yone,Yone,43.47,13.06,nunu,Nunu & Willump,56.53,2
+nunu,Nunu & Willump,55.79,zed,Zed,44.21,11.58,nunu,Nunu & Willump,55.79,2
+nunu,Nunu & Willump,44.72,zoe,Zoe,55.28,10.56,zoe,Zoe,55.28,2
+orianna,Orianna,52.56,pantheon,Pantheon,47.44,5.12,orianna,Orianna,52.56,2
+orianna,Orianna,43.24,qiyana,Qiyana,56.76,13.52,qiyana,Qiyana,56.76,2
+orianna,Orianna,52.53,ryze,Ryze,47.47,5.06,orianna,Orianna,52.53,2
+orianna,Orianna,47.95,sion,Sion,52.05,4.1,sion,Sion,52.05,2
+orianna,Orianna,50.32,swain,Swain,49.68,0.64,orianna,Orianna,50.32,2
+orianna,Orianna,50.77,sylas,Sylas,49.23,1.54,orianna,Orianna,50.77,2
+orianna,Orianna,46.36,syndra,Syndra,53.64,7.28,syndra,Syndra,53.64,2
+orianna,Orianna,58.8,taliyah,Taliyah,41.2,17.6,orianna,Orianna,58.8,2
+orianna,Orianna,47.32,talon,Talon,52.68,5.36,talon,Talon,52.68,2
+orianna,Orianna,48.52,tristana,Tristana,51.48,2.96,tristana,Tristana,51.48,2
+orianna,Orianna,53.49,twistedfate,Twisted Fate,46.51,6.98,orianna,Orianna,53.49,2
+orianna,Orianna,47.02,veigar,Veigar,52.98,5.96,veigar,Veigar,52.98,2
+orianna,Orianna,51.09,vex,Vex,48.91,2.18,orianna,Orianna,51.09,2
+orianna,Orianna,52.81,viktor,Viktor,47.19,5.62,orianna,Orianna,52.81,2
+orianna,Orianna,50.43,vladimir,Vladimir,49.57,0.86,orianna,Orianna,50.43,2
+orianna,Orianna,40.61,xerath,Xerath,59.39,18.78,xerath,Xerath,59.39,2
+orianna,Orianna,56.16,yasuo,Yasuo,43.84,12.32,orianna,Orianna,56.16,2
+orianna,Orianna,54.67,yone,Yone,45.33,9.34,orianna,Orianna,54.67,2
+orianna,Orianna,45.83,zed,Zed,54.17,8.34,zed,Zed,54.17,2
+orianna,Orianna,45.21,zoe,Zoe,54.79,9.58,zoe,Zoe,54.79,2
+pantheon,Pantheon,49.82,qiyana,Qiyana,50.18,0.36,qiyana,Qiyana,50.18,2
+pantheon,Pantheon,54.28,ryze,Ryze,45.72,8.56,pantheon,Pantheon,54.28,2
+pantheon,Pantheon,48.0,sion,Sion,52.0,4.0,sion,Sion,52.0,2
+pantheon,Pantheon,48.33,swain,Swain,51.67,3.34,swain,Swain,51.67,2
+pantheon,Pantheon,49.01,sylas,Sylas,50.99,1.98,sylas,Sylas,50.99,2
+pantheon,Pantheon,51.57,syndra,Syndra,48.43,3.14,pantheon,Pantheon,51.57,2
+pantheon,Pantheon,51.46,taliyah,Taliyah,48.54,2.92,pantheon,Pantheon,51.46,2
+pantheon,Pantheon,57.37,talon,Talon,42.63,14.74,pantheon,Pantheon,57.37,2
+pantheon,Pantheon,57.89,tristana,Tristana,42.11,15.78,pantheon,Pantheon,57.89,2
+pantheon,Pantheon,45.97,twistedfate,Twisted Fate,54.03,8.06,twistedfate,Twisted Fate,54.03,2
+pantheon,Pantheon,64.15,veigar,Veigar,35.85,28.3,pantheon,Pantheon,64.15,2
+pantheon,Pantheon,51.64,vex,Vex,48.36,3.28,pantheon,Pantheon,51.64,2
+pantheon,Pantheon,52.75,viktor,Viktor,47.25,5.5,pantheon,Pantheon,52.75,2
+pantheon,Pantheon,44.02,vladimir,Vladimir,55.98,11.96,vladimir,Vladimir,55.98,2
+pantheon,Pantheon,42.86,xerath,Xerath,57.14,14.28,xerath,Xerath,57.14,2
+pantheon,Pantheon,52.31,yasuo,Yasuo,47.69,4.62,pantheon,Pantheon,52.31,2
+pantheon,Pantheon,55.67,yone,Yone,44.33,11.34,pantheon,Pantheon,55.67,2
+pantheon,Pantheon,45.15,zed,Zed,54.85,9.7,zed,Zed,54.85,2
+pantheon,Pantheon,43.37,zoe,Zoe,56.63,13.26,zoe,Zoe,56.63,2
+qiyana,Qiyana,62.05,ryze,Ryze,37.95,24.1,qiyana,Qiyana,62.05,2
+qiyana,Qiyana,54.29,sion,Sion,45.71,8.58,qiyana,Qiyana,54.29,2
+qiyana,Qiyana,47.92,swain,Swain,52.08,4.16,swain,Swain,52.08,2
+qiyana,Qiyana,53.98,sylas,Sylas,46.02,7.96,qiyana,Qiyana,53.98,2
+qiyana,Qiyana,59.92,syndra,Syndra,40.08,19.84,qiyana,Qiyana,59.92,2
+qiyana,Qiyana,54.35,taliyah,Taliyah,45.65,8.7,qiyana,Qiyana,54.35,2
+qiyana,Qiyana,58.22,talon,Talon,41.78,16.44,qiyana,Qiyana,58.22,2
+qiyana,Qiyana,61.54,tristana,Tristana,38.46,23.08,qiyana,Qiyana,61.54,2
+qiyana,Qiyana,55.23,twistedfate,Twisted Fate,44.77,10.46,qiyana,Qiyana,55.23,2
+qiyana,Qiyana,68.39,veigar,Veigar,31.61,36.78,qiyana,Qiyana,68.39,2
+qiyana,Qiyana,52.05,vex,Vex,47.95,4.1,qiyana,Qiyana,52.05,2
+qiyana,Qiyana,57.74,viktor,Viktor,42.26,15.48,qiyana,Qiyana,57.74,2
+qiyana,Qiyana,56.88,vladimir,Vladimir,43.12,13.76,qiyana,Qiyana,56.88,2
+qiyana,Qiyana,46.46,xerath,Xerath,53.54,7.08,xerath,Xerath,53.54,2
+qiyana,Qiyana,61.71,yasuo,Yasuo,38.29,23.42,qiyana,Qiyana,61.71,2
+qiyana,Qiyana,63.74,yone,Yone,36.26,27.48,qiyana,Qiyana,63.74,2
+qiyana,Qiyana,54.86,zed,Zed,45.14,9.72,qiyana,Qiyana,54.86,2
+qiyana,Qiyana,44.21,zoe,Zoe,55.79,11.58,zoe,Zoe,55.79,2
+ryze,Ryze,48.44,sion,Sion,51.56,3.12,sion,Sion,51.56,2
+ryze,Ryze,50.0,swain,Swain,50.0,0.0,,,,2
+ryze,Ryze,50.67,sylas,Sylas,49.33,1.34,ryze,Ryze,50.67,2
+ryze,Ryze,47.19,syndra,Syndra,52.81,5.62,syndra,Syndra,52.81,2
+ryze,Ryze,54.02,taliyah,Taliyah,45.98,8.04,ryze,Ryze,54.02,2
+ryze,Ryze,47.27,talon,Talon,52.73,5.46,talon,Talon,52.73,2
+ryze,Ryze,44.01,tristana,Tristana,55.99,11.98,tristana,Tristana,55.99,2
+ryze,Ryze,48.01,twistedfate,Twisted Fate,51.99,3.98,twistedfate,Twisted Fate,51.99,2
+ryze,Ryze,51.45,veigar,Veigar,48.55,2.9,ryze,Ryze,51.45,2
+ryze,Ryze,42.04,vex,Vex,57.96,15.92,vex,Vex,57.96,2
+ryze,Ryze,47.36,viktor,Viktor,52.64,5.28,viktor,Viktor,52.64,2
+ryze,Ryze,45.29,vladimir,Vladimir,54.71,9.42,vladimir,Vladimir,54.71,2
+ryze,Ryze,40.98,xerath,Xerath,59.02,18.04,xerath,Xerath,59.02,2
+ryze,Ryze,51.89,yasuo,Yasuo,48.11,3.78,ryze,Ryze,51.89,2
+ryze,Ryze,47.9,yone,Yone,52.1,4.2,yone,Yone,52.1,2
+ryze,Ryze,38.93,zed,Zed,61.07,22.14,zed,Zed,61.07,2
+ryze,Ryze,41.1,zoe,Zoe,58.9,17.8,zoe,Zoe,58.9,2
+sion,Sion,50.91,swain,Swain,49.09,1.82,sion,Sion,50.91,2
+sion,Sion,49.19,sylas,Sylas,50.81,1.62,sylas,Sylas,50.81,2
+sion,Sion,45.04,syndra,Syndra,54.96,9.92,syndra,Syndra,54.96,2
+sion,Sion,46.15,taliyah,Taliyah,53.85,7.7,taliyah,Taliyah,53.85,2
+sion,Sion,50.0,talon,Talon,50.0,0.0,,,,2
+sion,Sion,43.48,tristana,Tristana,56.52,13.04,tristana,Tristana,56.52,2
+sion,Sion,54.06,twistedfate,Twisted Fate,45.94,8.12,sion,Sion,54.06,2
+sion,Sion,51.28,veigar,Veigar,48.72,2.56,sion,Sion,51.28,2
+sion,Sion,50.26,vex,Vex,49.74,0.52,sion,Sion,50.26,2
+sion,Sion,48.67,viktor,Viktor,51.33,2.66,viktor,Viktor,51.33,2
+sion,Sion,48.17,vladimir,Vladimir,51.83,3.66,vladimir,Vladimir,51.83,2
+sion,Sion,47.84,xerath,Xerath,52.16,4.32,xerath,Xerath,52.16,2
+sion,Sion,59.18,yasuo,Yasuo,40.82,18.36,sion,Sion,59.18,2
+sion,Sion,49.45,yone,Yone,50.55,1.1,yone,Yone,50.55,2
+sion,Sion,39.83,zed,Zed,60.17,20.34,zed,Zed,60.17,2
+sion,Sion,40.94,zoe,Zoe,59.06,18.12,zoe,Zoe,59.06,2
+swain,Swain,51.8,sylas,Sylas,48.2,3.6,swain,Swain,51.8,2
+swain,Swain,49.54,syndra,Syndra,50.46,0.92,syndra,Syndra,50.46,2
+swain,Swain,45.9,taliyah,Taliyah,54.1,8.2,taliyah,Taliyah,54.1,2
+swain,Swain,50.31,talon,Talon,49.69,0.62,swain,Swain,50.31,2
+swain,Swain,47.83,tristana,Tristana,52.17,4.34,tristana,Tristana,52.17,2
+swain,Swain,52.91,twistedfate,Twisted Fate,47.09,5.82,swain,Swain,52.91,2
+swain,Swain,52.63,veigar,Veigar,47.37,5.26,swain,Swain,52.63,2
+swain,Swain,49.46,vex,Vex,50.54,1.08,vex,Vex,50.54,2
+swain,Swain,51.59,viktor,Viktor,48.41,3.18,swain,Swain,51.59,2
+swain,Swain,36.17,vladimir,Vladimir,63.83,27.66,vladimir,Vladimir,63.83,2
+swain,Swain,39.42,xerath,Xerath,60.58,21.16,xerath,Xerath,60.58,2
+swain,Swain,57.19,yasuo,Yasuo,42.81,14.38,swain,Swain,57.19,2
+swain,Swain,48.83,yone,Yone,51.17,2.34,yone,Yone,51.17,2
+swain,Swain,41.42,zed,Zed,58.58,17.16,zed,Zed,58.58,2
+swain,Swain,37.34,zoe,Zoe,62.66,25.32,zoe,Zoe,62.66,2
+sylas,Sylas,53.01,syndra,Syndra,46.99,6.02,sylas,Sylas,53.01,2
+sylas,Sylas,52.22,taliyah,Taliyah,47.78,4.44,sylas,Sylas,52.22,2
+sylas,Sylas,49.49,talon,Talon,50.51,1.02,talon,Talon,50.51,2
+sylas,Sylas,57.12,tristana,Tristana,42.88,14.24,sylas,Sylas,57.12,2
+sylas,Sylas,50.14,twistedfate,Twisted Fate,49.86,0.28,sylas,Sylas,50.14,2
+sylas,Sylas,52.28,veigar,Veigar,47.72,4.56,sylas,Sylas,52.28,2
+sylas,Sylas,45.48,vex,Vex,54.52,9.04,vex,Vex,54.52,2
+sylas,Sylas,52.78,viktor,Viktor,47.22,5.56,sylas,Sylas,52.78,2
+sylas,Sylas,47.35,vladimir,Vladimir,52.65,5.3,vladimir,Vladimir,52.65,2
+sylas,Sylas,49.66,xerath,Xerath,50.34,0.68,xerath,Xerath,50.34,2
+sylas,Sylas,56.31,yasuo,Yasuo,43.69,12.62,sylas,Sylas,56.31,2
+sylas,Sylas,56.26,yone,Yone,43.74,12.52,sylas,Sylas,56.26,2
+sylas,Sylas,48.1,zed,Zed,51.9,3.8,zed,Zed,51.9,2
+sylas,Sylas,41.86,zoe,Zoe,58.14,16.28,zoe,Zoe,58.14,2
+syndra,Syndra,58.25,taliyah,Taliyah,41.75,16.5,syndra,Syndra,58.25,2
+syndra,Syndra,50.76,talon,Talon,49.24,1.52,syndra,Syndra,50.76,2
+syndra,Syndra,51.33,tristana,Tristana,48.67,2.66,syndra,Syndra,51.33,2
+syndra,Syndra,49.23,twistedfate,Twisted Fate,50.77,1.54,twistedfate,Twisted Fate,50.77,2
+syndra,Syndra,47.33,veigar,Veigar,52.67,5.34,veigar,Veigar,52.67,2
+syndra,Syndra,48.74,vex,Vex,51.26,2.52,vex,Vex,51.26,2
+syndra,Syndra,54.04,viktor,Viktor,45.96,8.08,syndra,Syndra,54.04,2
+syndra,Syndra,49.68,vladimir,Vladimir,50.32,0.64,vladimir,Vladimir,50.32,2
+syndra,Syndra,42.73,xerath,Xerath,57.27,14.54,xerath,Xerath,57.27,2
+syndra,Syndra,53.12,yasuo,Yasuo,46.88,6.24,syndra,Syndra,53.12,2
+syndra,Syndra,55.74,yone,Yone,44.26,11.48,syndra,Syndra,55.74,2
+syndra,Syndra,42.34,zed,Zed,57.66,15.32,zed,Zed,57.66,2
+syndra,Syndra,43.78,zoe,Zoe,56.22,12.44,zoe,Zoe,56.22,2
+taliyah,Taliyah,42.73,talon,Talon,57.27,14.54,talon,Talon,57.27,2
+taliyah,Taliyah,42.57,tristana,Tristana,57.43,14.86,tristana,Tristana,57.43,2
+taliyah,Taliyah,44.36,twistedfate,Twisted Fate,55.64,11.28,twistedfate,Twisted Fate,55.64,2
+taliyah,Taliyah,44.7,veigar,Veigar,55.3,10.6,veigar,Veigar,55.3,2
+taliyah,Taliyah,43.56,vex,Vex,56.44,12.88,vex,Vex,56.44,2
+taliyah,Taliyah,44.26,viktor,Viktor,55.74,11.48,viktor,Viktor,55.74,2
+taliyah,Taliyah,42.7,vladimir,Vladimir,57.3,14.6,vladimir,Vladimir,57.3,2
+taliyah,Taliyah,38.2,xerath,Xerath,61.8,23.6,xerath,Xerath,61.8,2
+taliyah,Taliyah,55.57,yasuo,Yasuo,44.43,11.14,taliyah,Taliyah,55.57,2
+taliyah,Taliyah,46.73,yone,Yone,53.27,6.54,yone,Yone,53.27,2
+taliyah,Taliyah,32.55,zed,Zed,67.45,34.9,zed,Zed,67.45,2
+taliyah,Taliyah,35.05,zoe,Zoe,64.95,29.9,zoe,Zoe,64.95,2
+talon,Talon,56.22,tristana,Tristana,43.78,12.44,talon,Talon,56.22,2
+talon,Talon,53.31,twistedfate,Twisted Fate,46.69,6.62,talon,Talon,53.31,2
+talon,Talon,50.0,veigar,Veigar,50.0,0.0,,,,2
+talon,Talon,44.98,vex,Vex,55.02,10.04,vex,Vex,55.02,2
+talon,Talon,54.09,viktor,Viktor,45.91,8.18,talon,Talon,54.09,2
+talon,Talon,48.21,vladimir,Vladimir,51.79,3.58,vladimir,Vladimir,51.79,2
+talon,Talon,45.05,xerath,Xerath,54.95,9.9,xerath,Xerath,54.95,2
+talon,Talon,54.5,yasuo,Yasuo,45.5,9.0,talon,Talon,54.5,2
+talon,Talon,55.47,yone,Yone,44.53,10.94,talon,Talon,55.47,2
+talon,Talon,47.45,zed,Zed,52.55,5.1,zed,Zed,52.55,2
+talon,Talon,44.18,zoe,Zoe,55.82,11.64,zoe,Zoe,55.82,2
+tristana,Tristana,49.48,twistedfate,Twisted Fate,50.52,1.04,twistedfate,Twisted Fate,50.52,2
+tristana,Tristana,52.63,veigar,Veigar,47.37,5.26,tristana,Tristana,52.63,2
+tristana,Tristana,39.76,vex,Vex,60.24,20.48,vex,Vex,60.24,2
+tristana,Tristana,51.47,viktor,Viktor,48.53,2.94,tristana,Tristana,51.47,2
+tristana,Tristana,41.56,vladimir,Vladimir,58.44,16.88,vladimir,Vladimir,58.44,2
+tristana,Tristana,42.41,xerath,Xerath,57.59,15.18,xerath,Xerath,57.59,2
+tristana,Tristana,55.41,yasuo,Yasuo,44.59,10.82,tristana,Tristana,55.41,2
+tristana,Tristana,52.03,yone,Yone,47.97,4.06,tristana,Tristana,52.03,2
+tristana,Tristana,33.9,zed,Zed,66.1,32.2,zed,Zed,66.1,2
+tristana,Tristana,35.91,zoe,Zoe,64.09,28.18,zoe,Zoe,64.09,2
+twistedfate,Twisted Fate,52.15,veigar,Veigar,47.85,4.3,twistedfate,Twisted Fate,52.15,2
+twistedfate,Twisted Fate,48.29,vex,Vex,51.71,3.42,vex,Vex,51.71,2
+twistedfate,Twisted Fate,51.92,viktor,Viktor,48.08,3.84,twistedfate,Twisted Fate,51.92,2
+twistedfate,Twisted Fate,45.49,vladimir,Vladimir,54.51,9.02,vladimir,Vladimir,54.51,2
+twistedfate,Twisted Fate,42.05,xerath,Xerath,57.95,15.9,xerath,Xerath,57.95,2
+twistedfate,Twisted Fate,52.12,yasuo,Yasuo,47.88,4.24,twistedfate,Twisted Fate,52.12,2
+twistedfate,Twisted Fate,53.04,yone,Yone,46.96,6.08,twistedfate,Twisted Fate,53.04,2
+twistedfate,Twisted Fate,43.16,zed,Zed,56.84,13.68,zed,Zed,56.84,2
+twistedfate,Twisted Fate,41.73,zoe,Zoe,58.27,16.54,zoe,Zoe,58.27,2
+veigar,Veigar,49.49,vex,Vex,50.51,1.02,vex,Vex,50.51,2
+veigar,Veigar,52.0,viktor,Viktor,48.0,4.0,veigar,Veigar,52.0,2
+veigar,Veigar,44.62,vladimir,Vladimir,55.38,10.76,vladimir,Vladimir,55.38,2
+veigar,Veigar,41.27,xerath,Xerath,58.73,17.46,xerath,Xerath,58.73,2
+veigar,Veigar,54.59,yasuo,Yasuo,45.41,9.18,veigar,Veigar,54.59,2
+veigar,Veigar,49.65,yone,Yone,50.35,0.7,yone,Yone,50.35,2
+veigar,Veigar,42.56,zed,Zed,57.44,14.88,zed,Zed,57.44,2
+veigar,Veigar,39.3,zoe,Zoe,60.7,21.4,zoe,Zoe,60.7,2
+vex,Vex,52.17,viktor,Viktor,47.83,4.34,vex,Vex,52.17,2
+vex,Vex,46.53,vladimir,Vladimir,53.47,6.94,vladimir,Vladimir,53.47,2
+vex,Vex,46.1,xerath,Xerath,53.9,7.8,xerath,Xerath,53.9,2
+vex,Vex,56.06,yasuo,Yasuo,43.94,12.12,vex,Vex,56.06,2
+vex,Vex,61.55,yone,Yone,38.45,23.1,vex,Vex,61.55,2
+vex,Vex,48.69,zed,Zed,51.31,2.62,zed,Zed,51.31,2
+vex,Vex,44.3,zoe,Zoe,55.7,11.4,zoe,Zoe,55.7,2
+viktor,Viktor,47.74,vladimir,Vladimir,52.26,4.52,vladimir,Vladimir,52.26,2
+viktor,Viktor,39.32,xerath,Xerath,60.68,21.36,xerath,Xerath,60.68,2
+viktor,Viktor,54.63,yasuo,Yasuo,45.37,9.26,viktor,Viktor,54.63,2
+viktor,Viktor,51.26,yone,Yone,48.74,2.52,viktor,Viktor,51.26,2
+viktor,Viktor,41.08,zed,Zed,58.92,17.84,zed,Zed,58.92,2
+viktor,Viktor,41.16,zoe,Zoe,58.84,17.68,zoe,Zoe,58.84,2
+vladimir,Vladimir,45.5,xerath,Xerath,54.5,9.0,xerath,Xerath,54.5,2
+vladimir,Vladimir,59.02,yasuo,Yasuo,40.98,18.04,vladimir,Vladimir,59.02,2
+vladimir,Vladimir,59.84,yone,Yone,40.16,19.68,vladimir,Vladimir,59.84,2
+vladimir,Vladimir,46.44,zed,Zed,53.56,7.12,zed,Zed,53.56,2
+vladimir,Vladimir,37.66,zoe,Zoe,62.34,24.68,zoe,Zoe,62.34,2
+xerath,Xerath,56.23,yasuo,Yasuo,43.77,12.46,xerath,Xerath,56.23,2
+xerath,Xerath,59.05,yone,Yone,40.95,18.1,xerath,Xerath,59.05,2
+xerath,Xerath,51.77,zed,Zed,48.23,3.54,xerath,Xerath,51.77,2
+xerath,Xerath,47.18,zoe,Zoe,52.82,5.64,zoe,Zoe,52.82,2
+yasuo,Yasuo,48.43,yone,Yone,51.57,3.14,yone,Yone,51.57,2
+yasuo,Yasuo,41.64,zed,Zed,58.36,16.72,zed,Zed,58.36,2
+yasuo,Yasuo,39.83,zoe,Zoe,60.17,20.34,zoe,Zoe,60.17,2
+yone,Yone,39.24,zed,Zed,60.76,21.52,zed,Zed,60.76,2
+yone,Yone,37.22,zoe,Zoe,62.78,25.56,zoe,Zoe,62.78,2
+zed,Zed,45.29,zoe,Zoe,54.71,9.42,zoe,Zoe,54.71,2

@@ -1,0 +1,56 @@
+﻿rank,championId,championName,winRate,pickRate,banRate,counter1Id,counter1Name,counter2Id,counter2Name,counter3Id,counter3Name
+1,gangplank,Gangplank,51.61,7.71,15.38,tahmkench,Tahm Kench,trundle,Trundle,quinn,Quinn
+2,malphite,Malphite,51.62,6.59,14.64,anivia,Anivia,cassiopeia,Cassiopeia,volibear,Volibear
+3,singed,Singed,53.31,2.32,0.75,xinZhao,Xin Zhao,urgot,Urgot,anivia,Anivia
+4,olaf,Olaf,52.33,3.29,3.54,camille,Camille,tahmkench,Tahm Kench,malphite,Malphite
+5,jax,Jax,50.62,7.37,13.56,quinn,Quinn,kled,Kled,shen,Shen
+6,garen,Garen,51.71,4.4,2.3,quinn,Quinn,lissandra,Lissandra,kayle,Kayle
+7,irelia,Irelia,50.73,5.82,21.6,warwick,Warwick,singed,Singed,zac,Zac
+8,yone,Yone,49.52,10.16,9.14,quinn,Quinn,olaf,Olaf,camille,Camille
+9,shen,Shen,52.12,2.59,0.23,riven,Riven,kayle,Kayle,trundle,Trundle
+10,jayce,Jayce,48.99,10.78,18.36,zac,Zac,monkeyking,Wukong,malphite,Malphite
+11,poppy,Poppy,52.21,1.69,7.09,warwick,Warwick,nasus,Nasus,singed,Singed
+12,warwick,Warwick,52.44,1.59,0.65,singed,Singed,ryze,Ryze,riven,Riven
+13,yorick,Yorick,50.43,4.46,8.13,volibear,Volibear,aurora,Aurora,kled,Kled
+14,aatrox,Aatrox,49.51,7.32,4.08,tahmkench,Tahm Kench,singed,Singed,kayle,Kayle
+15,pantheon,Pantheon,51.24,2.8,1.33,heimerdinger,Heimerdinger,quinn,Quinn,lissandra,Lissandra
+16,darius,Darius,50.42,4.28,7.11,monkeyking,Wukong,zac,Zac,akali,Akali
+17,sion,Sion,50.07,4.93,1.34,singed,Singed,masteryi,Master Yi,warwick,Warwick
+18,teemo,Teemo,50.57,3.42,9.16,ornn,Ornn,maokai,Maokai,anivia,Anivia
+19,yasuo,Yasuo,50.41,3.45,9.85,poppy,Poppy,maokai,Maokai,singed,Singed
+20,sett,Sett,50.55,3.56,0.86,maokai,Maokai,singed,Singed,kennen,Kennen
+21,renekton,Renekton,49.65,5.69,4.33,monkeyking,Wukong,rumble,Rumble,tahmkench,Tahm Kench
+22,ornn,Ornn,51.01,2.55,0.12,quinn,Quinn,lissandra,Lissandra,tahmkench,Tahm Kench
+23,camille,Camille,51.12,2.22,3.12,maokai,Maokai,urgot,Urgot,fiora,Fiora
+24,gnar,Gnar,49.84,4.51,1.86,warwick,Warwick,poppy,Poppy,pantheon,Pantheon
+25,drmundo,Dr. Mundo,50.72,2.79,0.4,monkeyking,Wukong,kled,Kled,tahmkench,Tahm Kench
+26,urgot,Urgot,51.93,1.19,0.14,varus,Varus,kennen,Kennen,pantheon,Pantheon
+27,kled,Kled,51.75,1.29,0.32,heimerdinger,Heimerdinger,yasuo,Yasuo,vayne,Vayne
+28,zaahen,Zaahen,50.09,3.22,0.82,volibear,Volibear,garen,Garen,heimerdinger,Heimerdinger
+29,rumble,Rumble,50.29,2.77,3.07,lissandra,Lissandra,camille,Camille,tahmkench,Tahm Kench
+30,monkeyking,Wukong,52.14,0.92,1.63,shen,Shen,mordekaiser,Mordekaiser,garen,Garen
+31,fiora,Fiora,49.73,3.39,3.63,tahmkench,Tahm Kench,monkeyking,Wukong,heimerdinger,Heimerdinger
+32,akali,Akali,49.1,3.36,19.5,quinn,Quinn,drmundo,Dr. Mundo,lissandra,Lissandra
+33,anivia,Anivia,51.48,1.09,2.66,riven,Riven,heimerdinger,Heimerdinger,garen,Garen
+34,vayne,Vayne,49.04,3.92,9.55,aurora,Aurora,quinn,Quinn,yorick,Yorick
+35,ambessa,Ambessa,48.74,4.56,2.54,urgot,Urgot,quinn,Quinn,warwick,Warwick
+36,riven,Riven,50.23,2.05,0.24,urgot,Urgot,kayle,Kayle,malphite,Malphite
+37,tryndamere,Tryndamere,50.23,2.0,0.74,chogath,Cho'Gath,tahmkench,Tahm Kench,vayne,Vayne
+38,quinn,Quinn,51.98,0.69,0.38,drmundo,Dr. Mundo,malphite,Malphite,gragas,Gragas
+39,gragas,Gragas,49.56,2.52,0.26,singed,Singed,zac,Zac,heimerdinger,Heimerdinger
+40,volibear,Volibear,49.97,2.0,0.75,kled,Kled,vladimir,Vladimir,poppy,Poppy
+41,kayle,Kayle,50.99,1.11,0.16,tryndamere,Tryndamere,teemo,Teemo,nasus,Nasus
+42,illaoi,Illaoi,49.74,1.89,1.34,singed,Singed,fiora,Fiora,locke,Locke
+43,lissandra,Lissandra,51.29,0.77,1.48,olaf,Olaf,shen,Shen,fiora,Fiora
+44,ksante,K'Sante,47.14,7.06,4.81,kled,Kled,singed,Singed,vayne,Vayne
+45,locke,Locke,47.06,1.95,70.67,lissandra,Lissandra,heimerdinger,Heimerdinger,warwick,Warwick
+46,kennen,Kennen,49.61,1.86,1.67,nasus,Nasus,warwick,Warwick,lissandra,Lissandra
+47,heimerdinger,Heimerdinger,50.3,1.18,1.79,lissandra,Lissandra,illaoi,Illaoi,yorick,Yorick
+48,mordekaiser,Mordekaiser,48.1,3.29,1.36,aurora,Aurora,cassiopeia,Cassiopeia,riven,Riven
+49,tahmkench,Tahm Kench,50.85,0.7,0.4,nasus,Nasus,illaoi,Illaoi,garen,Garen
+50,nasus,Nasus,48.66,2.25,2.92,trundle,Trundle,quinn,Quinn,rumble,Rumble
+51,vladimir,Vladimir,49.2,1.63,1.03,shen,Shen,yorick,Yorick,tryndamere,Tryndamere
+52,ryze,Ryze,49.19,1.62,1.13,xinZhao,Xin Zhao,irelia,Irelia,locke,Locke
+53,gwen,Gwen,48.78,1.58,0.69,warwick,Warwick,teemo,Teemo,singed,Singed
+54,aurora,Aurora,50.43,0.61,0.83,sett,Sett,akali,Akali,irelia,Irelia
+55,zac,Zac,49.86,0.67,0.52,singed,Singed,vayne,Vayne,illaoi,Illaoi

@@ -2,6 +2,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import quote, unquote, urlencode, urlparse
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+from collections import OrderedDict
 import json
 import math
 import mimetypes
@@ -31,7 +32,8 @@ def load_saved_api_key():
 
 
 API_KEY = load_saved_api_key()
-MATCH_CACHE = {}
+MATCH_CACHE_LIMIT = 1000
+MATCH_CACHE = OrderedDict()
 DD_CACHE = {"loaded_at": 0, "by_key": {}, "by_num": {}, "version": ""}
 
 
@@ -513,6 +515,10 @@ def get_match(routing, match_id):
         MATCH_CACHE[match_id] = http_json(
             f"https://{routing}.api.riotgames.com/lol/match/v5/matches/{quote(match_id)}"
         )
+        if len(MATCH_CACHE) > MATCH_CACHE_LIMIT:
+            MATCH_CACHE.popitem(last=False)
+    else:
+        MATCH_CACHE.move_to_end(match_id)
     return MATCH_CACHE[match_id]
 
 

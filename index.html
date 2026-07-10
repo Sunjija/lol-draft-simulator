@@ -1424,6 +1424,7 @@
               <div>
                 <div class="panel-title">전체 설정</div>
                 <div class="small muted">API 분석 전에는 샘플/수동 데이터로 동작합니다.</div>
+                <div class="small muted">검증 샘플: gol.gg MSI 2026 · 패치 16.13 · 2026-07-10 갱신</div>
               </div>
             </div>
             <div class="panel-body grid">
@@ -1507,7 +1508,7 @@
                 <label for="riotQueue">분석 큐</label>
                 <select id="riotQueue">
                   <option value="">전체 큐</option>
-                  <option value="420">솔로 랭크</option>
+                  <option value="420" selected>솔로 랭크</option>
                   <option value="440">자유 랭크</option>
                   <option value="400">일반 교차 선택</option>
                   <option value="430">일반 비공개 선택</option>
@@ -1617,6 +1618,8 @@
 
   <script src="data/opgg_top_lane_matchups_compact.js"></script>
   <script src="data/opgg_mid_lane_matchups_compact.js"></script>
+  <script src="data/opgg_draft_context_compact.js"></script>
+  <script src="data/gol_msi_2026_meta_compact.js"></script>
   <script>
     const ROLES = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
     const ROLE_LABEL_KO = { TOP: "탑", JUNGLE: "정글", MID: "미드", ADC: "원딜", SUPPORT: "서폿" };
@@ -2042,6 +2045,131 @@
       MID: buildLaneKillMatchupMap(window.OPGG_MID_LANE_MATCHUPS),
     };
 
+    const opggDraftContext = window.OPGG_DRAFT_CONTEXT || { roleStats: {}, synergies: {} };
+    const golMsiContext = window.GOL_MSI_2026_META || { metadata: {}, champions: [] };
+    const golMsiMetaMap = new Map((golMsiContext.champions || []).map(row => [row[0], {
+      championId: row[0],
+      bans: Number(row[1]) || 0,
+      picks: Number(row[2]) || 0,
+      winRate: Number(row[3]) || 50,
+      priorityScore: Number(row[4]) || 0,
+      seriesPresence: Number(row[5]) || 0,
+      avgRoundPicked: Number(row[6]) || 3,
+      roles: row[7] || {},
+    }]));
+    const opggRoleStatsMaps = Object.fromEntries(ROLES.map(role => [
+      role,
+      new Map((opggDraftContext.roleStats?.[role] || []).map(row => [row[0], {
+        championId: row[0],
+        rank: Number(row[1]) || 0,
+        total: Number(row[2]) || 1,
+        winRate: Number(row[3]) || 50,
+        pickRate: Number(row[4]) || 0,
+        banRate: Number(row[5]) || 0,
+        counters: row[6] || [],
+      }])),
+    ]));
+    const opggRoleCounterIntoMaps = Object.fromEntries(ROLES.map(role => {
+      const reverse = new Map();
+      opggRoleStatsMaps[role].forEach(stat => {
+        stat.counters.forEach(counterId => {
+          if (!reverse.has(counterId)) reverse.set(counterId, []);
+          reverse.get(counterId).push(stat.championId);
+        });
+      });
+      return [role, reverse];
+    }));
+
+    function roleTierNumber(stat) {
+      if (!stat?.rank || !stat?.total) return 5;
+      return clamp(Math.ceil((stat.rank / stat.total) * 5), 1, 5);
+    }
+
+    function opggRoleTiersForChampion(championId) {
+      const tiers = {};
+      ROLES.forEach(role => {
+        const stat = opggRoleStatsMaps[role]?.get(championId);
+        if (stat) tiers[role] = roleTierNumber(stat);
+      });
+      const pro = golMsiMetaMap.get(championId);
+      ROLES.forEach(role => {
+        if (Number(pro?.roles?.[role] || 0) < 2) return;
+        tiers[role] = Math.min(Number(tiers[role] || 5), 3);
+      });
+      return tiers;
+    }
+
+    function opggEligibleRolesForChampion(championId) {
+      const tiers = opggRoleTiersForChampion(championId);
+      return ROLES.filter(role => Number(tiers[role]) <= 3);
+    }
+
+    function opggRoleMetaScore(stat) {
+      if (!stat) return 50;
+      const rankPercentile = stat.rank / Math.max(1, stat.total);
+      return clamp(
+        92 - rankPercentile * 48
+          + (stat.winRate - 50) * 2
+          + Math.min(15, stat.pickRate) * 0.45
+          + Math.min(20, stat.banRate) * 0.18,
+        35,
+        95,
+      );
+    }
+
+    function golMsiMetaScore(row) {
+      if (!row) return 50;
+      const games = Number(golMsiContext.metadata?.games || 1);
+      const presence = ((row.picks + row.bans) / Math.max(1, games)) * 100;
+      const sampleConfidence = clamp((row.picks + row.bans) / 16, 0, 1);
+      return clamp(
+        42 + presence * 0.38 + row.priorityScore * 0.22
+          + (row.winRate - 50) * 0.18 * sampleConfidence,
+        35,
+        95,
+      );
+    }
+
+    function golMsiBlindScore(row) {
+      if (!row) return 50;
+      const games = Number(golMsiContext.metadata?.games || 1);
+      const presence = ((row.picks + row.bans) / Math.max(1, games)) * 100;
+      const usedRoles = Object.values(row.roles || {}).filter(value => Number(value) >= 2).length;
+      const pickOrderValue = clamp((3.5 - row.avgRoundPicked) * 10, -8, 20);
+      return clamp(42 + presence * 0.32 + pickOrderValue + Math.max(0, usedRoles - 1) * 7, 30, 95);
+    }
+
+    function buildEmpiricalSynergyMap(rows) {
+      return new Map((rows || []).map(row => [`${row[0]}__${row[1]}`, {
+        firstId: row[0],
+        secondId: row[1],
+        score: Number(row[2]) || 50,
+        winRate: Number(row[3]) || 50,
+        matches: Number(row[4]) || 0,
+        source: "OP.GG 16.13",
+      }]));
+    }
+
+    const empiricalSynergyMaps = {
+      jungleMid: buildEmpiricalSynergyMap(opggDraftContext.synergies?.jungleMid),
+      topJungle: buildEmpiricalSynergyMap(opggDraftContext.synergies?.topJungle),
+      botDuo: buildEmpiricalSynergyMap(opggDraftContext.synergies?.botDuo),
+    };
+
+    function restrainedCuratedSynergy(score) {
+      return clamp(50 + (Number(score || 50) - 50) * 0.55, 35, 78);
+    }
+
+    function combinedSynergyScore(curatedScore, empiricalRow, fallbackScore = 50) {
+      const hasCurated = Number.isFinite(Number(curatedScore));
+      if (empiricalRow && hasCurated) {
+        return clamp(empiricalRow.score * 0.72 + restrainedCuratedSynergy(curatedScore) * 0.28, 35, 78);
+      }
+      if (empiricalRow) return empiricalRow.score;
+      if (hasCurated) return restrainedCuratedSynergy(curatedScore);
+      return restrainedCuratedSynergy(fallbackScore);
+    }
+
     function buildLaneKillMatchupMap(source) {
       const map = new Map();
       (source?.pairs || []).forEach(([championAId, championBId, championALaneKillRate, championBLaneKillRate]) => {
@@ -2251,22 +2379,75 @@
 
     const championById = Object.fromEntries(champions.map(champ => [champ.id, champ]));
 
+    const SAMPLE_DATA_VERSION = 2;
+    const SAMPLE_DATA_META = {
+      source: "gol.gg",
+      tournament: "MSI 2026",
+      patch: "16.13",
+      collectedAt: "2026-07-10",
+    };
+
     const defaultPlayers = {
       our: [
-        player("our-top", "Doran#T1", "TOP", ["ambessa", "rumble", "renekton", "sion", "camille"]),
-        player("our-jg", "Oner#T1", "JUNGLE", ["xinZhao", "jarvaniv", "viego", "vi", "pantheon"]),
-        player("our-mid", "Faker#T1", "MID", ["taliyah", "galio", "sylas", "viktor", "azir"]),
-        player("our-adc", "Gumayusi#T1", "ADC", ["varus", "sivir", "ashe", "yunara", "missfortune"]),
-        player("our-sup", "Keria#T1", "SUPPORT", ["poppy", "bard", "rakan", "leona", "lulu"]),
+        tournamentPlayer("our-top", "Doran#T1", "TOP", 21, [["gnar", 3], ["ambessa", 3], ["jayce", 3], ["yorick", 3], ["renekton", 2], ["zaahen", 2], ["gragas", 1], ["ksante", 1]]),
+        tournamentPlayer("our-jg", "Oner#T1", "JUNGLE", 21, [["vi", 4], ["leeSin", 4], ["monkeyking", 3], ["jarvaniv", 3], ["xinZhao", 2], ["nocturne", 2], ["trundle", 2], ["naafiri", 1]]),
+        tournamentPlayer("our-mid", "Faker#T1", "MID", 21, [["ryze", 3], ["annie", 3], ["taliyah", 3], ["cassiopeia", 3], ["orianna", 2], ["galio", 2], ["akali", 1], ["syndra", 1]]),
+        tournamentPlayer("our-adc", "Peyz#T1", "ADC", 21, [["mel", 4], ["caitlyn", 3], ["kalista", 2], ["zeri", 2], ["lucian", 2], ["ezreal", 1], ["jhin", 1], ["kaisa", 1]]),
+        tournamentPlayer("our-sup", "Keria#T1", "SUPPORT", 21, [["camille", 4], ["pyke", 3], ["renata", 2], ["bard", 2], ["milio", 2], ["lulu", 2], ["lux", 2], ["yuumi", 1]]),
       ],
       enemy: [
-        player("enemy-top", "Zeus#HLE", "TOP", ["yone", "aatrox", "camille", "jayce", "gnar"]),
-        player("enemy-jg", "Peanut#HLE", "JUNGLE", ["sejuani", "vi", "poppy", "xinZhao", "nidalee"]),
-        player("enemy-mid", "Zeka#HLE", "MID", ["yone", "akali", "sylas", "azir", "ahri"]),
-        player("enemy-adc", "Viper#HLE", "ADC", ["ezreal", "kaisa", "zeri", "xayah", "jhin"]),
-        player("enemy-sup", "Delight#HLE", "SUPPORT", ["rakan", "rell", "nautilus", "alistar", "leona"]),
+        tournamentPlayer("enemy-top", "Zeus#HLE", "TOP", 10, [["ambessa", 2], ["drmundo", 2], ["rumble", 2], ["jayce", 1], ["anivia", 1], ["jax", 1], ["zaahen", 1]]),
+        tournamentPlayer("enemy-jg", "Kanavi#HLE", "JUNGLE", 10, [["vi", 2], ["naafiri", 2], ["skarner", 1], ["qiyana", 1], ["nocturne", 1], ["jarvaniv", 1], ["monkeyking", 1], ["trundle", 1]]),
+        tournamentPlayer("enemy-mid", "Zeka#HLE", "MID", 10, [["viktor", 2], ["yone", 2], ["cassiopeia", 1], ["ahri", 1], ["sylas", 1], ["leblanc", 1], ["annie", 1], ["aurora", 1]]),
+        tournamentPlayer("enemy-adc", "Gumayusi#HLE", "ADC", 10, [["ziggs", 3], ["lucian", 2], ["mel", 1], ["missfortune", 1], ["caitlyn", 1], ["jhin", 1], ["varus", 1]]),
+        tournamentPlayer("enemy-sup", "Delight#HLE", "SUPPORT", 10, [["camille", 3], ["bard", 2], ["milio", 2], ["shen", 1], ["rell", 1], ["nautilus", 1]]),
       ],
     };
+
+    function tournamentComfortScore(games, teamGames, maxGames) {
+      const usage = Math.sqrt(clamp(Number(games) / Math.max(1, Number(maxGames)), 0, 1));
+      const sampleDepth = clamp(Number(teamGames) / 15, 0.67, 1);
+      return Math.round(clamp(58 + usage * 30 * sampleDepth, 58, 90));
+    }
+
+    function tournamentPlayer(id, riotId, role, teamGames, championGames) {
+      const entries = championGames.filter(([championId]) => championById[championId]);
+      const maxGames = Math.max(1, ...entries.map(([, games]) => games));
+      const pool = entries.map(([championId]) => championId);
+      const poolScores = Object.fromEntries(entries.map(([championId, games]) => [
+        championId,
+        tournamentComfortScore(games, teamGames, maxGames),
+      ]));
+      const base = player(id, riotId, role, pool);
+      return {
+        ...base,
+        poolScores,
+        analysis: {
+          source: SAMPLE_DATA_META.source,
+          tournament: SAMPLE_DATA_META.tournament,
+          patch: SAMPLE_DATA_META.patch,
+          collectedAt: SAMPLE_DATA_META.collectedAt,
+          matchCount: teamGames,
+          matchesUsed: teamGames,
+          roleMatchedGames: teamGames,
+          queueLabel: SAMPLE_DATA_META.tournament,
+          confidence: "프로 표본",
+          roleWarning: "",
+          stats: entries.map(([championId, games]) => ({
+            championId,
+            games,
+            wins: null,
+            winRate: null,
+            assignedRoleGames: games,
+            roleComfortScore: poolScores[championId],
+            comfortScore: poolScores[championId],
+            sampleConfidence: clamp(games / Math.max(1, teamGames), 0, 1),
+            roleSampleConfidence: clamp(games / Math.max(1, teamGames), 0, 1),
+            source: SAMPLE_DATA_META.source,
+          })),
+        },
+      };
+    }
 
     function player(id, riotId, role, pool, rank) {
       return { id, riotId, role, pool, rank: rank || null };
@@ -2282,6 +2463,7 @@
         teams: structuredClone(defaultPlayers),
         actions: [],
         fearlessUsed: [],
+        sampleDataVersion: SAMPLE_DATA_VERSION,
         pickWeights: { ...defaultPickWeights },
         pickWeightProfileVersion: PICK_WEIGHT_PROFILE_VERSION,
         apiHasKey: false,
@@ -2319,6 +2501,11 @@
       checkApiStatus();
       loadChampionCatalog();
       loadBgmTracks();
+      if (new URLSearchParams(window.location.search).has("selftest")) {
+        const selfTestResult = runDraftSelfTests();
+        window.__DRAFT_SELF_TEST_RESULT__ = selfTestResult;
+        document.documentElement.dataset.draftSelfTest = JSON.stringify(selfTestResult);
+      }
     });
 
     function bindEvents() {
@@ -3403,9 +3590,9 @@
                 <td>${escapeHtml(rankLabel(p.rank))}</td>
                 <td>
                   <div class="chips" style="margin-bottom:4px">${p.pool.length
-                    ? p.pool.map((id, i) => {
+                    ? p.pool.map(id => {
                         const champ = getChamp(id);
-                        return `<span class="chip">${escapeHtml(champ.name)} ${100 - i * 10}</span>`;
+                        return `<span class="chip">${escapeHtml(champ.name)} ${Math.round(comfortScore(p, id))}</span>`;
                       }).join(" ")
                     : emptyPoolPlaceholder(p)}</div>
                   <input class="pool-edit-input" data-team="${teamKey}" data-index="${index}"
@@ -3560,7 +3747,32 @@
     }
 
     function getChampForRole(id, role) {
-      return getChamp(id);
+      const champ = getChamp(id);
+      const stat = opggRoleStatsMaps[role]?.get(id);
+      const pro = golMsiMetaMap.get(id);
+      const proRoleGames = Number(pro?.roles?.[role] || 0);
+      if (!stat && !proRoleGames) return champ;
+      const opggCounterInto = stat ? (opggRoleCounterIntoMaps[role]?.get(id) || []) : [];
+      const roleMeta = stat ? opggRoleMetaScore(stat) : champ.meta;
+      const soloMeta = champ.meta * 0.65 + roleMeta * 0.35;
+      const meta = proRoleGames
+        ? soloMeta * 0.70 + golMsiMetaScore(pro) * 0.30
+        : soloMeta;
+      const blind = proRoleGames
+        ? champ.blind * 0.72 + golMsiBlindScore(pro) * 0.28
+        : champ.blind;
+      return {
+        ...champ,
+        meta: Math.round(meta),
+        blind: Math.round(blind),
+        lane: Math.round(champ.lane * 0.78 + roleMeta * 0.22),
+        opggRoleStat: stat,
+        golMsiStat: proRoleGames ? pro : null,
+        opggBadInto: stat?.counters || [],
+        opggCounterInto,
+        badInto: unique([...(champ.badInto || []), ...(stat?.counters || [])]),
+        counterInto: unique([...(champ.counterInto || []), ...opggCounterInto]),
+      };
     }
 
     function getChampForAction(action) {
@@ -3569,7 +3781,13 @@
     }
 
     function baseChampion(id) {
-      return { ...(championById[id] || fallbackChampion(id)) };
+      const base = { ...(championById[id] || fallbackChampion(id)) };
+      const roleTiers = opggRoleTiersForChampion(id);
+      return {
+        ...base,
+        roles: unique([...(base.roles || []), ...opggEligibleRolesForChampion(id)]),
+        roleTiers,
+      };
     }
 
     function fallbackChampion(id) {
@@ -3946,25 +4164,11 @@
     }
 
     function calibratedPickScore(rawScore, parts, role, hasPoolEvidence) {
-      if (!hasPoolEvidence) return clamp(rawScore, 0, 72);
-      const laneCore = ["ADC", "SUPPORT"].includes(role)
-        ? Math.max(parts.matchup || 50, parts.botLane || 50)
-        : parts.matchup || 50;
-      const peak = Math.max(
-        parts.comfort || 0,
-        laneCore,
-        parts.meta || 0,
-        parts.firstPick || 0,
-        parts.duo || 0,
-        parts.jungleMid || 0,
-        parts.topJungle || 0,
-      );
-      let score = rawScore;
-      score += clamp((peak - 75) * 0.55, 0, 11);
-      score += clamp((laneCore - 72) * 0.45, 0, 10);
-      score += clamp(((parts.comfort || 0) - 78) * 0.30, 0, 5);
-      if (score >= 78) score = 78 + (score - 78) * 1.22;
-      return clamp(score, 0, 98);
+      // rawScore에 숙련도·라인전·메타·시너지 가중치가 이미 모두 반영되어 있다.
+      // 특정 최고값을 다시 더하면 한 가지 장점만 큰 챔피언이 90점대로 부풀기 때문에,
+      // 최종 단계에서는 데이터가 없는 비상 후보만 감점하고 나머지는 가중 평균을 유지한다.
+      if (!hasPoolEvidence) return clamp(rawScore * 0.82, 0, 72);
+      return clamp(rawScore, 0, 95);
     }
 
     function temperSynergyByComfort(score, comfort) {
@@ -4480,6 +4684,19 @@
       const laneKillDetail = laneKillMatchupDetail(champ, role, enemySameRole.champ);
       if (laneKillDetail) return { score: laneKillDetail.score, detail: laneKillDetail };
 
+      if ((champ.opggCounterInto || []).includes(enemySameRole.champ.id)) {
+        return {
+          score: 86,
+          detail: { source: "opggRoleCounter", role, favored: true, enemyChampionName: enemySameRole.champ.name },
+        };
+      }
+      if ((champ.opggBadInto || []).includes(enemySameRole.champ.id)) {
+        return {
+          score: 37,
+          detail: { source: "opggRoleCounter", role, favored: false, enemyChampionName: enemySameRole.champ.name },
+        };
+      }
+
       if (champ.counterInto.includes(enemySameRole.champ.id)) return { score: 92, detail: null };
       if (champ.badInto.includes(enemySameRole.champ.id)) return { score: 35, detail: null };
       return { score: 63 + (champ.lane - 70) * 0.35, detail: null };
@@ -4900,7 +5117,8 @@
       const jungle = player.role === "JUNGLE" ? champ : partner;
       const mid = player.role === "MID" ? champ : partner;
       const direct = jungleMidSynergyData.find(row => row.jungle === jungle.id && row.mid === mid.id);
-      if (direct) return direct.score;
+      const empirical = empiricalSynergyMaps.jungleMid.get(`${jungle.id}__${mid.id}`);
+      if (direct || empirical) return combinedSynergyScore(direct?.score, empirical);
 
       const jungleTags = draftTags(jungle);
       const midTags = draftTags(mid);
@@ -4911,7 +5129,7 @@
       if (hasAnyTag(jungleTags, ["aoe", "engage"]) && hasAnyTag(midTags, ["aoe", "teamfight", "zone", "followup"])) score += 8;
       if (hasAnyTag(jungleTags, ["marksman", "objective", "skirmish"]) && hasAnyTag(midTags, ["followup", "global", "cc", "front", "protect"])) score += 8;
       if ((hasTag(jungleTags, "ad") && hasTag(midTags, "ad")) || (hasTag(jungleTags, "ap") && hasTag(midTags, "ap"))) score -= 4;
-      return clamp(score, 30, 100);
+      return restrainedCuratedSynergy(clamp(score, 30, 100));
     }
 
     function topJungleSynergyScore(champ, player, teamKey, side) {
@@ -4922,7 +5140,8 @@
       const top = player.role === "TOP" ? champ : partner;
       const jungle = player.role === "JUNGLE" ? champ : partner;
       const direct = topJungleSynergyData.find(row => row.top === top.id && row.jungle === jungle.id);
-      if (direct) return direct.score;
+      const empirical = empiricalSynergyMaps.topJungle.get(`${top.id}__${jungle.id}`);
+      if (direct || empirical) return combinedSynergyScore(direct?.score, empirical);
 
       const topTags = draftTags(top);
       const jungleTags = draftTags(jungle);
@@ -4930,7 +5149,7 @@
       if (hasAnyTag(topTags, ["pointclick", "setup", "lane-prio", "cc"]) && hasAnyTag(jungleTags, ["gank", "dive", "burst"])) score += 12;
       if (hasAnyTag(topTags, ["dive", "allin", "bruiser"]) && hasAnyTag(jungleTags, ["dive", "engage", "skirmish"])) score += 8;
       if ((hasTag(topTags, "ad") && hasTag(jungleTags, "ap")) || (hasTag(topTags, "ap") && hasTag(jungleTags, "ad"))) score += 6;
-      return clamp(score, 35, 100);
+      return restrainedCuratedSynergy(clamp(score, 35, 100));
     }
 
     function projectedPartnerForRole(role, teamKey, side, excludeChampionId) {
@@ -4982,7 +5201,7 @@
           const row = findDuoSynergyRow(championId, player.role, partnerId);
           if (!row) return null;
           return {
-            score: duoRowScore(row) * 0.92,
+            score: clamp(50 + (duoRowScore(row) - 50) * 0.72, 35, 78),
             detail: {
               ...row,
               exact: false,
@@ -4997,21 +5216,41 @@
     }
 
     function findDuoSynergyRow(championId, role, partnerId) {
+      const adcId = role === "ADC" ? championId : partnerId;
+      const supportId = role === "SUPPORT" ? championId : partnerId;
+      const empirical = empiricalSynergyMaps.botDuo.get(`${adcId}__${supportId}`);
+      const curated = duoSynergyData.find(row => row.adc === adcId && row.support === supportId);
+      if (empirical) {
+        return {
+          ...(curated || {}),
+          adc: adcId,
+          support: supportId,
+          winRate: empirical.winRate,
+          matches: empirical.matches,
+          score: combinedSynergyScore(curated ? rawDuoRowScore(curated) : null, empirical),
+          source: empirical.source,
+        };
+      }
       if (role === "ADC") {
-        return duoSynergyData.find(row => row.adc === championId && row.support === partnerId);
+        return curated;
       }
       if (role === "SUPPORT") {
-        return duoSynergyData.find(row => row.support === championId && row.adc === partnerId);
+        return curated;
       }
       return null;
     }
 
-    function duoRowScore(row) {
+    function rawDuoRowScore(row) {
       const win = Number(row.winRate) || 50;
       const matches = Number(row.matches) || 0;
       const sampleBonus = matches ? Math.min(8, Math.log10(Math.max(matches, 10)) * 2) : 0;
       const rankBonus = row.rank ? Math.max(0, 6 - row.rank * 0.08) : 0;
       return clamp(50 + (win - 50) * 6 + sampleBonus + rankBonus, 35, 100);
+    }
+
+    function duoRowScore(row) {
+      if (Number.isFinite(Number(row?.score))) return clamp(Number(row.score), 35, 78);
+      return restrainedCuratedSynergy(rawDuoRowScore(row));
     }
 
     function interactionScore(candidate, teamPicks, enemyPicks) {
@@ -5056,7 +5295,22 @@
       const result = {};
       players.forEach(player => {
         player.pool.forEach((championId, index) => {
-          result[championId] = Math.max(result[championId] || 0, 100 - index * 11);
+          const stat = player.analysis?.stats?.find(row => row.championId === championId);
+          const comfort = comfortScore(player, championId);
+          const orderPrior = Math.max(38, 72 - index * 5);
+          const roleGames = Number(stat?.assignedRoleGames || 0);
+          const totalRoleGames = Number(player.analysis?.roleMatchedGames || player.analysis?.matchCount || 0);
+          const sampleConfidence = totalRoleGames > 0
+            ? clamp(roleGames / Math.min(8, totalRoleGames), 0, 1)
+            : 0;
+          // 실제 확률이 아니라 다음 픽 가능성의 상대 점수다. 표본이 있어도 92를 넘기지 않아
+          // UI에서 확정 확률처럼 보이지 않게 하고, 수동 챔프폭은 순서만 약한 사전값으로 쓴다.
+          const likelyScore = clamp(
+            comfort * 0.55 + orderPrior * 0.30 + sampleConfidence * 100 * 0.15,
+            20,
+            92,
+          );
+          result[championId] = Math.max(result[championId] || 0, likelyScore);
         });
       });
       return result;
@@ -5301,7 +5555,11 @@
           return;
         }
         const parsed = JSON.parse(raw);
-        state = { ...freshState(), ...parsed };
+        const storedTeams = parsed.sampleDataVersion !== SAMPLE_DATA_VERSION && isLegacySampleTeams(parsed.teams)
+          ? structuredClone(defaultPlayers)
+          : parsed.teams;
+        state = { ...freshState(), ...parsed, teams: storedTeams || structuredClone(defaultPlayers) };
+        state.sampleDataVersion = SAMPLE_DATA_VERSION;
         state.bgm = { ...freshState().bgm, ...(parsed.bgm || {}), enabled: false };
         state.timerMode = { ...freshState().timerMode, ...(parsed.timerMode || {}), enabled: false };
         const storedWeights = parsed.pickWeightProfileVersion === PICK_WEIGHT_PROFILE_VERSION ? parsed.pickWeights : null;
@@ -5311,6 +5569,111 @@
       } catch {
         if (showToast) toast("불러오기에 실패했습니다.");
       }
+    }
+
+    function isLegacySampleTeams(teams) {
+      const names = [...(teams?.our || []), ...(teams?.enemy || [])].map(player => player.riotId);
+      if (names.length !== 10) return false;
+      const legacyNames = [
+        "Doran#T1", "Oner#T1", "Faker#T1", "Gumayusi#T1", "Keria#T1",
+        "Zeus#HLE", "Peanut#HLE", "Zeka#HLE", "Viper#HLE", "Delight#HLE",
+      ];
+      return legacyNames.every(name => names.includes(name));
+    }
+
+    function runDraftSelfTests() {
+      const previousState = state;
+      const checks = [];
+      const diagnostics = {};
+      const check = (name, condition, detail = "") => {
+        checks.push({ name, ok: Boolean(condition), detail: condition ? "" : detail });
+      };
+      try {
+        state = freshState();
+        const sequence = draftSteps.map(step => `${step.side[0]}${step.type[0]}`).join(" ");
+        check(
+          "20턴 대회식 순서",
+          sequence === "BB RB BB RB BB RB BP RP RP BP BP RP RB BB RB BB RP BP BP RP",
+          sequence,
+        );
+
+        const names = [...state.teams.our, ...state.teams.enemy].map(player => player.riotId);
+        check("MSI 2026 T1 원딜", names.includes("Peyz#T1"), names.join(", "));
+        check("MSI 2026 HLE 정글", names.includes("Kanavi#HLE"), names.join(", "));
+        check("MSI 2026 HLE 원딜", names.includes("Gumayusi#HLE"), names.join(", "));
+
+        const likelyValues = Object.values(likelyPoolForPlayers(state.teams.enemy));
+        check("예상픽 점수 상한", likelyValues.length > 0 && Math.max(...likelyValues) <= 92, String(Math.max(...likelyValues)));
+        const initialBans = recommendBans("BLUE", "RED", 5);
+        check("초기 밴 추천 존재", initialBans.length === 5);
+        const initialPicks = recommendPicks("BLUE", 5);
+        check("초기 픽 추천 존재", initialPicks.length === 5);
+        check("정상 표본은 챔프폭 우선", initialPicks.every(item => !item.isEmergency));
+        check("최종 추천 점수 상한", initialPicks.every(item => item.score <= 95));
+        check("OP.GG 정글 카운터 연결", getChampForRole("leeSin", "JUNGLE").opggBadInto?.includes("ivern"));
+        check("OP.GG 멀티포지션 연결", swapEligibleRoles(getChamp("sylas")).length >= 2, swapEligibleRoles(getChamp("sylas")).join(", "));
+        check(
+          "MSI 전체 스왑 포지션 연결",
+          getChamp("cassiopeia").roles.includes("MID") && getChamp("cassiopeia").roles.includes("ADC"),
+          getChamp("cassiopeia").roles.join(", "),
+        );
+        check("MSI 전체 메타 연결", getChampForRole("orianna", "MID").golMsiStat?.picks === 10);
+        check(
+          "실측 시너지 영향 상한",
+          [...empiricalSynergyMaps.jungleMid.values(), ...empiricalSynergyMaps.topJungle.values(), ...empiricalSynergyMaps.botDuo.values()]
+            .every(row => row.score >= 38 && row.score <= 68),
+        );
+        diagnostics.initialBans = initialBans.map(item => ({ championId: item.championId, score: Math.round(item.score) }));
+        diagnostics.initialPicks = initialPicks.map(item => ({ championId: item.championId, role: item.role, score: Math.round(item.score) }));
+
+        state.actions = [{
+          order: 8,
+          side: "RED",
+          type: "PICK",
+          championId: "nautilus",
+          playerId: "enemy-sup",
+        }];
+        state.currentStep = 13;
+        const postSupportBans = recommendBans("BLUE", "RED", 5);
+        check(
+          "확정된 상대 서폿 라인 재밴 금지",
+          postSupportBans.every(item => item.role !== "SUPPORT"),
+          postSupportBans.map(item => `${item.role}:${item.championId}`).join(", "),
+        );
+
+        state = freshState();
+        let guard = 0;
+        while (getCurrentStep() && guard < draftSteps.length) {
+          const step = getCurrentStep();
+          const list = step.type === "BAN"
+            ? recommendBans(step.side, otherSide(step.side), 1)
+            : recommendPicks(step.side, 1);
+          if (!list.length) break;
+          state.actions.push({
+            order: step.index,
+            side: step.side,
+            type: step.type,
+            championId: list[0].championId,
+            playerId: step.type === "PICK" ? list[0].playerId : undefined,
+            isManual: false,
+          });
+          state.currentStep += 1;
+          guard += 1;
+        }
+        check("추천만으로 20턴 완주", state.actions.length === draftSteps.length, `${state.actions.length}/20`);
+        check("20턴 챔피언 중복 없음", new Set(state.actions.map(action => action.championId)).size === state.actions.length);
+      } catch (error) {
+        checks.push({ name: "자체검사 실행", ok: false, detail: error.message });
+      } finally {
+        state = previousState;
+      }
+      return {
+        ok: checks.every(item => item.ok),
+        passed: checks.filter(item => item.ok).length,
+        total: checks.length,
+        checks,
+        diagnostics,
+      };
     }
 
     function toast(message) {

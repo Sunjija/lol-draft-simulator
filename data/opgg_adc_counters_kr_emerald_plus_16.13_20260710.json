@@ -1,0 +1,898 @@
+{
+  "metadata": {
+    "source": "https://op.gg/lol/champions?region=kr&tier=emerald_plus&position=adc",
+    "site": "OP.GG",
+    "region": "kr",
+    "tier": "emerald_plus",
+    "position": "ADC",
+    "patch": "16.13",
+    "collectedAt": "2026-07-10T13:56:48.218434+00:00",
+    "note": "Each row's counters are champions OP.GG displays as difficult matchups for that row champion."
+  },
+  "champions": [
+    {
+      "rank": 1,
+      "championId": "senna",
+      "opggId": "senna",
+      "championName": "Senna",
+      "winRate": 53.12,
+      "pickRate": 14.11,
+      "banRate": 39.65,
+      "counters": [
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        },
+        {
+          "championId": "hwei",
+          "opggId": "hwei",
+          "championName": "Hwei"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "championId": "jinx",
+      "opggId": "jinx",
+      "championName": "Jinx",
+      "winRate": 52.2,
+      "pickRate": 8.73,
+      "banRate": 1.27,
+      "counters": [
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        },
+        {
+          "championId": "hwei",
+          "opggId": "hwei",
+          "championName": "Hwei"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "championId": "ashe",
+      "opggId": "ashe",
+      "championName": "Ashe",
+      "winRate": 50.97,
+      "pickRate": 11.84,
+      "banRate": 13.6,
+      "counters": [
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        },
+        {
+          "championId": "kogmaw",
+          "opggId": "kogmaw",
+          "championName": "Kog'Maw"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "championId": "jhin",
+      "opggId": "jhin",
+      "championName": "Jhin",
+      "winRate": 49.58,
+      "pickRate": 18.55,
+      "banRate": 1.27,
+      "counters": [
+        {
+          "championId": "hwei",
+          "opggId": "hwei",
+          "championName": "Hwei"
+        },
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        },
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "championId": "tristana",
+      "opggId": "tristana",
+      "championName": "Tristana",
+      "winRate": 50.98,
+      "pickRate": 7.81,
+      "banRate": 3.91,
+      "counters": [
+        {
+          "championId": "syndra",
+          "opggId": "syndra",
+          "championName": "Syndra"
+        },
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        },
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "championId": "ziggs",
+      "opggId": "ziggs",
+      "championName": "Ziggs",
+      "winRate": 51.91,
+      "pickRate": 4.54,
+      "banRate": 1.77,
+      "counters": [
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        },
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        },
+        {
+          "championId": "samira",
+          "opggId": "samira",
+          "championName": "Samira"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "championId": "kaisa",
+      "opggId": "kaisa",
+      "championName": "Kai'Sa",
+      "winRate": 49.13,
+      "pickRate": 17.79,
+      "banRate": 1.22,
+      "counters": [
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        },
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        },
+        {
+          "championId": "hwei",
+          "opggId": "hwei",
+          "championName": "Hwei"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "championId": "xerath",
+      "opggId": "xerath",
+      "championName": "Xerath",
+      "winRate": 52.68,
+      "pickRate": 2.35,
+      "banRate": 10.14,
+      "counters": [
+        {
+          "championId": "zeri",
+          "opggId": "zeri",
+          "championName": "Zeri"
+        },
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        },
+        {
+          "championId": "jinx",
+          "opggId": "jinx",
+          "championName": "Jinx"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "championId": "caitlyn",
+      "opggId": "caitlyn",
+      "championName": "Caitlyn",
+      "winRate": 48.96,
+      "pickRate": 15.37,
+      "banRate": 12.02,
+      "counters": [
+        {
+          "championId": "hwei",
+          "opggId": "hwei",
+          "championName": "Hwei"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        },
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "championId": "lucian",
+      "opggId": "lucian",
+      "championName": "Lucian",
+      "winRate": 49.66,
+      "pickRate": 10.89,
+      "banRate": 5.62,
+      "counters": [
+        {
+          "championId": "senna",
+          "opggId": "senna",
+          "championName": "Senna"
+        },
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        },
+        {
+          "championId": "aphelios",
+          "opggId": "aphelios",
+          "championName": "Aphelios"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "championId": "xayah",
+      "opggId": "xayah",
+      "championName": "Xayah",
+      "winRate": 51.67,
+      "pickRate": 3.82,
+      "banRate": 0.46,
+      "counters": [
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "velkoz",
+          "opggId": "velkoz",
+          "championName": "Vel'Koz"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "championId": "seraphine",
+      "opggId": "seraphine",
+      "championName": "Seraphine",
+      "winRate": 53.16,
+      "pickRate": 1.28,
+      "banRate": 6.36,
+      "counters": [
+        {
+          "championId": "zeri",
+          "opggId": "zeri",
+          "championName": "Zeri"
+        },
+        {
+          "championId": "tristana",
+          "opggId": "tristana",
+          "championName": "Tristana"
+        },
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "championId": "ezreal",
+      "opggId": "ezreal",
+      "championName": "Ezreal",
+      "winRate": 47.16,
+      "pickRate": 22.71,
+      "banRate": 12.38,
+      "counters": [
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "senna",
+          "opggId": "senna",
+          "championName": "Senna"
+        },
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "championId": "sivir",
+      "opggId": "sivir",
+      "championName": "Sivir",
+      "winRate": 50.22,
+      "pickRate": 5.6,
+      "banRate": 3.87,
+      "counters": [
+        {
+          "championId": "ashe",
+          "opggId": "ashe",
+          "championName": "Ashe"
+        },
+        {
+          "championId": "senna",
+          "opggId": "senna",
+          "championName": "Senna"
+        },
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "championId": "aphelios",
+      "opggId": "aphelios",
+      "championName": "Aphelios",
+      "winRate": 48.89,
+      "pickRate": 10.59,
+      "banRate": 3.68,
+      "counters": [
+        {
+          "championId": "velkoz",
+          "opggId": "velkoz",
+          "championName": "Vel'Koz"
+        },
+        {
+          "championId": "kogmaw",
+          "opggId": "kogmaw",
+          "championName": "Kog'Maw"
+        },
+        {
+          "championId": "samira",
+          "opggId": "samira",
+          "championName": "Samira"
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "championId": "zeri",
+      "opggId": "zeri",
+      "championName": "Zeri",
+      "winRate": 50.42,
+      "pickRate": 4.01,
+      "banRate": 0.36,
+      "counters": [
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        },
+        {
+          "championId": "kogmaw",
+          "opggId": "kogmaw",
+          "championName": "Kog'Maw"
+        },
+        {
+          "championId": "velkoz",
+          "opggId": "velkoz",
+          "championName": "Vel'Koz"
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "championId": "samira",
+      "opggId": "samira",
+      "championName": "Samira",
+      "winRate": 51.26,
+      "pickRate": 2.5,
+      "banRate": 1.2,
+      "counters": [
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        },
+        {
+          "championId": "corki",
+          "opggId": "corki",
+          "championName": "Corki"
+        },
+        {
+          "championId": "velkoz",
+          "opggId": "velkoz",
+          "championName": "Vel'Koz"
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "championId": "missfortune",
+      "opggId": "missfortune",
+      "championName": "Miss Fortune",
+      "winRate": 49.98,
+      "pickRate": 4.55,
+      "banRate": 0.7,
+      "counters": [
+        {
+          "championId": "kogmaw",
+          "opggId": "kogmaw",
+          "championName": "Kog'Maw"
+        },
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "championId": "kogmaw",
+      "opggId": "kogmaw",
+      "championName": "Kog'Maw",
+      "winRate": 52.63,
+      "pickRate": 1.05,
+      "banRate": 0.09,
+      "counters": [
+        {
+          "championId": "sivir",
+          "opggId": "sivir",
+          "championName": "Sivir"
+        },
+        {
+          "championId": "twitch",
+          "opggId": "twitch",
+          "championName": "Twitch"
+        },
+        {
+          "championId": "ziggs",
+          "opggId": "ziggs",
+          "championName": "Ziggs"
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "championId": "yunara",
+      "opggId": "yunara",
+      "championName": "Yunara",
+      "winRate": 49.01,
+      "pickRate": 6.45,
+      "banRate": 1.22,
+      "counters": [
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        },
+        {
+          "championId": "tristana",
+          "opggId": "tristana",
+          "championName": "Tristana"
+        }
+      ]
+    },
+    {
+      "rank": 21,
+      "championId": "nilah",
+      "opggId": "nilah",
+      "championName": "Nilah",
+      "winRate": 53.13,
+      "pickRate": 0.63,
+      "banRate": 0.31,
+      "counters": [
+        {
+          "championId": "vayne",
+          "opggId": "vayne",
+          "championName": "Vayne"
+        },
+        {
+          "championId": "missfortune",
+          "opggId": "missfortune",
+          "championName": "Miss Fortune"
+        },
+        {
+          "championId": "xayah",
+          "opggId": "xayah",
+          "championName": "Xayah"
+        }
+      ]
+    },
+    {
+      "rank": 22,
+      "championId": "draven",
+      "opggId": "draven",
+      "championName": "Draven",
+      "winRate": 50.51,
+      "pickRate": 1.96,
+      "banRate": 4.04,
+      "counters": [
+        {
+          "championId": "kogmaw",
+          "opggId": "kogmaw",
+          "championName": "Kog'Maw"
+        },
+        {
+          "championId": "syndra",
+          "opggId": "syndra",
+          "championName": "Syndra"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        }
+      ]
+    },
+    {
+      "rank": 23,
+      "championId": "swain",
+      "opggId": "swain",
+      "championName": "Swain",
+      "winRate": 51.94,
+      "pickRate": 0.82,
+      "banRate": 0.71,
+      "counters": [
+        {
+          "championId": "smolder",
+          "opggId": "smolder",
+          "championName": "Smolder"
+        },
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "zeri",
+          "opggId": "zeri",
+          "championName": "Zeri"
+        }
+      ]
+    },
+    {
+      "rank": 24,
+      "championId": "syndra",
+      "opggId": "syndra",
+      "championName": "Syndra",
+      "winRate": 51.4,
+      "pickRate": 1.02,
+      "banRate": 3.5,
+      "counters": [
+        {
+          "championId": "senna",
+          "opggId": "senna",
+          "championName": "Senna"
+        },
+        {
+          "championId": "hwei",
+          "opggId": "hwei",
+          "championName": "Hwei"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        }
+      ]
+    },
+    {
+      "rank": 25,
+      "championId": "teemo",
+      "opggId": "teemo",
+      "championName": "Teemo",
+      "winRate": 51.16,
+      "pickRate": 1.0,
+      "banRate": 9.07,
+      "counters": [
+        {
+          "championId": "senna",
+          "opggId": "senna",
+          "championName": "Senna"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        },
+        {
+          "championId": "xayah",
+          "opggId": "xayah",
+          "championName": "Xayah"
+        }
+      ]
+    },
+    {
+      "rank": 26,
+      "championId": "hwei",
+      "opggId": "hwei",
+      "championName": "Hwei",
+      "winRate": 52.21,
+      "pickRate": 0.58,
+      "banRate": 2.18,
+      "counters": [
+        {
+          "championId": "lucian",
+          "opggId": "lucian",
+          "championName": "Lucian"
+        },
+        {
+          "championId": "missfortune",
+          "opggId": "missfortune",
+          "championName": "Miss Fortune"
+        },
+        {
+          "championId": "xayah",
+          "opggId": "xayah",
+          "championName": "Xayah"
+        }
+      ]
+    },
+    {
+      "rank": 27,
+      "championId": "twitch",
+      "opggId": "twitch",
+      "championName": "Twitch",
+      "winRate": 50.24,
+      "pickRate": 1.52,
+      "banRate": 0.5,
+      "counters": [
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        },
+        {
+          "championId": "senna",
+          "opggId": "senna",
+          "championName": "Senna"
+        },
+        {
+          "championId": "mel",
+          "opggId": "mel",
+          "championName": "Mel"
+        }
+      ]
+    },
+    {
+      "rank": 28,
+      "championId": "smolder",
+      "opggId": "smolder",
+      "championName": "Smolder",
+      "winRate": 49.49,
+      "pickRate": 2.18,
+      "banRate": 0.85,
+      "counters": [
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        },
+        {
+          "championId": "ashe",
+          "opggId": "ashe",
+          "championName": "Ashe"
+        },
+        {
+          "championId": "teemo",
+          "opggId": "teemo",
+          "championName": "Teemo"
+        }
+      ]
+    },
+    {
+      "rank": 29,
+      "championId": "kalista",
+      "opggId": "kalista",
+      "championName": "Kalista",
+      "winRate": 49.22,
+      "pickRate": 1.83,
+      "banRate": 0.24,
+      "counters": [
+        {
+          "championId": "draven",
+          "opggId": "draven",
+          "championName": "Draven"
+        },
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        }
+      ]
+    },
+    {
+      "rank": 30,
+      "championId": "vayne",
+      "opggId": "vayne",
+      "championName": "Vayne",
+      "winRate": 49.01,
+      "pickRate": 1.49,
+      "banRate": 9.57,
+      "counters": [
+        {
+          "championId": "twitch",
+          "opggId": "twitch",
+          "championName": "Twitch"
+        },
+        {
+          "championId": "draven",
+          "opggId": "draven",
+          "championName": "Draven"
+        },
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        }
+      ]
+    },
+    {
+      "rank": 31,
+      "championId": "velkoz",
+      "opggId": "velkoz",
+      "championName": "Vel'Koz",
+      "winRate": 50.27,
+      "pickRate": 0.76,
+      "banRate": 0.5,
+      "counters": [
+        {
+          "championId": "seraphine",
+          "opggId": "seraphine",
+          "championName": "Seraphine"
+        },
+        {
+          "championId": "xerath",
+          "opggId": "xerath",
+          "championName": "Xerath"
+        },
+        {
+          "championId": "ziggs",
+          "opggId": "ziggs",
+          "championName": "Ziggs"
+        }
+      ]
+    },
+    {
+      "rank": 32,
+      "championId": "varus",
+      "opggId": "varus",
+      "championName": "Varus",
+      "winRate": 47.68,
+      "pickRate": 2.74,
+      "banRate": 2.52,
+      "counters": [
+        {
+          "championId": "xayah",
+          "opggId": "xayah",
+          "championName": "Xayah"
+        },
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        },
+        {
+          "championId": "samira",
+          "opggId": "samira",
+          "championName": "Samira"
+        }
+      ]
+    },
+    {
+      "rank": 33,
+      "championId": "mel",
+      "opggId": "mel",
+      "championName": "Mel",
+      "winRate": 46.75,
+      "pickRate": 3.33,
+      "banRate": 14.44,
+      "counters": [
+        {
+          "championId": "swain",
+          "opggId": "swain",
+          "championName": "Swain"
+        },
+        {
+          "championId": "hwei",
+          "opggId": "hwei",
+          "championName": "Hwei"
+        },
+        {
+          "championId": "nilah",
+          "opggId": "nilah",
+          "championName": "Nilah"
+        }
+      ]
+    },
+    {
+      "rank": 34,
+      "championId": "corki",
+      "opggId": "corki",
+      "championName": "Corki",
+      "winRate": 49.38,
+      "pickRate": 0.76,
+      "banRate": 0.05,
+      "counters": [
+        {
+          "championId": "caitlyn",
+          "opggId": "caitlyn",
+          "championName": "Caitlyn"
+        },
+        {
+          "championId": "lucian",
+          "opggId": "lucian",
+          "championName": "Lucian"
+        },
+        {
+          "championId": "zeri",
+          "opggId": "zeri",
+          "championName": "Zeri"
+        }
+      ]
+    }
+  ]
+}

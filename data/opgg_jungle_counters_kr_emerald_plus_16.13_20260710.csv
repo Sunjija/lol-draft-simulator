@@ -1,0 +1,56 @@
+﻿rank,championId,championName,winRate,pickRate,banRate,counter1Id,counter1Name,counter2Id,counter2Name,counter3Id,counter3Name
+1,leesin,Lee Sin,50.38,26.27,53.1,ivern,Ivern,skarner,Skarner,naafiri,Naafiri
+2,sylas,Sylas,50.5,12.75,27.61,ivern,Ivern,poppy,Poppy,gragas,Gragas
+3,monkeyking,Wukong,51.73,6.63,1.64,shyvana,Shyvana,aatrox,Aatrox,rammus,Rammus
+4,naafiri,Naafiri,50.79,10.66,33.85,shyvana,Shyvana,nocturne,Nocturne,kayn,Kayn
+5,nidalee,Nidalee,51.82,5.48,5.28,ivern,Ivern,rammus,Rammus,amumu,Amumu
+6,nasus,Nasus,51.71,3.17,3.0,quinn,Quinn,belveth,Bel'Veth,lillia,Lillia
+7,belveth,Bel'Veth,52.04,2.15,2.46,diana,Diana,warwick,Warwick,skarner,Skarner
+8,nocturne,Nocturne,50.65,6.65,10.58,rammus,Rammus,ivern,Ivern,shyvana,Shyvana
+9,vi,Vi,50.37,8.31,3.02,ivern,Ivern,fiddlesticks,Fiddlesticks,aatrox,Aatrox
+10,zyra,Zyra,52.23,1.52,1.75,evelynn,Evelynn,belveth,Bel'Veth,rammus,Rammus
+11,briar,Briar,51.23,3.6,1.55,udyr,Udyr,trundle,Trundle,reksai,Rek'Sai
+12,shaco,Shaco,51.18,2.65,19.27,maokai,Maokai,nunu,Nunu & Willump,karthus,Karthus
+13,ivern,Ivern,52.98,0.65,0.19,briar,Briar,naafiri,Naafiri,talon,Talon
+14,skarner,Skarner,52.42,1.03,0.25,nunu,Nunu & Willump,nidalee,Nidalee,poppy,Poppy
+15,elise,Elise,51.34,2.03,2.16,rammus,Rammus,zyra,Zyra,nasus,Nasus
+16,khazix,Kha'Zix,50.6,3.8,1.02,shaco,Shaco,olaf,Olaf,zyra,Zyra
+17,talon,Talon,50.22,4.43,2.34,trundle,Trundle,warwick,Warwick,fiddlesticks,Fiddlesticks
+18,rammus,Rammus,51.66,1.23,1.09,zac,Zac,vi,Vi,shaco,Shaco
+19,xinZhao,Xin Zhao,49.73,5.92,2.91,olaf,Olaf,udyr,Udyr,jax,Jax
+20,reksai,Rek'Sai,50.9,2.26,2.5,rammus,Rammus,taliyah,Taliyah,jax,Jax
+21,jarvaniv,Jarvan IV,49.48,6.8,0.57,udyr,Udyr,ambessa,Ambessa,belveth,Bel'Veth
+22,fiddlesticks,Fiddlesticks,51.28,1.38,0.42,evelynn,Evelynn,poppy,Poppy,rammus,Rammus
+23,ekko,Ekko,50.21,2.85,0.49,evelynn,Evelynn,fizz,Fizz,rammus,Rammus
+24,kayn,Kayn,50.01,3.38,0.41,ivern,Ivern,poppy,Poppy,evelynn,Evelynn
+25,evelynn,Evelynn,50.76,1.59,0.51,elise,Elise,khazix,Kha'Zix,reksai,Rek'Sai
+26,hecarim,Hecarim,49.67,3.62,0.9,gragas,Gragas,ivern,Ivern,rammus,Rammus
+27,nunu,Nunu & Willump,50.45,1.76,1.2,rammus,Rammus,ivern,Ivern,sejuani,Sejuani
+28,taliyah,Taliyah,51.11,0.98,0.28,ekko,Ekko,diana,Diana,elise,Elise
+29,lillia,Lillia,50.13,2.23,0.97,quinn,Quinn,ivern,Ivern,zed,Zed
+30,warwick,Warwick,50.14,2.15,0.65,ivern,Ivern,fizz,Fizz,rammus,Rammus
+31,poppy,Poppy,50.47,1.5,7.13,ekko,Ekko,nunu,Nunu & Willump,nidalee,Nidalee
+32,jayce,Jayce,48.52,6.11,18.37,fizz,Fizz,skarner,Skarner,olaf,Olaf
+33,masteryi,Master Yi,49.15,3.92,1.82,taliyah,Taliyah,zyra,Zyra,shaco,Shaco
+34,graves,Graves,47.89,9.76,7.21,olaf,Olaf,taliyah,Taliyah,reksai,Rek'Sai
+35,udyr,Udyr,50.68,0.78,0.12,nasus,Nasus,sylas,Sylas,nocturne,Nocturne
+36,viego,Viego,48.0,6.88,1.12,ivern,Ivern,taliyah,Taliyah,evelynn,Evelynn
+37,jax,Jax,49.78,1.31,13.56,qiyana,Qiyana,sejuani,Sejuani,ekko,Ekko
+38,kindred,Kindred,49.33,2.29,0.54,gragas,Gragas,zyra,Zyra,evelynn,Evelynn
+39,fizz,Fizz,50.47,0.8,2.76,nasus,Nasus,elise,Elise,xinZhao,Xin Zhao
+40,sejuani,Sejuani,49.61,1.38,0.08,skarner,Skarner,aatrox,Aatrox,belveth,Bel'Veth
+41,qiyana,Qiyana,48.62,2.9,1.84,fizz,Fizz,udyr,Udyr,rammus,Rammus
+42,karthus,Karthus,49.49,1.36,1.78,zed,Zed,taliyah,Taliyah,jax,Jax
+43,zac,Zac,48.48,2.4,0.52,quinn,Quinn,ivern,Ivern,pantheon,Pantheon
+44,diana,Diana,48.61,2.06,2.08,qiyana,Qiyana,udyr,Udyr,hecarim,Hecarim
+45,quinn,Quinn,48.95,1.54,0.38,sejuani,Sejuani,rengar,Rengar,evelynn,Evelynn
+46,aatrox,Aatrox,49.82,0.57,4.04,kindred,Kindred,talon,Talon,ekko,Ekko
+47,pantheon,Pantheon,48.66,1.28,1.34,evelynn,Evelynn,fiddlesticks,Fiddlesticks,nasus,Nasus
+48,locke,Locke,45.77,3.87,69.62,fizz,Fizz,rengar,Rengar,olaf,Olaf
+49,gragas,Gragas,49.26,0.55,0.26,monkeyking,Wukong,nocturne,Nocturne,naafiri,Naafiri
+50,rengar,Rengar,48.47,1.01,0.59,pantheon,Pantheon,sejuani,Sejuani,warwick,Warwick
+51,trundle,Trundle,49.21,0.53,0.11,jayce,Jayce,nunu,Nunu & Willump,khazix,Kha'Zix
+52,amumu,Amumu,48.44,0.8,0.09,kindred,Kindred,lillia,Lillia,nasus,Nasus
+53,shyvana,Shyvana,48.11,0.72,0.22,lillia,Lillia,sylas,Sylas,hecarim,Hecarim
+54,ambessa,Ambessa,47.73,0.85,2.54,nidalee,Nidalee,belveth,Bel'Veth,kayn,Kayn
+55,olaf,Olaf,48.2,0.56,3.55,nidalee,Nidalee,naafiri,Naafiri,zyra,Zyra

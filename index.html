@@ -4071,7 +4071,7 @@
             label: "2페이즈 저격 밴",
             description: "이미 드러난 조합과 남은 라인을 기준으로 카운터/완성 조각을 끊는 단계",
             banIntentWeights: {
-              phaseTarget: 1.15,
+              phaseTarget: 1.45,
               counterBlock: 1.05,
               protectBan: 0.95,
               comboBlock: 0.9,
@@ -4603,7 +4603,11 @@
         baseParts,
       );
       const strategicScore = weightedBanIntentScore(strategicParts, context.strategy?.banIntentWeights || {});
-      const score = baseScore * 0.70 + strategicScore * 0.30;
+      const strategicBlend = context.strategy?.id === "secondPhaseBan" ? 0.38 : 0.30;
+      const secondPhaseTargetBonus = context.strategy?.id === "secondPhaseBan"
+        ? clamp(((strategicParts.phaseTarget || 50) - 78) * 0.11, 0, 2.2)
+        : 0;
+      const score = clamp(baseScore * (1 - strategicBlend) + strategicScore * strategicBlend + secondPhaseTargetBonus, 0, 100);
       const [intentId, intentScore] = Object.entries(strategicParts)
         .filter(([key]) => key in BAN_INTENT_LABELS)
         .map(([key, value]) => [key, Number(value) || 0])
@@ -5969,6 +5973,103 @@
           const soloFlex = teamFlexProfile(flexChamp, flexPlayers[0], "BLUE");
           check("팀 챔프폭 기반 스왑 인정", sharedFlex.options.length >= 2 && sharedFlex.score > soloFlex.score);
         }
+
+        const auditPlayer = (id, riotId, role, pool) => ({
+          id,
+          riotId,
+          role,
+          pool,
+          rank: null,
+          poolScores: Object.fromEntries(pool.map((championId, index) => [championId, Math.max(58, 88 - index * 4)])),
+        });
+        const auditAction = (order, side, type, championId, playerId) => ({
+          order,
+          side,
+          type,
+          championId,
+          playerId: type === "PICK" ? playerId : undefined,
+          isManual: true,
+        });
+        const auditTeams = options => ({
+          our: [
+            auditPlayer("our-top", "TopPool#TEST", "TOP", options.narrowOurTop ? ["jax"] : ["jax", "renekton", "gnar", "ksante", "rumble"]),
+            auditPlayer("our-jg", "Jungle#TEST", "JUNGLE", ["leeSin", "vi", "jarvaniv", "monkeyking", "nocturne"]),
+            auditPlayer("our-mid", "Mid#TEST", "MID", ["orianna", "ahri", "syndra", "taliyah", "galio"]),
+            auditPlayer("our-adc", "Adc#TEST", "ADC", ["ashe", "caitlyn", "ezreal", "kaisa", "jhin"]),
+            auditPlayer("our-sup", "Support#TEST", "SUPPORT", ["nautilus", "rell", "leona", "bard", "braum"]),
+          ],
+          enemy: [
+            auditPlayer("enemy-top", "EnemyTop#TEST", "TOP", ["renekton", "jax", "rumble", "gnar", "ksante"]),
+            auditPlayer("enemy-jg", "EnemyJg#TEST", "JUNGLE", ["vi", "naafiri", "jarvaniv", "nocturne", "leeSin"]),
+            auditPlayer("enemy-mid", "EnemyMid#TEST", "MID", options.narrowEnemyMid ? ["viktor", "yone"] : ["viktor", "yone", "ahri", "sylas", "leblanc", "annie"]),
+            auditPlayer("enemy-adc", "EnemyAdc#TEST", "ADC", ["ziggs", "lucian", "caitlyn", "jhin", "varus"]),
+            auditPlayer("enemy-sup", "EnemySup#TEST", "SUPPORT", ["nautilus", "rell", "bard", "leona", "braum"]),
+          ],
+        });
+        const setPickProtectionAuditState = narrowOurTop => {
+          state = { ...freshState(), currentStep: 10, teams: auditTeams({ narrowOurTop }) };
+          state.actions = [
+            auditAction(0, "BLUE", "BAN", "naafiri"),
+            auditAction(1, "RED", "BAN", "poppy"),
+            auditAction(2, "BLUE", "BAN", "sylas"),
+            auditAction(3, "RED", "BAN", "gnar"),
+            auditAction(4, "BLUE", "BAN", "bard"),
+            auditAction(5, "RED", "BAN", "caitlyn"),
+            auditAction(6, "BLUE", "PICK", "ashe", "our-adc"),
+            auditAction(7, "RED", "PICK", "nautilus", "enemy-sup"),
+            auditAction(8, "RED", "PICK", "renekton", "enemy-top"),
+            auditAction(9, "BLUE", "PICK", "orianna", "our-mid"),
+          ];
+        };
+        setPickProtectionAuditState(false);
+        const widePoolPick = recommendPicks("BLUE", 8).find(item => item.championId === "jax");
+        setPickProtectionAuditState(true);
+        const narrowPoolPick = recommendPicks("BLUE", 8).find(item => item.championId === "jax");
+        diagnostics.poolProtection = {
+          wideScore: widePoolPick ? Math.round(widePoolPick.score) : null,
+          widePickOrder: widePoolPick ? Math.round(widePoolPick.parts.pickOrder) : null,
+          narrowScore: narrowPoolPick ? Math.round(narrowPoolPick.score) : null,
+          narrowPickOrder: narrowPoolPick ? Math.round(narrowPoolPick.parts.pickOrder) : null,
+        };
+        check(
+          "챔프폭 얕은 라인 픽 보호",
+          narrowPoolPick && widePoolPick && narrowPoolPick.parts.pickOrder > widePoolPick.parts.pickOrder + 12,
+          JSON.stringify(diagnostics.poolProtection),
+        );
+
+        const setSecondPhaseBanAuditState = narrowEnemyMid => {
+          state = { ...freshState(), currentStep: 13, teams: auditTeams({ narrowEnemyMid }) };
+          state.actions = [
+            auditAction(0, "BLUE", "BAN", "naafiri"),
+            auditAction(1, "RED", "BAN", "poppy"),
+            auditAction(2, "BLUE", "BAN", "sylas"),
+            auditAction(3, "RED", "BAN", "gnar"),
+            auditAction(4, "BLUE", "BAN", "bard"),
+            auditAction(5, "RED", "BAN", "caitlyn"),
+            auditAction(6, "BLUE", "PICK", "ashe", "our-adc"),
+            auditAction(7, "RED", "PICK", "nautilus", "enemy-sup"),
+            auditAction(8, "RED", "PICK", "ziggs", "enemy-adc"),
+            auditAction(9, "BLUE", "PICK", "orianna", "our-mid"),
+            auditAction(10, "BLUE", "PICK", "vi", "our-jg"),
+            auditAction(11, "RED", "PICK", "jarvaniv", "enemy-jg"),
+            auditAction(12, "RED", "BAN", "jax"),
+          ];
+        };
+        setSecondPhaseBanAuditState(false);
+        const wideMidBan = recommendBans("BLUE", "RED", 8).find(item => item.championId === "viktor");
+        setSecondPhaseBanAuditState(true);
+        const narrowMidBan = recommendBans("BLUE", "RED", 8).find(item => item.championId === "viktor");
+        diagnostics.poolTargetBan = {
+          wideScore: wideMidBan ? Math.round(wideMidBan.score) : null,
+          widePhaseTarget: wideMidBan ? Math.round(wideMidBan.parts.phaseTarget) : null,
+          narrowScore: narrowMidBan ? Math.round(narrowMidBan.score) : null,
+          narrowPhaseTarget: narrowMidBan ? Math.round(narrowMidBan.parts.phaseTarget) : null,
+        };
+        check(
+          "상대 얕은 챔프폭 2페이즈 저격밴",
+          narrowMidBan && wideMidBan && narrowMidBan.parts.phaseTarget > wideMidBan.parts.phaseTarget + 8,
+          JSON.stringify(diagnostics.poolTargetBan),
+        );
 
         state.actions = [{
           order: 8,

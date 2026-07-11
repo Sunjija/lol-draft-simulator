@@ -4290,7 +4290,6 @@
           const strategicScore = weightedIntentScore(intentScores, intentWeights);
           const intent = primaryIntent(intentScores, intentWeights, !hasPoolEvidence);
           let score = weightedScore(parts, weights) * 0.68 + strategicScore * 0.32;
-          if (!hasPoolEvidence) score = Math.min(score * 0.82, 72);
           score *= roleBlindPriorityMultiplier(p.role, enemyPicks.length);
           // 미래 수읽기는 기존 숙련도/메타/라인전 평가를 뒤집는 주 점수가 아니다.
           // 상대의 유력 응수와 2페이즈 밴을 버티는 정도에 따라 최대 약 ±4점만 보정한다.
@@ -4378,7 +4377,7 @@
       const protectBan = protectBanScore(champ, ourPicks);
       const counterBlock = counterBlockScore(champ, targetRole, side);
       const comboBlock = comboBlockScore(champ, targetRole, targetKey, targetSide);
-      const phaseTarget = phaseTargetBanScore(targetPlayer, targetSide);
+      const phaseTarget = phaseTargetBanScore(targetPlayer, targetSide, champ.id);
       return {
         metaBan: baseParts.laneMeta,
         masteryBan: Math.max(baseParts.enemyComfort || 0, baseParts.lowTierMastery || 0),
@@ -4436,14 +4435,20 @@
       return clamp(score, 35, 95);
     }
 
-    function phaseTargetBanScore(targetPlayer, targetSide) {
+    function phaseTargetBanScore(targetPlayer, targetSide, bannedChampionId = null) {
       if (!targetPlayer) return 50;
       const totalPicks = getActions("BLUE", "PICK").length + getActions("RED", "PICK").length;
       const targetOpenPlayers = openPlayersForSide(targetSide);
       if (totalPicks < 6) return 50;
       const remainingRoleBonus = targetOpenPlayers.length <= 2 ? 18 : targetOpenPlayers.length <= 3 ? 10 : 4;
       const roleBonus = targetPlayer.role === "TOP" || targetPlayer.role === "MID" ? 7 : targetPlayer.role === "ADC" ? 5 : 3;
-      return clamp(58 + remainingRoleBonus + roleBonus, 45, 90);
+      const unavailable = getUnavailableChampions();
+      if (bannedChampionId) unavailable.add(bannedChampionId);
+      const risk = poolRiskScore(targetPlayer, unavailable, {
+        futureBans: futureSecondPhaseEnemyBanCount(targetSide),
+        roleBias: true,
+      });
+      return clamp(44 + remainingRoleBonus + roleBonus + (risk - 50) * 0.55, 45, 94);
     }
 
     function weightedBanIntentScore(parts, weights) {
@@ -5129,11 +5134,62 @@
       return teamFlexProfile(champ, player, side).score;
     }
 
-    function availablePlayerPoolCount(player, unavailable = getUnavailableChampions()) {
+    function availablePlayerPool(player, unavailable = getUnavailableChampions()) {
       return unique(player.pool || []).filter(championId => {
         if (unavailable.has(championId)) return false;
         return getChampForRole(championId, player.role).roles.includes(player.role);
-      }).length;
+      });
+    }
+
+    function availablePlayerPoolCount(player, unavailable = getUnavailableChampions()) {
+      return availablePlayerPool(player, unavailable).length;
+    }
+
+    function playerPoolDepthProfile(player, unavailable = getUnavailableChampions()) {
+      const remainingIds = availablePlayerPool(player, unavailable);
+      const comfortRows = remainingIds
+        .map(championId => ({ championId, comfort: comfortScore(player, championId) }))
+        .filter(row => Number.isFinite(row.comfort));
+      const strongRemaining = comfortRows.filter(row => row.comfort >= 72).length;
+      const playableRemaining = comfortRows.filter(row => row.comfort >= 58).length;
+      const averageComfort = comfortRows.length
+        ? comfortRows.reduce((sum, row) => sum + row.comfort, 0) / comfortRows.length
+        : 0;
+      return {
+        remaining: remainingIds.length,
+        strongRemaining,
+        playableRemaining,
+        averageComfort,
+        remainingIds,
+      };
+    }
+
+    function poolRiskScore(player, unavailable = getUnavailableChampions(), options = {}) {
+      const profile = playerPoolDepthProfile(player, unavailable);
+      const futureBans = Number(options.futureBans) || 0;
+      let score = profile.remaining <= 0 ? 98
+        : profile.remaining === 1 ? 92
+          : profile.remaining === 2 ? 80
+            : profile.remaining === 3 ? 66
+              : profile.remaining === 4 ? 54
+                : 42;
+
+      if (profile.strongRemaining <= 0) score += 14;
+      else if (profile.strongRemaining === 1) score += 8;
+      else if (profile.strongRemaining === 2) score += 3;
+      else if (profile.strongRemaining >= 4) score -= 5;
+
+      if (profile.playableRemaining <= 1) score += 8;
+      if (futureBans && profile.remaining <= futureBans + 1) score += 12;
+      else if (futureBans && profile.remaining <= futureBans + 2) score += 7;
+      if (profile.averageComfort && profile.averageComfort < 62) score += 5;
+      if (profile.averageComfort >= 76) score -= 4;
+
+      if (options.roleBias !== false) {
+        if (["TOP", "MID"].includes(player.role)) score += 4;
+        else if (player.role === "ADC") score += 2;
+      }
+      return clamp(score, 25, 98);
     }
 
     function futureSecondPhaseEnemyBanCount(side) {
@@ -5150,23 +5206,27 @@
       if (!futureBans) return 50;
 
       const unavailable = getUnavailableChampions();
-      const ownChoices = availablePlayerPoolCount(player, unavailable);
-      const urgency = ownChoices <= 1 ? 90 : ownChoices === 2 ? 80 : ownChoices === 3 ? 68 : ownChoices === 4 ? 56 : 46;
+      const ownProfile = playerPoolDepthProfile(player, unavailable);
+      const urgency = poolRiskScore(player, unavailable, { futureBans, roleBias: true });
       const remainingRisks = openPlayersForSide(side)
         .filter(candidate => candidate.id !== player.id && (candidate.pool || []).length)
         .map(candidate => {
-          const count = availablePlayerPoolCount(candidate, new Set([...unavailable, champ.id]));
-          return count <= 1 ? 90 : count === 2 ? 76 : count === 3 ? 62 : count === 4 ? 52 : 44;
+          return poolRiskScore(candidate, new Set([...unavailable, champ.id]), {
+            futureBans,
+            roleBias: true,
+          });
         });
       const residualRisk = remainingRisks.length
         ? remainingRisks.reduce((sum, value) => sum + value, 0) / remainingRisks.length
         : 50;
 
-      let score = 50 + (urgency - 50) * 0.38 - (residualRisk - 50) * 0.16;
+      let score = 50 + (urgency - 50) * 0.42 - (residualRisk - 50) * 0.14;
+      if (ownProfile.strongRemaining <= 1) score += 7;
+      if (ownProfile.remaining <= futureBans + 1) score += 8;
       const enemyRoleRevealed = getActions(otherSide(side), "PICK")
         .some(action => roleAssignmentLikelihood(action, player.role) >= 0.6);
       const isCounterSensitiveSolo = ["TOP", "MID"].includes(player.role);
-      if (isCounterSensitiveSolo && !enemyRoleRevealed && ownChoices >= 4 && flexProfile.options.length < 2) {
+      if (isCounterSensitiveSolo && !enemyRoleRevealed && ownProfile.remaining >= 4 && flexProfile.options.length < 2) {
         score -= player.role === "TOP" ? 12 : 7;
       }
       if (flexProfile.options.length >= 2) score += 7;

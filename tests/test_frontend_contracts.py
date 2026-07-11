@@ -32,6 +32,13 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertNotIn("const peak", body)
         self.assertNotIn("score +=", body)
 
+    def test_emergency_candidate_discount_is_applied_once(self):
+        start = INDEX.index("function recommendPicks")
+        end = INDEX.index("function uniqueChampionCandidates", start)
+        body = INDEX[start:end]
+        self.assertNotIn("score = Math.min(score * 0.82, 72)", body)
+        self.assertIn("score = calibratedPickScore(score, parts, p.role, hasPoolEvidence)", body)
+
     def test_browser_scenario_suite_is_present(self):
         self.assertIn("function runDraftSelfTests()", INDEX)
         self.assertIn("확정된 상대 서폿 라인 재밴 금지", INDEX)
@@ -68,6 +75,27 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("function plausibleRolesForPick", INDEX)
         self.assertIn("function roleAssignmentLikelihood", INDEX)
         self.assertIn("direct.score * enemySameRole.confidence", INDEX)
+
+    def test_pool_depth_risk_protects_shallow_champion_pools(self):
+        for function_name in (
+            "availablePlayerPool",
+            "playerPoolDepthProfile",
+            "poolRiskScore",
+        ):
+            self.assertIn(f"function {function_name}", INDEX)
+        start = INDEX.index("function pickOrderProtectionScore")
+        end = INDEX.index("function predictedEnemyResponses", start)
+        body = INDEX[start:end]
+        self.assertIn("ownProfile.strongRemaining <= 1", body)
+        self.assertIn("ownProfile.remaining <= futureBans + 1", body)
+
+    def test_second_phase_bans_use_pool_depth_after_candidate_ban(self):
+        start = INDEX.index("function phaseTargetBanScore")
+        end = INDEX.index("function weightedBanIntentScore", start)
+        body = INDEX[start:end]
+        self.assertIn("bannedChampionId", body)
+        self.assertIn("unavailable.add(bannedChampionId)", body)
+        self.assertIn("poolRiskScore(targetPlayer", body)
 
     def test_side_specific_late_pick_strategies_are_distinct(self):
         for strategy_id in ("redFourthFlex", "blueCompletionDefense", "redFiveCounter"):

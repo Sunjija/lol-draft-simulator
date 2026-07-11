@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
@@ -1616,9 +1616,9 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="data/opgg_top_lane_matchups_compact.js"></script>
-  <script src="data/opgg_mid_lane_matchups_compact.js"></script>
-  <script src="data/opgg_draft_context_compact.js"></script>
+  <script src="data/league_top_lane_matchups_compact.js"></script>
+  <script src="data/league_mid_lane_matchups_compact.js"></script>
+  <script src="data/league_draft_context_compact.js"></script>
   <script src="data/gol_msi_2026_meta_compact.js"></script>
   <script>
     const ROLES = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
@@ -1924,7 +1924,7 @@
       c("velkoz", "벨코즈", ["SUPPORT"], "B", 58, 68, 70, 73, 66, ["orianna", "azir"], ["yone", "akali"], ["poke", "execute"]),
     ];
 
-    // 2026-07-08 기준 사용자가 제공한 OP.GG 전라인 실데이터 + 2026 MSI 팀게임 데이터를 반영해
+    // 2026-07-08 기준 사용자가 제공한 롤 데이터 전라인 실데이터 + 2026 MSI 팀게임 데이터를 반영해
     // 재계산한 스냅샷. 이후 사용자가 통계표/OCR로 특정 챔피언을 다시 가져오면 그 값(더 최신
     // updatedAt)이 여기 스냅샷을 자연스럽게 덮어쓴다.
     const duoSynergyData = [
@@ -2035,17 +2035,17 @@
     function c(id, name, roles, tier, meta, lane, teamfight, blind, scaling, counterInto, badInto, tags) {
       return {
         id, name, roles, tier, meta, lane, teamfight, blind, scaling, counterInto, badInto, tags,
-        sourceName: "OP.GG 전라인 + 2026 MSI",
+        sourceName: "롤 데이터 + 2026 MSI",
         updatedAt: "2026-07-08T00:00:00.000Z",
       };
     }
 
     const laneKillMatchupMaps = {
-      TOP: buildLaneKillMatchupMap(window.OPGG_TOP_LANE_MATCHUPS),
-      MID: buildLaneKillMatchupMap(window.OPGG_MID_LANE_MATCHUPS),
+      TOP: buildLaneKillMatchupMap(window.LEAGUE_TOP_LANE_MATCHUPS),
+      MID: buildLaneKillMatchupMap(window.LEAGUE_MID_LANE_MATCHUPS),
     };
 
-    const opggDraftContext = window.OPGG_DRAFT_CONTEXT || { roleStats: {}, synergies: {} };
+    const leagueDraftContext = window.LEAGUE_DRAFT_CONTEXT || { roleStats: {}, synergies: {} };
     const golMsiContext = window.GOL_MSI_2026_META || { metadata: {}, champions: [] };
     const golMsiMetaMap = new Map((golMsiContext.champions || []).map(row => [row[0], {
       championId: row[0],
@@ -2057,9 +2057,9 @@
       avgRoundPicked: Number(row[6]) || 3,
       roles: row[7] || {},
     }]));
-    const opggRoleStatsMaps = Object.fromEntries(ROLES.map(role => [
+    const leagueRoleStatsMaps = Object.fromEntries(ROLES.map(role => [
       role,
-      new Map((opggDraftContext.roleStats?.[role] || []).map(row => [row[0], {
+      new Map((leagueDraftContext.roleStats?.[role] || []).map(row => [row[0], {
         championId: row[0],
         rank: Number(row[1]) || 0,
         total: Number(row[2]) || 1,
@@ -2069,9 +2069,9 @@
         counters: row[6] || [],
       }])),
     ]));
-    const opggRoleCounterIntoMaps = Object.fromEntries(ROLES.map(role => {
+    const leagueRoleCounterIntoMaps = Object.fromEntries(ROLES.map(role => {
       const reverse = new Map();
-      opggRoleStatsMaps[role].forEach(stat => {
+      leagueRoleStatsMaps[role].forEach(stat => {
         stat.counters.forEach(counterId => {
           if (!reverse.has(counterId)) reverse.set(counterId, []);
           reverse.get(counterId).push(stat.championId);
@@ -2085,10 +2085,10 @@
       return clamp(Math.ceil((stat.rank / stat.total) * 5), 1, 5);
     }
 
-    function opggRoleTiersForChampion(championId) {
+    function leagueRoleTiersForChampion(championId) {
       const tiers = {};
       ROLES.forEach(role => {
-        const stat = opggRoleStatsMaps[role]?.get(championId);
+        const stat = leagueRoleStatsMaps[role]?.get(championId);
         if (stat) tiers[role] = roleTierNumber(stat);
       });
       const pro = golMsiMetaMap.get(championId);
@@ -2099,12 +2099,12 @@
       return tiers;
     }
 
-    function opggEligibleRolesForChampion(championId) {
-      const tiers = opggRoleTiersForChampion(championId);
+    function leagueEligibleRolesForChampion(championId) {
+      const tiers = leagueRoleTiersForChampion(championId);
       return ROLES.filter(role => Number(tiers[role]) <= 3);
     }
 
-    function opggRoleMetaScore(stat) {
+    function leagueRoleMetaScore(stat) {
       if (!stat) return 50;
       const rankPercentile = stat.rank / Math.max(1, stat.total);
       return clamp(
@@ -2146,14 +2146,14 @@
         score: Number(row[2]) || 50,
         winRate: Number(row[3]) || 50,
         matches: Number(row[4]) || 0,
-        source: "OP.GG 16.13",
+        source: "롤 데이터 16.13",
       }]));
     }
 
     const empiricalSynergyMaps = {
-      jungleMid: buildEmpiricalSynergyMap(opggDraftContext.synergies?.jungleMid),
-      topJungle: buildEmpiricalSynergyMap(opggDraftContext.synergies?.topJungle),
-      botDuo: buildEmpiricalSynergyMap(opggDraftContext.synergies?.botDuo),
+      jungleMid: buildEmpiricalSynergyMap(leagueDraftContext.synergies?.jungleMid),
+      topJungle: buildEmpiricalSynergyMap(leagueDraftContext.synergies?.topJungle),
+      botDuo: buildEmpiricalSynergyMap(leagueDraftContext.synergies?.botDuo),
     };
 
     function restrainedCuratedSynergy(score) {
@@ -3125,6 +3125,8 @@
         "immobilePunish",
         "deny",
         "swap",
+        "pickOrder",
+        "foresight",
         "rankEdge",
       ]);
       const selected = candidateKeys
@@ -3158,6 +3160,8 @@
         interaction: 4,
         deny: 3,
         swap: 2,
+        pickOrder: 5,
+        foresight: 4,
         rankEdge: 1,
       };
       return base[key] || 0;
@@ -3748,12 +3752,12 @@
 
     function getChampForRole(id, role) {
       const champ = getChamp(id);
-      const stat = opggRoleStatsMaps[role]?.get(id);
+      const stat = leagueRoleStatsMaps[role]?.get(id);
       const pro = golMsiMetaMap.get(id);
       const proRoleGames = Number(pro?.roles?.[role] || 0);
       if (!stat && !proRoleGames) return champ;
-      const opggCounterInto = stat ? (opggRoleCounterIntoMaps[role]?.get(id) || []) : [];
-      const roleMeta = stat ? opggRoleMetaScore(stat) : champ.meta;
+      const leagueCounterInto = stat ? (leagueRoleCounterIntoMaps[role]?.get(id) || []) : [];
+      const roleMeta = stat ? leagueRoleMetaScore(stat) : champ.meta;
       const soloMeta = champ.meta * 0.65 + roleMeta * 0.35;
       const meta = proRoleGames
         ? soloMeta * 0.70 + golMsiMetaScore(pro) * 0.30
@@ -3766,12 +3770,12 @@
         meta: Math.round(meta),
         blind: Math.round(blind),
         lane: Math.round(champ.lane * 0.78 + roleMeta * 0.22),
-        opggRoleStat: stat,
+        leagueRoleStat: stat,
         golMsiStat: proRoleGames ? pro : null,
-        opggBadInto: stat?.counters || [],
-        opggCounterInto,
+        leagueBadInto: stat?.counters || [],
+        leagueCounterInto,
         badInto: unique([...(champ.badInto || []), ...(stat?.counters || [])]),
-        counterInto: unique([...(champ.counterInto || []), ...opggCounterInto]),
+        counterInto: unique([...(champ.counterInto || []), ...leagueCounterInto]),
       };
     }
 
@@ -3782,10 +3786,10 @@
 
     function baseChampion(id) {
       const base = { ...(championById[id] || fallbackChampion(id)) };
-      const roleTiers = opggRoleTiersForChampion(id);
+      const roleTiers = leagueRoleTiersForChampion(id);
       return {
         ...base,
-        roles: unique([...(base.roles || []), ...opggEligibleRolesForChampion(id)]),
+        roles: unique([...(base.roles || []), ...leagueEligibleRolesForChampion(id)]),
         roleTiers,
       };
     }
@@ -3971,6 +3975,36 @@
     function phaseAdjustedPickWeights(weights, side) {
       const adjusted = { ...weights };
       const pickCount = getActions(side, "PICK").length;
+      const step = nextStepForSide(side) || getCurrentStep();
+      if (side === "RED" && step?.index === 16 && pickCount === 3) {
+        adjusted.comfort += 2;
+        adjusted.meta += 1;
+        adjusted.comp += 2;
+        adjusted.matchup += 2;
+        adjusted.blind += 4;
+        adjusted.swap += 7;
+        adjusted.interaction += 1;
+        return adjusted;
+      }
+      if (side === "BLUE" && [17, 18].includes(step?.index) && pickCount >= 3) {
+        adjusted.comfort += 2;
+        adjusted.comp += 6;
+        adjusted.matchup += 2;
+        adjusted.botLane += 2;
+        adjusted.blind += 4;
+        adjusted.swap += 4;
+        adjusted.interaction += 3;
+        return adjusted;
+      }
+      if (side === "RED" && step?.index === 19 && pickCount === 4) {
+        adjusted.comp += 3;
+        adjusted.matchup += 9;
+        adjusted.botLane += 4;
+        adjusted.interaction += 3;
+        adjusted.blind = 1;
+        adjusted.swap = Math.max(1, adjusted.swap - 2);
+        return adjusted;
+      }
       if (pickCount <= 1) {
         adjusted.comfort += 1;
         adjusted.meta += 3;
@@ -4007,6 +4041,8 @@
       deny: "견제",
       lanePressure: "라인 압박",
       teamfight: "한타",
+      flex: "스왑 은닉",
+      counterShield: "R5 방어",
       emergency: "비상",
     };
 
@@ -4077,12 +4113,28 @@
           intentWeights: { counter: 0.95, lanePressure: 0.85, synergy: 0.75, blind: 0.5, deny: 0.55, teamfight: 0.45, protect: 0.35 },
         };
       }
-      if (pickCount >= 4 || step.index >= 18) {
+      if (side === "RED" && step.index === 16 && pickCount === 3) {
         return {
-          id: side === "RED" ? "redFiveCounter" : "lastPickCounter",
-          label: side === "RED" ? "레드 5픽 카운터" : "마지막 픽 카운터",
+          id: "redFourthFlex",
+          label: "레드 4픽 스왑 은닉",
+          description: "실제 팀 챔프폭의 멀티 포지션 카드로 라인을 숨기고 레드 5픽 카운터를 보존하는 단계",
+          intentWeights: { flex: 1.35, blind: 0.8, synergy: 0.75, counterShield: 0.65, lanePressure: 0.55, teamfight: 0.5, counter: 0.35, protect: 0.45, deny: 0.25 },
+        };
+      }
+      if (side === "BLUE" && [17, 18].includes(step.index) && pickCount >= 3) {
+        return {
+          id: "blueCompletionDefense",
+          label: "블루 4-5 완성/방어",
+          description: "조합을 완성하면서 레드 5픽 카운터의 공격 지점을 숨기거나 견디는 단계",
+          intentWeights: { counterShield: 1.25, synergy: 1.0, protect: 0.9, teamfight: 0.85, flex: 0.8, blind: 0.7, lanePressure: 0.65, counter: 0.5, deny: 0.4 },
+        };
+      }
+      if (side === "RED" && step.index === 19 && pickCount === 4) {
+        return {
+          id: "redFiveCounter",
+          label: "레드 5픽 카운터",
           description: "상대 라인/조합 정보가 충분한 상태에서 상성과 조합 완성도를 극대화하는 단계",
-          intentWeights: { counter: 1.25, lanePressure: 1.1, synergy: 0.8, protect: 0.7, teamfight: 0.7, blind: 0.1, deny: 0.3 },
+          intentWeights: { counter: 1.35, lanePressure: 1.15, synergy: 0.75, protect: 0.6, teamfight: 0.65, counterShield: 0.2, flex: 0.1, blind: 0.05, deny: 0.25 },
         };
       }
       if (totalPicks >= 6 || enemyPickCount >= 3) {
@@ -4139,6 +4191,8 @@
         deny: clamp((parts.deny || 50) * 0.5 + (parts.meta || 50) * 0.2 + (parts.comfort || 0) * 0.15 + (parts.blind || 50) * 0.15, 0, 100),
         lanePressure: clamp(lanePressureSource * 0.50 + (parts.comfort || 0) * 0.20 + (parts.meta || 50) * 0.14 + (parts.firstPick || 50) * 0.10 + (parts.rankEdge || 50) * 0.03 + (parts.deny || 50) * 0.03, 0, 100),
         teamfight: clamp((parts.comp || 50) * 0.34 + (parts.interaction || 50) * 0.22 + (parts.meta || 50) * 0.18 + roleSynergy * 0.14 + (parts.comfort || 0) * 0.12, 0, 100),
+        flex: clamp((parts.swap || 50) * 0.42 + (parts.blind || 50) * 0.20 + (parts.comfort || 0) * 0.16 + (parts.meta || 50) * 0.10 + (parts.foresight || 50) * 0.12, 0, 100),
+        counterShield: clamp((parts.foresight || 50) * 0.35 + (parts.blind || 50) * 0.24 + (parts.comp || 50) * 0.19 + (parts.comfort || 0) * 0.12 + lanePressureSource * 0.10, 0, 100),
         emergency: hasPoolEvidence
           ? 35
           : clamp((parts.meta || 50) * 0.35 + (parts.blind || 50) * 0.25 + (parts.comp || 50) * 0.25 + lanePressureSource * 0.15, 0, 70),
@@ -4221,11 +4275,16 @@
           const interaction = interactionScore(champ, teamPicks, enemyPickChamps);
           const interactionPart = 50 + interaction.total;
           const duo = duoSynergyScore(champ.id, p, teamKey, side);
-          const swap = swapValueScore(champ, p);
+          const flexProfile = teamFlexProfile(champ, p, side);
+          const swap = flexProfile.score;
+          const pickOrder = pickOrderProtectionScore(champ, p, side, flexProfile);
           const immobilePunish = immobilePunishScore(champ, enemyPickChamps);
           const jungleMid = temperSynergyByComfort(jungleMidSynergyScore(champ, p, teamKey, side), comfort);
           const topJungle = temperSynergyByComfort(topJungleSynergyScore(champ, p, teamKey, side), comfort);
-          const parts = { comfort, meta, comp, matchup, deny, blind, firstPick, fearless, interaction: interactionPart, rankEdge, duo: duo.score, swap, immobilePunish, botLane, jungleMid, topJungle };
+          const foresight = hasPoolEvidence
+            ? shallowDraftForesightScore(champ, p, side, flexProfile, pickOrder)
+            : 50;
+          const parts = { comfort, meta, comp, matchup, deny, blind, firstPick, fearless, interaction: interactionPart, rankEdge, duo: duo.score, swap, pickOrder, foresight, immobilePunish, botLane, jungleMid, topJungle };
           const intentWeights = normalizedIntentWeights(strategy.intentWeights, p.role);
           const intentScores = pickIntentScores(parts, p.role, hasPoolEvidence);
           const strategicScore = weightedIntentScore(intentScores, intentWeights);
@@ -4233,6 +4292,9 @@
           let score = weightedScore(parts, weights) * 0.68 + strategicScore * 0.32;
           if (!hasPoolEvidence) score = Math.min(score * 0.82, 72);
           score *= roleBlindPriorityMultiplier(p.role, enemyPicks.length);
+          // 미래 수읽기는 기존 숙련도/메타/라인전 평가를 뒤집는 주 점수가 아니다.
+          // 상대의 유력 응수와 2페이즈 밴을 버티는 정도에 따라 최대 약 ±4점만 보정한다.
+          score += clamp((foresight - 50) * 0.10, -4, 4);
           score = calibratedPickScore(score, parts, p.role, hasPoolEvidence);
 
           candidates.push({
@@ -4251,7 +4313,7 @@
             interactionDetails: interaction.details,
             matchupDetail: laneInfo.detail,
             rankContext: { self: p.rank, enemy: enemyCounterpart?.rank },
-            reason: reasonForPick(champ, p, parts, interaction.details, { self: p.rank, enemy: enemyCounterpart?.rank }, duo.detail, laneInfo.detail, { strategy, intent, strategicScore, isEmergency: !hasPoolEvidence }),
+            reason: reasonForPick(champ, p, parts, interaction.details, { self: p.rank, enemy: enemyCounterpart?.rank }, duo.detail, laneInfo.detail, { strategy, intent, strategicScore, isEmergency: !hasPoolEvidence, flexProfile }),
           });
         });
       });
@@ -4675,30 +4737,65 @@
       return clamp(score, 0, 100);
     }
 
+    function plausibleRolesForPick(action) {
+      const champ = getChamp(action.championId);
+      const assignedRole = findPlayer(action.playerId)?.role;
+      const eligibleRoles = swapEligibleRoles(champ);
+      if (eligibleRoles.length < 2) return assignedRole ? [assignedRole] : champ.roles;
+
+      const team = state.teams[sideToTeamKey(action.side)] || [];
+      const evidencedRoles = eligibleRoles.filter(role => {
+        const player = team.find(item => item.role === role);
+        return player && hasPlayerChampionEvidence(player, champ.id);
+      });
+      if (assignedRole && !evidencedRoles.includes(assignedRole)) evidencedRoles.push(assignedRole);
+      return evidencedRoles.length ? unique(evidencedRoles) : assignedRole ? [assignedRole] : eligibleRoles;
+    }
+
+    function roleAssignmentLikelihood(action, role) {
+      const roles = plausibleRolesForPick(action);
+      if (!roles.includes(role)) return 0;
+      if (roles.length === 1) return 1;
+      const assignedRole = findPlayer(action.playerId)?.role;
+      if (!assignedRole || !roles.includes(assignedRole)) return 1 / roles.length;
+      return role === assignedRole ? 0.60 : 0.40 / Math.max(1, roles.length - 1);
+    }
+
     function laneMatchupInfo(champ, role, enemyPicks) {
       const enemySameRole = enemyPicks
-        .map(a => ({ action: a, champ: getChamp(a.championId), player: findPlayer(a.playerId) }))
-        .find(x => x.player ? x.player.role === role : x.champ.roles.includes(role));
+        .map(action => ({ action, champ: getChamp(action.championId), confidence: roleAssignmentLikelihood(action, role) }))
+        .filter(item => item.confidence > 0)
+        .sort((a, b) => b.confidence - a.confidence)[0];
       if (!enemySameRole) return { score: blindLanePriorityScore(champ, role), detail: null };
 
-      const laneKillDetail = laneKillMatchupDetail(champ, role, enemySameRole.champ);
+      const direct = directLaneMatchupInfo(champ, role, enemySameRole.champ);
+      if (enemySameRole.confidence >= 0.99) return direct;
+      const blind = blindLanePriorityScore(champ, role);
+      return {
+        score: clamp(direct.score * enemySameRole.confidence + blind * (1 - enemySameRole.confidence), 0, 100),
+        detail: direct.detail ? { ...direct.detail, assignmentConfidence: enemySameRole.confidence } : null,
+      };
+    }
+
+    function directLaneMatchupInfo(champ, role, enemyChamp) {
+      const laneKillDetail = laneKillMatchupDetail(champ, role, enemyChamp);
       if (laneKillDetail) return { score: laneKillDetail.score, detail: laneKillDetail };
 
-      if ((champ.opggCounterInto || []).includes(enemySameRole.champ.id)) {
+      if ((champ.leagueCounterInto || []).includes(enemyChamp.id)) {
         return {
           score: 86,
-          detail: { source: "opggRoleCounter", role, favored: true, enemyChampionName: enemySameRole.champ.name },
+          detail: { source: "leagueRoleCounter", role, favored: true, enemyChampionName: enemyChamp.name },
         };
       }
-      if ((champ.opggBadInto || []).includes(enemySameRole.champ.id)) {
+      if ((champ.leagueBadInto || []).includes(enemyChamp.id)) {
         return {
           score: 37,
-          detail: { source: "opggRoleCounter", role, favored: false, enemyChampionName: enemySameRole.champ.name },
+          detail: { source: "leagueRoleCounter", role, favored: false, enemyChampionName: enemyChamp.name },
         };
       }
 
-      if (champ.counterInto.includes(enemySameRole.champ.id)) return { score: 92, detail: null };
-      if (champ.badInto.includes(enemySameRole.champ.id)) return { score: 35, detail: null };
+      if (champ.counterInto.includes(enemyChamp.id)) return { score: 92, detail: null };
+      if (champ.badInto.includes(enemyChamp.id)) return { score: 35, detail: null };
       return { score: 63 + (champ.lane - 70) * 0.35, detail: null };
     }
 
@@ -4740,7 +4837,7 @@
         maxScore,
       );
       return {
-        source: "opggLaneKill",
+        source: "leagueLaneKill",
         role,
         enemyChampionId: enemyChamp.id,
         enemyChampionName: enemyChamp.name,
@@ -5005,17 +5102,158 @@
       return `상대 저기동 조합을 ${joined}${withRoParticle(mechanisms[mechanisms.length - 1])} 강하게 응징`;
     }
 
-    function swapValueScore(champ, player) {
-      if (!hasPlayerChampionEvidence(player, champ.id)) return 45;
+    function teamFlexProfile(champ, player, side) {
+      if (!hasPlayerChampionEvidence(player, champ.id)) return { score: 45, options: [] };
       const eligibleRoles = swapEligibleRoles(champ);
-      if (!eligibleRoles.includes(player.role)) return 45;
-      if (eligibleRoles.length < 2) return 45;
-      const extraRoles = eligibleRoles.filter(role => role !== player.role).length;
-      return clamp(64 + extraRoles * 7 + scoreTier(champ.tier) * 1.5 + champ.blind * 0.04, 0, 90);
+      if (!eligibleRoles.includes(player.role) || eligibleRoles.length < 2) {
+        return { score: 45, options: [{ playerId: player.id, role: player.role, comfort: comfortScore(player, champ.id) }] };
+      }
+
+      const options = openPlayersForSide(side)
+        .filter(candidate => eligibleRoles.includes(candidate.role) && hasPlayerChampionEvidence(candidate, champ.id))
+        .map(candidate => ({
+          playerId: candidate.id,
+          role: candidate.role,
+          comfort: comfortScore(candidate, champ.id),
+        }))
+        .filter(option => option.comfort >= 45)
+        .sort((a, b) => b.comfort - a.comfort);
+      if (options.length < 2) return { score: 48, options };
+
+      const weakestOption = Math.min(...options.map(option => option.comfort));
+      const score = clamp(64 + (options.length - 1) * 9 + (weakestOption - 50) * 0.12, 55, 88);
+      return { score, options };
+    }
+
+    function swapValueScore(champ, player, side) {
+      return teamFlexProfile(champ, player, side).score;
+    }
+
+    function availablePlayerPoolCount(player, unavailable = getUnavailableChampions()) {
+      return unique(player.pool || []).filter(championId => {
+        if (unavailable.has(championId)) return false;
+        return getChampForRole(championId, player.role).roles.includes(player.role);
+      }).length;
+    }
+
+    function futureSecondPhaseEnemyBanCount(side) {
+      const step = nextStepForSide(side);
+      if (!step || step.type !== "PICK") return 0;
+      return draftSteps
+        .slice(step.index + 1)
+        .filter(item => item.index >= 12 && item.type === "BAN" && item.side === otherSide(side))
+        .length;
+    }
+
+    function pickOrderProtectionScore(champ, player, side, flexProfile) {
+      const futureBans = futureSecondPhaseEnemyBanCount(side);
+      if (!futureBans) return 50;
+
+      const unavailable = getUnavailableChampions();
+      const ownChoices = availablePlayerPoolCount(player, unavailable);
+      const urgency = ownChoices <= 1 ? 90 : ownChoices === 2 ? 80 : ownChoices === 3 ? 68 : ownChoices === 4 ? 56 : 46;
+      const remainingRisks = openPlayersForSide(side)
+        .filter(candidate => candidate.id !== player.id && (candidate.pool || []).length)
+        .map(candidate => {
+          const count = availablePlayerPoolCount(candidate, new Set([...unavailable, champ.id]));
+          return count <= 1 ? 90 : count === 2 ? 76 : count === 3 ? 62 : count === 4 ? 52 : 44;
+        });
+      const residualRisk = remainingRisks.length
+        ? remainingRisks.reduce((sum, value) => sum + value, 0) / remainingRisks.length
+        : 50;
+
+      let score = 50 + (urgency - 50) * 0.38 - (residualRisk - 50) * 0.16;
+      const enemyRoleRevealed = getActions(otherSide(side), "PICK")
+        .some(action => roleAssignmentLikelihood(action, player.role) >= 0.6);
+      const isCounterSensitiveSolo = ["TOP", "MID"].includes(player.role);
+      if (isCounterSensitiveSolo && !enemyRoleRevealed && ownChoices >= 4 && flexProfile.options.length < 2) {
+        score -= player.role === "TOP" ? 12 : 7;
+      }
+      if (flexProfile.options.length >= 2) score += 7;
+      return clamp(score, 25, 88);
+    }
+
+    function predictedEnemyResponses(candidateChamp, candidatePlayer, side, limit = 3) {
+      const enemySide = otherSide(side);
+      const enemyKey = sideToTeamKey(enemySide);
+      const unavailable = new Set([...getUnavailableChampions(), candidateChamp.id]);
+      const theirPicks = getActions(enemySide, "PICK").map(action => getChampForAction(action));
+      const projectedOurPicks = [
+        ...getActions(side, "PICK").map(action => getChampForAction(action)),
+        candidateChamp,
+      ];
+      const rows = [];
+
+      openPlayersForSide(enemySide).forEach(player => {
+        unique(player.pool || []).forEach(championId => {
+          if (unavailable.has(championId)) return;
+          const champ = getChampForRole(championId, player.role);
+          if (!champ.roles.includes(player.role)) return;
+          const comfort = comfortScore(player, championId);
+          if (comfort <= 0) return;
+          const matchup = player.role === candidatePlayer.role
+            ? directLaneMatchupInfo(champ, player.role, candidateChamp).score
+            : blindLanePriorityScore(champ, player.role);
+          const interaction = interactionScore(champ, theirPicks, projectedOurPicks);
+          const score = clamp(
+            comfort * 0.46 + champ.meta * 0.24 + champ.blind * 0.10 + matchup * 0.14 + (50 + interaction.total) * 0.06,
+            0,
+            100,
+          );
+          rows.push({ champ, player, score, matchup });
+        });
+      });
+
+      return uniqueChampionCandidates(rows
+        .map(row => ({ ...row, championId: row.champ.id }))
+        .sort((a, b) => b.score - a.score))
+        .slice(0, limit);
+    }
+
+    function bestReplyScoreAfterResponse(response, candidateChamp, candidatePlayer, side) {
+      if (response.player.role === candidatePlayer.role) {
+        return directLaneMatchupInfo(candidateChamp, candidatePlayer.role, response.champ).score;
+      }
+      const replyPlayer = openPlayersForSide(side)
+        .find(player => player.id !== candidatePlayer.id && player.role === response.player.role);
+      if (!replyPlayer) return 50;
+
+      const unavailable = new Set([...getUnavailableChampions(), candidateChamp.id, response.champ.id]);
+      const scores = unique(replyPlayer.pool || [])
+        .filter(championId => !unavailable.has(championId))
+        .map(championId => {
+          const champ = getChampForRole(championId, replyPlayer.role);
+          if (!champ.roles.includes(replyPlayer.role)) return null;
+          const comfort = comfortScore(replyPlayer, championId);
+          const matchup = directLaneMatchupInfo(champ, replyPlayer.role, response.champ).score;
+          return comfort * 0.45 + champ.meta * 0.20 + matchup * 0.35;
+        })
+        .filter(Number.isFinite);
+      return scores.length ? clamp(Math.max(...scores), 25, 95) : 40;
+    }
+
+    function shallowDraftForesightScore(candidateChamp, candidatePlayer, side, flexProfile, pickOrder) {
+      const responses = predictedEnemyResponses(candidateChamp, candidatePlayer, side, 3);
+      if (!responses.length) return clamp(pickOrder * 0.55 + flexProfile.score * 0.20 + 50 * 0.25, 25, 85);
+
+      const probabilityBase = responses.reduce((sum, response) => sum + Math.max(5, response.score - 35), 0);
+      const branchScores = responses.map(response => {
+        let answer = bestReplyScoreAfterResponse(response, candidateChamp, candidatePlayer, side);
+        if (response.player.role === candidatePlayer.role && flexProfile.options.length >= 2) {
+          const assignmentCertainty = 1 / flexProfile.options.length;
+          answer = answer * assignmentCertainty + 62 * (1 - assignmentCertainty);
+        }
+        const branchScore = clamp(answer * 0.78 + (100 - response.score) * 0.12 + 50 * 0.10, 20, 90);
+        return { score: branchScore, weight: Math.max(5, response.score - 35) / probabilityBase };
+      });
+      const expected = branchScores.reduce((sum, branch) => sum + branch.score * branch.weight, 0);
+      const worst = Math.min(...branchScores.map(branch => branch.score));
+      const responseResilience = expected * 0.78 + worst * 0.22;
+      return clamp(responseResilience * 0.62 + pickOrder * 0.25 + flexProfile.score * 0.13, 20, 88);
     }
 
     function swapEligibleRoles(champ) {
-      const roleTiers = champ.roleTiers || champ.tiersByRole || champ.opggRoleTiers || null;
+      const roleTiers = champ.roleTiers || champ.tiersByRole || champ.leagueRoleTiers || null;
       if (roleTiers && typeof roleTiers === "object" && Object.keys(roleTiers).length) {
         return ROLES.filter(role => (
           champ.roles.includes(role) &&
@@ -5337,10 +5575,10 @@
       if (parts.meta >= 85) candidates.push({ text: "메타 점수 높음", strength: parts.meta });
       if (parts.firstPick >= 78) candidates.push({ text: "블루 선픽으로 먼저 가져갈 밸류가 높음", strength: parts.firstPick + 2 });
       if (parts.comp >= 80) candidates.push({ text: "현재 조합 완성도 상승", strength: parts.comp });
-      if (matchupDetail?.source === "opggLaneKill" && parts.matchup >= 76) {
+      if (matchupDetail?.source === "leagueLaneKill" && parts.matchup >= 76) {
         const roleName = roleIconMeta[matchupDetail.role]?.label || matchupDetail.role;
         candidates.push({
-          text: `OP.GG ${roleName} 상성: ${matchupDetail.enemyChampionName} 상대 라인킬 ${Math.round(matchupDetail.laneKillRate)}%`,
+          text: `롤 데이터 ${roleName} 상성: ${matchupDetail.enemyChampionName} 상대 라인킬 ${Math.round(matchupDetail.laneKillRate)}%`,
           strength: parts.matchup + 2,
         });
       } else if (parts.matchup >= 85) {
@@ -5356,9 +5594,17 @@
       }
       if (parts.swap >= 80 && parts.comfort >= 70) {
         candidates.push({
-          text: "\uc2a4\uc651 \uac00\ub2a5 3\ud2f0\uc5b4\uad8c+ \ub77c\uc778\uc774 2\uac1c \uc774\uc0c1",
+          text: `팀 챔프폭 기준 ${strategic?.flexProfile?.options?.length || 2}개 포지션 스왑 가능`,
           strength: parts.swap,
         });
+      }
+      if (parts.pickOrder >= 72) {
+        candidates.push({ text: "2페이즈 밴 전에 챔프폭이 얕은 라인을 먼저 보호", strength: parts.pickOrder });
+      }
+      if (parts.foresight >= 72) {
+        candidates.push({ text: "상대의 유력 응수 뒤에도 다음 픽 선택지가 안정적", strength: parts.foresight });
+      } else if (parts.foresight <= 36) {
+        candidates.push({ text: "주의: 상대 응수와 다음 밴에 노출될 가능성이 큼", strength: 100 - parts.foresight });
       }
       if (parts.immobilePunish >= 78) {
         candidates.push({
@@ -5435,6 +5681,8 @@
         deny: "견제",
         duo: "\ub4c0\uc624",
         swap: "\uc2a4\uc651",
+        pickOrder: "픽순서",
+        foresight: "다음수",
         immobilePunish: "\ub69c\ubc85\uc774\uc751\uc9d5",
         botLane: "\ubc14\ud140\ub77c\uc778\uc804",
         jungleMid: "\uc815\uae00-\ubbf8\ub4dc",
@@ -5610,8 +5858,13 @@
         check("초기 픽 추천 존재", initialPicks.length === 5);
         check("정상 표본은 챔프폭 우선", initialPicks.every(item => !item.isEmergency));
         check("최종 추천 점수 상한", initialPicks.every(item => item.score <= 95));
-        check("OP.GG 정글 카운터 연결", getChampForRole("leeSin", "JUNGLE").opggBadInto?.includes("ivern"));
-        check("OP.GG 멀티포지션 연결", swapEligibleRoles(getChamp("sylas")).length >= 2, swapEligibleRoles(getChamp("sylas")).join(", "));
+        check(
+          "3수 탐색 점수 범위",
+          initialPicks.every(item => item.parts.foresight >= 20 && item.parts.foresight <= 88),
+          initialPicks.map(item => `${item.championId}:${item.parts.foresight}`).join(", "),
+        );
+        check("롤 데이터 정글 카운터 연결", getChampForRole("leeSin", "JUNGLE").leagueBadInto?.includes("ivern"));
+        check("롤 데이터 멀티포지션 연결", swapEligibleRoles(getChamp("sylas")).length >= 2, swapEligibleRoles(getChamp("sylas")).join(", "));
         check(
           "MSI 전체 스왑 포지션 연결",
           getChamp("cassiopeia").roles.includes("MID") && getChamp("cassiopeia").roles.includes("ADC"),
@@ -5623,8 +5876,39 @@
           [...empiricalSynergyMaps.jungleMid.values(), ...empiricalSynergyMaps.topJungle.values(), ...empiricalSynergyMaps.botDuo.values()]
             .every(row => row.score >= 38 && row.score <= 68),
         );
+
+        const seedDraftBefore = index => {
+          state = freshState();
+          state.actions = draftSteps.slice(0, index).map((step, order) => ({
+            order,
+            side: step.side,
+            type: step.type,
+            championId: champions[order].id,
+          }));
+          state.currentStep = index;
+        };
+        seedDraftBefore(16);
+        check("레드 R4 스왑 은닉 단계", draftPhaseStrategy("RED", "PICK").id === "redFourthFlex");
+        seedDraftBefore(17);
+        check("블루 B4 완성/방어 단계", draftPhaseStrategy("BLUE", "PICK").id === "blueCompletionDefense");
+        seedDraftBefore(18);
+        check("블루 B5를 막픽으로 오인하지 않음", draftPhaseStrategy("BLUE", "PICK").id === "blueCompletionDefense");
+        seedDraftBefore(19);
+        check("레드 R5 카운터 단계", draftPhaseStrategy("RED", "PICK").id === "redFiveCounter");
+        state = freshState();
         diagnostics.initialBans = initialBans.map(item => ({ championId: item.championId, score: Math.round(item.score) }));
         diagnostics.initialPicks = initialPicks.map(item => ({ championId: item.championId, role: item.role, score: Math.round(item.score) }));
+
+        const flexChamp = getChamp("sylas");
+        const flexRoles = swapEligibleRoles(flexChamp).slice(0, 2);
+        const flexPlayers = flexRoles.map(role => state.teams.our.find(player => player.role === role)).filter(Boolean);
+        if (flexPlayers.length === 2) {
+          flexPlayers.forEach(player => player.pool = unique([flexChamp.id, ...player.pool]));
+          const sharedFlex = teamFlexProfile(flexChamp, flexPlayers[0], "BLUE");
+          flexPlayers[1].pool = flexPlayers[1].pool.filter(id => id !== flexChamp.id);
+          const soloFlex = teamFlexProfile(flexChamp, flexPlayers[0], "BLUE");
+          check("팀 챔프폭 기반 스왑 인정", sharedFlex.options.length >= 2 && sharedFlex.score > soloFlex.score);
+        }
 
         state.actions = [{
           order: 8,

@@ -8,6 +8,7 @@ Thumbs.db
 riot_api_key.txt
 claude_api_key.txt
 work/
+.cache/
 *.env
 .env
 CLAUDE_HANDOFF.md

@@ -6,7 +6,6 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 ROBOTS = (ROOT / "robots.txt").read_text(encoding="utf-8")
 SITEMAP = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-LOGO_PATH = ROOT / "assets" / "brand" / "draft-logo.png"
 
 
 class FrontendContractsTest(unittest.TestCase):
@@ -25,15 +24,15 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("loadChampionCatalog();", INDEX)
         self.assertIn("await loadPublicChampionIcons();", INDEX)
 
-    def test_landing_page_and_brand_asset_are_present(self):
-        self.assertTrue(LOGO_PATH.exists())
-        self.assertGreater(LOGO_PATH.stat().st_size, 100_000)
+    def test_landing_page_and_community_link_are_present(self):
         self.assertIn('class="landing-active"', INDEX)
         self.assertIn('id="landingView"', INDEX)
         self.assertIn('id="enterSimulator"', INDEX)
-        self.assertIn('assets/brand/draft-logo.png', INDEX)
         self.assertIn("감으로만 하던 밴픽", INDEX)
-        self.assertIn("Discord 준비중", INDEX)
+        self.assertIn('href="https://discord.gg/C5n87ZRdr"', INDEX)
+        self.assertIn("Discord 참여하기", INDEX)
+        self.assertNotIn("draft-logo.png", INDEX)
+        self.assertNotIn("brand-icon", INDEX)
 
     def test_primary_ui_order_matches_draft_workflow(self):
         draft_tab = INDEX.index('data-view="draftView"')

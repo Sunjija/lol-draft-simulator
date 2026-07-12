@@ -291,6 +291,14 @@
       white-space: nowrap;
     }
 
+    .landing-source-note {
+      max-width: 860px;
+      margin-top: -10px;
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
     .timer-bar {
       display: flex;
       align-items: center;
@@ -1866,6 +1874,9 @@
           <div class="landing-basis-row"><span>조합 태그와 스왑 가능성</span><span>팀게임</span></div>
           <div class="landing-basis-row"><span>피어리스와 남은 챔프폭</span><span>리스크</span></div>
         </div>
+        <p class="landing-source-note">
+          챔피언 티어와 메타 평가는 OP.GG 등 공개 LoL 통계 데이터와 대회 메타 데이터를 참고해 자체 기준으로 정규화합니다.
+        </p>
         <div class="landing-reasons">
           <div class="landing-card">
             <b>챔프폭 우선</b>
@@ -2324,6 +2335,7 @@
   <script src="data/league_mid_lane_matchups_compact.js"></script>
   <script src="data/league_draft_context_compact.js"></script>
   <script src="data/tournament_meta_2026_compact.js"></script>
+  <script src="data/meta_refresh_status.js"></script>
   <script>
     const ROLES = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
     const ROLE_LABEL_KO = { TOP: "탑", JUNGLE: "정글", MID: "미드", ADC: "원딜", SUPPORT: "서폿" };

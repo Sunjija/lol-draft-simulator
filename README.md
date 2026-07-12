@@ -78,6 +78,24 @@ DISCORD_PATCH_NOTES_WEBHOOK_URL
 
 수동 실행은 GitHub 저장소의 Actions 탭에서 `Korean Patch Notes` 워크플로우를 선택해 실행하면 됩니다.
 
+## 패치 후 메타 갱신
+
+패치 직후에는 챔피언 통계 표본이 흔들릴 수 있으므로, `Meta Refresh After Patch` 워크플로우는 최신 패치노트 공개 시각 기준 72시간이 지난 뒤 메타 상태 파일을 갱신합니다.
+
+워크플로우 파일:
+
+```text
+.github/workflows/meta-refresh-after-patch.yml
+```
+
+현재 공개 화면에는 아래 기준으로 출처를 안내합니다.
+
+```text
+OP.GG 등 공개 LoL 통계 데이터, 대회 메타 데이터 참고
+```
+
+실제 추천 점수는 외부 통계를 그대로 노출하지 않고, 앱 내부 계산식에 맞게 정규화합니다. 이후 OP.GG, GOL.GG 등 수집기를 추가할 때도 이 워크플로우 뒤에 연결하면 됩니다.
+
 ## 데이터
 
 공개 저장소에는 실행에 필요한 압축 데이터만 포함합니다.
@@ -86,6 +104,7 @@ DISCORD_PATCH_NOTES_WEBHOOK_URL
 - `data/league_top_lane_matchups_compact.js`: 탑 라인 상성 데이터
 - `data/league_mid_lane_matchups_compact.js`: 미드 라인 상성 데이터
 - `data/tournament_meta_2026_compact.js`: 2026 대회 메타 요약 데이터
+- `data/meta_refresh_status.js`: 패치 후 메타 갱신 상태와 출처 안내
 
 ## 테스트
 

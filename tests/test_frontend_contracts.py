@@ -175,6 +175,10 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("tournamentMetaMap", INDEX)
         self.assertIn("tournamentBlindScore", INDEX)
 
+    def test_meta_refresh_status_and_source_note_are_connected(self):
+        self.assertIn('data/meta_refresh_status.js', INDEX)
+        self.assertIn("OP.GG 등 공개 LoL 통계 데이터와 대회 메타 데이터", INDEX)
+
     def test_shallow_draft_lookahead_is_connected(self):
         for function_name in (
             "teamFlexProfile",

@@ -1,0 +1,62 @@
+name: Meta Refresh After Patch
+
+on:
+  schedule:
+    - cron: "30 20 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Refresh meta status even before the patch delay window has passed"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-meta-after-patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore meta refresh state
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/meta_refresh_state.json
+          key: meta-refresh-state-${{ github.run_id }}
+          restore-keys: |
+            meta-refresh-state-
+
+      - name: Refresh meta status after patch delay
+        run: |
+          args=()
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
+            args+=(--force)
+          fi
+          python tools/refresh_meta_after_patch.py "${args[@]}"
+
+      - name: Run tests
+        run: python -m unittest discover -s tests
+
+      - name: Commit updated meta status
+        run: |
+          if git diff --quiet -- data/meta_refresh_status.js; then
+            echo "No meta status changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/meta_refresh_status.js
+          git commit -m "Update delayed meta refresh status"
+          git push
+
+      - name: Save meta refresh state
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/meta_refresh_state.json
+          key: meta-refresh-state-${{ github.run_id }}

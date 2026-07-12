@@ -18,6 +18,12 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("Sitemap: https://sunjija.github.io/lol-draft-simulator/sitemap.xml", ROBOTS)
         self.assertIn(f"<loc>{public_url}</loc>", SITEMAP)
 
+    def test_public_beta_loads_champion_icons_without_local_api(self):
+        self.assertIn("function loadPublicChampionIcons", INDEX)
+        self.assertIn("https://ddragon.leagueoflegends.com/api/versions.json", INDEX)
+        self.assertIn("loadChampionCatalog();", INDEX)
+        self.assertIn("await loadPublicChampionIcons();", INDEX)
+
     def test_primary_ui_order_matches_draft_workflow(self):
         draft_tab = INDEX.index('data-view="draftView"')
         pool_tab = INDEX.index('data-view="poolsView"')

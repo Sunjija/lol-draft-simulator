@@ -3066,9 +3066,9 @@
       loadLiveCaptureRegions();
       render();
       setRecommendDockTabForCurrentStep();
+      loadChampionCatalog();
       if (LOCAL_DEV_FEATURES) {
         checkApiStatus();
-        loadChampionCatalog();
         loadBgmTracks();
       }
       if (APP_PARAMS.has("selftest")) {
@@ -4460,7 +4460,10 @@
     }
 
     async function loadChampionCatalog() {
-      if (!LOCAL_DEV_FEATURES) return;
+      if (!LOCAL_DEV_FEATURES) {
+        await loadPublicChampionIcons();
+        return;
+      }
       try {
         const response = await fetch("/api/champions");
         if (!response.ok) return;
@@ -4492,6 +4495,32 @@
         render();
       } catch (error) {
         // Static/file mode can still run without the local API server.
+      }
+    }
+
+    async function loadPublicChampionIcons() {
+      try {
+        const versionsResponse = await fetch("https://ddragon.leagueoflegends.com/api/versions.json", { cache: "force-cache" });
+        if (!versionsResponse.ok) return;
+        const versions = await versionsResponse.json();
+        const version = versions?.[0];
+        if (!version) return;
+
+        const championsResponse = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion.json`, { cache: "force-cache" });
+        if (!championsResponse.ok) return;
+        const data = await championsResponse.json();
+        const localByNormalizedId = new Map(champions.map(champ => [normalizeText(champ.id), champ]));
+        const localByNormalizedName = new Map(champions.map(champ => [normalizeText(champ.name), champ]));
+
+        Object.values(data.data || {}).forEach(row => {
+          const localChamp = localByNormalizedId.get(normalizeText(row.id))
+            || localByNormalizedName.get(normalizeText(row.name));
+          if (!localChamp || !row.image?.full) return;
+          localChamp.iconUrl = `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${row.image.full}`;
+        });
+        render();
+      } catch (error) {
+        // Public static hosting can still run with text fallbacks if Data Dragon is unavailable.
       }
     }
 

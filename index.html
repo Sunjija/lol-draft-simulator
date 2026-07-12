@@ -222,6 +222,91 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
     }
 
+    .live-capture {
+      margin: 0 0 12px;
+      border: 1px solid var(--line);
+      background: rgba(27, 34, 48, 0.62);
+    }
+
+    .live-capture summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .live-capture summary::-webkit-details-marker { display: none; }
+
+    .live-capture-body {
+      display: grid;
+      gap: 10px;
+      padding: 0 12px 12px;
+    }
+
+    .capture-preview-wrap {
+      position: relative;
+      min-height: 120px;
+      background: #050811;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .capture-preview-wrap video {
+      display: block;
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      background: #050811;
+    }
+
+    .capture-selection {
+      position: absolute;
+      border: 2px solid var(--gold);
+      background: rgba(201, 162, 39, 0.16);
+      pointer-events: none;
+      display: none;
+    }
+
+    .capture-selection.saved {
+      border-color: var(--green);
+      background: rgba(52, 211, 153, 0.12);
+    }
+
+    .capture-candidates {
+      display: grid;
+      gap: 6px;
+    }
+
+    .capture-candidate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 7px 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .capture-candidate-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .capture-candidate-score {
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
     header {
       padding: 18px 22px 14px;
       border-bottom: 1px solid var(--line);
@@ -485,6 +570,11 @@
       grid-template-columns: 1.2fr 0.8fr;
       gap: 8px;
       align-items: end;
+    }
+
+    .setup-options-grid {
+      grid-template-columns: repeat(3, minmax(150px, 1fr));
+      align-items: start;
     }
 
     .player-row {
@@ -1140,34 +1230,196 @@
       font-variant-numeric: tabular-nums;
     }
 
-    .pool-table {
+    .pool-card-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pool-card {
+      border: 1px solid var(--line);
+      background: rgba(27, 34, 48, 0.55);
+      padding: 12px;
+    }
+
+    .pool-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .pool-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .pool-card-title b {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .pool-summary {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pool-add-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .pool-add-row input,
+    .pool-quick-input {
       width: 100%;
-      border-collapse: collapse;
+      padding: 8px 9px;
       font-size: 13px;
     }
 
-    .pool-table th, .pool-table td {
-      border-bottom: 1px solid var(--line);
-      padding: 8px 6px;
-      text-align: left;
-      vertical-align: top;
+    .pool-champ-list {
+      display: grid;
+      gap: 6px;
     }
 
-    .pool-table th {
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 12px;
+    .pool-view-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 6px;
+    }
+
+    .pool-view-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-width: 0;
+      padding: 6px 7px;
+      border: 1px solid var(--line);
       background: var(--panel);
     }
 
-    .pool-edit-input {
-      width: 100%;
-      font-size: 12px;
-      padding: 4px 7px;
+    .mastery-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
       color: var(--muted);
+      background: var(--panel-raised);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
     }
-    .pool-edit-input:focus {
+
+    .mastery-badge.expert {
+      color: #FFE6A3;
+      border-color: rgba(201, 162, 39, 0.75);
+      background: rgba(201, 162, 39, 0.18);
+    }
+
+    .mastery-badge.strong {
+      color: #BDE8FF;
+      border-color: rgba(47, 129, 247, 0.72);
+      background: rgba(47, 129, 247, 0.16);
+    }
+
+    .pool-champ-row {
+      display: grid;
+      grid-template-columns: minmax(120px, 1fr) auto auto;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .pool-champ-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .mastery-segment {
+      display: inline-grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 3px;
+      padding: 3px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+
+    .mastery-segment button {
+      padding: 5px 7px;
+      font-size: 12px;
+      color: var(--muted);
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .mastery-segment button.active {
       color: var(--text);
+      border-color: var(--line);
+      background: var(--panel-raised);
+    }
+
+    .mastery-segment button[data-mastery="expert"].active {
+      color: #FFE6A3;
+      border-color: rgba(201, 162, 39, 0.75);
+      background: rgba(201, 162, 39, 0.18);
+    }
+
+    .mastery-segment button[data-mastery="strong"].active {
+      color: #BDE8FF;
+      border-color: rgba(47, 129, 247, 0.72);
+      background: rgba(47, 129, 247, 0.16);
+    }
+
+    .pool-quick details {
+      margin-top: 10px;
+    }
+
+    .pool-edit-details {
+      margin-top: 10px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+
+    .pool-edit-details > summary {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .pool-quick summary {
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    @media (max-width: 720px) {
+      .pool-champ-row {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+      }
+
+      .mastery-segment {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     .toast {
@@ -1322,6 +1574,36 @@
               <div id="timerTopBarFill" class="timer-top-bar-fill"></div>
               <span id="timerTopBarLabel" class="timer-top-bar-label"></span>
             </div>
+            <details class="live-capture" id="liveCapturePanel">
+              <summary>
+                <span>라이브 캡쳐 Beta</span>
+                <span class="chip" id="liveCaptureStatus">대기</span>
+              </summary>
+              <div class="live-capture-body">
+                <div class="row">
+                  <button id="startLiveCapture" type="button">창 선택</button>
+                  <button id="stopLiveCapture" type="button">중지</button>
+                  <button id="analyzeLiveCapture" type="button">현재 프레임 감지</button>
+                  <button id="saveLiveRegion" type="button">현재 턴 영역 저장</button>
+                  <button id="clearLiveRegions" type="button">영역 초기화</button>
+                  <label class="side-pill" style="width:max-content">
+                    <input id="autoApplyLiveCapture" type="checkbox" style="width:auto" />
+                    높은 확신도 자동 반영
+                  </label>
+                </div>
+                <div class="capture-preview-wrap" id="liveCapturePreviewWrap">
+                  <video id="liveCaptureVideo" autoplay muted playsinline></video>
+                  <div id="liveCaptureSelection" class="capture-selection"></div>
+                  <div id="liveCaptureSavedSelection" class="capture-selection saved"></div>
+                </div>
+                <canvas id="liveCaptureCanvas" hidden></canvas>
+                <div class="small muted" id="liveCaptureHint">
+                  LoL 밴픽창을 선택한 뒤, 미리보기에서 현재 턴의 챔피언 아이콘 영역을 드래그하고 "현재 턴 영역 저장"을 누르세요.
+                  같은 슬롯 순서가 오면 저장된 영역을 기준으로 후보를 감지합니다.
+                </div>
+                <div class="capture-candidates" id="liveCaptureCandidates"></div>
+              </div>
+            </details>
             <div class="panel-body board">
               <div class="phase-strip" id="phaseStrip"></div>
               <div class="team-board">
@@ -1428,7 +1710,7 @@
               </div>
             </div>
             <div class="panel-body grid">
-              <div class="field-grid">
+              <div class="field-grid setup-options-grid">
                 <div>
                   <label>우리 사이드</label>
                   <div class="switch" id="sideSwitch">
@@ -1443,7 +1725,16 @@
                     <button data-value="true">ON</button>
                   </div>
                 </div>
+                <div>
+                  <label>상대 라인 정보</label>
+                  <div class="switch" id="enemyLineCertaintySwitch">
+                    <button data-certainty="locked">확정</button>
+                    <button data-certainty="estimated" class="active">추정</button>
+                    <button data-certainty="unknown">불명</button>
+                  </div>
+                </div>
               </div>
+              <div class="small muted" id="enemyLineCertaintyLabel">상대 라인을 입력값 기준으로 보되, 멀티라인/스왑 가능성은 유지합니다.</div>
               <div class="empty-note">
                 Riot API key를 적용하면 "우리/상대 팀 분석" 버튼으로 실제 전적 기반 챔프폭과
                 랭크(티어)를 자동으로 채웁니다. 분석 전에는 화면의 샘플 데이터로 동작합니다.
@@ -1615,6 +1906,7 @@
   </div>
 
   <div class="toast" id="toast"></div>
+  <datalist id="championNameOptions"></datalist>
 
   <script src="data/league_top_lane_matchups_compact.js"></script>
   <script src="data/league_mid_lane_matchups_compact.js"></script>
@@ -1679,6 +1971,7 @@
     }
     const SIDE = { BLUE: "BLUE", RED: "RED" };
     const STORAGE_KEY = "lol-draft-simulator-state-v1";
+    const LIVE_CAPTURE_REGIONS_KEY = "lol-draft-simulator-live-capture-regions-v1";
     const PICK_WEIGHT_PROFILE_VERSION = 2;
     const PICK_WEIGHT_MAX = 40;
     const defaultPickWeights = {
@@ -1699,6 +1992,24 @@
       topJungle: 3,
       firstPick: 5,
     };
+
+    const MANUAL_MASTERY_LEVELS = {
+      expert: { label: "장인", score: 100 },
+      strong: { label: "잘함", score: 84 },
+      normal: { label: "보통", score: 70 },
+      playable: { label: "가능", score: 55 },
+    };
+    const ENEMY_LINE_CERTAINTY = {
+      locked: { label: "확정", description: "내전처럼 상대 라인이 이미 정해진 상태" },
+      estimated: { label: "추정", description: "격전처럼 입력 라인을 기본으로 보되 스왑 가능성 유지" },
+      unknown: { label: "불명", description: "상대 라인을 거의 모르는 상태. 멀티라인 가능성을 넓게 유지" },
+    };
+    const MANUAL_MASTERY_BY_LABEL = Object.fromEntries(
+      Object.entries(MANUAL_MASTERY_LEVELS).flatMap(([key, value]) => [
+        [normalizeText(value.label), key],
+        [normalizeText(key), key],
+      ]),
+    );
 
     const pickWeightGroups = [
       {
@@ -2466,6 +2777,7 @@
         sampleDataVersion: SAMPLE_DATA_VERSION,
         pickWeights: { ...defaultPickWeights },
         pickWeightProfileVersion: PICK_WEIGHT_PROFILE_VERSION,
+        enemyLineCertainty: "estimated",
         apiHasKey: false,
         bgm: { selectedId: "", volume: 0.35, enabled: false },
         timerMode: { enabled: false, banSeconds: 30, pickSeconds: 30 },
@@ -2476,12 +2788,26 @@
     const els = {};
     let bgmTracks = [];
     let bgmLoadError = "";
+    const liveCapture = {
+      stream: null,
+      interval: null,
+      pendingRegion: null,
+      regions: {},
+      templates: new Map(),
+      templatesReady: false,
+      templatesLoading: null,
+      lastCandidates: [],
+      lastAppliedKey: "",
+      drag: null,
+      autoApply: false,
+    };
 
     document.addEventListener("DOMContentLoaded", () => {
       [
         "turnSub", "currentBadge", "currentTitle", "phaseStrip", "blueBans", "redBans", "bluePicks", "redPicks",
         "draftProgress", "ourSideLabel", "fearlessLabel", "blueOwner", "redOwner", "champGrid", "champSearch",
         "roleFilter", "pickPlayer", "pickPlayerWrap", "ourRecommendations", "enemyPredictions", "currentHint",
+        "enemyLineCertaintyLabel",
         "ourPlayersForm", "enemyPlayersForm", "ourPoolTable", "enemyPoolTable",
         "fearlessChips", "fearlessCount", "blueBanCount", "redBanCount", "bluePickCount", "redPickCount", "toast",
         "ourBulkNames", "enemyBulkNames",
@@ -2491,11 +2817,17 @@
         "bgmAudio", "bgmSelect", "bgmRefresh", "bgmToggle", "bgmVolume", "bgmVolumeValue",
         "timerModeToggle", "timerDisplay", "timerSettings", "timerBanSeconds", "timerPickSeconds",
         "timerTopBar", "timerTopBarFill", "timerTopBarLabel",
+        "liveCapturePanel", "liveCaptureStatus", "startLiveCapture", "stopLiveCapture", "analyzeLiveCapture",
+        "saveLiveRegion", "clearLiveRegions", "autoApplyLiveCapture", "liveCapturePreviewWrap",
+        "liveCaptureVideo", "liveCaptureCanvas", "liveCaptureSelection", "liveCaptureSavedSelection",
+        "liveCaptureHint", "liveCaptureCandidates",
+        "championNameOptions",
       ].forEach(id => els[id] = $(id));
 
       bindEvents();
       loadFromStorage(false);
       mergeStoredAnalyses();
+      loadLiveCaptureRegions();
       render();
       setRecommendDockTabForCurrentStep();
       checkApiStatus();
@@ -2538,6 +2870,14 @@
         if (!btn) return;
         state.fearlessEnabled = btn.dataset.value === "true";
         render();
+      });
+      $("enemyLineCertaintySwitch").addEventListener("click", event => {
+        const btn = event.target.closest("button[data-certainty]");
+        if (!btn) return;
+        state.enemyLineCertainty = btn.dataset.certainty;
+        render();
+        setRecommendDockTabForCurrentStep();
+        saveToStorage(false);
       });
 
       els.champSearch.addEventListener("input", renderChampionGrid);
@@ -2605,6 +2945,16 @@
         els.timerPickSeconds.value = state.timerMode.pickSeconds;
         saveToStorage(false);
       });
+      els.startLiveCapture.addEventListener("click", startLiveCapture);
+      els.stopLiveCapture.addEventListener("click", stopLiveCapture);
+      els.analyzeLiveCapture.addEventListener("click", () => analyzeLiveCaptureFrame({ manual: true }));
+      els.saveLiveRegion.addEventListener("click", saveCurrentLiveRegion);
+      els.clearLiveRegions.addEventListener("click", clearLiveCaptureRegions);
+      els.autoApplyLiveCapture.addEventListener("change", () => {
+        liveCapture.autoApply = els.autoApplyLiveCapture.checked;
+        renderLiveCapture();
+      });
+      bindLiveCaptureDrag();
       $("fillSample").addEventListener("click", () => {
         state.teams = structuredClone(defaultPlayers);
         state.actions = [];
@@ -2646,14 +2996,352 @@
       renderChampionGrid();
       renderRecommendations();
       renderPools();
+      renderChampionNameOptions();
       renderPickWeights();
       renderFearless();
       renderBgmControls();
+      renderLiveCapture();
       if (els.timerModeToggle) els.timerModeToggle.checked = Boolean(state.timerMode?.enabled);
       if (els.timerSettings) els.timerSettings.hidden = !state.timerMode?.enabled;
       if (els.timerBanSeconds) els.timerBanSeconds.value = state.timerMode?.banSeconds ?? 30;
       if (els.timerPickSeconds) els.timerPickSeconds.value = state.timerMode?.pickSeconds ?? 30;
       ensureTurnTimer();
+    }
+
+    // ── 라이브 캡쳐 Beta ──────────────────────────────────────
+    // Chrome의 창 공유(getDisplayMedia)로 사용자가 선택한 밴픽창 프레임을 가져온다.
+    // 브라우저 보안 정책상 앱이 임의로 LoL 클라이언트 창을 고를 수는 없고, 사용자가 직접
+    // 공유할 창을 선택해야 한다. 자동 반영은 오인식 방지를 위해 높은 확신도에서만 동작한다.
+    function loadLiveCaptureRegions() {
+      try {
+        liveCapture.regions = JSON.parse(localStorage.getItem(LIVE_CAPTURE_REGIONS_KEY) || "{}") || {};
+      } catch {
+        liveCapture.regions = {};
+      }
+    }
+
+    function saveLiveCaptureRegions() {
+      localStorage.setItem(LIVE_CAPTURE_REGIONS_KEY, JSON.stringify(liveCapture.regions || {}));
+    }
+
+    async function startLiveCapture() {
+      if (!navigator.mediaDevices?.getDisplayMedia) {
+        toast("이 브라우저는 창 캡쳐를 지원하지 않습니다. Chrome/Edge에서 실행해 주세요.");
+        return;
+      }
+      try {
+        stopLiveCapture(false);
+        const stream = await navigator.mediaDevices.getDisplayMedia({
+          video: { frameRate: 5 },
+          audio: false,
+        });
+        liveCapture.stream = stream;
+        els.liveCaptureVideo.srcObject = stream;
+        await els.liveCaptureVideo.play();
+        stream.getVideoTracks().forEach(track => {
+          track.addEventListener("ended", () => stopLiveCapture());
+        });
+        liveCapture.interval = window.setInterval(() => analyzeLiveCaptureFrame({ manual: false }), 900);
+        renderLiveCapture();
+        toast("캡쳐할 창이 연결됐습니다.");
+      } catch (error) {
+        renderLiveCaptureStatus("캡쳐 취소");
+      }
+    }
+
+    function stopLiveCapture(showToast = true) {
+      if (liveCapture.interval) window.clearInterval(liveCapture.interval);
+      liveCapture.interval = null;
+      if (liveCapture.stream) {
+        liveCapture.stream.getTracks().forEach(track => track.stop());
+      }
+      liveCapture.stream = null;
+      liveCapture.pendingRegion = null;
+      liveCapture.lastCandidates = [];
+      liveCapture.lastAppliedKey = "";
+      if (els.liveCaptureVideo) els.liveCaptureVideo.srcObject = null;
+      renderLiveCapture();
+      if (showToast) toast("라이브 캡쳐를 중지했습니다.");
+    }
+
+    function bindLiveCaptureDrag() {
+      const wrap = els.liveCapturePreviewWrap;
+      if (!wrap) return;
+      const toPoint = event => {
+        const rect = els.liveCaptureVideo?.getBoundingClientRect() || wrap.getBoundingClientRect();
+        return {
+          x: clamp((event.clientX - rect.left) / Math.max(1, rect.width), 0, 1),
+          y: clamp((event.clientY - rect.top) / Math.max(1, rect.height), 0, 1),
+        };
+      };
+      wrap.addEventListener("pointerdown", event => {
+        if (!liveCapture.stream) return;
+        wrap.setPointerCapture(event.pointerId);
+        const start = toPoint(event);
+        liveCapture.drag = { start, current: start };
+        liveCapture.pendingRegion = null;
+        drawCaptureSelection(selectionFromPoints(start, start), false);
+      });
+      wrap.addEventListener("pointermove", event => {
+        if (!liveCapture.drag) return;
+        liveCapture.drag.current = toPoint(event);
+        drawCaptureSelection(selectionFromPoints(liveCapture.drag.start, liveCapture.drag.current), false);
+      });
+      wrap.addEventListener("pointerup", event => {
+        if (!liveCapture.drag) return;
+        liveCapture.drag.current = toPoint(event);
+        const region = selectionFromPoints(liveCapture.drag.start, liveCapture.drag.current);
+        liveCapture.drag = null;
+        if (region.w < 0.015 || region.h < 0.015) {
+          liveCapture.pendingRegion = null;
+          drawCaptureSelection(null, false);
+          return;
+        }
+        liveCapture.pendingRegion = region;
+        drawCaptureSelection(region, false);
+        renderLiveCaptureStatus("영역 선택됨");
+      });
+      wrap.addEventListener("pointercancel", () => {
+        liveCapture.drag = null;
+      });
+    }
+
+    function selectionFromPoints(a, b) {
+      const x = Math.min(a.x, b.x);
+      const y = Math.min(a.y, b.y);
+      return { x, y, w: Math.abs(a.x - b.x), h: Math.abs(a.y - b.y) };
+    }
+
+    function drawCaptureSelection(region, saved) {
+      const el = saved ? els.liveCaptureSavedSelection : els.liveCaptureSelection;
+      if (!el) return;
+      if (!region) {
+        el.style.display = "none";
+        return;
+      }
+      el.style.display = "block";
+      el.style.left = `${region.x * 100}%`;
+      el.style.top = `${region.y * 100}%`;
+      el.style.width = `${region.w * 100}%`;
+      el.style.height = `${region.h * 100}%`;
+    }
+
+    function currentLiveRegionKey() {
+      const step = getCurrentStep();
+      return step ? String(step.index) : "";
+    }
+
+    function saveCurrentLiveRegion() {
+      const key = currentLiveRegionKey();
+      if (!key) {
+        toast("밴픽이 끝난 상태에서는 현재 턴 영역을 저장할 수 없습니다.");
+        return;
+      }
+      if (!liveCapture.pendingRegion) {
+        toast("먼저 미리보기에서 현재 턴 챔피언 아이콘 영역을 드래그하세요.");
+        return;
+      }
+      liveCapture.regions[key] = { ...liveCapture.pendingRegion };
+      saveLiveCaptureRegions();
+      renderLiveCapture();
+      toast(`${Number(key) + 1}번째 턴 감지 영역을 저장했습니다.`);
+    }
+
+    function clearLiveCaptureRegions() {
+      liveCapture.regions = {};
+      liveCapture.pendingRegion = null;
+      liveCapture.lastCandidates = [];
+      liveCapture.lastAppliedKey = "";
+      saveLiveCaptureRegions();
+      renderLiveCapture();
+      toast("저장된 라이브 캡쳐 영역을 초기화했습니다.");
+    }
+
+    async function analyzeLiveCaptureFrame({ manual = false } = {}) {
+      const step = getCurrentStep();
+      if (!step || !liveCapture.stream || !els.liveCaptureVideo?.videoWidth) {
+        if (manual) toast("먼저 창 선택을 하고 영상이 보이는지 확인해 주세요.");
+        return [];
+      }
+      const region = liveCapture.regions[currentLiveRegionKey()] || liveCapture.pendingRegion;
+      if (!region) {
+        if (manual) toast("현재 턴 영역을 드래그해서 저장하거나 선택해 주세요.");
+        renderLiveCapture();
+        return [];
+      }
+      await ensureChampionTemplates();
+      if (!liveCapture.templatesReady) {
+        if (manual) toast("챔피언 아이콘 템플릿을 아직 준비하지 못했습니다.");
+        return [];
+      }
+
+      const canvas = els.liveCaptureCanvas;
+      const video = els.liveCaptureVideo;
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const crop = normalizedRegionToCanvas(region, canvas.width, canvas.height);
+      const feature = imageFeatureFromCanvas(ctx, crop.x, crop.y, crop.w, crop.h);
+      const candidates = matchChampionFeature(feature, 5);
+      liveCapture.lastCandidates = candidates;
+      renderLiveCapture();
+
+      const best = candidates[0];
+      if (best && liveCapture.autoApply && best.confidence >= 82) {
+        const applyKey = `${step.index}:${best.championId}`;
+        if (applyKey !== liveCapture.lastAppliedKey && !getUnavailableChampions().has(best.championId)) {
+          liveCapture.lastAppliedKey = applyKey;
+          applyChampionToCurrent(best.championId);
+        }
+      }
+      return candidates;
+    }
+
+    function normalizedRegionToCanvas(region, width, height) {
+      return {
+        x: Math.round(region.x * width),
+        y: Math.round(region.y * height),
+        w: Math.max(1, Math.round(region.w * width)),
+        h: Math.max(1, Math.round(region.h * height)),
+      };
+    }
+
+    async function ensureChampionTemplates() {
+      if (liveCapture.templatesReady) return;
+      if (liveCapture.templatesLoading) return liveCapture.templatesLoading;
+      liveCapture.templatesLoading = (async () => {
+        const rows = champions.filter(champ => champ.iconUrl);
+        const loaded = await Promise.all(rows.map(async champ => {
+          try {
+            const image = await loadImageForCanvas(champ.iconUrl);
+            const canvas = document.createElement("canvas");
+            canvas.width = 32;
+            canvas.height = 32;
+            const ctx = canvas.getContext("2d", { willReadFrequently: true });
+            ctx.drawImage(image, 0, 0, 32, 32);
+            return [champ.id, imageFeatureFromCanvas(ctx, 0, 0, 32, 32)];
+          } catch {
+            return null;
+          }
+        }));
+        loaded.filter(Boolean).forEach(([id, feature]) => liveCapture.templates.set(id, feature));
+        liveCapture.templatesReady = liveCapture.templates.size > 0;
+        liveCapture.templatesLoading = null;
+      })();
+      return liveCapture.templatesLoading;
+    }
+
+    function loadImageForCanvas(src) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.crossOrigin = "anonymous";
+        image.onload = () => resolve(image);
+        image.onerror = reject;
+        image.src = src;
+      });
+    }
+
+    function imageFeatureFromCanvas(ctx, sx, sy, sw, sh) {
+      const size = 12;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const small = canvas.getContext("2d", { willReadFrequently: true });
+      small.drawImage(ctx.canvas, sx, sy, sw, sh, 0, 0, size, size);
+      const data = small.getImageData(0, 0, size, size).data;
+      const feature = [];
+      for (let index = 0; index < data.length; index += 4) {
+        feature.push(data[index], data[index + 1], data[index + 2]);
+      }
+      return feature;
+    }
+
+    function matchChampionFeature(feature, limit = 5) {
+      const rows = [];
+      liveCapture.templates.forEach((template, championId) => {
+        let distance = 0;
+        for (let index = 0; index < feature.length; index += 1) {
+          distance += Math.abs(feature[index] - template[index]);
+        }
+        distance /= feature.length;
+        rows.push({ championId, distance });
+      });
+      rows.sort((a, b) => a.distance - b.distance);
+      const secondDistance = rows[1]?.distance ?? rows[0]?.distance ?? 255;
+      return rows.slice(0, limit).map(row => {
+        const champ = getChamp(row.championId);
+        const separation = Math.max(0, secondDistance - row.distance);
+        const confidence = clamp(100 - row.distance * 0.62 + separation * 0.35, 0, 99);
+        return {
+          championId: row.championId,
+          name: champ.name,
+          confidence,
+          distance: row.distance,
+        };
+      });
+    }
+
+    function renderLiveCapture() {
+      if (!els.liveCaptureStatus) return;
+      const step = getCurrentStep();
+      const key = currentLiveRegionKey();
+      const saved = key ? liveCapture.regions[key] : null;
+      drawCaptureSelection(liveCapture.pendingRegion, false);
+      drawCaptureSelection(saved, true);
+      renderLiveCaptureStatus();
+      if (els.autoApplyLiveCapture) els.autoApplyLiveCapture.checked = Boolean(liveCapture.autoApply);
+      if (els.liveCaptureHint) {
+        const regionText = saved
+          ? `${step.index + 1}번째 턴 저장 영역 사용 중`
+          : liveCapture.pendingRegion
+            ? "선택한 임시 영역으로 감지할 수 있습니다. 저장하면 이 턴에 계속 재사용됩니다."
+            : "미리보기에서 현재 턴의 챔피언 아이콘 영역을 드래그하세요.";
+        els.liveCaptureHint.textContent = liveCapture.stream
+          ? `${regionText} · 확신도 82 이상일 때만 자동 반영됩니다.`
+          : "창 선택을 누르고 LoL 밴픽창 또는 분석할 창을 직접 선택하세요.";
+      }
+      renderLiveCaptureCandidates();
+    }
+
+    function renderLiveCaptureStatus(forcedText) {
+      if (!els.liveCaptureStatus) return;
+      const step = getCurrentStep();
+      const baseText = liveCapture.stream ? "캡쳐 중" : "대기";
+      const regionText = step && liveCapture.regions[String(step.index)] ? " · 영역 저장됨" : "";
+      const text = forcedText || `${baseText}${regionText}`;
+      els.liveCaptureStatus.textContent = text;
+      els.liveCaptureStatus.className = `chip ${liveCapture.stream ? "green-bg" : ""}`;
+    }
+
+    function renderLiveCaptureCandidates() {
+      if (!els.liveCaptureCandidates) return;
+      const candidates = liveCapture.lastCandidates || [];
+      if (!candidates.length) {
+        els.liveCaptureCandidates.innerHTML = `<div class="empty-note">감지 후보가 아직 없습니다. 영역을 잡고 "현재 프레임 감지"를 눌러보세요.</div>`;
+        return;
+      }
+      els.liveCaptureCandidates.innerHTML = candidates.map(candidate => {
+        const champ = getChamp(candidate.championId);
+        return `
+          <div class="capture-candidate">
+            <div class="capture-candidate-main">
+              ${champIconHtml(champ)}
+              <div>
+                <div class="strong">${escapeHtml(champ.name)}</div>
+                <div class="small muted">감지 후보 · ${Math.round(candidate.confidence)}%</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="capture-candidate-score">차이 ${candidate.distance.toFixed(1)}</span>
+              <button data-live-apply="${escapeAttr(candidate.championId)}" type="button">현재 턴 적용</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+      els.liveCaptureCandidates.querySelectorAll("button[data-live-apply]").forEach(btn => {
+        btn.addEventListener("click", () => applyChampionToCurrent(btn.dataset.liveApply));
+      });
     }
 
     // ── 실전 타이머 모드 ──────────────────────────────────────
@@ -2839,6 +3527,10 @@
     function renderSwitches() {
       document.querySelectorAll("#sideSwitch button").forEach(btn => btn.classList.toggle("active", btn.dataset.side === state.ourSide));
       document.querySelectorAll("#fearlessSwitch button").forEach(btn => btn.classList.toggle("active", String(state.fearlessEnabled) === btn.dataset.value));
+      const certainty = state.enemyLineCertainty || "estimated";
+      document.querySelectorAll("#enemyLineCertaintySwitch button").forEach(btn => btn.classList.toggle("active", btn.dataset.certainty === certainty));
+      const certaintyMeta = ENEMY_LINE_CERTAINTY[certainty] || ENEMY_LINE_CERTAINTY.estimated;
+      if (els.enemyLineCertaintyLabel) els.enemyLineCertaintyLabel.textContent = certaintyMeta.description;
       els.ourSideLabel.textContent = `우리: ${state.ourSide}`;
       els.fearlessLabel.textContent = `피어리스 ${state.fearlessEnabled ? "ON" : "OFF"}`;
       els.blueOwner.textContent = state.ourSide === "BLUE" ? "우리 팀" : "상대 팀";
@@ -3077,6 +3769,13 @@
         </label>
       `;
       }).join("");
+    }
+
+    function renderChampionNameOptions() {
+      if (!els.championNameOptions) return;
+      els.championNameOptions.innerHTML = champions
+        .map(champ => `<option value="${escapeAttr(champ.name)}"></option>`)
+        .join("");
     }
 
     function pickWeightGroupValue(group, weights = normalizedPickWeights()) {
@@ -3471,10 +4170,8 @@
     }
 
     function parseChampionList(rawText) {
-      // 점수는 "럼블:90"(콜론), "럼블 90"(띄어쓰기), "럼블90"(구분자 없이) 전부 인식한다 —
-      // 콜론을 안 쓰고 그냥 "그라가스 80"처럼 적어도 그 챔피언 숙련도로 바로 반영된다.
-      // 숫자를 안 붙이면 순서 기반 기본값(아래 comfortScore 참고)을 쓴다 — 예전처럼
-      // "10번째로 적으면 무조건 10점"까지 깎이지는 않고 훨씬 완만하게 감쇠한다.
+      // 점수는 "럼블:90", "럼블 90", "럼블 장인", "럼블:잘함"처럼 입력할 수 있다.
+      // 숫자를 안 붙이면 순서 기반 기본값(아래 comfortScore 참고)을 쓴다.
       const ids = [];
       const scores = {};
       rawText
@@ -3482,14 +4179,32 @@
         .map(value => value.trim())
         .filter(Boolean)
         .forEach(entry => {
-          const match = entry.match(/^(.+?)[:：]?\s*(\d{1,3})$/);
+          const match = entry.match(/^(.+?)[:：]?\s*(\d{1,3}|장인|잘함|보통|가능|expert|strong|normal|playable)$/i);
           const namePart = match ? match[1].trim() : entry;
           const id = resolveChampionId(namePart);
           if (!id) return;
           ids.push(id);
-          if (match) scores[id] = clamp(Number(match[2]), 0, 100);
+          if (match) scores[id] = masteryInputToScore(match[2]);
         });
       return { ids, scores };
+    }
+
+    function masteryInputToScore(value) {
+      if (/^\d+$/.test(String(value))) return clamp(Number(value), 0, 100);
+      const level = manualMasteryLevelFromValue(value);
+      return level ? MANUAL_MASTERY_LEVELS[level].score : 70;
+    }
+
+    function manualMasteryLevelFromValue(value) {
+      return MANUAL_MASTERY_BY_LABEL[normalizeText(value)];
+    }
+
+    function masteryLevelForScore(score) {
+      const value = Number(score);
+      if (value >= 92) return "expert";
+      if (value >= 77) return "strong";
+      if (value >= 63) return "normal";
+      return "playable";
     }
 
     function resolveChampionId(value) {
@@ -3566,48 +4281,208 @@
     }
 
     function renderPools() {
-      els.ourPoolTable.innerHTML = poolTable("our");
-      els.enemyPoolTable.innerHTML = poolTable("enemy");
-      [els.ourPoolTable, els.enemyPoolTable].forEach(container => {
-        container.querySelectorAll(".pool-edit-input").forEach(input => {
-          input.addEventListener("change", () => {
-            const p = state.teams[input.dataset.team][Number(input.dataset.index)];
-            const parsed = parseChampionList(input.value);
-            p.pool = parsed.ids;
-            p.poolScores = parsed.scores;
-            p.analysisFailed = null; // 수동으로 다시 채웠으면 "분석 실패" 표시는 해제
-            render();
-          });
+      els.ourPoolTable.innerHTML = poolEditor("our");
+      els.enemyPoolTable.innerHTML = poolEditor("enemy");
+      [els.ourPoolTable, els.enemyPoolTable].forEach(container => bindPoolEditor(container));
+    }
+
+    function poolEditor(teamKey) {
+      return `
+        <div class="pool-card-list">
+          ${state.teams[teamKey].map((p, index) => poolPlayerCard(teamKey, p, index)).join("")}
+        </div>
+      `;
+    }
+
+    function poolPlayerCard(teamKey, player, index) {
+      const pool = unique(player.pool || []).filter(id => championById[id]);
+      const summary = masterySummary(player, pool);
+      return `
+        <article class="pool-card" data-team="${teamKey}" data-index="${index}">
+          <div class="pool-card-head">
+            <div class="pool-card-title">
+              ${roleIconsHtml([player.role], { maxIcons: 1, priorityRole: player.role })}
+              <div>
+                <b>${escapeHtml(player.riotId)}</b>
+                <div class="small muted">${escapeHtml(ROLE_LABEL_KO[player.role] || player.role)} · ${escapeHtml(rankLabel(player.rank))}</div>
+              </div>
+            </div>
+            <div class="pool-summary">
+              ${Object.entries(MANUAL_MASTERY_LEVELS).map(([level, meta]) => (
+                `<span class="chip">${escapeHtml(meta.label)} ${summary[level] || 0}</span>`
+              )).join("")}
+            </div>
+          </div>
+
+          <div class="pool-view-list">
+            ${pool.length ? pool.map(championId => poolChampionViewRow(player, championId)).join("") : emptyPoolPlaceholder(player)}
+          </div>
+
+          <details class="pool-edit-details">
+            <summary>편집</summary>
+            <div class="pool-add-row">
+              <input class="pool-add-input" data-team="${teamKey}" data-index="${index}" list="championNameOptions"
+                placeholder="챔피언 추가: 잭스, 아리, 카이사..." />
+              <button class="primary pool-add-button" type="button" data-team="${teamKey}" data-index="${index}">추가</button>
+            </div>
+
+            <div class="pool-champ-list">
+              ${pool.length ? pool.map(championId => poolChampionRow(teamKey, index, player, championId)).join("") : emptyPoolPlaceholder(player)}
+            </div>
+
+            <div class="pool-quick">
+              <details>
+                <summary>빠른 입력 열기</summary>
+                <textarea class="pool-quick-input" data-team="${teamKey}" data-index="${index}" rows="4"
+                  placeholder="잭스 장인&#10;레넥톤 잘함&#10;크산테 보통&#10;뽀삐 가능">${escapeHtml(poolToMasteryText(pool, player.poolScores))}</textarea>
+                <div class="row" style="margin-top:8px">
+                  <button type="button" class="pool-quick-apply primary" data-team="${teamKey}" data-index="${index}">빠른 입력 적용</button>
+                  <span class="small muted">장인=100 · 잘함=84 · 보통=70 · 가능=55</span>
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <div class="small muted" style="margin-top:8px">${analysisSummary(player)}</div>
+        </article>
+      `;
+    }
+
+    function poolChampionViewRow(player, championId) {
+      const champ = getChamp(championId);
+      const score = player.poolScores?.[championId] ?? comfortScore(player, championId);
+      const level = masteryLevelForScore(score);
+      return `
+        <div class="pool-view-row">
+          <div class="champ-name">${champIconHtml(champ)} ${escapeHtml(champ.name)}</div>
+          <span class="mastery-badge ${level}" title="${Math.round(score)}점">${escapeHtml(MANUAL_MASTERY_LEVELS[level].label)}</span>
+        </div>
+      `;
+    }
+
+    function poolChampionRow(teamKey, playerIndex, player, championId) {
+      const champ = getChamp(championId);
+      const score = player.poolScores?.[championId] ?? comfortScore(player, championId);
+      const level = masteryLevelForScore(score);
+      return `
+        <div class="pool-champ-row">
+          <div class="pool-champ-main">
+            ${champIconHtml(champ)}
+            <div>
+              <div class="strong">${escapeHtml(champ.name)}</div>
+              <div class="small muted">숙련도 ${Math.round(score)}</div>
+            </div>
+          </div>
+          <div class="mastery-segment" role="group" aria-label="${escapeAttr(champ.name)} 숙련도">
+            ${Object.entries(MANUAL_MASTERY_LEVELS).map(([key, meta]) => `
+              <button type="button" data-pool-mastery="${escapeAttr(championId)}" data-mastery="${key}"
+                data-team="${teamKey}" data-index="${playerIndex}" class="${key === level ? "active" : ""}"
+                title="${escapeAttr(`${meta.label} · ${meta.score}점`)}">${escapeHtml(meta.label)}</button>
+            `).join("")}
+          </div>
+          <button type="button" class="danger" data-pool-remove="${escapeAttr(championId)}" data-team="${teamKey}" data-index="${playerIndex}">삭제</button>
+        </div>
+      `;
+    }
+
+    function bindPoolEditor(container) {
+      container.querySelectorAll(".pool-add-input").forEach(input => {
+        input.addEventListener("keydown", event => {
+          if (event.key !== "Enter") return;
+          event.preventDefault();
+          addChampionToManualPool(input.dataset.team, Number(input.dataset.index), input.value);
+        });
+      });
+      container.querySelectorAll(".pool-add-button").forEach(button => {
+        button.addEventListener("click", () => {
+          const input = container.querySelector(`.pool-add-input[data-team="${button.dataset.team}"][data-index="${button.dataset.index}"]`);
+          addChampionToManualPool(button.dataset.team, Number(button.dataset.index), input?.value || "");
+        });
+      });
+      container.querySelectorAll("button[data-pool-mastery]").forEach(button => {
+        button.addEventListener("click", () => setManualPoolMastery(
+          button.dataset.team,
+          Number(button.dataset.index),
+          button.dataset.poolMastery,
+          button.dataset.mastery,
+        ));
+      });
+      container.querySelectorAll("button[data-pool-remove]").forEach(button => {
+        button.addEventListener("click", () => removeChampionFromManualPool(
+          button.dataset.team,
+          Number(button.dataset.index),
+          button.dataset.poolRemove,
+        ));
+      });
+      container.querySelectorAll(".pool-quick-apply").forEach(button => {
+        button.addEventListener("click", () => {
+          const input = container.querySelector(`.pool-quick-input[data-team="${button.dataset.team}"][data-index="${button.dataset.index}"]`);
+          applyManualPoolText(button.dataset.team, Number(button.dataset.index), input?.value || "");
         });
       });
     }
 
-    function poolTable(teamKey) {
-      return `
-        <table class="pool-table">
-          <thead><tr><th>선수</th><th>역할</th><th>랭크</th><th>주요 챔피언 (칸을 눌러 직접 수정 가능)</th><th>분석</th></tr></thead>
-          <tbody>
-            ${state.teams[teamKey].map((p, index) => `
-              <tr>
-                <td><b>${escapeHtml(p.riotId)}</b></td>
-                <td>${escapeHtml(p.role)}</td>
-                <td>${escapeHtml(rankLabel(p.rank))}</td>
-                <td>
-                  <div class="chips" style="margin-bottom:4px">${p.pool.length
-                    ? p.pool.map(id => {
-                        const champ = getChamp(id);
-                        return `<span class="chip">${escapeHtml(champ.name)} ${Math.round(comfortScore(p, id))}</span>`;
-                      }).join(" ")
-                    : emptyPoolPlaceholder(p)}</div>
-                  <input class="pool-edit-input" data-team="${teamKey}" data-index="${index}"
-                    value="${escapeAttr(poolToNames(p.pool, p.poolScores))}" placeholder="직접 수정: 럼블, 크산테 90, 오른" />
-                </td>
-                <td>${analysisSummary(p)}</td>
-              </tr>
-            `).join("")}
-          </tbody>
-        </table>
-      `;
+    function masterySummary(player, pool) {
+      const summary = Object.fromEntries(Object.keys(MANUAL_MASTERY_LEVELS).map(key => [key, 0]));
+      pool.forEach(id => {
+        const level = masteryLevelForScore(player.poolScores?.[id] ?? comfortScore(player, id));
+        summary[level] += 1;
+      });
+      return summary;
+    }
+
+    function poolToMasteryText(pool, scores) {
+      return (pool || []).map(id => {
+        const champ = championById[id];
+        if (!champ) return "";
+        const score = scores?.[id];
+        const label = score != null ? MANUAL_MASTERY_LEVELS[masteryLevelForScore(score)].label : "";
+        return `${champ.name}${label ? ` ${label}` : ""}`;
+      }).filter(Boolean).join("\n");
+    }
+
+    function addChampionToManualPool(teamKey, index, value) {
+      const championId = resolveChampionId(value);
+      if (!championId) {
+        toast("챔피언 이름을 찾지 못했습니다.");
+        return;
+      }
+      const player = state.teams[teamKey]?.[index];
+      if (!player) return;
+      player.pool = unique([...(player.pool || []), championId]);
+      player.poolScores = { ...(player.poolScores || {}), [championId]: player.poolScores?.[championId] ?? MANUAL_MASTERY_LEVELS.normal.score };
+      player.analysisFailed = null;
+      render();
+      toast(`${getChamp(championId).name}을 챔프폭에 추가했습니다.`);
+    }
+
+    function setManualPoolMastery(teamKey, index, championId, mastery) {
+      const player = state.teams[teamKey]?.[index];
+      const meta = MANUAL_MASTERY_LEVELS[mastery];
+      if (!player || !meta) return;
+      player.pool = unique([...(player.pool || []), championId]);
+      player.poolScores = { ...(player.poolScores || {}), [championId]: meta.score };
+      player.analysisFailed = null;
+      render();
+    }
+
+    function removeChampionFromManualPool(teamKey, index, championId) {
+      const player = state.teams[teamKey]?.[index];
+      if (!player) return;
+      player.pool = (player.pool || []).filter(id => id !== championId);
+      if (player.poolScores) delete player.poolScores[championId];
+      render();
+    }
+
+    function applyManualPoolText(teamKey, index, rawText) {
+      const player = state.teams[teamKey]?.[index];
+      if (!player) return;
+      const parsed = parseChampionList(rawText);
+      player.pool = parsed.ids;
+      player.poolScores = parsed.scores;
+      player.analysisFailed = null;
+      render();
+      toast("수기 챔프폭을 적용했습니다.");
     }
 
     function emptyPoolPlaceholder(p) {
@@ -3675,6 +4550,12 @@
 
     function sideToTeamKey(side) {
       return side === state.ourSide ? "our" : "enemy";
+    }
+
+    function lineCertaintyForSide(side) {
+      return sideToTeamKey(side) === "enemy"
+        ? (state.enemyLineCertainty || "estimated")
+        : "locked";
     }
 
     function otherSide(side) {
@@ -4751,6 +5632,7 @@
       const assignedRole = findPlayer(action.playerId)?.role;
       const eligibleRoles = swapEligibleRoles(champ);
       if (eligibleRoles.length < 2) return assignedRole ? [assignedRole] : champ.roles;
+      if (lineCertaintyForSide(action.side) === "unknown") return eligibleRoles;
 
       const team = state.teams[sideToTeamKey(action.side)] || [];
       const evidencedRoles = eligibleRoles.filter(role => {
@@ -4767,6 +5649,9 @@
       if (roles.length === 1) return 1;
       const assignedRole = findPlayer(action.playerId)?.role;
       if (!assignedRole || !roles.includes(assignedRole)) return 1 / roles.length;
+      const certainty = lineCertaintyForSide(action.side);
+      if (certainty === "locked") return role === assignedRole ? 1 : 0;
+      if (certainty === "unknown") return 1 / roles.length;
       return role === assignedRole ? 0.60 : 0.40 / Math.max(1, roles.length - 1);
     }
 
@@ -5874,6 +6759,7 @@
         state.sampleDataVersion = SAMPLE_DATA_VERSION;
         state.bgm = { ...freshState().bgm, ...(parsed.bgm || {}), enabled: false };
         state.timerMode = { ...freshState().timerMode, ...(parsed.timerMode || {}), enabled: false };
+        state.enemyLineCertainty = ENEMY_LINE_CERTAINTY[parsed.enemyLineCertainty] ? parsed.enemyLineCertainty : "estimated";
         const storedWeights = parsed.pickWeightProfileVersion === PICK_WEIGHT_PROFILE_VERSION ? parsed.pickWeights : null;
         state.pickWeights = { ...defaultPickWeights, ...(storedWeights || {}) };
         state.pickWeightProfileVersion = PICK_WEIGHT_PROFILE_VERSION;
@@ -5913,6 +6799,36 @@
         check("MSI 2026 T1 원딜", names.includes("Peyz#T1"), names.join(", "));
         check("MSI 2026 HLE 정글", names.includes("Kanavi#HLE"), names.join(", "));
         check("MSI 2026 HLE 원딜", names.includes("Gumayusi#HLE"), names.join(", "));
+
+        const manualPoolParse = parseChampionList("잭스 장인\n아리 가능");
+        check(
+          "수기 챔프폭 숙련도 파싱",
+          manualPoolParse.ids.includes("jax")
+            && manualPoolParse.scores.jax === 100
+            && manualPoolParse.ids.includes("ahri")
+            && manualPoolParse.scores.ahri === 55,
+          JSON.stringify(manualPoolParse),
+        );
+
+        state.actions = [{
+          order: 6,
+          side: "RED",
+          type: "PICK",
+          championId: "sylas",
+          playerId: "enemy-mid",
+        }];
+        state.enemyLineCertainty = "locked";
+        const lockedMidLikelihood = roleAssignmentLikelihood(state.actions[0], "MID");
+        state.enemyLineCertainty = "unknown";
+        const unknownRoles = plausibleRolesForPick(state.actions[0]);
+        const unknownMidLikelihood = roleAssignmentLikelihood(state.actions[0], "MID");
+        check(
+          "상대 라인 확실도 반영",
+          lockedMidLikelihood === 1 && unknownRoles.length >= 2 && unknownMidLikelihood < 1,
+          JSON.stringify({ lockedMidLikelihood, unknownRoles, unknownMidLikelihood }),
+        );
+        state.actions = [];
+        state.enemyLineCertainty = "estimated";
 
         const likelyValues = Object.values(likelyPoolForPlayers(state.teams.enemy));
         check("예상픽 점수 상한", likelyValues.length > 0 && Math.max(...likelyValues) <= 92, String(Math.max(...likelyValues)));

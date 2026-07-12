@@ -17,8 +17,27 @@ class FrontendContractsTest(unittest.TestCase):
             self.assertNotIn(stale_id, INDEX)
 
     def test_displayed_pool_score_uses_real_comfort(self):
-        self.assertIn("Math.round(comfortScore(p, id))", INDEX)
+        self.assertIn("poolChampionRow", INDEX)
+        self.assertIn("player.poolScores?.[championId] ?? comfortScore(player, championId)", INDEX)
+        self.assertIn("숙련도 ${Math.round(score)}", INDEX)
         self.assertNotIn("100 - i * 10", INDEX)
+
+    def test_manual_pool_mastery_editor_is_present(self):
+        self.assertIn("MANUAL_MASTERY_LEVELS", INDEX)
+        self.assertIn('expert: { label: "장인", score: 100 }', INDEX)
+        self.assertIn('strong: { label: "잘함", score: 84 }', INDEX)
+        self.assertIn('normal: { label: "보통", score: 70 }', INDEX)
+        self.assertIn('playable: { label: "가능", score: 55 }', INDEX)
+        self.assertIn("function setManualPoolMastery", INDEX)
+        self.assertIn("function applyManualPoolText", INDEX)
+        self.assertIn("pool-edit-details", INDEX)
+
+    def test_enemy_line_certainty_is_connected(self):
+        self.assertIn("ENEMY_LINE_CERTAINTY", INDEX)
+        self.assertIn('enemyLineCertainty: "estimated"', INDEX)
+        self.assertIn("function lineCertaintyForSide", INDEX)
+        self.assertIn('state.enemyLineCertainty = btn.dataset.certainty', INDEX)
+        self.assertIn("상대 라인 확실도 반영", INDEX)
 
     def test_pick_likelihood_is_not_rank_only_or_100(self):
         self.assertIn("sampleConfidence", INDEX)

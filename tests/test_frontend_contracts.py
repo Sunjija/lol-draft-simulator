@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 ROBOTS = (ROOT / "robots.txt").read_text(encoding="utf-8")
 SITEMAP = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+LOGO_PATH = ROOT / "assets" / "brand" / "draft-logo.png"
 
 
 class FrontendContractsTest(unittest.TestCase):
@@ -23,6 +24,16 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("https://ddragon.leagueoflegends.com/api/versions.json", INDEX)
         self.assertIn("loadChampionCatalog();", INDEX)
         self.assertIn("await loadPublicChampionIcons();", INDEX)
+
+    def test_landing_page_and_brand_asset_are_present(self):
+        self.assertTrue(LOGO_PATH.exists())
+        self.assertGreater(LOGO_PATH.stat().st_size, 100_000)
+        self.assertIn('class="landing-active"', INDEX)
+        self.assertIn('id="landingView"', INDEX)
+        self.assertIn('id="enterSimulator"', INDEX)
+        self.assertIn('assets/brand/draft-logo.png', INDEX)
+        self.assertIn("감으로만 하던 밴픽", INDEX)
+        self.assertIn("Discord 준비중", INDEX)
 
     def test_primary_ui_order_matches_draft_workflow(self):
         draft_tab = INDEX.index('data-view="draftView"')

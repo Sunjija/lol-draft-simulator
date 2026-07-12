@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="LoL 밴픽 시뮬레이터" />
   <meta name="twitter:description" content="내전, 격전, 팀게임용 픽밴 추천 도구입니다." />
-  <link rel="icon" href="data:," />
+  <link rel="icon" href="assets/brand/draft-logo.png" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -111,6 +111,197 @@
       min-height: 100vh;
       display: grid;
       grid-template-rows: auto auto 1fr;
+    }
+
+    body.landing-active {
+      overflow: auto;
+    }
+
+    body.landing-active .app {
+      display: none;
+    }
+
+    body:not(.landing-active) .landing {
+      display: none;
+    }
+
+    .landing {
+      min-height: 100vh;
+      padding: 28px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(47, 129, 247, 0.18), transparent 34%),
+        radial-gradient(circle at 82% 24%, rgba(201, 162, 39, 0.16), transparent 30%),
+        linear-gradient(145deg, #070a10 0%, #0b0f17 48%, #111827 100%);
+    }
+
+    .landing-shell {
+      width: min(1120px, 100%);
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .landing-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .landing-kicker {
+      display: inline-flex;
+      width: max-content;
+      gap: 7px;
+      align-items: center;
+      padding: 7px 10px;
+      border: 1px solid rgba(201, 162, 39, 0.38);
+      border-radius: 999px;
+      background: rgba(201, 162, 39, 0.10);
+      color: #f8d46a;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .landing h1 {
+      margin: 0;
+      max-width: 720px;
+      color: #f8fafc;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .landing-lead {
+      max-width: 720px;
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 17px;
+      line-height: 1.68;
+    }
+
+    .landing-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .landing-primary {
+      padding: 12px 18px;
+      color: #07111f;
+      border-color: rgba(248, 212, 106, 0.9);
+      background: linear-gradient(135deg, #f8d46a, #c9a227);
+      font-weight: 800;
+    }
+
+    .landing-secondary {
+      padding: 12px 15px;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.72);
+      border-color: rgba(148, 163, 184, 0.26);
+      text-decoration: none;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .landing-secondary.disabled {
+      cursor: not-allowed;
+      opacity: 0.56;
+    }
+
+    .landing-skip {
+      display: inline-flex;
+      gap: 7px;
+      align-items: center;
+      width: max-content;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .landing-skip input {
+      width: auto;
+    }
+
+    .landing-reasons {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .landing-card {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.70);
+    }
+
+    .landing-card b {
+      display: block;
+      margin-bottom: 5px;
+      color: #f8fafc;
+      font-size: 13px;
+    }
+
+    .landing-card span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    .landing-visual {
+      position: relative;
+      padding: 18px;
+      border: 1px solid rgba(201, 162, 39, 0.26);
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(17, 24, 39, 0.78), rgba(2, 6, 23, 0.86)),
+        rgba(15, 23, 42, 0.8);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    .landing-logo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: #020617;
+    }
+
+    .landing-basis {
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .landing-basis-title {
+      color: #f8fafc;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .landing-basis-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-radius: var(--radius);
+      background: rgba(2, 6, 23, 0.32);
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    .landing-basis-row span:last-child {
+      color: #f8d46a;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .timer-bar {
@@ -351,6 +542,23 @@
       justify-content: space-between;
       max-width: 1560px;
       margin: 0 auto;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid rgba(201, 162, 39, 0.28);
+      background: #020617;
+      flex: 0 0 auto;
     }
 
     h1 {
@@ -1625,8 +1833,17 @@
     }
 
     @media (max-width: 980px) {
+      .landing {
+        padding: 18px;
+      }
+
+      .landing-shell,
       .setup-grid,
       .setup-team-pair {
+        grid-template-columns: 1fr;
+      }
+
+      .landing-reasons {
         grid-template-columns: 1fr;
       }
 
@@ -1650,13 +1867,62 @@
     }
   </style>
 </head>
-<body>
+<body class="landing-active">
+  <section class="landing" id="landingView" aria-label="서비스 소개">
+    <div class="landing-shell">
+      <div class="landing-copy">
+        <div class="landing-kicker">PUBLIC BETA · 팀게임 밴픽 보조</div>
+        <h1>감으로만 하던 밴픽을, 팀 챔프폭과 조합 근거로 정리합니다.</h1>
+        <p class="landing-lead">
+          이 시뮬레이터는 내전과 격전처럼 “누가 무엇을 실제로 할 수 있는지”가 중요한 환경을 위해 만들었습니다.
+          선수별 챔프폭, 숙련도, 라인전 주도권, 스왑 가능성, 조합 시너지, 피어리스 리스크를 함께 계산해
+          지금 순서에서 가져갈 만한 픽과 견제할 밴을 추천합니다.
+        </p>
+        <div class="landing-actions">
+          <button id="enterSimulator" class="landing-primary" type="button">밴픽 시작하기</button>
+          <a id="discordLink" class="landing-secondary disabled" href="#" aria-disabled="true">Discord 준비중</a>
+        </div>
+        <label class="landing-skip">
+          <input id="skipLandingNextTime" type="checkbox" />
+          다음부터 바로 밴픽 보드 열기
+        </label>
+        <div class="landing-reasons">
+          <div class="landing-card">
+            <b>챔프폭 우선</b>
+            <span>추천은 기본적으로 선수의 실제 챔프폭 안에서 계산하고, 숙련도 차이를 크게 반영합니다.</span>
+          </div>
+          <div class="landing-card">
+            <b>팀게임 기준</b>
+            <span>솔랭 티어만 보지 않고 라인 주도권, 정글-라인 연계, 바텀 듀오, 한타 구도를 함께 봅니다.</span>
+          </div>
+          <div class="landing-card">
+            <b>밴픽 순서 반영</b>
+            <span>블루 선픽, 레드 R4 스왑, R5 카운터, 2페이즈 저격밴처럼 순서별 가치를 따로 계산합니다.</span>
+          </div>
+        </div>
+      </div>
+      <aside class="landing-visual">
+        <img class="landing-logo" src="assets/brand/draft-logo.png" alt="LoL 밴픽 시뮬레이터 로고" />
+        <div class="landing-basis">
+          <div class="landing-basis-title">추천 계산에 반영하는 축</div>
+          <div class="landing-basis-row"><span>선수별 챔프폭과 숙련도</span><span>핵심</span></div>
+          <div class="landing-basis-row"><span>라인전/상성/바텀 듀오</span><span>주도권</span></div>
+          <div class="landing-basis-row"><span>메타 티어와 선픽 안정성</span><span>밸류</span></div>
+          <div class="landing-basis-row"><span>조합 태그와 스왑 가능성</span><span>팀게임</span></div>
+          <div class="landing-basis-row"><span>피어리스와 남은 챔프폭</span><span>리스크</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
   <div class="app">
     <header>
       <div class="topbar">
-        <div>
-          <h1>LoL 밴픽 시뮬레이터</h1>
-          <div class="subtitle">공개 베타 · 수기 챔프폭 노트 기반 팀게임 밴픽 보조</div>
+        <div class="brand-lockup">
+          <img class="brand-icon" src="assets/brand/draft-logo.png" alt="" aria-hidden="true" />
+          <div>
+            <h1>LoL 밴픽 시뮬레이터</h1>
+            <div class="subtitle">공개 베타 · 수기 챔프폭 노트 기반 팀게임 밴픽 보조</div>
+          </div>
         </div>
         <div class="actions">
           <div class="bgm-controls local-only" aria-label="밴픽 BGM">
@@ -3057,8 +3323,10 @@
         "liveCaptureVideo", "liveCaptureCanvas", "liveCaptureSelection", "liveCaptureSavedSelection",
         "liveCaptureHint", "liveCaptureCandidates",
         "championNameOptions",
+        "landingView", "enterSimulator", "skipLandingNextTime", "discordLink",
       ].forEach(id => els[id] = $(id));
 
+      initializeLanding();
       applyPublicBetaMode();
       bindEvents();
       loadFromStorage(false);
@@ -3078,6 +3346,22 @@
       }
     });
 
+    function initializeLanding() {
+      const shouldSkip = localStorage.getItem("lol-draft-simulator-skip-landing") === "true";
+      if (APP_PARAMS.has("selftest") || APP_PARAMS.has("app") || shouldSkip) {
+        enterApp({ persist: false });
+      } else {
+        document.body.classList.add("landing-active");
+      }
+    }
+
+    function enterApp(options = {}) {
+      document.body.classList.remove("landing-active");
+      if (options.persist && els.skipLandingNextTime?.checked) {
+        localStorage.setItem("lol-draft-simulator-skip-landing", "true");
+      }
+    }
+
     function applyPublicBetaMode() {
       document.querySelectorAll(".dev-only").forEach(element => {
         element.hidden = !LOCAL_DEV_FEATURES;
@@ -3096,6 +3380,18 @@
     }
 
     function bindEvents() {
+      if (els.enterSimulator) {
+        els.enterSimulator.addEventListener("click", () => enterApp({ persist: true }));
+      }
+      if (els.discordLink) {
+        els.discordLink.addEventListener("click", event => {
+          if (els.discordLink.classList.contains("disabled")) {
+            event.preventDefault();
+            toast("Discord 커뮤니티 링크는 준비 중입니다.");
+          }
+        });
+      }
+
       document.addEventListener("change", event => {
         const select = event.target.closest("select.pick-reassign");
         if (!select) return;

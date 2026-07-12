@@ -1,77 +1,76 @@
 # LoL Draft Simulator
 
-개인용 팀게임 밴픽 보조 도구입니다. Riot API key를 입력하면 Riot ID 기반으로 최근 전적과 숙련도를 분석해 선수별 챔프폭을 갱신하고, 롤 데이터와 대회 메타, 조합 규칙을 기반으로 픽/밴 후보를 추천합니다.
+팀게임, 내전, 격전 연습용 밴픽 보조 도구입니다. 공개 베타 버전은 Riot API 없이 수기 챔프폭, 숙련도, 라인 정보, 대회/팀게임 메타 데이터, 조합 규칙을 바탕으로 픽과 밴 후보를 추천합니다.
 
-## 실행
+## 공개 베타 사용법
+
+정적 웹으로 바로 배포할 수 있습니다.
 
 ```powershell
-python server.py
+python -m http.server 8792
 ```
 
 브라우저에서 `http://127.0.0.1:8792/`로 접속합니다.
 
-`index.html`만 직접 열어도 밴픽 화면은 볼 수 있지만, Riot API 분석과 로컬 파일 기능은 `server.py`로 실행해야 동작합니다.
+GitHub Pages, Cloudflare Pages, Netlify, Vercel 같은 정적 호스팅에도 `index.html`, `assets/`, `data/` 폴더만 올리면 기본 기능이 동작합니다.
 
-## API key
+## 검색 노출
 
-Riot API는 공식 인증 key가 필요합니다. 앱의 Setup 화면에서 key를 입력하거나, 아래 파일에 저장할 수 있습니다.
+기본 공개 URL은 아래 주소를 기준으로 SEO 메타태그, canonical URL, sitemap을 설정했습니다.
 
 ```text
-work/lol-draft-simulator/riot_api_key.txt
+https://sunjija.github.io/lol-draft-simulator/
 ```
 
-환경변수로 실행할 수도 있습니다.
+Google 검색 노출을 빠르게 요청하려면 Google Search Console에서 이 URL을 속성으로 추가하고, `sitemap.xml`을 제출합니다.
+
+```text
+https://sunjija.github.io/lol-draft-simulator/sitemap.xml
+```
+
+커스텀 도메인을 연결하면 `index.html`, `robots.txt`, `sitemap.xml`의 URL을 새 도메인으로 바꾸면 됩니다.
+
+## 주요 기능
+
+- 블루/레드 사이드 밴픽 보드
+- 하드 피어리스 ON/OFF
+- 선수별 챔프폭 수기 입력
+- 챔프 숙련도: 장인, 잘함, 보통, 가능
+- 팀게임용 챔프폭 프리셋
+- 상대 라인 정보: 확정, 추정, 불명
+- 라인전, 조합, 선픽 안정성, 스왑 가치, 피어리스 리스크 반영
+- 바텀 듀오, 정글-미드, 돌진/받아치기 태그 기반 시너지 반영
+- 창 공유 기반 라이브 캡쳐 Beta
+
+## 개발자 모드
+
+로컬에서만 Riot API 자동 채우기와 로컬 BGM 스캔을 테스트할 수 있습니다.
 
 ```powershell
-$env:RIOT_API_KEY="RGAPI-..."
 python server.py
 ```
 
-## 현재 기능
+브라우저에서 `http://127.0.0.1:8792/?dev=1`로 접속하면 개발자 전용 패널이 표시됩니다.
 
-- Riot ID 붙여넣기 기반 선수 분석
-- 최근 전적, 챔피언 숙련도, 판수, 승률을 함께 반영한 챔프폭 계산
-- 블루/레드 사이드 선택
-- 하드 피어리스 ON/OFF
-- 실제 대회식 20턴 밴픽 순서
-- 챔피언 수동 선택 및 추천 후보 클릭 적용
-- 우리 추천, 상대 예측, 밴 추천 흐름
-- 선수별 수기 챔프폭 편집: 장인/잘함/보통/가능 숙련도 버튼과 빠른 입력 지원
-- 상대 라인 정보 확실도 설정: 확정/추정/불명
-- 라인별 챔피언 티어, 라인전 상성, 바텀 2:2, 정글-미드, 탑-정글 시너지 반영
-- 팀 조합의 AD/AP 밸런스, 이니시, 팔 길이, DPS, CC, 돌진 저항력 반영
-- 블루/레드 사이드별 전략 차이 반영
-- Red R4 스왑 은닉, Blue B4/B5 조합 완성 및 R5 방어, Red R5 카운터 픽 로직
-- 얕은 다음 수 예측으로 상대 응수 가능성 일부 반영
-- 챔피언 초상화 자동 로드
-- 로컬 BGM 재생 지원
-- Chrome/Edge 창 공유 기반 라이브 캡쳐 Beta
-
-## 이번 버전 변경점
-
-- AI 코멘트/Claude API 기능 제거
-- 추천 점수 표시를 핵심 근거 중심으로 정리
-- 픽 순서별 추천 흐름 보정
-- 블루/레드 후반 픽 전략 분리
-- 실제 팀게임에서 중요한 라인전 주도권 가중치 보정
-- 뚜벅이 응징/돌진 카운터 보너스가 과하게 튀지 않도록 조정
-- 이전 픽이 이후 추천에 반영되도록 얕은 밴픽 예측 보강
-- 챔프폭이 얕은 라인은 픽 보호/2페이즈 저격밴 가치가 더 잘 드러나도록 보정
-- 브라우저 selftest에 픽 보호와 2페이즈 챔프폭 저격밴 검증 추가
-- 라이브 캡쳐 Beta 추가: 사용자가 선택한 창에서 현재 턴 아이콘 영역을 감지 후보로 띄우고, 확신도가 높을 때 자동 반영 가능
-- Player Pool 화면을 선수별 카드형 수기 입력 UX로 개편
-- Player Pool 기본 화면은 보기 중심으로 정리하고, 편집 UI는 접힘 영역으로 분리
-- 격전처럼 상대 라인이 불확실한 상황을 위해 상대 라인 확실도 설정 추가
-- 실행에 필요한 압축 데이터 중심으로 데이터 구조 정리
+공개 베타 기본 화면에서는 API key 입력과 로컬 BGM 기능을 숨깁니다. 공개 서비스에서 Riot API를 사용하려면 Riot Developer Portal의 정책에 맞는 production key, HTTPS, 서버 측 rate limit, 개인정보 안내가 필요합니다.
 
 ## 데이터
 
-앱에는 실행에 필요한 압축 데이터만 포함되어 있습니다. 분석 기준은 롤 챔피언 통계, 라인전 상성, 조합 시너지, 2026 MSI 메타를 함께 반영한 로컬 데이터입니다.
+앱 실행에 필요한 정적 데이터만 포함합니다.
 
-## 개발 메모
+- `data/league_draft_context_compact.js`: 챔피언 티어, 라인별 경향, 조합 태그
+- `data/league_top_lane_matchups_compact.js`: 탑 라인 상성 데이터
+- `data/league_mid_lane_matchups_compact.js`: 미드 라인 상성 데이터
+- `data/tournament_meta_2026_compact.js`: 2026 대회 메타 요약 데이터
+
+## 테스트
 
 ```powershell
 python -m unittest discover -s tests
 ```
 
-테스트는 서버 API 기본 동작, 프론트엔드 계약, MSI 메타 연결, 밴픽 점수 로직의 주요 연결 지점을 확인합니다. 브라우저에서는 `?selftest=1`로 추천 흐름과 핵심 점수 보정을 추가 확인할 수 있습니다.
+브라우저에서는 `?selftest=1`을 붙여 주요 추천 시나리오를 점검할 수 있습니다.
+
+## 고지
+
+이 프로젝트는 Riot Games와 공식 제휴 또는 승인을 받은 제품이 아닙니다. League of Legends 및 Riot Games 관련 명칭과 자산의 권리는 각 소유자에게 있습니다.

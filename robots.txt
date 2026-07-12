@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sunjija.github.io/lol-draft-simulator/sitemap.xml

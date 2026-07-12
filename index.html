@@ -1,10 +1,37 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LoL 밴픽 시뮬레이터</title>
+  <title>LoL 밴픽 시뮬레이터 - 팀게임 픽밴 추천 도구</title>
+  <meta name="description" content="내전, 격전, 팀게임을 위한 LoL 밴픽 시뮬레이터입니다. 선수별 챔프폭과 숙련도, 라인전, 조합 시너지, 피어리스 조건을 반영해 픽과 밴 후보를 추천합니다." />
+  <meta name="keywords" content="LoL 밴픽, 롤 밴픽, 밴픽 시뮬레이터, 롤 픽밴, 격전, 내전, 팀게임, 피어리스, 챔프폭, 롤 조합" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="LoL Draft Simulator" />
+  <link rel="canonical" href="https://sunjija.github.io/lol-draft-simulator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:site_name" content="LoL 밴픽 시뮬레이터" />
+  <meta property="og:title" content="LoL 밴픽 시뮬레이터 - 팀게임 픽밴 추천 도구" />
+  <meta property="og:description" content="챔프폭, 숙련도, 라인전, 조합 시너지를 반영해 팀게임 밴픽 후보를 추천하는 공개 베타 도구입니다." />
+  <meta property="og:url" content="https://sunjija.github.io/lol-draft-simulator/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="LoL 밴픽 시뮬레이터" />
+  <meta name="twitter:description" content="내전, 격전, 팀게임용 픽밴 추천 도구입니다." />
   <link rel="icon" href="data:," />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "LoL 밴픽 시뮬레이터",
+      "url": "https://sunjija.github.io/lol-draft-simulator/",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Web",
+      "description": "내전, 격전, 팀게임을 위한 LoL 밴픽 시뮬레이터입니다. 선수별 챔프폭과 숙련도, 라인전, 조합 시너지, 피어리스 조건을 반영해 픽과 밴 후보를 추천합니다.",
+      "inLanguage": "ko-KR",
+      "isAccessibleForFree": true
+    }
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <style>
     :root {
@@ -353,6 +380,11 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--panel);
+    }
+
+    .dev-only[hidden],
+    .local-only[hidden] {
+      display: none !important;
     }
 
     .bgm-file {
@@ -1235,6 +1267,49 @@
       gap: 12px;
     }
 
+    .pool-tools {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pool-preset-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pool-preset-row label {
+      min-width: 150px;
+    }
+
+    .pool-status-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .pool-status-card {
+      border: 1px solid rgba(201, 162, 39, 0.26);
+      border-radius: var(--radius);
+      padding: 10px;
+      background: rgba(15, 23, 42, 0.66);
+      min-width: 0;
+    }
+
+    .pool-status-card b {
+      display: block;
+      color: var(--text);
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .pool-status-card span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
     .pool-card {
       border: 1px solid var(--line);
       background: rgba(27, 34, 48, 0.55);
@@ -1267,6 +1342,16 @@
       gap: 5px;
       flex-wrap: wrap;
       justify-content: flex-end;
+    }
+
+    .pool-card-actions {
+      display: flex;
+      align-items: flex-end;
+      gap: 7px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      flex: 1 1 auto;
+      min-width: 220px;
     }
 
     .pool-add-row {
@@ -1392,16 +1477,48 @@
       margin-top: 10px;
       border-top: 1px solid var(--line);
       padding-top: 10px;
+      width: 100%;
     }
 
     .pool-edit-details > summary {
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: var(--muted);
+      justify-content: center;
+      gap: 5px;
+      min-width: 74px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--text);
+      background: var(--panel-raised);
       font-size: 12px;
+      font-weight: 600;
       margin-bottom: 10px;
+      list-style: none;
+      user-select: none;
+    }
+
+    .pool-edit-toggle {
+      flex: 0 0 auto;
+    }
+
+    .pool-edit-details > summary::-webkit-details-marker { display: none; }
+
+    .pool-edit-details > summary::before {
+      content: "+";
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .pool-edit-details[open] > summary {
+      color: var(--gold);
+      border-color: rgba(201, 162, 39, 0.72);
+      background: rgba(201, 162, 39, 0.12);
+    }
+
+    .pool-edit-details[open] > summary::before {
+      content: "-";
     }
 
     .pool-quick summary {
@@ -1452,6 +1569,30 @@
       padding: 12px;
       background: var(--panel);
       font-size: 13px;
+    }
+
+    .guide-note {
+      color: #f8fafc;
+      border: 1px solid rgba(201, 162, 39, 0.38);
+      border-radius: var(--radius);
+      padding: 12px 13px;
+      background:
+        linear-gradient(135deg, rgba(201, 162, 39, 0.18), rgba(47, 107, 255, 0.12)),
+        rgba(15, 23, 42, 0.82);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .guide-note b,
+    .guide-note strong {
+      color: #f8d46a;
+    }
+
+    @media (max-width: 820px) {
+      .pool-status-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @keyframes recoCardIn {
@@ -1515,10 +1656,10 @@
       <div class="topbar">
         <div>
           <h1>LoL 밴픽 시뮬레이터</h1>
-          <div class="subtitle">개인용 MVP · Riot API 챔프폭 분석 + 수동 메타 기반 밴픽 추천</div>
+          <div class="subtitle">공개 베타 · 수기 챔프폭 노트 기반 팀게임 밴픽 보조</div>
         </div>
         <div class="actions">
-          <div class="bgm-controls" aria-label="밴픽 BGM">
+          <div class="bgm-controls local-only" aria-label="밴픽 BGM">
             <audio id="bgmAudio" loop></audio>
             <select id="bgmSelect" class="bgm-select" title="assets/bgm 폴더의 음원 선택">
               <option value="">BGM 없음</option>
@@ -1540,8 +1681,8 @@
 
     <nav class="tabs" aria-label="화면 전환">
       <button class="tab active" data-view="draftView">Draft</button>
-      <button class="tab" data-view="setupView">Setup</button>
       <button class="tab" data-view="poolsView">Player Pool</button>
+      <button class="tab" data-view="setupView">Setup</button>
     </nav>
 
     <main>
@@ -1645,6 +1786,22 @@
                 </div>
               </div>
 
+              <div class="panel draft-action-panel" style="box-shadow:none">
+                <div class="panel-head">
+                  <div>
+                    <div class="panel-title">빠른 조작</div>
+                    <div class="small muted">현재 턴 추천을 바로 반영하거나 기본 데이터를 다시 불러옵니다.</div>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <button id="autoPickCurrent" class="primary">현재 턴 1순위 자동 선택</button>
+                    <button id="completeDraft">남은 턴 자동 진행</button>
+                    <button id="fillSample">기본 데이터 다시 채우기</button>
+                  </div>
+                </div>
+              </div>
+
               <div class="champ-search">
                 <input id="champSearch" placeholder="챔피언 검색" />
                 <select id="roleFilter">
@@ -1701,12 +1858,68 @@
 
       <section id="setupView" class="view">
         <div class="grid setup-grid">
+          <div class="setup-team-pair">
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <div class="panel-title">우리 팀</div>
+                  <div class="small muted">라인, 이름, 티어를 먼저 맞춰두면 추천의 기본 축이 잡힙니다.</div>
+                </div>
+              </div>
+              <div class="panel-body" id="ourPlayersForm"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <div class="panel-title">상대 팀</div>
+                  <div class="small muted">상대 라인이 불확실하면 아래 상대 라인 정보에서 추정/불명을 선택하세요.</div>
+                </div>
+              </div>
+              <div class="panel-body" id="enemyPlayersForm"></div>
+            </section>
+          </div>
+
+          <section class="panel" style="grid-column:1 / -1">
+            <div class="panel-head">
+              <div>
+                <div class="panel-title">Riot ID/이름 붙여넣기</div>
+                <div class="small muted">여러 명을 한 번에 등록할 때 펼쳐서 사용하세요. 이름만 넣어도 바로 사용할 수 있습니다.</div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <details id="bulkNamesDetails">
+                <summary style="cursor:pointer;font-size:13px;color:var(--muted)">펼쳐서 Riot ID/이름 여러 명 한 번에 입력</summary>
+                <div class="grid" style="margin-top:10px">
+                  <div>
+                    <label for="ourBulkNames">우리 팀 Riot ID 또는 이름 (한 줄에 하나, 최대 5명)</label>
+                    <textarea id="ourBulkNames" placeholder="Doran#T1&#10;Oner#T1&#10;Faker#T1&#10;Gumayusi#T1&#10;Keria#T1"></textarea>
+                    <div class="row" style="margin-top:8px">
+                      <button id="applyOurBulk" class="primary">우리 팀 명단 적용</button>
+                      <button id="copyOurNames">현재 우리 팀 불러오기</button>
+                    </div>
+                  </div>
+                  <div>
+                    <label for="enemyBulkNames">상대 팀 Riot ID 또는 이름 (한 줄에 하나, 최대 5명)</label>
+                    <textarea id="enemyBulkNames" placeholder="Zeus#HLE&#10;Peanut#HLE&#10;Zeka#HLE&#10;Viper#HLE&#10;Delight#HLE"></textarea>
+                    <div class="row" style="margin-top:8px">
+                      <button id="applyEnemyBulk" class="primary">상대 팀 명단 적용</button>
+                      <button id="copyEnemyNames">현재 상대 팀 불러오기</button>
+                    </div>
+                  </div>
+                  <div class="guide-note">
+                    `탑친구`처럼 이름만 적어도 됩니다. 팀원 이름을 먼저 넣고, Player Pool에서 챔프폭과 숙련도를 채우면 추천이 바로 계산됩니다.
+                  </div>
+                </div>
+              </details>
+            </div>
+          </section>
+
           <section class="panel">
             <div class="panel-head">
               <div>
                 <div class="panel-title">전체 설정</div>
-                <div class="small muted">API 분석 전에는 샘플/수동 데이터로 동작합니다.</div>
-                <div class="small muted">검증 샘플: gol.gg MSI 2026 · 패치 16.13 · 2026-07-10 갱신</div>
+                <div class="small muted">공개 베타에서는 수기 챔프폭과 프리셋을 기준으로 추천합니다.</div>
               </div>
             </div>
             <div class="panel-body grid">
@@ -1735,14 +1948,13 @@
                 </div>
               </div>
               <div class="small muted" id="enemyLineCertaintyLabel">상대 라인을 입력값 기준으로 보되, 멀티라인/스왑 가능성은 유지합니다.</div>
-              <div class="empty-note">
-                Riot API key를 적용하면 "우리/상대 팀 분석" 버튼으로 실제 전적 기반 챔프폭과
-                랭크(티어)를 자동으로 채웁니다. 분석 전에는 화면의 샘플 데이터로 동작합니다.
+              <div class="guide-note">
+                먼저 <b>Player Pool</b>에서 우리 팀 챔프폭을 넣어보세요. 챔피언 숙련도를 고르면 밴픽 추천이 바로 작동합니다.
               </div>
             </div>
           </section>
 
-          <section class="panel">
+          <section class="panel dev-only" id="apiSettingsPanel" hidden>
             <div class="panel-head">
               <div>
                 <div class="panel-title">추천 점수 가중치</div>
@@ -1752,8 +1964,9 @@
             </div>
             <div class="panel-body grid">
               <div class="weight-list" id="pickWeightControls"></div>
-              <div class="empty-note">
-                예: 라인전 카운터를 보고 싶으면 라인전/상성, 안정적인 팀게임 밸류를 원하면 메타/선픽과 조합/시너지를 올리면 됩니다.
+              <div class="guide-note">
+                라인 주도권을 더 보고 싶으면 <b>라인전/상성</b>, 팀게임 완성도를 더 보고 싶으면
+                <b>메타/선픽</b>과 <b>조합/시너지</b>를 살짝 올려보세요.
               </div>
             </div>
           </section>
@@ -1761,8 +1974,8 @@
           <section class="panel">
             <div class="panel-head">
               <div>
-                <div class="panel-title">Riot API 연결</div>
-                <div class="small muted">`python server.py`로 실행했을 때 실제 전적 분석이 가능합니다.</div>
+                <div class="panel-title">선택 기능: Riot API 자동 채우기</div>
+                <div class="small muted">필수 기능이 아닙니다. 최근 전적 기반으로 챔프폭을 자동 채우고 싶을 때만 사용하세요.</div>
               </div>
               <span class="chip" id="apiStatus">확인 전</span>
             </div>
@@ -1786,116 +1999,83 @@
                   </select>
                 </div>
                 <div>
-                  <label for="riotMatchCount">최근 경기 수</label>
-                  <select id="riotMatchCount">
-                    <option value="10">10</option>
-                    <option value="20" selected>20</option>
-                    <option value="30">30</option>
-                    <option value="50">50</option>
-                  </select>
+                  <label>분석 범위</label>
+                  <div class="side-pill" style="height:37px;width:100%;justify-content:center">솔로 랭크 최근 20경기</div>
                 </div>
-              </div>
-              <div>
-                <label for="riotQueue">분석 큐</label>
-                <select id="riotQueue">
-                  <option value="">전체 큐</option>
-                  <option value="420" selected>솔로 랭크</option>
-                  <option value="440">자유 랭크</option>
-                  <option value="400">일반 교차 선택</option>
-                  <option value="430">일반 비공개 선택</option>
-                </select>
               </div>
               <div class="row">
                 <button id="checkApiStatus">API 상태 확인</button>
                 <button id="saveApiKey" class="primary">키 적용</button>
                 <button id="clearApiKey" class="danger">저장된 키 삭제</button>
-                <button id="analyzeOurTeam">우리 팀 분석</button>
-                <button id="analyzeEnemyTeam">상대 팀 분석</button>
-                <button id="analyzeBothTeams">양 팀 분석</button>
+                <button id="analyzeOurTeam">우리 팀 순차 분석</button>
+                <button id="analyzeEnemyTeam">상대 팀 순차 분석</button>
+                <button id="analyzeBothTeams">양 팀 순차 분석</button>
               </div>
-              <div class="empty-note" id="apiMessage">
-                체크하지 않으면 API 키는 로컬 Python 서버 메모리에만 있고, 서버를 끄면 다시 입력해야 합니다.
-                팀 분석 시 챔프폭과 함께 랭크(티어)도 LEAGUE-V4로 자동 조회됩니다.
+              <div class="guide-note" id="apiMessage">
+                Riot API는 선택 기능입니다. 키를 넣으면 선수별로 나눠서 솔로 랭크 최근 20경기를 자동 분석합니다.
+                키를 넣지 않아도 수기 챔프폭만으로 추천을 사용할 수 있습니다.
               </div>
             </div>
           </section>
 
-          <section class="panel">
-            <div class="panel-head">
-              <div class="panel-title">빠른 조작</div>
-            </div>
-            <div class="panel-body grid">
-              <button id="fillSample">샘플 팀/메타 다시 채우기</button>
-              <button id="autoPickCurrent">현재 턴 1순위 자동 선택</button>
-              <button id="completeDraft">남은 턴 자동 진행</button>
-            </div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <div>
-                <div class="panel-title">닉네임 붙여넣기</div>
-                <div class="small muted">평소엔 접어둬도 됩니다. 여러 명을 한 번에 등록할 때만 펼치세요.</div>
-              </div>
-            </div>
-            <div class="panel-body">
-              <details id="bulkNamesDetails">
-                <summary style="cursor:pointer;font-size:13px;color:var(--muted)">펼쳐서 Riot ID 여러 명 한 번에 입력</summary>
-                <div class="grid" style="margin-top:10px">
-                  <div>
-                    <label for="ourBulkNames">우리 팀 Riot ID (한 줄에 하나, 최대 5명)</label>
-                    <textarea id="ourBulkNames" placeholder="Doran#T1&#10;Oner#T1&#10;Faker#T1&#10;Gumayusi#T1&#10;Keria#T1"></textarea>
-                    <div class="row" style="margin-top:8px">
-                      <button id="applyOurBulk" class="primary">우리 팀 적용 후 분석</button>
-                      <button id="copyOurNames">현재 우리 팀 불러오기</button>
-                    </div>
-                  </div>
-                  <div>
-                    <label for="enemyBulkNames">상대 팀 Riot ID (한 줄에 하나, 최대 5명)</label>
-                    <textarea id="enemyBulkNames" placeholder="Zeus#HLE&#10;Peanut#HLE&#10;Zeka#HLE&#10;Viper#HLE&#10;Delight#HLE"></textarea>
-                    <div class="row" style="margin-top:8px">
-                      <button id="applyEnemyBulk" class="primary">상대 팀 적용 후 분석</button>
-                      <button id="copyEnemyNames">현재 상대 팀 불러오기</button>
-                    </div>
-                  </div>
-                  <div class="empty-note">
-                    예: `hide on bush#KR1`처럼 닉네임에 공백이 있어도 `#태그`가 붙어 있으면 하나의 Riot ID로 인식합니다.
-                    샘플 닉네임은 실제 계정이 아닐 수 있으니, 실제 Riot ID를 붙여넣어야 전적 분석이 됩니다.
-                  </div>
-                </div>
-              </details>
-            </div>
-          </section>
-
-          <div class="setup-team-pair">
-            <section class="panel">
-              <div class="panel-head">
-                <div class="panel-title">우리 팀</div>
-              </div>
-              <div class="panel-body" id="ourPlayersForm"></div>
-            </section>
-
-            <section class="panel">
-              <div class="panel-head">
-                <div class="panel-title">상대 팀</div>
-              </div>
-              <div class="panel-body" id="enemyPlayersForm"></div>
-            </section>
-          </div>
         </div>
       </section>
 
       <section id="poolsView" class="view">
         <div class="grid setup-grid">
+          <section class="panel" style="grid-column:1 / -1">
+            <div class="panel-body pool-tools">
+              <div class="guide-note">
+                각 선수 카드의 <b>편집</b> 버튼을 눌러 팀원들의 챔프폭을 반영해보세요.
+                숙련도는 <b>장인 100</b> · <b>잘함 84</b> · <b>보통 70</b> · <b>가능 55</b>로 추천 점수에 바로 들어갑니다.
+              </div>
+              <div class="pool-preset-row">
+                <div>
+                  <label for="poolPresetType">챔프폭 프리셋</label>
+                  <select id="poolPresetType">
+                    <option value="highTierTeam" selected>상위권 팀게임 기본</option>
+                    <option value="lanePriority">라인전 주도권</option>
+                    <option value="tournamentMeta">대회 메타형</option>
+                    <option value="fearlessWide">피어리스 넓은 풀</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="poolPresetTeam">프리셋 적용 대상</label>
+                  <select id="poolPresetTeam">
+                    <option value="our" selected>우리 팀</option>
+                    <option value="enemy">상대 팀</option>
+                    <option value="both">양 팀</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="poolPresetMode">적용 방식</label>
+                  <select id="poolPresetMode">
+                    <option value="empty" selected>챔프폭이 빈 선수만 채우기</option>
+                    <option value="append">기존 챔프폭 유지하고 추가</option>
+                  </select>
+                </div>
+                <button id="applyPoolPreset" class="primary" type="button">프리셋 채우기</button>
+                <button id="clearPoolPresetTarget" class="danger" type="button">챔프폭 비우기</button>
+                <span class="small muted">라인별 보편픽을 <b>보통 70</b>으로 추가합니다.</span>
+              </div>
+              <div class="pool-status-grid" id="poolInputStatus"></div>
+            </div>
+          </section>
           <section class="panel">
             <div class="panel-head">
-              <div class="panel-title">우리 팀 챔프폭</div>
+              <div>
+                <div class="panel-title">우리 팀 챔프폭</div>
+                <div class="small muted">실제로 꺼낼 수 있는 픽 위주로 정리하면 추천 정확도가 올라갑니다.</div>
+              </div>
             </div>
             <div class="panel-body" id="ourPoolTable"></div>
           </section>
           <section class="panel">
             <div class="panel-head">
-              <div class="panel-title">상대 팀 챔프폭</div>
+              <div>
+                <div class="panel-title">상대 팀 챔프폭</div>
+                <div class="small muted">상대 장인픽과 자주 쓰는 픽을 넣으면 밴 추천이 더 날카로워집니다.</div>
+              </div>
             </div>
             <div class="panel-body" id="enemyPoolTable"></div>
           </section>
@@ -1911,7 +2091,7 @@
   <script src="data/league_top_lane_matchups_compact.js"></script>
   <script src="data/league_mid_lane_matchups_compact.js"></script>
   <script src="data/league_draft_context_compact.js"></script>
-  <script src="data/gol_msi_2026_meta_compact.js"></script>
+  <script src="data/tournament_meta_2026_compact.js"></script>
   <script>
     const ROLES = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
     const ROLE_LABEL_KO = { TOP: "탑", JUNGLE: "정글", MID: "미드", ADC: "원딜", SUPPORT: "서폿" };
@@ -1942,9 +2122,8 @@
       const divisionIndex = RANK_DIVISIONLESS.has(rankInfo.tier)
         ? 0
         : (4 - (["IV", "III", "II", "I"].indexOf(rankInfo.division) + 1 || 4));
-      const lp = Number(rankInfo.leaguePoints) || 0;
-      // 한 티어 = 400점, 한 디비전 = 100점, LP는 0~100(마스터 이상은 훨씬 커질 수 있음) 그대로 가산
-      return tierIndex * 400 + divisionIndex * 100 + lp;
+      // 한 티어 = 400점, 한 디비전 = 100점. 수기 입력 UX를 단순하게 유지하기 위해 세부 점수는 받지 않는다.
+      return tierIndex * 400 + divisionIndex * 100;
     }
 
     function rankReliability(rankInfo) {
@@ -1956,7 +2135,7 @@
       if (!rankInfo?.tier) return "언랭크/모름";
       const tierLabel = RANK_TIER_LABELS[rankInfo.tier] || rankInfo.tier;
       if (RANK_DIVISIONLESS.has(rankInfo.tier)) {
-        return `${tierLabel} ${rankInfo.leaguePoints ?? 0}LP`;
+        return tierLabel;
       }
       return `${tierLabel} ${rankInfo.division || ""}`.trim();
     }
@@ -1970,6 +2149,8 @@
       return clamp(50 + diff * (15 / 400), 0, 100);
     }
     const SIDE = { BLUE: "BLUE", RED: "RED" };
+    const APP_PARAMS = new URLSearchParams(window.location.search);
+    const LOCAL_DEV_FEATURES = APP_PARAMS.has("dev") || APP_PARAMS.has("local");
     const STORAGE_KEY = "lol-draft-simulator-state-v1";
     const LIVE_CAPTURE_REGIONS_KEY = "lol-draft-simulator-live-capture-regions-v1";
     const PICK_WEIGHT_PROFILE_VERSION = 2;
@@ -1998,6 +2179,56 @@
       strong: { label: "잘함", score: 84 },
       normal: { label: "보통", score: 70 },
       playable: { label: "가능", score: 55 },
+    };
+    const POOL_PRESETS = {
+      highTierTeam: {
+        label: "상위권 팀게임 기본",
+        mastery: "normal",
+        description: "GM+ 내전/스크림처럼 보편픽이 겹치는 환경의 기본값",
+        roles: {
+          TOP: ["ksante", "jax", "renekton", "gnar", "rumble", "jayce", "ambessa", "ornn", "camille"],
+          JUNGLE: ["vi", "leeSin", "monkeyking", "jarvaniv", "sejuani", "skarner", "xinZhao", "nocturne", "trundle", "nidalee"],
+          MID: ["orianna", "ahri", "yone", "viktor", "taliyah", "azir", "annie", "galio", "sylas", "akali"],
+          ADC: ["caitlyn", "ashe", "varus", "ezreal", "kaisa", "jhin", "xayah", "lucian", "ziggs", "kalista"],
+          SUPPORT: ["nautilus", "rell", "rakan", "alistar", "bard", "braum", "leona", "renata", "milio", "neeko"],
+        },
+      },
+      lanePriority: {
+        label: "라인전 주도권",
+        mastery: "normal",
+        description: "내전/격전에서 초반 라인 주도권을 강하게 보는 기본값",
+        roles: {
+          TOP: ["renekton", "jayce", "rumble", "gnar", "jax", "aatrox", "irelia", "darius"],
+          JUNGLE: ["leeSin", "nidalee", "xinZhao", "vi", "elise", "jarvaniv", "nocturne", "qiyana"],
+          MID: ["ahri", "syndra", "annie", "leblanc", "taliyah", "viktor", "yone", "akali"],
+          ADC: ["caitlyn", "ashe", "varus", "kalista", "lucian", "draven", "jhin", "ziggs"],
+          SUPPORT: ["nautilus", "leona", "rell", "blitzcrank", "pyke", "neeko", "karma", "lux"],
+        },
+      },
+      tournamentMeta: {
+        label: "대회 메타형",
+        mastery: "normal",
+        description: "선픽 안정성, 조합 완성도, 스왑 가능성을 더 보는 기본값",
+        roles: {
+          TOP: ["ksante", "gnar", "rumble", "jax", "ornn", "ambessa", "yone", "drmundo", "jayce"],
+          JUNGLE: ["vi", "monkeyking", "jarvaniv", "skarner", "nocturne", "trundle", "naafiri", "poppy"],
+          MID: ["orianna", "viktor", "yone", "ahri", "taliyah", "annie", "galio", "aurora", "cassiopeia"],
+          ADC: ["ashe", "ezreal", "caitlyn", "varus", "jhin", "ziggs", "lucian", "kaisa", "senna"],
+          SUPPORT: ["nautilus", "rell", "rakan", "bard", "braum", "milio", "renata", "camille", "alistar"],
+        },
+      },
+      fearlessWide: {
+        label: "피어리스 넓은 풀",
+        mastery: "normal",
+        description: "하드 피어리스에서 밴/픽 소모 이후에도 후보가 남도록 넓게 채우는 기본값",
+        roles: {
+          TOP: ["ksante", "jax", "renekton", "gnar", "rumble", "jayce", "ornn", "camille", "poppy", "gwen", "malphite", "shen"],
+          JUNGLE: ["vi", "leeSin", "monkeyking", "jarvaniv", "sejuani", "skarner", "xinZhao", "nocturne", "trundle", "nidalee", "poppy", "maokai"],
+          MID: ["orianna", "ahri", "yone", "viktor", "taliyah", "azir", "annie", "galio", "sylas", "akali", "syndra", "lissandra"],
+          ADC: ["caitlyn", "ashe", "varus", "ezreal", "kaisa", "jhin", "xayah", "lucian", "ziggs", "kalista", "jinx", "senna"],
+          SUPPORT: ["nautilus", "rell", "rakan", "alistar", "bard", "braum", "leona", "renata", "milio", "neeko", "poppy", "thresh"],
+        },
+      },
     };
     const ENEMY_LINE_CERTAINTY = {
       locked: { label: "확정", description: "내전처럼 상대 라인이 이미 정해진 상태" },
@@ -2357,8 +2588,8 @@
     };
 
     const leagueDraftContext = window.LEAGUE_DRAFT_CONTEXT || { roleStats: {}, synergies: {} };
-    const golMsiContext = window.GOL_MSI_2026_META || { metadata: {}, champions: [] };
-    const golMsiMetaMap = new Map((golMsiContext.champions || []).map(row => [row[0], {
+    const tournamentMetaContext = window.TOURNAMENT_2026_META || { metadata: {}, champions: [] };
+    const tournamentMetaMap = new Map((tournamentMetaContext.champions || []).map(row => [row[0], {
       championId: row[0],
       bans: Number(row[1]) || 0,
       picks: Number(row[2]) || 0,
@@ -2402,7 +2633,7 @@
         const stat = leagueRoleStatsMaps[role]?.get(championId);
         if (stat) tiers[role] = roleTierNumber(stat);
       });
-      const pro = golMsiMetaMap.get(championId);
+      const pro = tournamentMetaMap.get(championId);
       ROLES.forEach(role => {
         if (Number(pro?.roles?.[role] || 0) < 2) return;
         tiers[role] = Math.min(Number(tiers[role] || 5), 3);
@@ -2428,9 +2659,9 @@
       );
     }
 
-    function golMsiMetaScore(row) {
+    function tournamentMetaScore(row) {
       if (!row) return 50;
-      const games = Number(golMsiContext.metadata?.games || 1);
+      const games = Number(tournamentMetaContext.metadata?.games || 1);
       const presence = ((row.picks + row.bans) / Math.max(1, games)) * 100;
       const sampleConfidence = clamp((row.picks + row.bans) / 16, 0, 1);
       return clamp(
@@ -2441,9 +2672,9 @@
       );
     }
 
-    function golMsiBlindScore(row) {
+    function tournamentBlindScore(row) {
       if (!row) return 50;
-      const games = Number(golMsiContext.metadata?.games || 1);
+      const games = Number(tournamentMetaContext.metadata?.games || 1);
       const presence = ((row.picks + row.bans) / Math.max(1, games)) * 100;
       const usedRoles = Object.values(row.roles || {}).filter(value => Number(value) >= 2).length;
       const pickOrderValue = clamp((3.5 - row.avgRoundPicked) * 10, -8, 20);
@@ -2692,7 +2923,7 @@
 
     const SAMPLE_DATA_VERSION = 2;
     const SAMPLE_DATA_META = {
-      source: "gol.gg",
+      source: "curated tournament dataset",
       tournament: "MSI 2026",
       patch: "16.13",
       collectedAt: "2026-07-10",
@@ -2742,7 +2973,7 @@
           matchesUsed: teamGames,
           roleMatchedGames: teamGames,
           queueLabel: SAMPLE_DATA_META.tournament,
-          confidence: "프로 표본",
+          confidence: "기본 데이터",
           roleWarning: "",
           stats: entries.map(([championId, games]) => ({
             championId,
@@ -2801,6 +3032,9 @@
       drag: null,
       autoApply: false,
     };
+    const poolUiState = {
+      openEditors: new Set(),
+    };
 
     document.addEventListener("DOMContentLoaded", () => {
       [
@@ -2809,9 +3043,10 @@
         "roleFilter", "pickPlayer", "pickPlayerWrap", "ourRecommendations", "enemyPredictions", "currentHint",
         "enemyLineCertaintyLabel",
         "ourPlayersForm", "enemyPlayersForm", "ourPoolTable", "enemyPoolTable",
+        "poolPresetType", "poolPresetTeam", "poolPresetMode", "applyPoolPreset", "clearPoolPresetTarget", "poolInputStatus",
         "fearlessChips", "fearlessCount", "blueBanCount", "redBanCount", "bluePickCount", "redPickCount", "toast",
         "ourBulkNames", "enemyBulkNames",
-        "apiStatus", "riotApiKey", "riotPlatform", "riotMatchCount", "riotQueue", "apiMessage",
+        "apiStatus", "riotApiKey", "riotPlatform", "apiMessage",
         "rememberApiKey",
         "pickWeightControls",
         "bgmAudio", "bgmSelect", "bgmRefresh", "bgmToggle", "bgmVolume", "bgmVolumeValue",
@@ -2824,21 +3059,41 @@
         "championNameOptions",
       ].forEach(id => els[id] = $(id));
 
+      applyPublicBetaMode();
       bindEvents();
       loadFromStorage(false);
       mergeStoredAnalyses();
       loadLiveCaptureRegions();
       render();
       setRecommendDockTabForCurrentStep();
-      checkApiStatus();
-      loadChampionCatalog();
-      loadBgmTracks();
-      if (new URLSearchParams(window.location.search).has("selftest")) {
+      if (LOCAL_DEV_FEATURES) {
+        checkApiStatus();
+        loadChampionCatalog();
+        loadBgmTracks();
+      }
+      if (APP_PARAMS.has("selftest")) {
         const selfTestResult = runDraftSelfTests();
         window.__DRAFT_SELF_TEST_RESULT__ = selfTestResult;
         document.documentElement.dataset.draftSelfTest = JSON.stringify(selfTestResult);
       }
     });
+
+    function applyPublicBetaMode() {
+      document.querySelectorAll(".dev-only").forEach(element => {
+        element.hidden = !LOCAL_DEV_FEATURES;
+      });
+      document.querySelectorAll(".local-only").forEach(element => {
+        element.hidden = !LOCAL_DEV_FEATURES;
+      });
+      if (!LOCAL_DEV_FEATURES) {
+        state.apiHasKey = false;
+        if (els.apiStatus) {
+          els.apiStatus.textContent = "베타 비활성";
+          els.apiStatus.className = "chip";
+        }
+        setApiMessage("공개 베타에서는 API 자동 채우기를 숨기고, 수기 챔프폭과 프리셋만으로 추천합니다.");
+      }
+    }
 
     function bindEvents() {
       document.addEventListener("change", event => {
@@ -2961,7 +3216,7 @@
         state.currentStep = 0;
         render();
         setRecommendDockTabForCurrentStep();
-        toast("샘플 데이터를 다시 채웠습니다.");
+        toast("기본 데이터를 다시 채웠습니다.");
       });
       $("autoPickCurrent").addEventListener("click", autoSelectCurrent);
       $("completeDraft").addEventListener("click", completeDraft);
@@ -2969,6 +3224,8 @@
       $("applyEnemyBulk").addEventListener("click", () => applyBulkNames("enemy", els.enemyBulkNames.value));
       $("copyOurNames").addEventListener("click", () => copyTeamNamesToBulk("our"));
       $("copyEnemyNames").addEventListener("click", () => copyTeamNamesToBulk("enemy"));
+      els.applyPoolPreset.addEventListener("click", applySelectedPoolPreset);
+      els.clearPoolPresetTarget.addEventListener("click", clearSelectedPoolTarget);
       $("checkApiStatus").addEventListener("click", checkApiStatus);
       $("saveApiKey").addEventListener("click", saveApiKeyToServer);
       $("clearApiKey").addEventListener("click", clearApiKeyFromServer);
@@ -3446,6 +3703,12 @@
     }
 
     async function loadBgmTracks() {
+      if (!LOCAL_DEV_FEATURES) {
+        bgmTracks = [];
+        bgmLoadError = "";
+        renderBgmControls();
+        return;
+      }
       try {
         const response = await fetch(`/api/bgm?_=${Date.now()}`, { cache: "no-store" });
         const data = await response.json();
@@ -3873,10 +4136,10 @@
       });
     }
 
-    async function applyBulkNames(teamKey, rawText) {
-      const names = parseRiotIds(rawText).slice(0, 5);
+    function applyBulkNames(teamKey, rawText) {
+      const names = parsePlayerNames(rawText).slice(0, 5);
       if (!names.length) {
-        toast("인식된 Riot ID가 없습니다.");
+        toast("인식된 선수명이 없습니다.");
         return;
       }
       names.forEach((riotId, index) => {
@@ -3884,12 +4147,8 @@
       });
       render();
       const label = teamKey === "our" ? "우리 팀" : "상대 팀";
-      toast(`${label} 닉네임 ${names.length}명을 적용했습니다.`);
-      if (state.apiHasKey) {
-        await analyzeTeamFromRiot(teamKey);
-      } else {
-        setApiMessage(`${label} 닉네임은 적용했습니다. 주요 챔피언을 불러오려면 Riot API key를 먼저 적용하세요.`);
-      }
+      toast(`${label} 명단 ${names.length}명을 적용했습니다.`);
+      setApiMessage(`${label} 명단을 적용했습니다. Riot API 자동 채우기가 필요하면 선택 기능 섹션의 팀 분석 버튼을 눌러주세요.`);
     }
 
     function copyTeamNamesToBulk(teamKey) {
@@ -3923,7 +4182,30 @@
       return results.map(value => value.trim()).filter(Boolean);
     }
 
+    function parsePlayerNames(rawText) {
+      const lines = String(rawText || "")
+        .replaceAll(",", "\n")
+        .replaceAll("，", "\n")
+        .replaceAll("、", "\n")
+        .replaceAll(";", "\n")
+        .split("\n")
+        .map(line => line.trim())
+        .filter(Boolean);
+      const results = [];
+      lines.forEach(line => {
+        const riotIds = parseRiotIds(line);
+        if (riotIds.length) results.push(...riotIds);
+        else results.push(line);
+      });
+      return results;
+    }
+
     async function checkApiStatus() {
+      if (!LOCAL_DEV_FEATURES) {
+        state.apiHasKey = false;
+        setApiMessage("공개 베타에서는 API 자동 채우기를 숨기고, 수기 챔프폭과 프리셋만으로 추천합니다.");
+        return { ok: true, hasKey: false, publicBeta: true };
+      }
       setApiMessage("API 서버 상태를 확인하는 중입니다...");
       try {
         const response = await fetch("/api/status");
@@ -3945,6 +4227,10 @@
     }
 
     async function saveApiKeyToServer() {
+      if (!LOCAL_DEV_FEATURES) {
+        toast("공개 베타에서는 API 자동 채우기를 사용하지 않습니다.");
+        return false;
+      }
       const apiKey = els.riotApiKey.value.trim();
       if (!apiKey) {
         toast("Riot API key를 입력하세요.");
@@ -3976,6 +4262,11 @@
     }
 
     async function clearApiKeyFromServer() {
+      if (!LOCAL_DEV_FEATURES) {
+        state.apiHasKey = false;
+        setApiMessage("공개 베타에서는 저장된 API key를 사용하지 않습니다.");
+        return;
+      }
       setApiMessage("저장된 API key를 삭제하는 중입니다...");
       try {
         const response = await fetch("/api/key/clear", { method: "POST" });
@@ -3992,12 +4283,30 @@
       }
     }
 
+    const RIOT_ANALYSIS_MATCH_COUNT = 20;
+    const RIOT_ANALYSIS_QUEUE = "420";
+    const RIOT_API_PLAYERS_PER_WINDOW = 4;
+    const RIOT_API_WINDOW_COOLDOWN_MS = 125000;
+    const API_BUTTON_LABELS = {
+      analyzeOurTeam: "우리 팀 순차 분석",
+      analyzeEnemyTeam: "상대 팀 순차 분석",
+      analyzeBothTeams: "양 팀 순차 분석",
+    };
+
     async function analyzeBothTeams() {
-      await analyzeTeamFromRiot("our");
-      await analyzeTeamFromRiot("enemy");
+      await analyzeRiotTeamsSequential(["our", "enemy"]);
     }
 
     async function analyzeTeamFromRiot(teamKey) {
+      await analyzeRiotTeamsSequential([teamKey]);
+    }
+
+    async function analyzeRiotTeamsSequential(teamKeys) {
+      if (!LOCAL_DEV_FEATURES) {
+        setApiMessage("공개 베타에서는 API 자동 채우기를 숨기고, Player Pool의 수기 챔프폭을 기준으로 추천합니다.");
+        toast("Player Pool에서 챔프폭을 입력해 주세요.");
+        return;
+      }
       if (els.riotApiKey.value.trim()) {
         const saved = await saveApiKeyToServer();
         if (!saved) return;
@@ -4010,59 +4319,47 @@
         }
       }
 
-      const label = teamKey === "our" ? "우리 팀" : "상대 팀";
-      const players = state.teams[teamKey].map(({ riotId, role }) => ({ riotId, role }));
-      const validCount = players.filter(player => player.riotId.includes("#")).length;
-      if (!validCount) {
-        toast(`${label} Riot ID를 먼저 입력하세요.`);
+      const jobs = teamKeys.flatMap(teamKey => (
+        state.teams[teamKey].map((player, index) => ({ teamKey, index, player }))
+      ));
+      const validJobs = jobs.filter(job => job.player.riotId.includes("#"));
+      const skipped = jobs.length - validJobs.length;
+      if (!validJobs.length) {
+        toast("분석할 Riot ID를 먼저 입력하세요.");
         return;
       }
 
       setApiBusy(true);
-      setApiMessage(`${label} 최근 전적을 분석하는 중입니다. 5명 기준으로는 조금 걸릴 수 있습니다...`);
+      const summary = { applied: 0, failed: 0, skipped };
+      const errors = [];
+      let windowPlayers = 0;
       try {
-        const response = await fetch("/api/analyze-team", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            platform: els.riotPlatform.value,
-            matchCount: Number(els.riotMatchCount.value),
-            queue: els.riotQueue.value,
-            players,
-          }),
-        });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
-
-        let applied = 0;
-        data.players.forEach(result => {
-          const player = state.teams[teamKey][result.index];
-          if (!player) return;
-          if (!result.ok) {
-            // 분석 실패 시 예전 샘플/수동 챔프폭이 남아있으면 그게 실제 데이터인 것처럼
-            // 밴픽 추천에 계속 영향을 준다. 실패했다는 사실을 명확히 남기고 챔프폭을 비운다.
-            player.pool = [];
-            player.analysis = null;
-            player.analysisFailed = { at: new Date().toISOString(), error: result.error || "알 수 없는 오류" };
-            return;
+        for (let jobIndex = 0; jobIndex < validJobs.length; jobIndex += 1) {
+          if (windowPlayers >= RIOT_API_PLAYERS_PER_WINDOW) {
+            await waitForRiotWindowCooldown(validJobs.length - jobIndex);
+            windowPlayers = 0;
           }
-          const analyzed = result.data;
-          mergeAnalyzedChampions(analyzed, player.role);
-          player.riotId = `${analyzed.gameName}#${analyzed.tagLine}`;
-          player.puuid = analyzed.puuid;
-          player.analysis = analyzed;
-          player.analysisFailed = null;
-          if (analyzed.rank) player.rank = analyzed.rank;
-          if (analyzed.pool?.length) player.pool = analyzed.pool.filter(id => championById[id]);
-          applied += 1;
-        });
-
+          const job = validJobs[jobIndex];
+          const label = `${teamLabel(job.teamKey)} ${job.index + 1}번`;
+          updateApiAnalyzeProgress(jobIndex, validJobs.length, `${label} 분석 중`);
+          const result = await analyzeSingleRiotPlayer(job);
+          windowPlayers += 1;
+          if (result.ok) {
+            applyAnalyzedPlayer(job, result.data);
+            summary.applied += 1;
+          } else {
+            markPlayerAnalysisFailed(job, result.error || "알 수 없는 오류");
+            errors.push({ riotId: job.player.riotId, message: result.error || "알 수 없는 오류" });
+            summary.failed += 1;
+          }
+          render();
+          saveToStorage(false);
+        }
         render();
         saveToStorage(false);
-        const failures = data.errors?.length || 0;
-        const summary = `${label} ${applied}명 분석 완료${failures ? `, ${failures}명 실패` : ""}. ${formatApiErrors(data.errors)}`;
-        setApiMessage(summary);
-        toast(`${label} 챔프폭을 실제 전적 기반으로 갱신했습니다.`);
+        const message = `순차 분석 완료: 성공 ${summary.applied}명, 실패 ${summary.failed}명${summary.skipped ? `, 이름만 입력된 ${summary.skipped}명 건너뜀` : ""}. ${formatApiErrors(errors)}`;
+        setApiMessage(message);
+        toast("Riot API 자동 채우기를 마쳤습니다.");
       } catch (error) {
         setApiMessage(`분석 실패: ${error.message}`);
         toast("Riot API 분석에 실패했습니다.");
@@ -4071,11 +4368,76 @@
       }
     }
 
+    async function analyzeSingleRiotPlayer(job) {
+      const response = await fetch("/api/analyze-player", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          platform: els.riotPlatform.value,
+          index: job.index,
+          matchCount: RIOT_ANALYSIS_MATCH_COUNT,
+          queue: RIOT_ANALYSIS_QUEUE,
+          player: { riotId: job.player.riotId, role: job.player.role },
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+      return data;
+    }
+
+    function applyAnalyzedPlayer(job, analyzed) {
+      const player = state.teams[job.teamKey][job.index];
+      if (!player) return;
+      mergeAnalyzedChampions(analyzed, player.role);
+      player.riotId = `${analyzed.gameName}#${analyzed.tagLine}`;
+      player.puuid = analyzed.puuid;
+      player.analysis = analyzed;
+      player.analysisFailed = null;
+      if (analyzed.rank) player.rank = analyzed.rank;
+      if (analyzed.pool?.length) player.pool = analyzed.pool.filter(id => championById[id]);
+    }
+
+    function markPlayerAnalysisFailed(job, error) {
+      const player = state.teams[job.teamKey][job.index];
+      if (!player) return;
+      player.pool = [];
+      player.analysis = null;
+      player.analysisFailed = { at: new Date().toISOString(), error };
+    }
+
+    function updateApiAnalyzeProgress(doneIndex, total, currentLabel) {
+      const done = doneIndex + 1;
+      setApiMessage(`${currentLabel} · ${done}/${total}명 진행 중. 솔로 랭크 최근 20경기를 선수별로 나눠서 분석합니다.`);
+      els.analyzeOurTeam.textContent = `우리 팀 ${done}/${total}`;
+      els.analyzeEnemyTeam.textContent = `상대 팀 ${done}/${total}`;
+      els.analyzeBothTeams.textContent = `전체 ${done}/${total}`;
+    }
+
+    async function waitForRiotWindowCooldown(remainingPlayers) {
+      const seconds = Math.ceil(RIOT_API_WINDOW_COOLDOWN_MS / 1000);
+      setApiMessage(`테스트 API 제한 보호를 위해 ${seconds}초 대기합니다. 남은 선수 ${remainingPlayers}명은 이어서 분석됩니다.`);
+      await delay(RIOT_API_WINDOW_COOLDOWN_MS);
+    }
+
+    function delay(ms) {
+      return new Promise(resolve => window.setTimeout(resolve, ms));
+    }
+
+    function teamLabel(teamKey) {
+      return teamKey === "our" ? "우리 팀" : "상대 팀";
+    }
+
     function setApiBusy(isBusy) {
       ["saveApiKey", "clearApiKey", "analyzeOurTeam", "analyzeEnemyTeam", "analyzeBothTeams", "checkApiStatus"].forEach(id => {
         const button = $(id);
         if (button) button.disabled = isBusy;
       });
+      if (!isBusy) {
+        Object.entries(API_BUTTON_LABELS).forEach(([id, label]) => {
+          const button = $(id);
+          if (button) button.textContent = label;
+        });
+      }
     }
 
     function setApiMessage(message) {
@@ -4098,6 +4460,7 @@
     }
 
     async function loadChampionCatalog() {
+      if (!LOCAL_DEV_FEATURES) return;
       try {
         const response = await fetch("/api/champions");
         if (!response.ok) return;
@@ -4247,18 +4610,14 @@
             </select>
           </div>
           <div>
-            <label>Riot ID</label>
-            <input data-team="${teamKey}" data-index="${index}" data-field="riotId" value="${escapeAttr(p.riotId)}" placeholder="gameName#tagLine" />
+            <label>Riot ID 또는 이름</label>
+            <input data-team="${teamKey}" data-index="${index}" data-field="riotId" value="${escapeAttr(p.riotId)}" placeholder="탑친구 또는 gameName#tagLine" />
           </div>
           <div>
             <label>랭크</label>
-            <div class="row" style="gap:4px">
-              <select data-team="${teamKey}" data-index="${index}" data-field="rankTier" style="flex:1;min-width:0">
-                ${rankOptions.map(o => `<option value="${o.value}" ${o.value === currentRankValue ? "selected" : ""}>${o.label}</option>`).join("")}
-              </select>
-              <input data-team="${teamKey}" data-index="${index}" data-field="rankLp" type="number" min="0" max="3000"
-                value="${p.rank?.leaguePoints ?? ""}" placeholder="LP" style="width:52px" title="리그 포인트 (선택 — Riot API 분석 시 자동 채워짐)" />
-            </div>
+            <select data-team="${teamKey}" data-index="${index}" data-field="rankTier">
+              ${rankOptions.map(o => `<option value="${o.value}" ${o.value === currentRankValue ? "selected" : ""}>${o.label}</option>`).join("")}
+            </select>
           </div>
         </div>
       `;
@@ -4269,9 +4628,7 @@
           const p = state.teams[input.dataset.team][Number(input.dataset.index)];
           if (input.dataset.field === "rankTier") {
             const [tier, division] = input.value.split("|");
-            p.rank = tier ? { tier, division: division || null, leaguePoints: p.rank?.leaguePoints ?? 0 } : null;
-          } else if (input.dataset.field === "rankLp") {
-            if (p.rank) p.rank.leaguePoints = Number(input.value) || 0;
+            p.rank = tier ? { tier, division: division || null } : null;
           } else {
             p[input.dataset.field] = input.value;
           }
@@ -4281,9 +4638,51 @@
     }
 
     function renderPools() {
+      els.poolInputStatus.innerHTML = poolInputStatusHtml();
       els.ourPoolTable.innerHTML = poolEditor("our");
       els.enemyPoolTable.innerHTML = poolEditor("enemy");
       [els.ourPoolTable, els.enemyPoolTable].forEach(container => bindPoolEditor(container));
+    }
+
+    function poolInputStatusHtml() {
+      const our = teamPoolStats("our");
+      const enemy = teamPoolStats("enemy");
+      const narrow = [...state.teams.our, ...state.teams.enemy].filter(player => poolCount(player) > 0 && poolCount(player) <= 3).length;
+      const fearlessRisk = state.fearlessEnabled && state.fearlessUsed.length
+        ? `${state.fearlessUsed.length}개 사용 기록 반영 중`
+        : (state.fearlessEnabled ? "기록 추가 전" : "OFF");
+      return [
+        statusCard("우리 입력 상태", poolStatusLabel(our), `${our.filled}/5명 입력 · 평균 ${our.average}개`),
+        statusCard("상대 정보 상태", poolStatusLabel(enemy), `${enemy.filled}/5명 입력 · 평균 ${enemy.average}개`),
+        statusCard("피어리스/좁은 풀", narrow ? `주의 ${narrow}명` : "안정", `피어리스 ${fearlessRisk}`),
+      ].join("");
+    }
+
+    function teamPoolStats(teamKey) {
+      const counts = state.teams[teamKey].map(poolCount);
+      const filled = counts.filter(count => count > 0).length;
+      const average = counts.length ? Math.round(counts.reduce((sum, count) => sum + count, 0) / counts.length) : 0;
+      return { filled, average };
+    }
+
+    function poolCount(player) {
+      return unique(player?.pool || []).filter(id => championById[id]).length;
+    }
+
+    function poolStatusLabel(stats) {
+      if (stats.filled >= 5 && stats.average >= 8) return "충분";
+      if (stats.filled >= 3 && stats.average >= 5) return "보통";
+      if (stats.filled > 0) return "부족";
+      return "비어 있음";
+    }
+
+    function statusCard(title, value, detail) {
+      return `
+        <div class="pool-status-card">
+          <b>${escapeHtml(title)} · ${escapeHtml(value)}</b>
+          <span>${escapeHtml(detail)}</span>
+        </div>
+      `;
     }
 
     function poolEditor(teamKey) {
@@ -4297,6 +4696,9 @@
     function poolPlayerCard(teamKey, player, index) {
       const pool = unique(player.pool || []).filter(id => championById[id]);
       const summary = masterySummary(player, pool);
+      const editorKey = poolEditorKey(teamKey, index);
+      const isOpen = poolUiState.openEditors.has(editorKey);
+      const analysisInfo = analysisSummary(player);
       return `
         <article class="pool-card" data-team="${teamKey}" data-index="${index}">
           <div class="pool-card-head">
@@ -4307,10 +4709,12 @@
                 <div class="small muted">${escapeHtml(ROLE_LABEL_KO[player.role] || player.role)} · ${escapeHtml(rankLabel(player.rank))}</div>
               </div>
             </div>
-            <div class="pool-summary">
-              ${Object.entries(MANUAL_MASTERY_LEVELS).map(([level, meta]) => (
-                `<span class="chip">${escapeHtml(meta.label)} ${summary[level] || 0}</span>`
-              )).join("")}
+            <div class="pool-card-actions">
+              <div class="pool-summary">
+                ${Object.entries(MANUAL_MASTERY_LEVELS).map(([level, meta]) => (
+                  `<span class="chip">${escapeHtml(meta.label)} ${summary[level] || 0}</span>`
+                )).join("")}
+              </div>
             </div>
           </div>
 
@@ -4318,8 +4722,8 @@
             ${pool.length ? pool.map(championId => poolChampionViewRow(player, championId)).join("") : emptyPoolPlaceholder(player)}
           </div>
 
-          <details class="pool-edit-details">
-            <summary>편집</summary>
+          <details class="pool-edit-details" data-editor-key="${escapeAttr(editorKey)}" ${isOpen ? "open" : ""}>
+            <summary class="pool-edit-toggle">편집</summary>
             <div class="pool-add-row">
               <input class="pool-add-input" data-team="${teamKey}" data-index="${index}" list="championNameOptions"
                 placeholder="챔피언 추가: 잭스, 아리, 카이사..." />
@@ -4343,9 +4747,13 @@
             </div>
           </details>
 
-          <div class="small muted" style="margin-top:8px">${analysisSummary(player)}</div>
+          ${analysisInfo ? `<div class="small muted" style="margin-top:8px">${analysisInfo}</div>` : ""}
         </article>
       `;
+    }
+
+    function poolEditorKey(teamKey, index) {
+      return `${teamKey}:${index}`;
     }
 
     function poolChampionViewRow(player, championId) {
@@ -4420,6 +4828,13 @@
           applyManualPoolText(button.dataset.team, Number(button.dataset.index), input?.value || "");
         });
       });
+      container.querySelectorAll(".pool-edit-details").forEach(details => {
+        details.addEventListener("toggle", () => {
+          if (!details.dataset.editorKey) return;
+          if (details.open) poolUiState.openEditors.add(details.dataset.editorKey);
+          else poolUiState.openEditors.delete(details.dataset.editorKey);
+        });
+      });
     }
 
     function masterySummary(player, pool) {
@@ -4439,6 +4854,67 @@
         const label = score != null ? MANUAL_MASTERY_LEVELS[masteryLevelForScore(score)].label : "";
         return `${champ.name}${label ? ` ${label}` : ""}`;
       }).filter(Boolean).join("\n");
+    }
+
+    function applySelectedPoolPreset() {
+      const preset = POOL_PRESETS[els.poolPresetType.value] || POOL_PRESETS.highTierTeam;
+      const target = els.poolPresetTeam.value || "our";
+      const mode = els.poolPresetMode.value || "empty";
+      const teamKeys = poolTargetTeamKeys(target);
+      let changedPlayers = 0;
+      let addedChampions = 0;
+      teamKeys.forEach(teamKey => {
+        state.teams[teamKey].forEach(player => {
+          const currentPool = unique(player.pool || []).filter(id => championById[id]);
+          if (mode === "empty" && currentPool.length > 0) return;
+          const presetPool = presetPoolForRole(preset, player.role);
+          if (!presetPool.length) return;
+          const nextPool = unique([...currentPool, ...presetPool]);
+          const added = nextPool.length - currentPool.length;
+          if (added <= 0 && currentPool.length > 0) return;
+          player.pool = nextPool;
+          player.poolScores = { ...(player.poolScores || {}) };
+          presetPool.forEach(championId => {
+            if (player.poolScores[championId] == null) {
+              player.poolScores[championId] = MANUAL_MASTERY_LEVELS[preset.mastery].score;
+            }
+          });
+          player.analysisFailed = null;
+          changedPlayers += 1;
+          addedChampions += Math.max(0, added);
+        });
+      });
+      render();
+      if (!changedPlayers) {
+        toast("추가할 프리셋 챔프폭이 없습니다.");
+        return;
+      }
+      toast(`${preset.label}을 ${changedPlayers}명에게 적용했습니다. (${addedChampions}개 추가)`);
+    }
+
+    function clearSelectedPoolTarget() {
+      const teamKeys = poolTargetTeamKeys(els.poolPresetTeam.value || "our");
+      let clearedPlayers = 0;
+      teamKeys.forEach(teamKey => {
+        state.teams[teamKey].forEach(player => {
+          if (poolCount(player) <= 0) return;
+          player.pool = [];
+          player.poolScores = {};
+          player.analysisFailed = null;
+          clearedPlayers += 1;
+        });
+      });
+      render();
+      toast(clearedPlayers ? `${clearedPlayers}명의 챔프폭을 비웠습니다.` : "비울 챔프폭이 없습니다.");
+    }
+
+    function poolTargetTeamKeys(target) {
+      if (target === "both") return ["our", "enemy"];
+      return target === "enemy" ? ["enemy"] : ["our"];
+    }
+
+    function presetPoolForRole(preset, role) {
+      return unique(preset?.roles?.[role] || []).filter(id => championById[id]);
     }
 
     function addChampionToManualPool(teamKey, index, value) {
@@ -4486,36 +4962,20 @@
     }
 
     function emptyPoolPlaceholder(p) {
-      if (p.analysisFailed) return `<span class="muted" style="color:#ff8496">챔피언 없음 (분석 실패)</span>`;
+      if (p.analysisFailed) return `<span class="muted" style="color:#ff8496">챔피언 없음</span>`;
       return `<span class="muted">-</span>`;
     }
 
     function analysisSummary(player) {
       if (player.analysisFailed) {
-        return `<span style="color:#ff8496">분석 실패 · ${escapeHtml(player.analysisFailed.error)}</span>`;
+        return `<span style="color:#ff8496">자동 채우기 실패</span>`;
       }
-      if (!player.analysis) return `<span class="muted">샘플/수동</span>`;
+      if (!player.analysis) return "";
       const a = player.analysis;
-      const topStats = (a.stats || [])
-        .filter(row => player.pool.includes(row.championId))
-        .slice(0, 3)
-        .map(row => {
-          const champ = getChamp(row.championId);
-          const winRate = row.winRate == null ? "-" : `${row.winRate}%`;
-          const roleGames = row.assignedRoleGames ? `${player.role} ${row.assignedRoleGames}전` : `${row.games}전`;
-          const comfort = Math.round(row.roleComfortScore || row.comfortScore || 0);
-          return `${champ.name} ${roleGames} ${winRate} 숙련 ${comfort}`;
-        })
-        .join(" · ");
-      const warning = a.roleWarning
-        ? `<div class="small" style="margin-top:5px;color:#F59E0B">${escapeHtml(a.roleWarning)}</div>`
-        : "";
-      return `
-        <div><span class="chip green-bg">${escapeHtml(a.confidence)} 신뢰도</span></div>
-        <div class="small muted" style="margin-top:5px">${escapeHtml(a.queueLabel)} · ${player.role} ${a.roleMatchedGames ?? 0}/${a.matchCount}경기 반영</div>
-        <div class="small" style="margin-top:5px">${escapeHtml(topStats || "해당 라인 기록 없음")}</div>
-        ${warning}
-      `;
+      const isDefaultDataset = a.source === SAMPLE_DATA_META.source && a.tournament === SAMPLE_DATA_META.tournament;
+      if (isDefaultDataset) return "";
+      if (a.roleWarning) return `<span class="small" style="color:#F59E0B">라인 기록 부족</span>`;
+      return `<span class="muted small">자동 채우기 완료</span>`;
     }
 
     function renderFearless() {
@@ -4634,17 +5094,17 @@
     function getChampForRole(id, role) {
       const champ = getChamp(id);
       const stat = leagueRoleStatsMaps[role]?.get(id);
-      const pro = golMsiMetaMap.get(id);
+      const pro = tournamentMetaMap.get(id);
       const proRoleGames = Number(pro?.roles?.[role] || 0);
       if (!stat && !proRoleGames) return champ;
       const leagueCounterInto = stat ? (leagueRoleCounterIntoMaps[role]?.get(id) || []) : [];
       const roleMeta = stat ? leagueRoleMetaScore(stat) : champ.meta;
       const soloMeta = champ.meta * 0.65 + roleMeta * 0.35;
       const meta = proRoleGames
-        ? soloMeta * 0.70 + golMsiMetaScore(pro) * 0.30
+        ? soloMeta * 0.70 + tournamentMetaScore(pro) * 0.30
         : soloMeta;
       const blind = proRoleGames
-        ? champ.blind * 0.72 + golMsiBlindScore(pro) * 0.28
+        ? champ.blind * 0.72 + tournamentBlindScore(pro) * 0.28
         : champ.blind;
       return {
         ...champ,
@@ -4652,7 +5112,7 @@
         blind: Math.round(blind),
         lane: Math.round(champ.lane * 0.78 + roleMeta * 0.22),
         leagueRoleStat: stat,
-        golMsiStat: proRoleGames ? pro : null,
+        tournamentStat: proRoleGames ? pro : null,
         leagueBadInto: stat?.counters || [],
         leagueCounterInto,
         badInto: unique([...(champ.badInto || []), ...(stat?.counters || [])]),
@@ -4804,6 +5264,11 @@
       Object.keys(defaultPickWeights).forEach(key => {
         weights[key] = clamp(Number(weights[key]) || 0, 0, PICK_WEIGHT_MAX);
       });
+      if (state.fearlessEnabled) {
+        weights.fearless = Math.max(weights.fearless, 4);
+      } else {
+        weights.fearless = 0;
+      }
       return weights;
     }
 
@@ -6809,6 +7274,59 @@
             && manualPoolParse.scores.ahri === 55,
           JSON.stringify(manualPoolParse),
         );
+        const pastedNames = parsePlayerNames("탑친구\nhide on bush#KR1");
+        check(
+          "Riot ID/이름 붙여넣기 파싱",
+          pastedNames.includes("탑친구") && pastedNames.includes("hide on bush#KR1"),
+          pastedNames.join(", "),
+        );
+        poolUiState.openEditors.add("our:0");
+        check(
+          "수기 챔프폭 편집 열림 유지",
+          poolPlayerCard("our", state.teams.our[0], 0).includes('data-editor-key="our:0" open'),
+        );
+        poolUiState.openEditors.delete("our:0");
+        const savedTeamsForPreset = structuredClone(state.teams);
+        state.teams.our[0].pool = [];
+        state.teams.our[0].poolScores = {};
+        els.poolPresetType.value = "highTierTeam";
+        els.poolPresetTeam.value = "our";
+        els.poolPresetMode.value = "empty";
+        applySelectedPoolPreset();
+        check(
+          "여러 챔프폭 프리셋 보통 숙련도",
+          state.teams.our[0].pool.includes("ksante")
+            && state.teams.our[0].poolScores.ksante === MANUAL_MASTERY_LEVELS.normal.score,
+          JSON.stringify({ pool: state.teams.our[0].pool, score: state.teams.our[0].poolScores.ksante }),
+        );
+        clearSelectedPoolTarget();
+        check(
+          "챔프폭 비우기",
+          state.teams.our.every(player => poolCount(player) === 0),
+          state.teams.our.map(player => poolCount(player)).join(", "),
+        );
+        state.teams = savedTeamsForPreset;
+        state.fearlessEnabled = false;
+        const fearlessOffWeight = normalizedPickWeights().fearless;
+        state.fearlessEnabled = true;
+        const fearlessOnWeight = normalizedPickWeights().fearless;
+        check(
+          "피어리스 ON/OFF 가중치",
+          fearlessOffWeight === 0 && fearlessOnWeight > 0,
+          JSON.stringify({ fearlessOffWeight, fearlessOnWeight }),
+        );
+        state.fearlessUsed = ["ahri"];
+        state.fearlessEnabled = false;
+        const fearlessOffUnavailable = getUnavailableChampions().has("ahri");
+        state.fearlessEnabled = true;
+        const fearlessOnUnavailable = getUnavailableChampions().has("ahri");
+        check(
+          "피어리스 ON/OFF 후보 제외",
+          !fearlessOffUnavailable && fearlessOnUnavailable,
+          JSON.stringify({ fearlessOffUnavailable, fearlessOnUnavailable }),
+        );
+        state.fearlessEnabled = false;
+        state.fearlessUsed = [];
 
         state.actions = [{
           order: 6,
@@ -6850,7 +7368,7 @@
           getChamp("cassiopeia").roles.includes("MID") && getChamp("cassiopeia").roles.includes("ADC"),
           getChamp("cassiopeia").roles.join(", "),
         );
-        check("MSI 전체 메타 연결", getChampForRole("orianna", "MID").golMsiStat?.picks === 10);
+        check("MSI 전체 메타 연결", getChampForRole("orianna", "MID").tournamentStat?.picks === 10);
         check(
           "실측 시너지 영향 상한",
           [...empiricalSynergyMaps.jungleMid.values(), ...empiricalSynergyMaps.topJungle.values(), ...empiricalSynergyMaps.botDuo.values()]
@@ -7046,3 +7564,4 @@
   </script>
 </body>
 </html>
+

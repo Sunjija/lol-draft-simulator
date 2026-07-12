@@ -4,10 +4,10 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-META_PATH = ROOT / "data" / "gol_msi_2026_meta_20260710.json"
+META_PATH = ROOT / "data" / "tournament_meta_2026_20260710.json"
 
 
-class GolMsiMetaTest(unittest.TestCase):
+class TournamentMetaTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.meta = json.loads(META_PATH.read_text(encoding="utf-8"))
@@ -30,3 +30,4 @@ class GolMsiMetaTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

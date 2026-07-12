@@ -561,8 +561,8 @@ def list_bgm_tracks():
 def analyze_team(payload):
     platform = str(payload.get("platform") or "kr").lower()
     players = payload.get("players") or []
-    match_count = int(payload.get("matchCount") or 20)
-    queue = payload.get("queue") or None
+    match_count = 20
+    queue = "420"
     results = []
     errors = []
     for index, player in enumerate(players[:5]):
@@ -572,6 +572,31 @@ def analyze_team(payload):
             errors.append({"index": index, "riotId": player.get("riotId", ""), "message": str(error)})
             results.append({"index": index, "ok": False, "error": str(error)})
     return {"ok": len(errors) == 0, "players": results, "errors": errors}
+
+
+def analyze_single_player(payload):
+    platform = str(payload.get("platform") or "kr").lower()
+    player = payload.get("player") or {}
+    index = int(payload.get("index") or 0)
+    match_count = 20
+    queue = "420"
+    try:
+        return {
+            "ok": True,
+            "index": index,
+            "data": analyze_player(player, platform, match_count, queue),
+            "matchCount": match_count,
+            "queue": int(queue),
+        }
+    except Exception as error:
+        return {
+            "ok": False,
+            "index": index,
+            "riotId": player.get("riotId", ""),
+            "error": str(error),
+            "matchCount": match_count,
+            "queue": int(queue),
+        }
 
 
 def save_api_key(api_key):
@@ -701,6 +726,9 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             if path == "/api/analyze-team":
                 self.write_json(analyze_team(payload))
+                return
+            if path == "/api/analyze-player":
+                self.write_json(analyze_single_player(payload))
                 return
             self.write_json({"ok": False, "error": "Unknown API route"}, status=404)
         except Exception as error:

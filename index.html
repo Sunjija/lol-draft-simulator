@@ -186,23 +186,31 @@
       flex-wrap: wrap;
     }
 
-    .landing-primary {
+    .landing-primary,
+    .landing-secondary {
+      min-height: 44px;
       padding: 13px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .landing-primary {
       color: #07111f;
       border-color: rgba(248, 212, 106, 0.9);
       background: linear-gradient(135deg, #f8d46a, #c9a227);
-      font-weight: 800;
     }
 
     .landing-secondary {
-      padding: 13px 18px;
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.72);
-      border-color: rgba(148, 163, 184, 0.26);
-      text-decoration: none;
-      border-radius: var(--radius);
-      font-size: 13px;
-      font-weight: 700;
+      color: #ffffff;
+      border-color: rgba(88, 101, 242, 0.74);
+      background: linear-gradient(135deg, #5865f2, #4752c4);
+      box-shadow: 0 10px 24px rgba(88, 101, 242, 0.18);
     }
 
     .landing-skip {

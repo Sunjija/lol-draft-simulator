@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from post_korean_patch_notes import latest_patch_note
+from update_gol_tournament_meta import main as update_gol_tournament_meta_main
 
 
 DEFAULT_STATE_PATH = Path(".cache/meta_refresh_state.json")
@@ -134,6 +135,7 @@ def main() -> int:
     parser.add_argument("--status-path", type=Path, default=DEFAULT_STATUS_PATH)
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--skip-gol-meta", action="store_true")
     args = parser.parse_args()
 
     if args.delay_days < 0:
@@ -178,6 +180,21 @@ def main() -> int:
         print(f"Meta refresh already reflected in status file: {note['title']} ({note['url']})")
         return 0
 
+    if args.dry_run:
+        data_files = verify_current_data_files()
+        status = build_status(
+            note=note,
+            due_at=due_at,
+            delay_days=args.delay_days,
+            refreshed_at=now,
+            data_files=data_files,
+        )
+        print(json.dumps(status, ensure_ascii=False, indent=2))
+        return 0
+
+    if not args.skip_gol_meta:
+        update_gol_tournament_meta_main([])
+
     data_files = verify_current_data_files()
     status = build_status(
         note=note,
@@ -186,10 +203,6 @@ def main() -> int:
         refreshed_at=now,
         data_files=data_files,
     )
-
-    if args.dry_run:
-        print(json.dumps(status, ensure_ascii=False, indent=2))
-        return 0
 
     write_status_js(args.status_path, status)
     write_state(

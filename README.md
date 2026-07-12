@@ -80,7 +80,7 @@ DISCORD_PATCH_NOTES_WEBHOOK_URL
 
 ## 패치 후 메타 갱신
 
-패치 직후에는 챔피언 통계 표본이 흔들릴 수 있으므로, `Meta Refresh After Patch` 워크플로우는 최신 패치노트 공개 시각 기준 72시간이 지난 뒤 메타 상태 파일을 갱신합니다.
+패치 직후에는 챔피언 통계 표본이 흔들릴 수 있으므로, `Meta Refresh After Patch` 워크플로우는 최신 패치노트 공개 시각 기준 72시간이 지난 뒤 메타 상태 파일과 대회 메타 데이터를 갱신합니다.
 
 워크플로우 파일:
 
@@ -94,7 +94,9 @@ DISCORD_PATCH_NOTES_WEBHOOK_URL
 OP.GG 등 공개 LoL 통계 데이터, 대회 메타 데이터 참고
 ```
 
-실제 추천 점수는 외부 통계를 그대로 노출하지 않고, 앱 내부 계산식에 맞게 정규화합니다. 이후 OP.GG, GOL.GG 등 수집기를 추가할 때도 이 워크플로우 뒤에 연결하면 됩니다.
+현재는 GOL.GG 최신 주차 대회 목록에서 MSI, LCK, First Stand, Worlds 계열 대회를 우선 필터링하고, 선택된 대회의 picks/bans 데이터를 `data/tournament_meta_2026_compact.js`로 정규화합니다.
+
+실제 추천 점수는 외부 통계를 그대로 노출하지 않고, 앱 내부 계산식에 맞게 정규화합니다. OP.GG 라인별 통계는 별도 필터링 검증 후 연결합니다.
 
 ## 데이터
 

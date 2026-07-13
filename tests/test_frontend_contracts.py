@@ -39,6 +39,16 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertNotIn("draft-logo.png", INDEX)
         self.assertNotIn("brand-icon", INDEX)
 
+    def test_mobile_layout_guards_are_present(self):
+        self.assertIn("@media (max-width: 1180px)", INDEX)
+        self.assertIn("@media (max-width: 980px)", INDEX)
+        self.assertIn("@media (max-width: 640px)", INDEX)
+        self.assertIn(".draft-layout {\n        grid-template-columns: 1fr;", INDEX)
+        self.assertIn(".recommend-dock {\n        position: static;", INDEX)
+        self.assertIn(".team-board {\n        grid-template-columns: 1fr;", INDEX)
+        self.assertIn(".board {\n        overflow-x: auto;", INDEX)
+        self.assertIn(".showcase-card:nth-child(even) {\n        grid-template-columns: 1fr;", INDEX)
+
     def test_primary_ui_order_matches_draft_workflow(self):
         draft_tab = INDEX.index('data-view="draftView"')
         pool_tab = INDEX.index('data-view="poolsView"')

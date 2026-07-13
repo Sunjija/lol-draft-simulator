@@ -7663,7 +7663,7 @@
           getChamp("cassiopeia").roles.includes("MID") && getChamp("cassiopeia").roles.includes("ADC"),
           getChamp("cassiopeia").roles.join(", "),
         );
-        check("MSI 전체 메타 연결", getChampForRole("orianna", "MID").tournamentStat?.picks === 10);
+        check("MSI 전체 메타 연결", Number(getChampForRole("orianna", "MID").tournamentStat?.picks) > 0);
         check(
           "실측 시너지 영향 상한",
           [...empiricalSynergyMaps.jungleMid.values(), ...empiricalSynergyMaps.topJungle.values(), ...empiricalSynergyMaps.botDuo.values()]

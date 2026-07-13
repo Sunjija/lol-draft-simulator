@@ -551,6 +551,19 @@
       font-size: 13px;
     }
 
+    .data-patch-note {
+      margin-top: 6px;
+      color: #9CA3AF;
+      font-size: 11px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    .data-patch-note b {
+      color: #D8B858;
+      font-weight: 700;
+    }
+
     .actions, .tabs, .segment, .row, .chips {
       display: flex;
       gap: 8px;
@@ -1900,6 +1913,7 @@
         <div>
           <h1>LoL 밴픽 시뮬레이터</h1>
           <div class="subtitle">공개 베타 · 수기 챔프폭 노트 기반 팀게임 밴픽 보조</div>
+          <div class="data-patch-note" id="dataPatchNote">데이터 기준 확인 중</div>
         </div>
         <div class="actions">
           <div class="bgm-controls local-only" aria-label="밴픽 BGM">
@@ -3300,7 +3314,7 @@
         "saveLiveRegion", "clearLiveRegions", "autoApplyLiveCapture", "liveCapturePreviewWrap",
         "liveCaptureVideo", "liveCaptureCanvas", "liveCaptureSelection", "liveCaptureSavedSelection",
         "liveCaptureHint", "liveCaptureCandidates",
-        "championNameOptions",
+        "championNameOptions", "dataPatchNote",
         "landingView", "enterSimulator", "skipLandingNextTime", "discordLink",
       ].forEach(id => els[id] = $(id));
 
@@ -3524,6 +3538,7 @@
       renderFearless();
       renderBgmControls();
       renderLiveCapture();
+      renderDataPatchNote();
       if (els.timerModeToggle) els.timerModeToggle.checked = Boolean(state.timerMode?.enabled);
       if (els.timerSettings) els.timerSettings.hidden = !state.timerMode?.enabled;
       if (els.timerBanSeconds) els.timerBanSeconds.value = state.timerMode?.banSeconds ?? 30;
@@ -4064,6 +4079,48 @@
       els.fearlessLabel.textContent = `피어리스 ${state.fearlessEnabled ? "ON" : "OFF"}`;
       els.blueOwner.textContent = state.ourSide === "BLUE" ? "우리 팀" : "상대 팀";
       els.redOwner.textContent = state.ourSide === "RED" ? "우리 팀" : "상대 팀";
+    }
+
+    function renderDataPatchNote() {
+      if (!els.dataPatchNote) return;
+      const patch = currentDataPatchLabel();
+      const refreshedAt = currentDataRefreshedAt();
+      const refreshedText = refreshedAt ? ` · ${formatCompactDate(refreshedAt)} 갱신` : "";
+      els.dataPatchNote.innerHTML = `데이터 기준: <b>${escapeHtml(patch)}</b>${refreshedText}`;
+    }
+
+    function currentDataPatchLabel() {
+      const statusTitle = window.META_REFRESH_STATUS?.patchNote?.title || "";
+      const titlePatch = statusTitle.match(/(\d+(?:\.\d+)+)\s*패치/);
+      if (titlePatch) return `${titlePatch[1]} 패치`;
+      const statusPatch = statusTitle.match(/(\d+(?:\.\d+)+)/);
+      if (statusPatch) return `${statusPatch[1]} 패치`;
+      const dataPatch =
+        window.TOURNAMENT_2026_META?.metadata?.patches?.[0]
+        || window.LEAGUE_DRAFT_CONTEXT?.metadata?.patches?.[0];
+      return dataPatch ? `${dataPatch} 패치 데이터` : "패치 정보 미확인";
+    }
+
+    function currentDataRefreshedAt() {
+      return (
+        window.META_REFRESH_STATUS?.refreshedAt
+        || window.TOURNAMENT_2026_META?.metadata?.collectedAt
+        || window.LEAGUE_DRAFT_CONTEXT?.metadata?.collectedAt
+        || null
+      );
+    }
+
+    function formatCompactDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "";
+      const parts = new Intl.DateTimeFormat("ko-KR", {
+        timeZone: "Asia/Seoul",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).formatToParts(date);
+      const valueFor = type => parts.find(part => part.type === type)?.value || "";
+      return `${valueFor("year")}.${valueFor("month")}.${valueFor("day")}`;
     }
 
     function renderCurrentTurn() {

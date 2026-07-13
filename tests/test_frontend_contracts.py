@@ -191,6 +191,14 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("function runDraftSelfTests()", INDEX)
         self.assertIn("확정된 상대 서폿 라인 재밴 금지", INDEX)
 
+    def test_live_capture_scan_loop_is_user_controlled(self):
+        self.assertIn('id="liveScanCapture"', INDEX)
+        self.assertIn("scanEnabled: true", INDEX)
+        self.assertIn("function ensureLiveCaptureLoop", INDEX)
+        self.assertIn("liveCapture.interval = window.setInterval(() => analyzeLiveCaptureFrame({ manual: false }), 900)", INDEX)
+        self.assertIn("liveCapture.scanEnabled = els.liveScanCapture.checked", INDEX)
+        self.assertIn('liveCapture.stream ? (liveCapture.scanEnabled ? "감지 중" : "캡쳐 중") : "대기"', INDEX)
+
     def test_league_role_and_synergy_context_is_connected(self):
         self.assertIn('data/league_draft_context_compact.js', INDEX)
         self.assertIn("leagueRoleStatsMaps", INDEX)

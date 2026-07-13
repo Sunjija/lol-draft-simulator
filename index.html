@@ -2899,6 +2899,10 @@
                   <button id="saveLiveRegion" type="button">현재 턴 영역 저장</button>
                   <button id="clearLiveRegions" type="button">영역 초기화</button>
                   <label class="side-pill" style="width:max-content">
+                    <input id="liveScanCapture" type="checkbox" style="width:auto" checked />
+                    실시간 감지
+                  </label>
+                  <label class="side-pill" style="width:max-content">
                     <input id="autoApplyLiveCapture" type="checkbox" style="width:auto" />
                     높은 확신도 자동 반영
                   </label>
@@ -4203,6 +4207,8 @@
       lastCandidates: [],
       lastAppliedKey: "",
       drag: null,
+      scanEnabled: true,
+      analyzing: false,
       autoApply: false,
     };
     const poolUiState = {
@@ -4226,7 +4232,7 @@
         "timerModeToggle", "timerDisplay", "timerSettings", "timerBanSeconds", "timerPickSeconds",
         "timerTopBar", "timerTopBarFill", "timerTopBarLabel",
         "liveCapturePanel", "liveCaptureStatus", "startLiveCapture", "stopLiveCapture", "analyzeLiveCapture",
-        "saveLiveRegion", "clearLiveRegions", "autoApplyLiveCapture", "liveCapturePreviewWrap",
+        "saveLiveRegion", "clearLiveRegions", "liveScanCapture", "autoApplyLiveCapture", "liveCapturePreviewWrap",
         "liveCaptureVideo", "liveCaptureCanvas", "liveCaptureSelection", "liveCaptureSavedSelection",
         "liveCaptureHint", "liveCaptureCandidates",
         "championNameOptions", "dataPatchNote",
@@ -4436,6 +4442,11 @@
       els.analyzeLiveCapture.addEventListener("click", () => analyzeLiveCaptureFrame({ manual: true }));
       els.saveLiveRegion.addEventListener("click", saveCurrentLiveRegion);
       els.clearLiveRegions.addEventListener("click", clearLiveCaptureRegions);
+      els.liveScanCapture.addEventListener("change", () => {
+        liveCapture.scanEnabled = els.liveScanCapture.checked;
+        ensureLiveCaptureLoop();
+        renderLiveCapture();
+      });
       els.autoApplyLiveCapture.addEventListener("change", () => {
         liveCapture.autoApply = els.autoApplyLiveCapture.checked;
         renderLiveCapture();
@@ -4530,12 +4541,22 @@
         stream.getVideoTracks().forEach(track => {
           track.addEventListener("ended", () => stopLiveCapture());
         });
-        liveCapture.interval = window.setInterval(() => analyzeLiveCaptureFrame({ manual: false }), 900);
+        ensureLiveCaptureLoop();
         renderLiveCapture();
         toast("캡쳐할 창이 연결됐습니다.");
       } catch (error) {
         renderLiveCaptureStatus("캡쳐 취소");
       }
+    }
+
+    function ensureLiveCaptureLoop() {
+      if (liveCapture.interval) {
+        window.clearInterval(liveCapture.interval);
+        liveCapture.interval = null;
+      }
+      if (!liveCapture.stream || !liveCapture.scanEnabled) return;
+      liveCapture.interval = window.setInterval(() => analyzeLiveCaptureFrame({ manual: false }), 900);
+      analyzeLiveCaptureFrame({ manual: false });
     }
 
     function stopLiveCapture(showToast = true) {
@@ -4548,6 +4569,7 @@
       liveCapture.pendingRegion = null;
       liveCapture.lastCandidates = [];
       liveCapture.lastAppliedKey = "";
+      liveCapture.analyzing = false;
       if (els.liveCaptureVideo) els.liveCaptureVideo.srcObject = null;
       renderLiveCapture();
       if (showToast) toast("라이브 캡쳐를 중지했습니다.");
@@ -4647,6 +4669,7 @@
     }
 
     async function analyzeLiveCaptureFrame({ manual = false } = {}) {
+      if (liveCapture.analyzing) return liveCapture.lastCandidates || [];
       const step = getCurrentStep();
       if (!step || !liveCapture.stream || !els.liveCaptureVideo?.videoWidth) {
         if (manual) toast("먼저 창 선택을 하고 영상이 보이는지 확인해 주세요.");
@@ -4658,9 +4681,11 @@
         renderLiveCapture();
         return [];
       }
+      liveCapture.analyzing = true;
       await ensureChampionTemplates();
       if (!liveCapture.templatesReady) {
         if (manual) toast("챔피언 아이콘 템플릿을 아직 준비하지 못했습니다.");
+        liveCapture.analyzing = false;
         return [];
       }
 
@@ -4674,6 +4699,7 @@
       const feature = imageFeatureFromCanvas(ctx, crop.x, crop.y, crop.w, crop.h);
       const candidates = matchChampionFeature(feature, 5);
       liveCapture.lastCandidates = candidates;
+      liveCapture.analyzing = false;
       renderLiveCapture();
 
       const best = candidates[0];
@@ -4779,6 +4805,7 @@
       drawCaptureSelection(liveCapture.pendingRegion, false);
       drawCaptureSelection(saved, true);
       renderLiveCaptureStatus();
+      if (els.liveScanCapture) els.liveScanCapture.checked = Boolean(liveCapture.scanEnabled);
       if (els.autoApplyLiveCapture) els.autoApplyLiveCapture.checked = Boolean(liveCapture.autoApply);
       if (els.liveCaptureHint) {
         const regionText = saved
@@ -4796,7 +4823,7 @@
     function renderLiveCaptureStatus(forcedText) {
       if (!els.liveCaptureStatus) return;
       const step = getCurrentStep();
-      const baseText = liveCapture.stream ? "캡쳐 중" : "대기";
+      const baseText = liveCapture.stream ? (liveCapture.scanEnabled ? "감지 중" : "캡쳐 중") : "대기";
       const regionText = step && liveCapture.regions[String(step.index)] ? " · 영역 저장됨" : "";
       const text = forcedText || `${baseText}${regionText}`;
       els.liveCaptureStatus.textContent = text;

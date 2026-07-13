@@ -193,10 +193,19 @@ class FrontendContractsTest(unittest.TestCase):
 
     def test_live_capture_scan_loop_is_user_controlled(self):
         self.assertIn('id="liveScanCapture"', INDEX)
+        self.assertIn('id="saveLiveBoardRegion"', INDEX)
+        self.assertIn('id="syncLiveBoard"', INDEX)
+        self.assertIn('id="syncLiveTimer"', INDEX)
         self.assertIn("scanEnabled: true", INDEX)
+        self.assertIn("boardSyncEnabled: true", INDEX)
+        self.assertIn("syncTimer: true", INDEX)
         self.assertIn("function ensureLiveCaptureLoop", INDEX)
+        self.assertIn("function analyzeLiveBoardFrame", INDEX)
+        self.assertIn("function liveBoardSlotForStep", INDEX)
+        self.assertIn("function syncLiveBoardDetections", INDEX)
         self.assertIn("liveCapture.interval = window.setInterval(() => analyzeLiveCaptureFrame({ manual: false }), 900)", INDEX)
         self.assertIn("liveCapture.scanEnabled = els.liveScanCapture.checked", INDEX)
+        self.assertIn("state.timerMode.enabled = true", INDEX)
         self.assertIn('liveCapture.stream ? (liveCapture.scanEnabled ? "감지 중" : "캡쳐 중") : "대기"', INDEX)
 
     def test_league_role_and_synergy_context_is_connected(self):

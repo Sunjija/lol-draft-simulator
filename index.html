@@ -2897,7 +2897,16 @@
                   <button id="stopLiveCapture" type="button">중지</button>
                   <button id="analyzeLiveCapture" type="button">현재 프레임 감지</button>
                   <button id="saveLiveRegion" type="button">현재 턴 영역 저장</button>
+                  <button id="saveLiveBoardRegion" type="button">밴픽창 전체 저장</button>
                   <button id="clearLiveRegions" type="button">영역 초기화</button>
+                  <label class="side-pill" style="width:max-content">
+                    <input id="syncLiveBoard" type="checkbox" style="width:auto" checked />
+                    보드 자동 동기화
+                  </label>
+                  <label class="side-pill" style="width:max-content">
+                    <input id="syncLiveTimer" type="checkbox" style="width:auto" checked />
+                    턴 시간 동기화
+                  </label>
                   <label class="side-pill" style="width:max-content">
                     <input id="liveScanCapture" type="checkbox" style="width:auto" checked />
                     실시간 감지
@@ -3330,6 +3339,7 @@
     const LOCAL_DEV_FEATURES = APP_PARAMS.has("dev") || APP_PARAMS.has("local");
     const STORAGE_KEY = "lol-draft-simulator-state-v1";
     const LIVE_CAPTURE_REGIONS_KEY = "lol-draft-simulator-live-capture-regions-v1";
+    const LIVE_CAPTURE_BOARD_KEY = "lol-draft-simulator-live-board-region-v1";
     const PICK_WEIGHT_PROFILE_VERSION = 2;
     const PICK_WEIGHT_MAX = 40;
     const defaultPickWeights = {
@@ -4206,6 +4216,10 @@
       templatesLoading: null,
       lastCandidates: [],
       lastAppliedKey: "",
+      boardRegion: null,
+      boardSyncEnabled: true,
+      syncTimer: true,
+      lastBoardSignature: "",
       drag: null,
       scanEnabled: true,
       analyzing: false,
@@ -4232,7 +4246,7 @@
         "timerModeToggle", "timerDisplay", "timerSettings", "timerBanSeconds", "timerPickSeconds",
         "timerTopBar", "timerTopBarFill", "timerTopBarLabel",
         "liveCapturePanel", "liveCaptureStatus", "startLiveCapture", "stopLiveCapture", "analyzeLiveCapture",
-        "saveLiveRegion", "clearLiveRegions", "liveScanCapture", "autoApplyLiveCapture", "liveCapturePreviewWrap",
+        "saveLiveRegion", "saveLiveBoardRegion", "clearLiveRegions", "syncLiveBoard", "syncLiveTimer", "liveScanCapture", "autoApplyLiveCapture", "liveCapturePreviewWrap",
         "liveCaptureVideo", "liveCaptureCanvas", "liveCaptureSelection", "liveCaptureSavedSelection",
         "liveCaptureHint", "liveCaptureCandidates",
         "championNameOptions", "dataPatchNote",
@@ -4441,7 +4455,16 @@
       els.stopLiveCapture.addEventListener("click", stopLiveCapture);
       els.analyzeLiveCapture.addEventListener("click", () => analyzeLiveCaptureFrame({ manual: true }));
       els.saveLiveRegion.addEventListener("click", saveCurrentLiveRegion);
+      els.saveLiveBoardRegion.addEventListener("click", saveLiveBoardRegion);
       els.clearLiveRegions.addEventListener("click", clearLiveCaptureRegions);
+      els.syncLiveBoard.addEventListener("change", () => {
+        liveCapture.boardSyncEnabled = els.syncLiveBoard.checked;
+        renderLiveCapture();
+      });
+      els.syncLiveTimer.addEventListener("change", () => {
+        liveCapture.syncTimer = els.syncLiveTimer.checked;
+        renderLiveCapture();
+      });
       els.liveScanCapture.addEventListener("change", () => {
         liveCapture.scanEnabled = els.liveScanCapture.checked;
         ensureLiveCaptureLoop();
@@ -4518,10 +4541,23 @@
       } catch {
         liveCapture.regions = {};
       }
+      try {
+        liveCapture.boardRegion = JSON.parse(localStorage.getItem(LIVE_CAPTURE_BOARD_KEY) || "null");
+      } catch {
+        liveCapture.boardRegion = null;
+      }
     }
 
     function saveLiveCaptureRegions() {
       localStorage.setItem(LIVE_CAPTURE_REGIONS_KEY, JSON.stringify(liveCapture.regions || {}));
+    }
+
+    function saveLiveCaptureBoardRegion() {
+      if (liveCapture.boardRegion) {
+        localStorage.setItem(LIVE_CAPTURE_BOARD_KEY, JSON.stringify(liveCapture.boardRegion));
+      } else {
+        localStorage.removeItem(LIVE_CAPTURE_BOARD_KEY);
+      }
     }
 
     async function startLiveCapture() {
@@ -4658,12 +4694,27 @@
       toast(`${Number(key) + 1}번째 턴 감지 영역을 저장했습니다.`);
     }
 
+    function saveLiveBoardRegion() {
+      if (!liveCapture.pendingRegion) {
+        toast("먼저 미리보기에서 실제 LoL 밴픽창 전체를 드래그해 주세요.");
+        return;
+      }
+      liveCapture.boardRegion = { ...liveCapture.pendingRegion };
+      liveCapture.lastBoardSignature = "";
+      saveLiveCaptureBoardRegion();
+      renderLiveCapture();
+      toast("밴픽창 전체 영역을 저장했습니다.");
+    }
+
     function clearLiveCaptureRegions() {
       liveCapture.regions = {};
+      liveCapture.boardRegion = null;
       liveCapture.pendingRegion = null;
       liveCapture.lastCandidates = [];
       liveCapture.lastAppliedKey = "";
+      liveCapture.lastBoardSignature = "";
       saveLiveCaptureRegions();
+      saveLiveCaptureBoardRegion();
       renderLiveCapture();
       toast("저장된 라이브 캡쳐 영역을 초기화했습니다.");
     }
@@ -4675,8 +4726,9 @@
         if (manual) toast("먼저 창 선택을 하고 영상이 보이는지 확인해 주세요.");
         return [];
       }
+      const boardRegion = liveCapture.boardSyncEnabled ? liveCapture.boardRegion : null;
       const region = liveCapture.regions[currentLiveRegionKey()] || liveCapture.pendingRegion;
-      if (!region) {
+      if (!region && !boardRegion) {
         if (manual) toast("현재 턴 영역을 드래그해서 저장하거나 선택해 주세요.");
         renderLiveCapture();
         return [];
@@ -4695,6 +4747,11 @@
       canvas.height = video.videoHeight;
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const boardCandidates = boardRegion ? analyzeLiveBoardFrame(ctx, canvas.width, canvas.height) : [];
+      if (!region) {
+        liveCapture.analyzing = false;
+        return boardCandidates;
+      }
       const crop = normalizedRegionToCanvas(region, canvas.width, canvas.height);
       const feature = imageFeatureFromCanvas(ctx, crop.x, crop.y, crop.w, crop.h);
       const candidates = matchChampionFeature(feature, 5);
@@ -4720,6 +4777,103 @@
         w: Math.max(1, Math.round(region.w * width)),
         h: Math.max(1, Math.round(region.h * height)),
       };
+    }
+
+    function analyzeLiveBoardFrame(ctx, width, height) {
+      const board = normalizedRegionToCanvas(liveCapture.boardRegion, width, height);
+      const detections = draftSteps.map(step => {
+        const slot = liveBoardSlotForStep(step);
+        const crop = {
+          x: board.x + Math.round(slot.x * board.w),
+          y: board.y + Math.round(slot.y * board.h),
+          w: Math.max(1, Math.round(slot.w * board.w)),
+          h: Math.max(1, Math.round(slot.h * board.h)),
+        };
+        const feature = imageFeatureFromCanvas(ctx, crop.x, crop.y, crop.w, crop.h);
+        const best = matchChampionFeature(feature, 1)[0];
+        return best
+          ? { ...best, order: step.index, side: step.side, type: step.type, confidence: Math.round(best.confidence) }
+          : null;
+      }).filter(Boolean);
+      const strong = detections.filter(item => item.confidence >= 86);
+      const signature = strong.map(item => `${item.order}:${item.championId}`).join("|");
+      if (signature && signature !== liveCapture.lastBoardSignature) {
+        const changed = syncLiveBoardDetections(strong);
+        liveCapture.lastBoardSignature = signature;
+        if (changed && liveCapture.syncTimer) {
+          state.timerMode.enabled = true;
+          stopTurnTimer();
+          render();
+          setRecommendDockTabForCurrentStep();
+        }
+      }
+      if (strong.length) {
+        liveCapture.lastCandidates = strong
+          .slice()
+          .sort((a, b) => b.confidence - a.confidence)
+          .slice(0, 5);
+      }
+      return strong;
+    }
+
+    function liveBoardSlotForStep(step) {
+      const slotIndex = draftSteps
+        .slice(0, step.index + 1)
+        .filter(item => item.side === step.side && item.type === step.type)
+        .length - 1;
+      const isBlue = step.side === "BLUE";
+      if (step.type === "PICK") {
+        return {
+          x: isBlue ? 0.115 : 0.805,
+          y: 0.195 + slotIndex * 0.125,
+          w: 0.075,
+          h: 0.095,
+        };
+      }
+      return {
+        x: (isBlue ? 0.205 : 0.650) + slotIndex * 0.053,
+        y: 0.850,
+        w: 0.046,
+        h: 0.060,
+      };
+    }
+
+    function syncLiveBoardDetections(detections) {
+      const previous = state.actions.map(action => `${action.order}:${action.championId}`).join("|");
+      const nextActions = state.actions.filter(action => !detections.some(item => item.order === action.order));
+      const usedChampions = new Set(nextActions.map(action => action.championId));
+      detections
+        .slice()
+        .sort((a, b) => a.order - b.order)
+        .forEach(item => {
+          if (usedChampions.has(item.championId)) return;
+          const step = draftSteps[item.order];
+          if (!step) return;
+          let playerId;
+          if (step.type === "PICK") {
+            const resolution = resolvePickPlayerId(step.side, item.championId);
+            playerId = resolution.playerId;
+          }
+          nextActions.push({
+            order: step.index,
+            side: step.side,
+            type: step.type,
+            championId: item.championId,
+            playerId: step.type === "PICK" ? playerId : undefined,
+            isManual: false,
+            source: "liveCapture",
+          });
+          usedChampions.add(item.championId);
+        });
+      state.actions = nextActions.sort((a, b) => a.order - b.order);
+      state.currentStep = draftSteps.find(step => !state.actions.some(action => action.order === step.index))?.index ?? draftSteps.length;
+      const current = state.actions.map(action => `${action.order}:${action.championId}`).join("|");
+      const changed = current !== previous;
+      if (changed) {
+        render();
+        setRecommendDockTabForCurrentStep();
+      }
+      return changed;
     }
 
     async function ensureChampionTemplates() {
@@ -4803,13 +4957,17 @@
       const key = currentLiveRegionKey();
       const saved = key ? liveCapture.regions[key] : null;
       drawCaptureSelection(liveCapture.pendingRegion, false);
-      drawCaptureSelection(saved, true);
+      drawCaptureSelection(saved || liveCapture.boardRegion, true);
       renderLiveCaptureStatus();
+      if (els.syncLiveBoard) els.syncLiveBoard.checked = Boolean(liveCapture.boardSyncEnabled);
+      if (els.syncLiveTimer) els.syncLiveTimer.checked = Boolean(liveCapture.syncTimer);
       if (els.liveScanCapture) els.liveScanCapture.checked = Boolean(liveCapture.scanEnabled);
       if (els.autoApplyLiveCapture) els.autoApplyLiveCapture.checked = Boolean(liveCapture.autoApply);
       if (els.liveCaptureHint) {
         const regionText = saved
           ? `${step.index + 1}번째 턴 저장 영역 사용 중`
+          : liveCapture.boardRegion
+            ? "밴픽창 전체 영역 기준으로 20칸을 자동 동기화합니다."
           : liveCapture.pendingRegion
             ? "선택한 임시 영역으로 감지할 수 있습니다. 저장하면 이 턴에 계속 재사용됩니다."
             : "미리보기에서 현재 턴의 챔피언 아이콘 영역을 드래그하세요.";

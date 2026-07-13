@@ -3,31 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LoL 밴픽 시뮬레이터 - 팀게임 픽밴 추천 도구</title>
-  <meta name="description" content="내전, 격전, 팀게임을 위한 LoL 밴픽 시뮬레이터입니다. 선수별 챔프폭과 숙련도, 라인전, 조합 시너지, 피어리스 조건을 반영해 픽과 밴 후보를 추천합니다." />
+  <title>DraftLab - LoL 팀게임 밴픽 시뮬레이터</title>
+  <meta name="description" content="DraftLab은 내전, 격전, 팀게임을 위한 LoL 밴픽 시뮬레이터입니다. 선수별 챔프폭과 숙련도, 라인전, 조합 시너지, 피어리스 조건을 반영해 픽과 밴 후보를 추천합니다." />
   <meta name="keywords" content="LoL 밴픽, 롤 밴픽, 밴픽 시뮬레이터, 롤 픽밴, 격전, 내전, 팀게임, 피어리스, 챔프폭, 롤 조합" />
   <meta name="robots" content="index, follow" />
-  <meta name="author" content="LoL Draft Simulator" />
+  <meta name="author" content="DraftLab" />
+  <meta name="theme-color" content="#0B0F17" />
   <link rel="canonical" href="https://sunjija.github.io/lol-draft-simulator/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
-  <meta property="og:site_name" content="LoL 밴픽 시뮬레이터" />
-  <meta property="og:title" content="LoL 밴픽 시뮬레이터 - 팀게임 픽밴 추천 도구" />
+  <meta property="og:site_name" content="DraftLab" />
+  <meta property="og:title" content="DraftLab - LoL 팀게임 밴픽 시뮬레이터" />
   <meta property="og:description" content="챔프폭, 숙련도, 라인전, 조합 시너지를 반영해 팀게임 밴픽 후보를 추천하는 공개 베타 도구입니다." />
   <meta property="og:url" content="https://sunjija.github.io/lol-draft-simulator/" />
+  <meta property="og:image" content="https://sunjija.github.io/lol-draft-simulator/assets/brand/draftlab-icon-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="LoL 밴픽 시뮬레이터" />
+  <meta name="twitter:title" content="DraftLab" />
   <meta name="twitter:description" content="내전, 격전, 팀게임용 픽밴 추천 도구입니다." />
-  <link rel="icon" href="data:," />
+  <meta name="twitter:image" content="https://sunjija.github.io/lol-draft-simulator/assets/brand/draftlab-icon-512.png" />
+  <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="assets/brand/draftlab-icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "LoL 밴픽 시뮬레이터",
+      "name": "DraftLab",
+      "alternateName": "LoL 밴픽 시뮬레이터",
       "url": "https://sunjija.github.io/lol-draft-simulator/",
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web",
-      "description": "내전, 격전, 팀게임을 위한 LoL 밴픽 시뮬레이터입니다. 선수별 챔프폭과 숙련도, 라인전, 조합 시너지, 피어리스 조건을 반영해 픽과 밴 후보를 추천합니다.",
+      "description": "DraftLab은 내전, 격전, 팀게임을 위한 LoL 밴픽 시뮬레이터입니다. 선수별 챔프폭과 숙련도, 라인전, 조합 시너지, 피어리스 조건을 반영해 픽과 밴 후보를 추천합니다.",
       "inLanguage": "ko-KR",
       "isAccessibleForFree": true
     }
@@ -127,9 +136,8 @@
 
     .landing {
       min-height: 100vh;
-      padding: 72px 24px;
-      display: grid;
-      place-items: center;
+      padding: 72px 24px 96px;
+      overflow-x: hidden;
       background:
         radial-gradient(circle at 18% 18%, rgba(47, 129, 247, 0.18), transparent 34%),
         radial-gradient(circle at 82% 24%, rgba(201, 162, 39, 0.16), transparent 30%),
@@ -137,9 +145,10 @@
     }
 
     .landing-shell {
-      width: min(980px, 100%);
+      width: min(1160px, 100%);
+      margin: 0 auto;
       display: grid;
-      gap: 34px;
+      gap: 76px;
     }
 
     .landing-copy {
@@ -254,6 +263,194 @@
       line-height: 1.48;
     }
 
+    .landing-showcase {
+      display: grid;
+      gap: 18px;
+    }
+
+    .landing-section-title {
+      display: grid;
+      gap: 8px;
+      max-width: 720px;
+    }
+
+    .landing-section-title b {
+      color: #f8d46a;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .landing-section-title h2 {
+      margin: 0;
+      color: #f8fafc;
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .landing-section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .showcase-grid {
+      display: grid;
+      gap: 30px;
+    }
+
+    .showcase-card {
+      --reveal-x: -56px;
+      width: min(1040px, 100%);
+      justify-self: start;
+      display: grid;
+      grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.4fr);
+      gap: 22px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 10px;
+      background:
+        linear-gradient(135deg, rgba(248, 212, 106, 0.05), transparent 34%),
+        rgba(15, 23, 42, 0.72);
+      opacity: 0;
+      transform: translateX(var(--reveal-x));
+      transition: opacity 620ms ease, transform 620ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease;
+      will-change: opacity, transform;
+    }
+
+    .showcase-card:nth-child(even) {
+      --reveal-x: 56px;
+      justify-self: end;
+      grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.85fr);
+    }
+
+    .showcase-card:nth-child(even) .showcase-copy {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .showcase-card:nth-child(even) .showcase-shot {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .showcase-card.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .showcase-copy {
+      display: grid;
+      gap: 9px;
+    }
+
+    .showcase-label {
+      width: max-content;
+      padding: 5px 8px;
+      border: 1px solid rgba(201, 162, 39, 0.40);
+      border-radius: 999px;
+      color: #f8d46a;
+      background: rgba(201, 162, 39, 0.08);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .showcase-card h3 {
+      margin: 0;
+      color: #f8fafc;
+      font-size: 20px;
+      line-height: 1.28;
+      letter-spacing: 0;
+    }
+
+    .showcase-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .showcase-shot {
+      --shot-ratio: 16 / 9;
+      min-width: 0;
+      aspect-ratio: var(--shot-ratio);
+      display: grid;
+      place-items: center;
+      padding: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(47, 129, 247, 0.10), transparent 38%),
+        #080c13;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .showcase-shot.board-shot,
+    .showcase-shot.reason-shot {
+      --shot-ratio: 4 / 3;
+    }
+
+    .showcase-shot.pool-shot {
+      --shot-ratio: 21 / 8;
+    }
+
+    .showcase-shot.edit-shot {
+      --shot-ratio: 6 / 5;
+    }
+
+    .showcase-shot.patch-shot {
+      --shot-ratio: 7 / 2;
+      min-height: 132px;
+    }
+
+    .showcase-shot img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .showcase-shot.reason-shot img {
+      width: min(100%, 430px);
+    }
+
+    .showcase-shot.patch-shot img {
+      width: min(100%, 390px);
+    }
+
+    .landing-final-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      padding: 22px;
+      border: 1px solid rgba(201, 162, 39, 0.24);
+      border-radius: 10px;
+      background: rgba(201, 162, 39, 0.08);
+    }
+
+    .landing-final-cta b {
+      display: block;
+      margin-bottom: 4px;
+      color: #f8fafc;
+      font-size: 18px;
+    }
+
+    .landing-final-cta span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
     .landing-basis {
       display: flex;
       gap: 10px;
@@ -296,7 +493,8 @@
       margin-top: -10px;
       color: #94a3b8;
       font-size: 12px;
-      line-height: 1.55;
+      line-height: 1.65;
+      word-break: keep-all;
     }
 
     .timer-bar {
@@ -1838,6 +2036,50 @@
         grid-template-columns: 1fr;
       }
 
+      .showcase-card {
+        grid-template-columns: 1fr;
+        width: 100%;
+        justify-self: stretch;
+        transform: translateY(18px);
+      }
+
+      .showcase-card:nth-child(even) {
+        justify-self: stretch;
+        transform: translateY(18px);
+      }
+
+      .showcase-card:nth-child(even) .showcase-copy,
+      .showcase-card:nth-child(even) .showcase-shot {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .showcase-card.is-visible {
+        transform: translateY(0);
+      }
+
+      .showcase-shot.board-shot,
+      .showcase-shot.reason-shot {
+        aspect-ratio: 4 / 3;
+      }
+
+      .showcase-shot.pool-shot {
+        aspect-ratio: 16 / 9;
+      }
+
+      .showcase-shot.edit-shot {
+        aspect-ratio: 5 / 4;
+      }
+
+      .showcase-shot.patch-shot {
+        aspect-ratio: 7 / 2;
+        min-height: 112px;
+      }
+
+      .landing-final-cta {
+        align-items: stretch;
+      }
+
       .weight-row {
         grid-template-columns: 1fr;
         gap: 6px;
@@ -1862,7 +2104,7 @@
   <section class="landing" id="landingView" aria-label="서비스 소개">
     <div class="landing-shell">
       <div class="landing-copy">
-        <div class="landing-kicker">PUBLIC BETA · 팀게임 밴픽 보조</div>
+        <div class="landing-kicker">DRAFTLAB · PUBLIC BETA</div>
         <h1>감으로만 하던 밴픽을<br />팀 챔프폭과 조합 근거로 정리합니다.</h1>
         <p class="landing-lead">
           이 시뮬레이터는 내전과 격전처럼<br />
@@ -1888,21 +2130,96 @@
           <div class="landing-basis-row"><span>피어리스와 남은 챔프폭</span><span>리스크</span></div>
         </div>
         <p class="landing-source-note">
-          챔피언 티어와 메타 평가는 OP.GG 등 공개 LoL 통계 데이터와 대회 메타 데이터를 참고해 자체 기준으로 정규화합니다.
+          챔피언 티어와 메타 평가는 공개 LoL 통계 데이터와<br />
+          대회 메타 데이터를 참고해 DraftLab 기준으로 정규화합니다.
         </p>
-        <div class="landing-reasons">
-          <div class="landing-card">
-            <b>챔프폭 우선</b>
-            <span>추천은 선수의 실제 챔프폭 안에서 계산하고,<br />숙련도 차이를 크게 반영합니다.</span>
+      </div>
+      <div class="landing-showcase" aria-label="주요 기능 미리보기">
+        <div class="landing-section-title">
+          <b>DRAFTLAB WORKFLOW</b>
+          <h2>실제 밴픽 흐름에 맞춰<br />필요한 화면만 빠르게 봅니다.</h2>
+          <p>
+            챔프폭 정리부터 밴픽 보드, 추천 근거, 패치 기준까지<br />
+            실제로 쓰는 순서대로 이어지게 구성했습니다.
+          </p>
+        </div>
+        <div class="showcase-grid">
+          <article class="showcase-card reveal-on-scroll">
+            <div class="showcase-copy">
+              <span class="showcase-label">DRAFT BOARD</span>
+              <h3>현재 밴픽 순서를 한눈에 확인합니다.</h3>
+              <p>
+                블루/레드 사이드와 현재 턴을 기준으로<br />
+                추천 후보를 바로 밴픽 칸에 적용할 수 있습니다.
+              </p>
+            </div>
+            <div class="showcase-shot board-shot">
+              <img src="assets/showcase/draft-board.png" alt="DraftLab 밴픽 보드 화면" loading="lazy" />
+            </div>
+          </article>
+
+          <article class="showcase-card reveal-on-scroll">
+            <div class="showcase-copy">
+              <span class="showcase-label">PLAYER POOL</span>
+              <h3>팀원별 챔프폭과 숙련도를 정리합니다.</h3>
+              <p>
+                장인, 잘함, 보통, 가능 단계로 나누고<br />
+                실제로 꺼낼 수 있는 픽을 추천에 우선 반영합니다.
+              </p>
+            </div>
+            <div class="showcase-shot pool-shot">
+              <img src="assets/showcase/player-pool.png" alt="선수별 챔프폭 입력 화면" loading="lazy" />
+            </div>
+          </article>
+
+          <article class="showcase-card reveal-on-scroll">
+            <div class="showcase-copy">
+              <span class="showcase-label">PICK REASON</span>
+              <h3>추천 근거는 필요한 것만 남깁니다.</h3>
+              <p>
+                상대 숙련도, 라인/메타, 밴 전략처럼<br />
+                밴픽 중 바로 봐야 하는 정보만 압축합니다.
+              </p>
+            </div>
+            <div class="showcase-shot reason-shot">
+              <img src="assets/showcase/recommendations.png" alt="추천 카드와 점수 근거 화면" loading="lazy" />
+            </div>
+          </article>
+
+          <article class="showcase-card reveal-on-scroll">
+            <div class="showcase-copy">
+              <span class="showcase-label">SETUP</span>
+              <h3>이름, 라인, 티어는 즉시 반영됩니다.</h3>
+              <p>
+                기본 정보는 별도 적용 버튼 없이 저장됩니다.<br />
+                챔프폭과 숙련도를 채우면 추천 정확도가 올라갑니다.
+              </p>
+            </div>
+            <div class="showcase-shot edit-shot">
+              <img src="assets/showcase/setup-api.png" alt="팀 설정과 입력 화면" loading="lazy" />
+            </div>
+          </article>
+
+          <article class="showcase-card reveal-on-scroll">
+            <div class="showcase-copy">
+              <span class="showcase-label">PATCH DATA</span>
+              <h3>데이터 기준 패치를 표시합니다.</h3>
+              <p>
+                패치 버전과 갱신일을 작게 남겨<br />
+                현재 추천이 어느 기준인지 바로 확인할 수 있습니다.
+              </p>
+            </div>
+            <div class="showcase-shot patch-shot">
+              <img src="assets/showcase/patch-status.png" alt="패치 기준 데이터 표시 화면" loading="lazy" />
+            </div>
+          </article>
+        </div>
+        <div class="landing-final-cta reveal-on-scroll">
+          <div>
+            <b>팀 챔프폭을 넣고 바로 밴픽을 시작해보세요.</b>
+            <span>처음에는 프리셋으로 채우고,<br />실제 팀원 챔프폭에 맞게 조금씩 다듬으면 됩니다.</span>
           </div>
-          <div class="landing-card">
-            <b>팀게임 기준</b>
-            <span>솔랭 티어만 보지 않고 라인 주도권,<br />정글-라인 연계, 바텀 듀오, 한타 구도를 함께 봅니다.</span>
-          </div>
-          <div class="landing-card">
-            <b>밴픽 순서 반영</b>
-            <span>블루 선픽, 레드 R4 스왑, R5 카운터처럼<br />순서별 가치를 따로 계산합니다.</span>
-          </div>
+          <button class="landing-primary" type="button" data-enter-simulator>밴픽 시작하기</button>
         </div>
       </div>
     </div>
@@ -1911,7 +2228,7 @@
     <header>
       <div class="topbar">
         <div>
-          <h1>LoL 밴픽 시뮬레이터</h1>
+          <h1>DraftLab</h1>
           <div class="subtitle">공개 베타 · 수기 챔프폭 노트 기반 팀게임 밴픽 보조</div>
           <div class="data-patch-note" id="dataPatchNote">데이터 기준 확인 중</div>
         </div>
@@ -2120,7 +2437,7 @@
               <div class="panel-head">
                 <div>
                   <div class="panel-title">우리 팀</div>
-                  <div class="small muted">라인, 이름, 티어를 먼저 맞춰두면 추천의 기본 축이 잡힙니다.</div>
+                  <div class="small muted">이름, 라인, 티어는 선택하거나 입력을 마치면 바로 반영됩니다.</div>
                 </div>
               </div>
               <div class="panel-body" id="ourPlayersForm"></div>
@@ -2130,7 +2447,7 @@
               <div class="panel-head">
                 <div>
                   <div class="panel-title">상대 팀</div>
-                  <div class="small muted">상대 라인이 불확실하면 아래 상대 라인 정보에서 추정/불명을 선택하세요.</div>
+                  <div class="small muted">이름, 라인, 티어는 바로 반영됩니다. 상대 라인이 불확실하면 아래에서 추정/불명을 선택하세요.</div>
                 </div>
               </div>
               <div class="panel-body" id="enemyPlayersForm"></div>
@@ -2141,7 +2458,7 @@
             <div class="panel-head">
               <div>
                 <div class="panel-title">Riot ID/이름 붙여넣기</div>
-                <div class="small muted">여러 명을 한 번에 등록할 때 펼쳐서 사용하세요. 이름만 넣어도 바로 사용할 수 있습니다.</div>
+                <div class="small muted">여러 명을 한 번에 등록할 때 사용하세요. 붙여넣기 명단은 적용 버튼을 누르면 반영됩니다.</div>
               </div>
             </div>
             <div class="panel-body">
@@ -3319,6 +3636,7 @@
       ].forEach(id => els[id] = $(id));
 
       initializeLanding();
+      initializeShowcaseReveal();
       applyPublicBetaMode();
       bindEvents();
       loadFromStorage(false);
@@ -3354,6 +3672,38 @@
       }
     }
 
+    function initializeShowcaseReveal() {
+      const targets = Array.from(document.querySelectorAll(".reveal-on-scroll"));
+      if (!targets.length) return;
+      const revealPassedTargets = () => {
+        const viewportBottom = window.scrollY + window.innerHeight;
+        targets.forEach(target => {
+          if (target.classList.contains("is-visible")) return;
+          const targetTop = target.getBoundingClientRect().top + window.scrollY;
+          if (targetTop < viewportBottom - 80) {
+            target.classList.add("is-visible");
+          }
+        });
+        if (targets.every(target => target.classList.contains("is-visible"))) {
+          window.removeEventListener("scroll", revealPassedTargets);
+        }
+      };
+      if (!("IntersectionObserver" in window)) {
+        targets.forEach(target => target.classList.add("is-visible"));
+        return;
+      }
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px 12% 0px" });
+      targets.forEach(target => observer.observe(target));
+      window.addEventListener("scroll", revealPassedTargets, { passive: true });
+      requestAnimationFrame(revealPassedTargets);
+    }
+
     function applyPublicBetaMode() {
       document.querySelectorAll(".dev-only").forEach(element => {
         element.hidden = !LOCAL_DEV_FEATURES;
@@ -3375,6 +3725,9 @@
       if (els.enterSimulator) {
         els.enterSimulator.addEventListener("click", () => enterApp({ persist: true }));
       }
+      document.querySelectorAll("[data-enter-simulator]").forEach(button => {
+        button.addEventListener("click", () => enterApp({ persist: true }));
+      });
 
       document.addEventListener("change", event => {
         const select = event.target.closest("select.pick-reassign");

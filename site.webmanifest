@@ -1,0 +1,25 @@
+{
+  "name": "DraftLab - LoL 밴픽 시뮬레이터",
+  "short_name": "DraftLab",
+  "description": "내전, 격전, 팀게임을 위한 LoL 밴픽 추천 도구입니다.",
+  "lang": "ko-KR",
+  "start_url": "/lol-draft-simulator/",
+  "scope": "/lol-draft-simulator/",
+  "display": "standalone",
+  "background_color": "#0B0F17",
+  "theme_color": "#0B0F17",
+  "icons": [
+    {
+      "src": "assets/brand/draftlab-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/brand/draftlab-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

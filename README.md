@@ -1,4 +1,4 @@
-# LoL Draft Simulator
+# DraftLab
 
 내전, 격전, 팀게임 연습용 밴픽 보조 도구입니다. 팀원의 챔피언 폭, 라인 정보, 조합 태그, 대회 메타 데이터, 상성 데이터를 바탕으로 픽과 밴 후보를 추천합니다.
 
@@ -26,11 +26,20 @@ GitHub Pages, Cloudflare Pages, Netlify, Vercel 같은 정적 호스팅에서는
 https://sunjija.github.io/lol-draft-simulator/
 ```
 
-검색 노출을 빠르게 요청하려면 Google Search Console에서 위 URL을 속성으로 추가하고, 아래 sitemap을 제출합니다.
+검색 노출을 빠르게 요청하려면 Google Search Console에서 위 URL을 URL prefix 속성으로 추가하고, 아래 sitemap을 제출합니다.
 
 ```text
 https://sunjija.github.io/lol-draft-simulator/sitemap.xml
 ```
+
+기본 검색 노출 파일:
+
+- `robots.txt`
+- `sitemap.xml`
+- `site.webmanifest`
+- `assets/brand/draftlab-icon.svg`
+- `assets/brand/draftlab-icon-192.png`
+- `assets/brand/draftlab-icon-512.png`
 
 ## 주요 기능
 

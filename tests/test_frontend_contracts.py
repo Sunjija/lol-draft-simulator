@@ -11,10 +11,15 @@ SITEMAP = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
 class FrontendContractsTest(unittest.TestCase):
     def test_public_seo_metadata_is_present(self):
         public_url = "https://sunjija.github.io/lol-draft-simulator/"
-        self.assertIn("<title>LoL 밴픽 시뮬레이터 - 팀게임 픽밴 추천 도구</title>", INDEX)
+        self.assertIn("<title>DraftLab - LoL 팀게임 밴픽 시뮬레이터</title>", INDEX)
         self.assertIn('name="description"', INDEX)
         self.assertIn(f'<link rel="canonical" href="{public_url}" />', INDEX)
+        self.assertIn('rel="manifest" href="site.webmanifest"', INDEX)
+        self.assertIn('assets/brand/favicon-32.png', INDEX)
+        self.assertIn('assets/brand/draftlab-icon-192.png', INDEX)
+        self.assertIn('property="og:image"', INDEX)
         self.assertIn('"@type": "WebApplication"', INDEX)
+        self.assertIn('"name": "DraftLab"', INDEX)
         self.assertIn("Sitemap: https://sunjija.github.io/lol-draft-simulator/sitemap.xml", ROBOTS)
         self.assertIn(f"<loc>{public_url}</loc>", SITEMAP)
 
@@ -177,7 +182,8 @@ class FrontendContractsTest(unittest.TestCase):
 
     def test_meta_refresh_status_and_source_note_are_connected(self):
         self.assertIn('data/meta_refresh_status.js', INDEX)
-        self.assertIn("OP.GG 등 공개 LoL 통계 데이터와 대회 메타 데이터", INDEX)
+        self.assertIn("공개 LoL 통계 데이터와", INDEX)
+        self.assertIn("대회 메타 데이터를 참고해 DraftLab 기준으로 정규화", INDEX)
 
     def test_shallow_draft_lookahead_is_connected(self):
         for function_name in (

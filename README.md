@@ -96,7 +96,9 @@ OP.GG 등 공개 LoL 통계 데이터, 대회 메타 데이터 참고
 
 현재는 GOL.GG 최신 주차 대회 목록에서 MSI, LCK, First Stand, Worlds 계열 대회를 우선 필터링하고, 선택된 대회의 picks/bans 데이터를 `data/tournament_meta_2026_compact.js`로 정규화합니다.
 
-실제 추천 점수는 외부 통계를 그대로 노출하지 않고, 앱 내부 계산식에 맞게 정규화합니다. OP.GG 라인별 통계는 별도 필터링 검증 후 연결합니다.
+OP.GG 라인별 챔피언 통계는 pick rate와 play count 기준을 통과한 챔피언만 `data/league_draft_context_compact.js`의 role stats에 반영합니다. 기존 카운터/시너지 데이터는 보존하고, ban rate는 보조 신호로만 사용합니다.
+
+실제 추천 점수는 외부 통계를 그대로 노출하지 않고, 앱 내부 계산식에 맞게 정규화합니다.
 
 ## 데이터
 

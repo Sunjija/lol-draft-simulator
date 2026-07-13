@@ -18,6 +18,7 @@ from typing import Any
 
 from post_korean_patch_notes import latest_patch_note
 from update_gol_tournament_meta import main as update_gol_tournament_meta_main
+from update_opgg_league_context import main as update_opgg_league_context_main
 
 
 DEFAULT_STATE_PATH = Path(".cache/meta_refresh_state.json")
@@ -136,6 +137,7 @@ def main() -> int:
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--skip-gol-meta", action="store_true")
+    parser.add_argument("--skip-opgg-meta", action="store_true")
     args = parser.parse_args()
 
     if args.delay_days < 0:
@@ -192,6 +194,8 @@ def main() -> int:
         print(json.dumps(status, ensure_ascii=False, indent=2))
         return 0
 
+    if not args.skip_opgg_meta:
+        update_opgg_league_context_main([])
     if not args.skip_gol_meta:
         update_gol_tournament_meta_main([])
 

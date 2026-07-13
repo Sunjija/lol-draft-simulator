@@ -76,6 +76,7 @@ def parse_opgg_champions(html: str) -> list[dict[str, Any]]:
             {
                 "key": key,
                 "name": match.group("name"),
+                "image": match.group("image"),
                 "play": play,
                 "winRate": round(float(match.group("win_rate")), 2),
                 "pickRate": round(float(match.group("pick_rate")), 2),

@@ -51,6 +51,8 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn('id="mobileDraftFlow"', INDEX)
         self.assertIn(".mobile-draft-flow {\n        display: grid;", INDEX)
         self.assertIn(".board > .phase-strip,\n      .board > .team-board {\n        display: none;", INDEX)
+        self.assertIn(".mobile-phase-card:not(.current) .mobile-phase-steps {\n        display: none;", INDEX)
+        self.assertIn(".reco-card .bar,\n      .reco-card .score-grid,\n      .reco-card .reason {\n        display: none;", INDEX)
         self.assertIn("function renderMobileDraftFlow", INDEX)
         self.assertIn(".current-turn-info {\n        order: -3;", INDEX)
         self.assertIn(".draft-action-panel {\n        order: -2;", INDEX)

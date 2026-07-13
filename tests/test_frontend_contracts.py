@@ -201,6 +201,7 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("syncTimer: true", INDEX)
         self.assertIn("function ensureLiveCaptureLoop", INDEX)
         self.assertIn("function analyzeLiveBoardFrame", INDEX)
+        self.assertIn("function refineLiveClientRegion", INDEX)
         self.assertIn("function liveBoardSlotForStep", INDEX)
         self.assertIn("function syncLiveBoardDetections", INDEX)
         self.assertIn("liveCapture.interval = window.setInterval(() => analyzeLiveCaptureFrame({ manual: false }), 900)", INDEX)

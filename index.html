@@ -4780,7 +4780,8 @@
     }
 
     function analyzeLiveBoardFrame(ctx, width, height) {
-      const board = normalizedRegionToCanvas(liveCapture.boardRegion, width, height);
+      const savedBoard = normalizedRegionToCanvas(liveCapture.boardRegion, width, height);
+      const board = refineLiveClientRegion(ctx, savedBoard);
       const detections = draftSteps.map(step => {
         const slot = liveBoardSlotForStep(step);
         const crop = {
@@ -4814,6 +4815,93 @@
           .slice(0, 5);
       }
       return strong;
+    }
+
+    function refineLiveClientRegion(ctx, region) {
+      const sampleCols = 90;
+      const sampleRows = 36;
+      const colScores = [];
+      const rowScores = [];
+      const sampleCanvas = document.createElement("canvas");
+      sampleCanvas.width = sampleCols;
+      sampleCanvas.height = sampleRows;
+      const sample = sampleCanvas.getContext("2d", { willReadFrequently: true });
+      sample.drawImage(ctx.canvas, region.x, region.y, region.w, region.h, 0, 0, sampleCols, sampleRows);
+      const image = sample.getImageData(0, 0, sampleCols, sampleRows).data;
+      const pixelAt = (x, y) => {
+        const offset = (y * sampleCols + x) * 4;
+        const r = image[offset];
+        const g = image[offset + 1];
+        const b = image[offset + 2];
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        const brightness = (r + g + b) / 3;
+        return brightness > 40 || (brightness > 28 && max - min > 26);
+      };
+      for (let col = 0; col < sampleCols; col += 1) {
+        let hits = 0;
+        for (let row = 0; row < sampleRows; row += 1) {
+          if (pixelAt(col, row)) hits += 1;
+        }
+        colScores.push(hits / sampleRows);
+      }
+      for (let row = 0; row < sampleRows; row += 1) {
+        let hits = 0;
+        for (let col = 0; col < sampleCols; col += 1) {
+          if (pixelAt(col, row)) hits += 1;
+        }
+        rowScores.push(hits / sampleCols);
+      }
+      const clusteredBoundsFor = (scores, threshold, mergeGap, pad) => {
+        const runs = [];
+        let index = 0;
+        while (index < scores.length) {
+          while (index < scores.length && scores[index] < threshold) index += 1;
+          const start = index;
+          let sum = 0;
+          while (index < scores.length && scores[index] >= threshold) {
+            sum += scores[index];
+            index += 1;
+          }
+          const end = index - 1;
+          if (end >= start) runs.push({ start, end, sum });
+        }
+        if (!runs.length) return null;
+        const merged = [];
+        runs.forEach(run => {
+          const last = merged[merged.length - 1];
+          if (last && run.start - last.end <= mergeGap) {
+            last.end = run.end;
+            last.sum += run.sum;
+          } else {
+            merged.push({ ...run });
+          }
+        });
+        const best = merged
+          .filter(run => run.end - run.start + 1 >= 2)
+          .sort((a, b) => (b.sum * Math.sqrt(b.end - b.start + 1)) - (a.sum * Math.sqrt(a.end - a.start + 1)))[0] || merged[0];
+        return {
+          start: Math.max(0, best.start - pad),
+          end: Math.min(scores.length - 1, best.end + pad),
+        };
+      };
+      const cols = clusteredBoundsFor(colScores, 0.12, 12, 3);
+      const rows = clusteredBoundsFor(rowScores, 0.08, 5, 2);
+      if (!cols || !rows) return region;
+      const x1 = region.x + Math.round((cols.start / Math.max(1, sampleCols - 1)) * region.w);
+      const x2 = region.x + Math.round(((cols.end + 1) / Math.max(1, sampleCols - 1)) * region.w);
+      const y1 = region.y + Math.round((rows.start / Math.max(1, sampleRows - 1)) * region.h);
+      const y2 = region.y + Math.round(((rows.end + 1) / Math.max(1, sampleRows - 1)) * region.h);
+      const refined = {
+        x: clamp(x1, region.x, region.x + region.w - 1),
+        y: clamp(y1, region.y, region.y + region.h - 1),
+        w: Math.max(1, clamp(x2 - x1, 1, region.w)),
+        h: Math.max(1, clamp(y2 - y1, 1, region.h)),
+      };
+      const shrunkEnough = refined.w < region.w * 0.9 || refined.h < region.h * 0.9;
+      const plausibleWidth = refined.w >= region.w * 0.2;
+      const plausibleHeight = refined.h >= region.h * 0.35;
+      return shrunkEnough && plausibleWidth && plausibleHeight ? refined : region;
     }
 
     function liveBoardSlotForStep(step) {

@@ -4781,9 +4781,10 @@
 
     function analyzeLiveBoardFrame(ctx, width, height) {
       const savedBoard = normalizedRegionToCanvas(liveCapture.boardRegion, width, height);
-      const board = refineLiveClientRegion(ctx, savedBoard);
-      const detections = draftSteps.map(step => {
-        const slot = liveBoardSlotForStep(step);
+      const shouldRefine = savedBoard.w / Math.max(1, savedBoard.h) > 2.2;
+      const board = shouldRefine ? refineLiveClientRegion(ctx, savedBoard) : savedBoard;
+      const detections = liveClientPickSlots().map(entry => {
+        const { step, slot } = entry;
         const crop = {
           x: board.x + Math.round(slot.x * board.w),
           y: board.y + Math.round(slot.y * board.h),
@@ -4815,6 +4816,28 @@
           .slice(0, 5);
       }
       return strong;
+    }
+
+    function liveClientPickSlots() {
+      const leftSide = state.ourSide;
+      const rightSide = otherSide(state.ourSide);
+      const pickOrdersFor = side => draftSteps
+        .filter(step => step.side === side && step.type === "PICK")
+        .map(step => step.index);
+      const rows = [0.185, 0.300, 0.415, 0.530, 0.645];
+      const leftOrders = pickOrdersFor(leftSide);
+      const rightOrders = pickOrdersFor(rightSide);
+      const slotSize = { w: 0.045, h: 0.080 };
+      return [
+        ...rows.map((y, index) => ({
+          step: draftSteps[leftOrders[index]],
+          slot: { x: 0.066 - slotSize.w / 2, y: y - slotSize.h / 2, ...slotSize },
+        })),
+        ...rows.map((y, index) => ({
+          step: draftSteps[rightOrders[index]],
+          slot: { x: 0.956 - slotSize.w / 2, y: y - slotSize.h / 2, ...slotSize },
+        })),
+      ].filter(entry => entry.step);
     }
 
     function refineLiveClientRegion(ctx, region) {

@@ -686,6 +686,73 @@
       flex-wrap: wrap;
     }
 
+    .data-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .save-status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: var(--panel);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .save-status.dirty {
+      border-color: rgba(245, 158, 11, 0.45);
+      color: #f8d46a;
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .save-status.saved {
+      border-color: rgba(52, 211, 153, 0.34);
+      color: #7ee7bf;
+      background: rgba(52, 211, 153, 0.07);
+    }
+
+    .data-menu {
+      position: relative;
+    }
+
+    .data-menu > summary {
+      min-height: 36px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: var(--panel-raised);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      list-style: none;
+      user-select: none;
+    }
+
+    .data-menu > summary::-webkit-details-marker { display: none; }
+    .data-menu > summary::after { content: "▾"; margin-left: 8px; color: var(--muted); }
+    .data-menu[open] > summary::after { content: "▴"; }
+
+    .data-menu-popover {
+      position: absolute;
+      z-index: 40;
+      top: calc(100% + 6px);
+      right: 0;
+      display: grid;
+      gap: 6px;
+      width: 180px;
+      padding: 8px;
+      border: 1px solid var(--line-strong);
+      background: var(--panel);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34);
+    }
+
+    .data-menu-popover button { width: 100%; }
+
     .bgm-controls {
       display: flex;
       align-items: center;
@@ -836,6 +903,49 @@
 
     .draft-board-panel {
       min-width: 0;
+    }
+
+    .draft-readiness[hidden],
+    .fearless-history[hidden] {
+      display: none !important;
+    }
+
+    .draft-readiness {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: var(--panel-raised);
+    }
+
+    .readiness-step {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 42px;
+      padding: 8px 10px;
+      text-align: left;
+      background: var(--panel);
+      border-color: var(--line);
+    }
+
+    .readiness-step strong {
+      display: block;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .readiness-step span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .readiness-step.complete { border-color: rgba(52, 211, 153, 0.34); }
+    .readiness-step.current {
+      border-color: rgba(201, 162, 39, 0.62);
+      background: rgba(201, 162, 39, 0.08);
     }
 
     .board-head-controls {
@@ -1636,9 +1746,222 @@
 
     .recommend-dock > .panel {
       display: grid;
-      grid-template-rows: auto auto minmax(0, 1fr);
+      grid-template-rows: auto minmax(0, 1fr);
       max-height: calc(100vh - 122px);
       overflow: hidden;
+    }
+
+    .turn-command-panel {
+      border-color: rgba(201, 162, 39, 0.34);
+    }
+
+    .turn-command-collapse {
+      display: none;
+    }
+
+    .turn-command-panel.enemy-turn {
+      border-color: rgba(225, 54, 75, 0.38);
+    }
+
+    .turn-command-kicker {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .turn-command-panel.enemy-turn .turn-command-kicker {
+      color: var(--red);
+    }
+
+    .turn-command-title {
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .turn-command-body {
+      min-height: 0;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 11px;
+    }
+
+    .turn-command-guide {
+      order: 0;
+      padding: 9px 10px;
+      border: 1px solid rgba(201, 162, 39, 0.28);
+      border-radius: var(--radius);
+      color: var(--text);
+      background: rgba(201, 162, 39, 0.08);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .turn-command-panel.enemy-turn .turn-command-guide {
+      border-color: rgba(225, 54, 75, 0.30);
+      background: rgba(225, 54, 75, 0.08);
+    }
+
+    .turn-search-section,
+    .turn-quick-section {
+      display: grid;
+      gap: 8px;
+    }
+
+    .turn-quick-section { order: 1; }
+    .turn-detail-panel { order: 2; }
+    .turn-search-disclosure { order: 3; }
+
+    .turn-command-panel.enemy-turn .turn-search-disclosure { order: 1; }
+    .turn-command-panel.enemy-turn .turn-quick-section { order: 2; }
+    .turn-command-panel.enemy-turn .turn-detail-panel { order: 3; }
+
+    .turn-search-disclosure {
+      border-top: 1px solid var(--line);
+      padding-top: 9px;
+    }
+
+    .turn-search-disclosure > summary {
+      cursor: pointer;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      list-style: none;
+      user-select: none;
+    }
+
+    .turn-search-disclosure > summary::-webkit-details-marker { display: none; }
+    .turn-search-disclosure > summary::before {
+      content: "+";
+      margin-right: 6px;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .turn-search-disclosure[open] > summary::before { content: "−"; }
+    .turn-search-disclosure .turn-search-section { margin-top: 9px; }
+
+    .turn-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .turn-section-head b {
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .turn-command-search {
+      grid-template-columns: minmax(0, 1fr) 88px;
+    }
+
+    .turn-search-status {
+      min-height: 16px;
+    }
+
+    .turn-command-results {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-height: 268px;
+      padding-right: 3px;
+    }
+
+    .turn-command-results .champ-button {
+      grid-template-columns: 32px minmax(0, 1fr);
+      padding: 6px;
+    }
+
+    .turn-quick-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .turn-quick-button {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      padding: 7px;
+      text-align: left;
+      background: var(--panel-raised);
+      border-color: var(--line);
+    }
+
+    .turn-quick-button:first-child {
+      border-color: rgba(201, 162, 39, 0.72);
+      background: rgba(201, 162, 39, 0.10);
+    }
+
+    .turn-command-panel.enemy-turn .turn-quick-button:first-child {
+      border-color: rgba(225, 54, 75, 0.62);
+      background: rgba(225, 54, 75, 0.09);
+    }
+
+    .turn-quick-button:hover {
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .turn-quick-button .champ-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .turn-quick-copy {
+      min-width: 0;
+      display: grid;
+      gap: 2px;
+    }
+
+    .turn-quick-copy strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    .turn-quick-copy span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .turn-detail-panel,
+    .turn-utility-panel {
+      border-top: 1px solid var(--line);
+      padding-top: 9px;
+    }
+
+    .turn-utility-panel { order: 4; }
+
+    .turn-detail-panel > summary,
+    .turn-utility-panel > summary {
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .turn-detail-panel[open] > summary,
+    .turn-utility-panel[open] > summary {
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .turn-detail-body {
+      padding-top: 8px;
+    }
+
+    .turn-utility-actions {
+      display: grid;
+      gap: 6px;
+      padding-top: 8px;
     }
 
     .dock-head {
@@ -1824,6 +2147,17 @@
       min-width: 220px;
     }
 
+    .pool-edit-action {
+      flex: 0 0 auto;
+      min-height: 34px;
+      padding: 6px 10px;
+      border-color: rgba(201, 162, 39, 0.62);
+      color: #f8d46a;
+      background: rgba(201, 162, 39, 0.08);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
     .pool-add-row {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -1991,6 +2325,30 @@
       content: "-";
     }
 
+    .pool-edit-details > .pool-edit-toggle {
+      display: none;
+    }
+
+    .advanced-settings-panel {
+      grid-column: 1 / -1;
+    }
+
+    .advanced-settings-panel > summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .advanced-settings-panel > summary::-webkit-details-marker { display: none; }
+
+    .advanced-settings-panel > summary .panel-title::before {
+      content: "+";
+      margin-right: 7px;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .advanced-settings-panel[open] > summary .panel-title::before { content: "−"; }
+
     .pool-quick summary {
       cursor: pointer;
       color: var(--muted);
@@ -2082,6 +2440,10 @@
 
       .recommend-dock > .panel {
         max-height: none;
+      }
+
+      .turn-command-body {
+        overflow: visible;
       }
 
       .dock-body {
@@ -2203,18 +2565,6 @@
         display: none;
       }
 
-      .current-turn-info {
-        order: -3;
-      }
-
-      .draft-action-panel {
-        order: -2;
-      }
-
-      .champ-search {
-        order: -1;
-      }
-
       .phase-strip {
         grid-template-columns: repeat(20, minmax(38px, 1fr));
         min-width: 820px;
@@ -2334,6 +2684,69 @@
     }
 
     @media (max-width: 640px) {
+      .draft-layout {
+        padding-bottom: 68px;
+      }
+
+      .recommend-dock {
+        position: fixed;
+        z-index: 80;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        width: auto;
+        max-height: none;
+      }
+
+      .recommend-dock > .turn-command-panel {
+        max-height: min(62dvh, 560px);
+        overflow: hidden;
+        box-shadow: 0 -10px 32px rgba(0, 0, 0, 0.34);
+      }
+
+      .turn-command-collapse {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 54px;
+        min-height: 34px;
+        padding: 6px 10px;
+      }
+
+      .turn-command-panel > .panel-head {
+        align-items: center;
+        flex-direction: row;
+      }
+
+      .turn-command-panel.mobile-collapsed .turn-command-body {
+        display: none;
+      }
+
+      .turn-command-body {
+        padding: 10px;
+        overflow: auto;
+      }
+
+      .turn-section-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .turn-section-head .small {
+        display: none;
+      }
+
+      .turn-quick-list,
+      .turn-command-search,
+      .turn-command-results {
+        grid-template-columns: 1fr;
+      }
+
+      .turn-command-results {
+        max-height: 320px;
+      }
+
       .landing {
         padding: 16px 14px 28px;
       }
@@ -2757,17 +3170,24 @@
               <b id="bgmVolumeValue">35</b>
             </label>
           </div>
-          <button id="saveState">저장</button>
-          <button id="loadState">불러오기</button>
-          <button class="danger" id="resetDraft">밴픽 초기화</button>
+          <div class="data-controls">
+            <span class="save-status" id="saveStatus">저장 상태 확인 중</span>
+            <details class="data-menu" id="dataMenu">
+              <summary>데이터 관리</summary>
+              <div class="data-menu-popover">
+                <button id="saveState">현재 상태 저장</button>
+                <button id="loadState">저장 상태 불러오기</button>
+              </div>
+            </details>
+          </div>
         </div>
       </div>
     </header>
 
     <nav class="tabs" aria-label="화면 전환">
-      <button class="tab active" data-view="draftView">Draft</button>
-      <button class="tab" data-view="poolsView">Player Pool</button>
-      <button class="tab" data-view="setupView">Setup</button>
+      <button class="tab active" data-view="draftView">밴픽</button>
+      <button class="tab" data-view="poolsView">챔프폭</button>
+      <button class="tab" data-view="setupView">팀 설정</button>
     </nav>
 
     <main>
@@ -2789,6 +3209,7 @@
                 </label>
                 <div id="timerDisplay" class="timer-display" hidden>--</div>
                 <button id="undoStep">되돌리기</button>
+                <button class="danger" id="resetDraft">밴픽 초기화</button>
               </div>
             </div>
             <div id="timerSettings" class="timer-settings" hidden>
@@ -2801,6 +3222,7 @@
               <span id="timerTopBarLabel" class="timer-top-bar-label"></span>
             </div>
             <div class="panel-body board">
+              <div class="draft-readiness" id="draftReadiness"></div>
               <div class="phase-strip" id="phaseStrip"></div>
               <div class="mobile-draft-flow" id="mobileDraftFlow" aria-label="모바일 밴픽 흐름"></div>
               <div class="team-board">
@@ -2832,46 +3254,7 @@
                 </div>
               </div>
 
-              <div class="current-turn-info">
-                <div class="strong" id="currentTitle">-</div>
-                <div class="small muted" id="turnSub">-</div>
-                <div class="small muted" id="currentHint">챔피언을 선택하면 현재 슬롯에 들어갑니다.</div>
-                <div id="pickPlayerWrap">
-                  <label for="pickPlayer">픽 배정 선수</label>
-                  <select id="pickPlayer"></select>
-                </div>
-              </div>
-
-              <div class="panel draft-action-panel" style="box-shadow:none">
-                <div class="panel-head">
-                  <div>
-                    <div class="panel-title">빠른 조작</div>
-                    <div class="small muted">현재 턴 추천을 바로 반영하거나 기본 데이터를 다시 불러옵니다.</div>
-                  </div>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <button id="autoPickCurrent" class="primary">현재 턴 1순위 자동 선택</button>
-                    <button id="completeDraft">남은 턴 자동 진행</button>
-                    <button id="fillSample">기본 데이터 다시 채우기</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="champ-search">
-                <input id="champSearch" placeholder="챔피언 검색" />
-                <select id="roleFilter">
-                  <option value="ALL">전체</option>
-                  <option value="TOP">TOP</option>
-                  <option value="JUNGLE">JUNGLE</option>
-                  <option value="MID">MID</option>
-                  <option value="ADC">ADC</option>
-                  <option value="SUPPORT">SUPPORT</option>
-                </select>
-              </div>
-              <div class="champ-grid" id="champGrid"></div>
-
-              <div class="panel" style="box-shadow:none">
+              <div class="panel fearless-history" id="fearlessHistoryPanel" style="box-shadow:none">
                 <div class="panel-head">
                   <div class="panel-title">피어리스 기록</div>
                   <span class="chip" id="fearlessCount">0개</span>
@@ -2888,24 +3271,77 @@
           </section>
 
           <aside class="recommend-dock">
-            <section class="panel">
+            <section class="panel turn-command-panel" id="turnCommandPanel">
               <div class="panel-head dock-head">
                 <div>
-                  <div class="panel-title" id="recommendTitle">우리 추천</div>
-                  <div class="small muted" id="recommendSub">현재 상태 기준 후보</div>
+                  <div class="turn-command-kicker" id="turnCommandKicker">현재 턴</div>
+                  <div class="panel-title turn-command-title" id="currentTitle">-</div>
+                  <div class="small muted" id="turnSub">-</div>
                 </div>
+                <button class="turn-command-collapse" id="turnCommandCollapse" type="button" aria-expanded="true">접기</button>
               </div>
-              <div class="dock-tabs" id="recommendDockTabs">
-                <button class="active" data-dock-tab="our">우리 추천 <span id="ourRecoCount">0</span></button>
-                <button data-dock-tab="enemy">상대 예측 <span id="enemyRecoCount">0</span></button>
-              </div>
-              <div class="panel-body dock-body">
-                <section class="dock-pane active" data-dock-pane="our">
-                  <div class="reco-list" id="ourRecommendations"></div>
+              <div class="panel-body turn-command-body">
+                <div class="turn-command-guide" id="currentHint">챔피언을 선택하면 현재 슬롯에 들어갑니다.</div>
+
+                <details class="turn-search-disclosure" id="turnSearchDisclosure">
+                  <summary id="turnSearchSummary">다른 챔피언 직접 선택</summary>
+                  <section class="turn-search-section">
+                    <div class="turn-section-head">
+                      <b id="turnSearchLabel">챔피언 선택</b>
+                      <span class="small muted" id="turnSearchHelp">검색하거나 챔피언 폭에서 고르세요.</span>
+                    </div>
+                    <div id="pickPlayerWrap">
+                      <label for="pickPlayer">픽 배정 선수</label>
+                      <select id="pickPlayer"></select>
+                    </div>
+                    <div class="champ-search turn-command-search">
+                      <input id="champSearch" placeholder="챔피언 검색" autocomplete="off" />
+                      <select id="roleFilter" aria-label="포지션 필터">
+                        <option value="ALL">전체</option>
+                        <option value="TOP">TOP</option>
+                        <option value="JUNGLE">JUNGLE</option>
+                        <option value="MID">MID</option>
+                        <option value="ADC">ADC</option>
+                        <option value="SUPPORT">SUPPORT</option>
+                      </select>
+                    </div>
+                    <div class="turn-search-status small muted" id="turnSearchStatus"></div>
+                    <div class="champ-grid turn-command-results" id="champGrid"></div>
+                  </section>
+                </details>
+
+                <section class="turn-quick-section">
+                  <div class="turn-section-head">
+                    <b id="turnQuickTitle">추천 후보</b>
+                    <span class="small muted" id="turnQuickHelp">누르면 현재 턴에 바로 적용됩니다.</span>
+                  </div>
+                  <div class="turn-quick-list" id="turnQuickCandidates"></div>
                 </section>
-                <section class="dock-pane" data-dock-pane="enemy">
-                  <div class="reco-list" id="enemyPredictions"></div>
-                </section>
+
+                <details class="turn-detail-panel">
+                  <summary>추천 점수와 근거 보기</summary>
+                  <div class="dock-tabs" id="recommendDockTabs">
+                    <button class="active" data-dock-tab="our">우리 추천 <span id="ourRecoCount">0</span></button>
+                    <button data-dock-tab="enemy">상대 예측 <span id="enemyRecoCount">0</span></button>
+                  </div>
+                  <div class="turn-detail-body">
+                    <section class="dock-pane active" data-dock-pane="our">
+                      <div class="reco-list" id="ourRecommendations"></div>
+                    </section>
+                    <section class="dock-pane" data-dock-pane="enemy">
+                      <div class="reco-list" id="enemyPredictions"></div>
+                    </section>
+                  </div>
+                </details>
+
+                <details class="turn-utility-panel">
+                  <summary>기타 작업</summary>
+                  <div class="turn-utility-actions">
+                    <button id="autoPickCurrent" class="primary">현재 턴 1순위 자동 선택</button>
+                    <button id="completeDraft">남은 턴 자동 진행</button>
+                    <button id="fillSample">기본 데이터 다시 채우기</button>
+                  </div>
+                </details>
               </div>
             </section>
           </aside>
@@ -2964,7 +3400,7 @@
                     </div>
                   </div>
                   <div class="guide-note">
-                    `탑친구`처럼 이름만 적어도 됩니다. 팀원 이름을 먼저 넣고, Player Pool에서 챔프폭과 숙련도를 채우면 추천이 바로 계산됩니다.
+                    `탑친구`처럼 이름만 적어도 됩니다. 팀원 이름을 먼저 넣고, <b>챔프폭</b> 탭에서 숙련도를 채우면 추천이 바로 계산됩니다.
                   </div>
                 </div>
               </details>
@@ -3005,7 +3441,7 @@
               </div>
               <div class="small muted" id="enemyLineCertaintyLabel">상대 라인을 입력값 기준으로 보되, 멀티라인/스왑 가능성은 유지합니다.</div>
               <div class="guide-note">
-                먼저 <b>Player Pool</b>에서 우리 팀 챔프폭을 넣어보세요. 챔피언 숙련도를 고르면 밴픽 추천이 바로 작동합니다.
+                먼저 <b>챔프폭</b> 탭에서 우리 팀이 실제로 사용할 챔피언을 넣어보세요. 숙련도를 고르면 밴픽 추천이 바로 작동합니다.
               </div>
             </div>
           </section>
@@ -3027,14 +3463,14 @@
             </div>
           </section>
 
-          <section class="panel">
-            <div class="panel-head">
+          <details class="panel advanced-settings-panel">
+            <summary class="panel-head">
               <div>
                 <div class="panel-title">선택 기능: Riot API 자동 채우기</div>
                 <div class="small muted">필수 기능이 아닙니다. 최근 전적 기반으로 챔프폭을 자동 채우고 싶을 때만 사용하세요.</div>
               </div>
               <span class="chip" id="apiStatus">확인 전</span>
-            </div>
+            </summary>
             <div class="panel-body grid">
               <div>
                 <label for="riotApiKey">Riot API Key</label>
@@ -3072,7 +3508,7 @@
                 키를 넣지 않아도 수기 챔프폭만으로 추천을 사용할 수 있습니다.
               </div>
             </div>
-          </section>
+          </details>
 
         </div>
       </section>
@@ -3082,7 +3518,7 @@
           <section class="panel" style="grid-column:1 / -1">
             <div class="panel-body pool-tools">
               <div class="guide-note">
-                각 선수 카드의 <b>편집</b> 버튼을 눌러 팀원들의 챔프폭을 반영해보세요.
+                각 선수 카드의 <b>챔프폭 편집</b> 버튼을 눌러 팀원들의 챔프폭을 반영해보세요.
                 숙련도는 <b>장인 100</b> · <b>잘함 84</b> · <b>보통 70</b> · <b>가능 55</b>로 추천 점수에 바로 들어갑니다.
               </div>
               <div class="pool-preset-row">
@@ -3332,10 +3768,10 @@
     ];
 
     const roleIconMeta = {
-      TOP: { label: "탑", src: "assets/roles/adc.png" },
+      TOP: { label: "탑", src: "assets/roles/top.png" },
       JUNGLE: { label: "정글", src: "assets/roles/jungle.png" },
       MID: { label: "미드", src: "assets/roles/mid.png" },
-      ADC: { label: "바텀", src: "assets/roles/top.png" },
+      ADC: { label: "바텀", src: "assets/roles/adc.png" },
       SUPPORT: { label: "서폿", src: "assets/roles/support.png" },
     };
 
@@ -4052,6 +4488,7 @@
     }
 
     let state = freshState();
+    let lastSavedStateJson = null;
 
     function freshState() {
       return {
@@ -4084,10 +4521,12 @@
         "turnSub", "currentBadge", "currentTitle", "phaseStrip", "mobileDraftFlow", "blueBans", "redBans", "bluePicks", "redPicks",
         "draftProgress", "ourSideLabel", "fearlessLabel", "blueOwner", "redOwner", "champGrid", "champSearch",
         "roleFilter", "pickPlayer", "pickPlayerWrap", "ourRecommendations", "enemyPredictions", "currentHint",
+        "turnCommandPanel", "turnCommandCollapse", "turnCommandKicker", "turnSearchDisclosure", "turnSearchSummary", "turnSearchLabel", "turnSearchHelp", "turnSearchStatus",
+        "turnQuickTitle", "turnQuickHelp", "turnQuickCandidates",
         "enemyLineCertaintyLabel",
         "ourPlayersForm", "enemyPlayersForm", "ourPoolTable", "enemyPoolTable",
         "poolPresetType", "poolPresetTeam", "poolPresetMode", "applyPoolPreset", "clearPoolPresetTarget", "poolInputStatus",
-        "fearlessChips", "fearlessCount", "blueBanCount", "redBanCount", "bluePickCount", "redPickCount", "toast",
+        "fearlessChips", "fearlessCount", "fearlessHistoryPanel", "draftReadiness", "saveStatus", "blueBanCount", "redBanCount", "bluePickCount", "redPickCount", "toast",
         "ourBulkNames", "enemyBulkNames",
         "apiStatus", "riotApiKey", "riotPlatform", "apiMessage",
         "rememberApiKey",
@@ -4133,6 +4572,13 @@
       if (options.persist && els.skipLandingNextTime?.checked) {
         localStorage.setItem("lol-draft-simulator-skip-landing", "true");
       }
+    }
+
+    function enterAppRoute() {
+      if (els.skipLandingNextTime?.checked) {
+        localStorage.setItem("lol-draft-simulator-skip-landing", "true");
+      }
+      window.location.href = "app/";
     }
 
     function initializeShowcaseReveal() {
@@ -4184,12 +4630,19 @@
       }
     }
 
+    function activateView(viewId) {
+      document.querySelectorAll(".tab").forEach(button => button.classList.toggle("active", button.dataset.view === viewId));
+      document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === viewId));
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     function bindEvents() {
       if (els.enterSimulator) {
-        els.enterSimulator.addEventListener("click", () => enterApp({ persist: true }));
+        els.enterSimulator.addEventListener("click", enterAppRoute);
       }
       document.querySelectorAll("[data-enter-simulator]").forEach(button => {
-        button.addEventListener("click", () => enterApp({ persist: true }));
+        button.addEventListener("click", enterAppRoute);
       });
 
       document.addEventListener("change", event => {
@@ -4199,13 +4652,12 @@
       });
 
       document.querySelectorAll(".tab").forEach(btn => {
-        btn.addEventListener("click", () => {
-          document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
-          document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-          btn.classList.add("active");
-          $(btn.dataset.view).classList.add("active");
-          render();
-        });
+        btn.addEventListener("click", () => activateView(btn.dataset.view));
+      });
+
+      els.draftReadiness.addEventListener("click", event => {
+        const target = event.target.closest("button[data-go-view]");
+        if (target) activateView(target.dataset.goView);
       });
 
       $("sideSwitch").addEventListener("click", event => {
@@ -4232,8 +4684,43 @@
       });
 
       els.champSearch.addEventListener("input", renderChampionGrid);
+      els.champSearch.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          els.champSearch.value = "";
+          renderChampionGrid();
+          return;
+        }
+        if (event.key !== "Enter") return;
+        const firstCandidate = els.champGrid.querySelector("button[data-champ]:not(:disabled)");
+        if (!firstCandidate) return;
+        event.preventDefault();
+        firstCandidate.click();
+      });
       els.roleFilter.addEventListener("change", renderChampionGrid);
-      els.pickPlayer.addEventListener("change", renderRecommendations);
+      els.turnCommandCollapse.addEventListener("click", () => {
+        const collapsed = els.turnCommandPanel.classList.toggle("mobile-collapsed");
+        els.turnCommandCollapse.textContent = collapsed ? "열기" : "접기";
+        els.turnCommandCollapse.setAttribute("aria-expanded", String(!collapsed));
+      });
+      els.pickPlayer.addEventListener("change", () => {
+        renderChampionGrid();
+        renderRecommendations();
+      });
+      document.addEventListener("keydown", event => {
+        const activeTag = document.activeElement?.tagName;
+        const isEditing = ["INPUT", "TEXTAREA", "SELECT"].includes(activeTag) || document.activeElement?.isContentEditable;
+        const draftActive = $("draftView").classList.contains("active");
+        if (draftActive && event.key === "/" && !isEditing) {
+          event.preventDefault();
+          els.turnSearchDisclosure.open = true;
+          els.champSearch.focus();
+          return;
+        }
+        if (draftActive && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z" && !isEditing) {
+          event.preventDefault();
+          undo();
+        }
+      });
       els.pickWeightControls.addEventListener("input", event => {
         const input = event.target.closest("input[data-pick-weight-group]");
         if (!input) return;
@@ -4250,18 +4737,23 @@
       });
       $("undoStep").addEventListener("click", undo);
       $("resetDraft").addEventListener("click", () => {
+        if (state.actions.length && !window.confirm("진행 중인 밴픽을 모두 초기화할까요? 이 작업은 되돌릴 수 없습니다.")) return;
         state.actions = [];
         state.currentStep = 0;
         render();
         setRecommendDockTabForCurrentStep();
         toast("밴픽을 초기화했습니다.");
       });
-      $("saveState").addEventListener("click", () => saveToStorage(true));
+      $("saveState").addEventListener("click", () => {
+        saveToStorage(true);
+        $("dataMenu").open = false;
+      });
       $("loadState").addEventListener("click", () => {
         loadFromStorage(true);
         applyBgmSelection();
         render();
         setRecommendDockTabForCurrentStep();
+        $("dataMenu").open = false;
       });
       els.bgmSelect.addEventListener("change", () => {
         state.bgm.selectedId = els.bgmSelect.value;
@@ -4342,13 +4834,35 @@
       renderChampionNameOptions();
       renderPickWeights();
       renderFearless();
+      renderDraftReadiness();
       renderBgmControls();
       renderDataPatchNote();
+      updateSaveStatus();
       if (els.timerModeToggle) els.timerModeToggle.checked = Boolean(state.timerMode?.enabled);
       if (els.timerSettings) els.timerSettings.hidden = !state.timerMode?.enabled;
       if (els.timerBanSeconds) els.timerBanSeconds.value = state.timerMode?.banSeconds ?? 30;
       if (els.timerPickSeconds) els.timerPickSeconds.value = state.timerMode?.pickSeconds ?? 30;
       ensureTurnTimer();
+    }
+
+    function renderDraftReadiness() {
+      if (!els.draftReadiness) return;
+      const teamNamed = [...state.teams.our, ...state.teams.enemy].filter(player => player.riotId?.trim()).length;
+      const ourPoolFilled = state.teams.our.filter(player => poolCount(player) > 0).length;
+      const teamReady = teamNamed === 10;
+      const poolReady = ourPoolFilled === 5;
+      els.draftReadiness.hidden = state.actions.length > 0;
+      els.draftReadiness.innerHTML = `
+        <button class="readiness-step ${teamReady ? "complete" : "current"}" data-go-view="setupView">
+          <span><strong>1. 팀 구성</strong>${teamNamed}/10명 입력</span><b>${teamReady ? "완료" : "설정"}</b>
+        </button>
+        <button class="readiness-step ${poolReady ? "complete" : (teamReady ? "current" : "")}" data-go-view="poolsView">
+          <span><strong>2. 챔프폭</strong>우리 팀 ${ourPoolFilled}/5명 입력</span><b>${poolReady ? "완료" : "편집"}</b>
+        </button>
+        <button class="readiness-step ${teamReady && poolReady ? "current" : ""}" data-go-view="draftView">
+          <span><strong>3. 밴픽</strong>${teamReady && poolReady ? "추천 준비 완료" : "부족한 정보는 비상 후보로 보완"}</span><b>시작</b>
+        </button>
+      `;
     }
 
     // ── 실전 타이머 모드 ──────────────────────────────────────
@@ -4597,6 +5111,17 @@
       if (!step) {
         els.currentTitle.textContent = "밴픽 완료";
         els.turnSub.textContent = "20/20";
+        els.currentHint.textContent = "모든 밴픽 순서가 완료되었습니다.";
+        els.turnCommandKicker.textContent = "완료";
+        els.turnCommandPanel.classList.remove("enemy-turn");
+        els.turnSearchLabel.textContent = "챔피언 선택 완료";
+        els.turnSearchHelp.textContent = "되돌리기로 이전 턴을 수정할 수 있습니다.";
+        els.turnSearchSummary.textContent = "직접 선택 완료";
+        els.turnSearchDisclosure.open = false;
+        els.turnQuickTitle.textContent = "추천 완료";
+        els.turnQuickHelp.textContent = "";
+        els.champSearch.disabled = true;
+        els.roleFilter.disabled = true;
         els.currentBadge.textContent = "DONE";
         els.currentBadge.className = "side-pill green-bg";
         els.pickPlayerWrap.style.display = "none";
@@ -4605,9 +5130,28 @@
 
       const isOur = isOurSide(step.side);
       const actionKo = step.type === "BAN" ? "밴" : "픽";
-      els.turnSub.textContent = `${step.index + 1}/20`;
+      els.turnSub.textContent = `${step.index + 1}/20 · ${step.side} ${step.type}`;
       els.currentTitle.textContent = `${sideKo(step.side)} ${actionKo} 턴`;
       els.currentHint.textContent = isOur ? "우리 턴입니다. 추천 후보를 누르거나 챔피언을 직접 고르세요." : "상대 턴입니다. 예측과 다르면 실제 선택 챔피언을 직접 넣으세요.";
+      els.turnCommandKicker.textContent = isOur ? "우리 선택" : "상대 입력";
+      els.turnCommandPanel.classList.toggle("enemy-turn", !isOur);
+      const searchMode = isOur ? "our" : "enemy";
+      if (els.turnSearchDisclosure.dataset.mode !== searchMode) {
+        els.turnSearchDisclosure.open = !isOur;
+        els.turnSearchDisclosure.dataset.mode = searchMode;
+      }
+      els.turnSearchSummary.textContent = isOur ? "다른 챔피언 직접 선택" : "상대 실제 선택 입력";
+      els.turnSearchLabel.textContent = isOur ? "다른 챔피언 선택" : "상대 실제 선택 입력";
+      els.turnSearchHelp.textContent = isOur
+        ? "검색하거나 현재 선수 챔프폭에서 고르세요."
+        : "예측보다 실제로 나온 챔피언 입력이 우선입니다.";
+      els.turnQuickTitle.textContent = isOur ? "추천 후보" : "예상 후보";
+      els.turnQuickHelp.textContent = isOur
+        ? "누르면 현재 턴에 바로 적용됩니다."
+        : "맞으면 눌러 빠르게 입력하세요.";
+      els.champSearch.placeholder = isOur ? "다른 챔피언 검색" : "상대가 고른 챔피언 검색";
+      els.champSearch.disabled = false;
+      els.roleFilter.disabled = false;
       els.currentBadge.textContent = isOur ? "우리" : "상대";
       els.currentBadge.className = `side-pill ${step.side === "BLUE" ? "blue-bg" : "red-bg"}`;
       els.pickPlayerWrap.style.display = step.type === "PICK" ? "block" : "none";
@@ -4771,11 +5315,30 @@
       const role = els.roleFilter.value;
       const unavailable = getUnavailableChampions();
       const current = getCurrentStep();
+      const defaultIds = currentTurnDefaultChampionIds(current);
+      const defaultSet = new Set(defaultIds);
       const list = champions
         .map(champ => getChamp(champ.id))
         .filter(champ => role === "ALL" || champ.roles.includes(role))
         .filter(champ => !query || champ.name.toLowerCase().includes(query) || champ.id.toLowerCase().includes(query))
-        .sort((a, b) => scoreTier(b.tier) - scoreTier(a.tier) || b.meta - a.meta || a.name.localeCompare(b.name, "ko"));
+        .filter(champ => query || defaultSet.has(champ.id))
+        .sort((a, b) => Number(defaultSet.has(b.id)) - Number(defaultSet.has(a.id)) || scoreTier(b.tier) - scoreTier(a.tier) || b.meta - a.meta || a.name.localeCompare(b.name, "ko"))
+        .slice(0, query ? 30 : 12);
+
+      if (els.turnSearchStatus) {
+        els.turnSearchStatus.textContent = !current
+          ? ""
+          : query
+            ? `${list.length}개 검색 결과 · 밴·픽된 챔피언은 선택할 수 없습니다.`
+            : current.type === "PICK"
+              ? "배정 선수의 챔프폭을 먼저 표시합니다. 검색하면 전체 챔피언을 찾습니다."
+              : "밴 대상 팀의 챔프폭을 먼저 표시합니다. 검색하면 전체 챔피언을 찾습니다.";
+      }
+
+      if (!list.length) {
+        els.champGrid.innerHTML = `<div class="empty-note">${query ? "검색 결과가 없습니다." : "표시할 챔프폭이 없습니다. 챔피언 이름을 검색해 직접 입력하세요."}</div>`;
+        return;
+      }
 
       els.champGrid.innerHTML = list.map(champ => {
         const disabled = unavailable.has(champ.id);
@@ -4796,6 +5359,19 @@
       });
 
       if (!current) els.champGrid.querySelectorAll("button").forEach(btn => btn.disabled = true);
+    }
+
+    function currentTurnDefaultChampionIds(step) {
+      if (!step) return [];
+      if (step.type === "BAN") {
+        const targetPlayers = state.teams[sideToTeamKey(otherSide(step.side))] || [];
+        return unique(targetPlayers.flatMap(player => player.pool || []));
+      }
+
+      const team = state.teams[sideToTeamKey(step.side)] || [];
+      const selectedPlayer = team.find(player => player.id === els.pickPlayer.value);
+      if (selectedPlayer?.pool?.length) return unique(selectedPlayer.pool);
+      return unique(team.flatMap(player => player.pool || []));
     }
 
     function renderRecommendations() {
@@ -4819,7 +5395,47 @@
       $("enemyRecoCount").textContent = String(enemyList.length);
       renderRecoList(els.ourRecommendations, ourList, ourNext);
       renderRecoList(els.enemyPredictions, enemyList, enemyNext);
+      const current = getCurrentStep();
+      const currentList = !current
+        ? []
+        : isOurSide(current.side)
+          ? ourList
+          : enemyList;
+      renderTurnQuickCandidates(currentList, current);
       updateRecommendationHeader(activeRecommendDockTab());
+    }
+
+    function renderTurnQuickCandidates(list, step) {
+      if (!els.turnQuickCandidates) return;
+      if (!step) {
+        els.turnQuickCandidates.innerHTML = `<div class="empty-note">밴픽이 완료되었습니다.</div>`;
+        return;
+      }
+      if (!list.length) {
+        els.turnQuickCandidates.innerHTML = `<div class="empty-note">예상 후보가 없습니다. 검색으로 실제 챔피언을 입력하세요.</div>`;
+        return;
+      }
+
+      const isOur = isOurSide(step.side);
+      els.turnQuickCandidates.innerHTML = list.slice(0, 3).map((item, index) => {
+        const champ = getChamp(item.championId);
+        const meta = isOur
+          ? `추천지수 ${Math.round(item.score)} · ${item.playerName || "추천"}`
+          : `예상 ${index + 1}순위${item.playerName ? ` · ${item.playerName}` : ""}`;
+        return `
+          <button class="turn-quick-button" data-turn-quick="${item.championId}" data-player="${item.playerId || ""}">
+            ${champIconHtml(champ)}
+            <span class="turn-quick-copy">
+              <strong>${escapeHtml(champ.name)}</strong>
+              <span>${escapeHtml(meta)}</span>
+            </span>
+          </button>
+        `;
+      }).join("");
+
+      els.turnQuickCandidates.querySelectorAll("button[data-turn-quick]").forEach(button => {
+        button.addEventListener("click", () => applyChampionToCurrent(button.dataset.turnQuick, button.dataset.player || undefined));
+      });
     }
 
     function setRecommendDockTab(tabName) {
@@ -4843,6 +5459,9 @@
     }
 
     function updateRecommendationHeader(tabName) {
+      const title = $("recommendTitle");
+      const subtitle = $("recommendSub");
+      if (!title || !subtitle) return;
       const targetSide = tabName === "enemy" ? otherSide(state.ourSide) : state.ourSide;
       const step = nextStepForSide(targetSide);
       const owner = tabName === "enemy" ? "상대" : "우리";
@@ -4874,7 +5493,7 @@
                 <div class="champ-name">${escapeHtml(champ.name)} ${roleIconsHtml([item.role || champ.roles[0]])}</div>
                 <div class="slot-sub">${escapeHtml(item.playerName || "밴 타깃")} · ${escapeHtml(champ.tier)} tier${item.intent?.label ? ` · ${escapeHtml(item.intent.label)}` : ""}${item.isEmergency ? " · 비상 후보" : ""}</div>
               </div>
-              <div class="score">${Math.round(item.score)}</div>
+              <div class="score" title="추천지수" aria-label="추천지수 ${Math.round(item.score)}">${Math.round(item.score)}</div>
             </div>
             <div class="bar"><span style="width:${Math.max(4, Math.min(100, item.score))}%"></span></div>
             <div class="score-grid">
@@ -5531,6 +6150,13 @@
       }).join("");
 
       container.querySelectorAll("input, select").forEach(input => {
+        if (input.dataset.field === "riotId") {
+          input.addEventListener("input", () => {
+            const p = state.teams[input.dataset.team][Number(input.dataset.index)];
+            p.riotId = input.value;
+            updateSaveStatus();
+          });
+        }
         input.addEventListener("change", () => {
           const p = state.teams[input.dataset.team][Number(input.dataset.index)];
           if (input.dataset.field === "rankTier") {
@@ -5622,6 +6248,7 @@
                   `<span class="chip">${escapeHtml(meta.label)} ${summary[level] || 0}</span>`
                 )).join("")}
               </div>
+              <button type="button" class="pool-edit-action" data-pool-edit="${escapeAttr(editorKey)}">${isOpen ? "편집 닫기" : "챔프폭 편집"}</button>
             </div>
           </div>
 
@@ -5733,6 +6360,15 @@
         button.addEventListener("click", () => {
           const input = container.querySelector(`.pool-quick-input[data-team="${button.dataset.team}"][data-index="${button.dataset.index}"]`);
           applyManualPoolText(button.dataset.team, Number(button.dataset.index), input?.value || "");
+        });
+      });
+      container.querySelectorAll("button[data-pool-edit]").forEach(button => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".pool-card");
+          const details = card?.querySelector(".pool-edit-details");
+          if (!details) return;
+          details.open = !details.open;
+          button.textContent = details.open ? "편집 닫기" : "챔프폭 편집";
         });
       });
       container.querySelectorAll(".pool-edit-details").forEach(details => {
@@ -5886,6 +6522,7 @@
     }
 
     function renderFearless() {
+      if (els.fearlessHistoryPanel) els.fearlessHistoryPanel.hidden = !state.fearlessEnabled;
       els.fearlessCount.textContent = `${state.fearlessUsed.length}개`;
       if (!state.fearlessUsed.length) {
         els.fearlessChips.innerHTML = `<span class="muted small">아직 기록 없음</span>`;
@@ -6104,6 +6741,7 @@
       while (state.currentStep < draftSteps.length && state.actions.some(a => a.order === state.currentStep)) {
         state.currentStep += 1;
       }
+      if (els.champSearch) els.champSearch.value = "";
       render();
       setRecommendDockTabForCurrentStep();
     }
@@ -8111,8 +8749,23 @@
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
 
+    function updateSaveStatus() {
+      if (!els.saveStatus) return;
+      const current = JSON.stringify(state);
+      const hasSavedState = lastSavedStateJson !== null;
+      const isSaved = hasSavedState && current === lastSavedStateJson;
+      els.saveStatus.textContent = isSaved ? "저장됨" : (hasSavedState ? "변경사항 있음" : "저장 필요");
+      els.saveStatus.className = `save-status ${isSaved ? "saved" : "dirty"}`;
+      els.saveStatus.title = isSaved
+        ? "브라우저에 저장된 상태와 같습니다."
+        : "데이터 관리에서 현재 상태를 저장하세요.";
+    }
+
     function saveToStorage(showToast) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const serialized = JSON.stringify(state);
+      localStorage.setItem(STORAGE_KEY, serialized);
+      lastSavedStateJson = serialized;
+      updateSaveStatus();
       if (showToast) toast("저장했습니다.");
     }
 
@@ -8120,6 +8773,8 @@
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) {
+          lastSavedStateJson = null;
+          updateSaveStatus();
           if (showToast) toast("저장된 상태가 없습니다.");
           return;
         }
@@ -8135,6 +8790,8 @@
         const storedWeights = parsed.pickWeightProfileVersion === PICK_WEIGHT_PROFILE_VERSION ? parsed.pickWeights : null;
         state.pickWeights = { ...defaultPickWeights, ...(storedWeights || {}) };
         state.pickWeightProfileVersion = PICK_WEIGHT_PROFILE_VERSION;
+        lastSavedStateJson = JSON.stringify(state);
+        updateSaveStatus();
         if (showToast) toast("불러왔습니다.");
       } catch {
         if (showToast) toast("불러오기에 실패했습니다.");

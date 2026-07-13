@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 ROBOTS = (ROOT / "robots.txt").read_text(encoding="utf-8")
 SITEMAP = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+APP_ROUTE = (ROOT / "app" / "index.html").read_text(encoding="utf-8")
 
 
 class FrontendContractsTest(unittest.TestCase):
@@ -23,11 +24,20 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("Sitemap: https://draftlab-henna.vercel.app/sitemap.xml", ROBOTS)
         self.assertIn(f"<loc>{public_url}</loc>", SITEMAP)
 
+    def test_public_landing_has_direct_app_route(self):
+        self.assertIn('window.location.href = "app/"', INDEX)
+        self.assertIn('../index.html?app=1', APP_ROUTE)
+        self.assertIn('name="robots" content="noindex"', APP_ROUTE)
+
     def test_public_beta_loads_champion_icons_without_local_api(self):
         self.assertIn("function loadPublicChampionIcons", INDEX)
         self.assertIn("https://ddragon.leagueoflegends.com/api/versions.json", INDEX)
         self.assertIn("loadChampionCatalog();", INDEX)
         self.assertIn("await loadPublicChampionIcons();", INDEX)
+
+    def test_top_and_bottom_role_icons_are_not_swapped(self):
+        self.assertIn('TOP: { label: "탑", src: "assets/roles/top.png" }', INDEX)
+        self.assertIn('ADC: { label: "바텀", src: "assets/roles/adc.png" }', INDEX)
 
     def test_landing_page_and_community_link_are_present(self):
         self.assertIn('class="landing-active"', INDEX)
@@ -56,9 +66,47 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn(".mobile-phase-card:not(.current) .mobile-phase-steps {\n        display: none;", INDEX)
         self.assertIn(".reco-card .bar,\n      .reco-card .score-grid,\n      .reco-card .reason {\n        display: none;", INDEX)
         self.assertIn("function renderMobileDraftFlow", INDEX)
-        self.assertIn(".current-turn-info {\n        order: -3;", INDEX)
-        self.assertIn(".draft-action-panel {\n        order: -2;", INDEX)
+        self.assertIn(".turn-command-body {\n        overflow: visible;", INDEX)
+        self.assertIn(".turn-quick-list,\n      .turn-command-search,\n      .turn-command-results {\n        grid-template-columns: 1fr;", INDEX)
+        self.assertIn('id="turnCommandCollapse"', INDEX)
+        self.assertIn(".turn-command-panel.mobile-collapsed .turn-command-body", INDEX)
+        self.assertIn("position: fixed;", INDEX)
         self.assertIn(".showcase-card:nth-child(even) {\n        grid-template-columns: 1fr;", INDEX)
+
+    def test_current_turn_command_panel_prioritizes_real_enemy_input(self):
+        for token in (
+            'id="turnCommandPanel"',
+            'id="turnQuickCandidates"',
+            'id="turnSearchLabel"',
+            'id="champSearch"',
+            'id="champGrid"',
+            "function renderTurnQuickCandidates",
+            "function currentTurnDefaultChampionIds",
+            'els.turnSearchLabel.textContent = isOur ? "다른 챔피언 선택" : "상대 실제 선택 입력"',
+            'els.turnCommandPanel.classList.toggle("enemy-turn", !isOur)',
+        ):
+            self.assertIn(token, INDEX)
+        self.assertIn(".turn-command-panel.enemy-turn .turn-search-disclosure { order: 1; }", INDEX)
+        self.assertIn(".turn-command-panel.enemy-turn .turn-quick-section { order: 2; }", INDEX)
+        self.assertIn(".turn-detail-panel { order: 2; }", INDEX)
+        self.assertIn(".turn-search-disclosure { order: 3; }", INDEX)
+        self.assertIn('id="turnSearchDisclosure"', INDEX)
+
+    def test_desktop_ux_safety_and_progressive_disclosure(self):
+        for token in (
+            'id="saveStatus"',
+            'id="dataMenu"',
+            'id="draftReadiness"',
+            'id="fearlessHistoryPanel"',
+            'class="panel advanced-settings-panel"',
+            'data-pool-edit=',
+            '추천지수 ${Math.round(item.score)}',
+            'window.confirm("진행 중인 밴픽을 모두 초기화할까요?',
+            'event.key === "/"',
+            'event.key.toLowerCase() === "z"',
+            'function updateSaveStatus()',
+        ):
+            self.assertIn(token, INDEX)
 
     def test_primary_ui_order_matches_draft_workflow(self):
         draft_tab = INDEX.index('data-view="draftView"')

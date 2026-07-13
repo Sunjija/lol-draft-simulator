@@ -162,6 +162,19 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("poolUiState.openEditors", INDEX)
         self.assertIn("data-editor-key", INDEX)
 
+    def test_pool_workspace_uses_team_and_player_master_detail(self):
+        for token in (
+            'id="poolTeamSwitch"',
+            'class="pool-master-detail"',
+            'class="pool-player-nav"',
+            'data-pool-player=',
+            'poolUiState.selectedPlayers',
+            'poolUiState.activeTeam',
+            'class="panel pool-bulk-panel"',
+        ):
+            self.assertIn(token, INDEX)
+        self.assertIn('.pool-card.editing .pool-view-list', INDEX)
+
     def test_pool_presets_and_clear_are_manual_pool_defaults(self):
         self.assertIn("POOL_PRESETS", INDEX)
         self.assertIn('label: "상위권 팀게임 기본"', INDEX)

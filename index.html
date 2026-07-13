@@ -2060,6 +2060,200 @@
       gap: 12px;
     }
 
+    .pool-page {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pool-workspace-panel {
+      min-height: 0;
+    }
+
+    .pool-workspace-head {
+      align-items: center;
+    }
+
+    .pool-team-switch {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      min-width: 270px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .pool-team-switch button {
+      min-height: 36px;
+      border-color: transparent;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .pool-team-switch button.active {
+      color: var(--text);
+      border-color: rgba(47, 129, 247, 0.72);
+      background: rgba(47, 129, 247, 0.15);
+    }
+
+    .pool-team-switch .count {
+      margin-left: 5px;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pool-team-workspace[hidden] {
+      display: none;
+    }
+
+    .pool-master-detail {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      min-height: 390px;
+    }
+
+    .pool-player-nav {
+      display: grid;
+      align-content: start;
+      gap: 6px;
+      padding: 12px;
+      border-right: 1px solid var(--line);
+      background: rgba(10, 15, 24, 0.42);
+    }
+
+    .pool-player-select {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 9px;
+      min-height: 56px;
+      padding: 8px 10px;
+      text-align: left;
+      background: transparent;
+      border-color: transparent;
+      color: var(--muted);
+    }
+
+    .pool-player-select:hover {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .pool-player-select.active {
+      color: var(--text);
+      border-color: rgba(47, 129, 247, 0.68);
+      background: rgba(47, 129, 247, 0.13);
+      box-shadow: inset 3px 0 0 var(--blue);
+    }
+
+    .pool-player-select .role-icons {
+      justify-content: center;
+    }
+
+    .pool-player-select-copy {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .pool-player-select-copy b,
+    .pool-player-select-copy span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .pool-player-select-copy span {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .pool-player-count {
+      min-width: 34px;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pool-player-detail {
+      min-width: 0;
+      padding: 18px;
+    }
+
+    .pool-player-detail .pool-card {
+      border: 0;
+      background: transparent;
+      padding: 0;
+    }
+
+    .pool-player-detail .pool-card.editing .pool-view-list {
+      display: none;
+    }
+
+    .pool-bulk-panel > summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 54px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .pool-bulk-panel > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .pool-bulk-panel > summary::after {
+      content: "+";
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .pool-bulk-panel[open] > summary::after {
+      content: "-";
+    }
+
+    @media (max-width: 900px) {
+      .pool-workspace-head {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .pool-team-switch {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .pool-master-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .pool-player-nav {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        overflow-x: auto;
+      }
+
+      .pool-player-select {
+        grid-template-columns: 24px minmax(74px, 1fr);
+      }
+
+      .pool-player-count {
+        display: none;
+      }
+
+      .pool-player-detail {
+        padding: 12px;
+      }
+    }
+
     .pool-tools {
       display: grid;
       gap: 12px;
@@ -3514,13 +3708,32 @@
       </section>
 
       <section id="poolsView" class="view">
-        <div class="grid setup-grid">
-          <section class="panel" style="grid-column:1 / -1">
-            <div class="panel-body pool-tools">
-              <div class="guide-note">
-                각 선수 카드의 <b>챔프폭 편집</b> 버튼을 눌러 팀원들의 챔프폭을 반영해보세요.
-                숙련도는 <b>장인 100</b> · <b>잘함 84</b> · <b>보통 70</b> · <b>가능 55</b>로 추천 점수에 바로 들어갑니다.
+        <div class="pool-page">
+          <section class="panel pool-workspace-panel">
+            <div class="panel-head pool-workspace-head">
+              <div>
+                <div class="panel-title">챔프폭 관리</div>
+                <div class="small muted">팀을 고른 뒤 선수를 선택하면 해당 선수의 챔프폭만 확인하고 편집할 수 있습니다.</div>
               </div>
+              <div class="pool-team-switch" id="poolTeamSwitch" role="tablist" aria-label="챔프폭 팀 선택">
+                <button type="button" class="active" data-pool-team="our" role="tab" aria-selected="true">
+                  우리 팀 <span class="count" id="poolOurTeamStatus">0/5</span>
+                </button>
+                <button type="button" data-pool-team="enemy" role="tab" aria-selected="false">
+                  상대 팀 <span class="count" id="poolEnemyTeamStatus">0/5</span>
+                </button>
+              </div>
+            </div>
+            <div id="ourPoolTable" class="pool-team-workspace"></div>
+            <div id="enemyPoolTable" class="pool-team-workspace" hidden></div>
+          </section>
+
+          <details class="panel pool-bulk-panel">
+            <summary>
+              <span>프리셋 및 일괄 관리</span>
+              <span class="small muted">여러 선수의 챔프폭을 한 번에 채우거나 비울 때 사용합니다.</span>
+            </summary>
+            <div class="panel-body pool-tools">
               <div class="pool-preset-row">
                 <div>
                   <label for="poolPresetType">챔프폭 프리셋</label>
@@ -3552,25 +3765,7 @@
               </div>
               <div class="pool-status-grid" id="poolInputStatus"></div>
             </div>
-          </section>
-          <section class="panel">
-            <div class="panel-head">
-              <div>
-                <div class="panel-title">우리 팀 챔프폭</div>
-                <div class="small muted">실제로 꺼낼 수 있는 픽 위주로 정리하면 추천 정확도가 올라갑니다.</div>
-              </div>
-            </div>
-            <div class="panel-body" id="ourPoolTable"></div>
-          </section>
-          <section class="panel">
-            <div class="panel-head">
-              <div>
-                <div class="panel-title">상대 팀 챔프폭</div>
-                <div class="small muted">상대 장인픽과 자주 쓰는 픽을 넣으면 밴 추천이 더 날카로워집니다.</div>
-              </div>
-            </div>
-            <div class="panel-body" id="enemyPoolTable"></div>
-          </section>
+          </details>
         </div>
       </section>
 
@@ -4514,6 +4709,8 @@
     let bgmLoadError = "";
     const poolUiState = {
       openEditors: new Set(),
+      activeTeam: "our",
+      selectedPlayers: { our: 0, enemy: 0 },
     };
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -4526,6 +4723,7 @@
         "enemyLineCertaintyLabel",
         "ourPlayersForm", "enemyPlayersForm", "ourPoolTable", "enemyPoolTable",
         "poolPresetType", "poolPresetTeam", "poolPresetMode", "applyPoolPreset", "clearPoolPresetTarget", "poolInputStatus",
+        "poolTeamSwitch", "poolOurTeamStatus", "poolEnemyTeamStatus",
         "fearlessChips", "fearlessCount", "fearlessHistoryPanel", "draftReadiness", "saveStatus", "blueBanCount", "redBanCount", "bluePickCount", "redPickCount", "toast",
         "ourBulkNames", "enemyBulkNames",
         "apiStatus", "riotApiKey", "riotPlatform", "apiMessage",
@@ -4658,6 +4856,13 @@
       els.draftReadiness.addEventListener("click", event => {
         const target = event.target.closest("button[data-go-view]");
         if (target) activateView(target.dataset.goView);
+      });
+
+      els.poolTeamSwitch.addEventListener("click", event => {
+        const target = event.target.closest("button[data-pool-team]");
+        if (!target) return;
+        poolUiState.activeTeam = target.dataset.poolTeam;
+        renderPools();
       });
 
       $("sideSwitch").addEventListener("click", event => {
@@ -6171,9 +6376,20 @@
     }
 
     function renderPools() {
+      const ourStats = teamPoolStats("our");
+      const enemyStats = teamPoolStats("enemy");
       els.poolInputStatus.innerHTML = poolInputStatusHtml();
       els.ourPoolTable.innerHTML = poolEditor("our");
       els.enemyPoolTable.innerHTML = poolEditor("enemy");
+      els.ourPoolTable.hidden = poolUiState.activeTeam !== "our";
+      els.enemyPoolTable.hidden = poolUiState.activeTeam !== "enemy";
+      els.poolOurTeamStatus.textContent = `${ourStats.filled}/5`;
+      els.poolEnemyTeamStatus.textContent = `${enemyStats.filled}/5`;
+      els.poolTeamSwitch.querySelectorAll("button[data-pool-team]").forEach(button => {
+        const active = button.dataset.poolTeam === poolUiState.activeTeam;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
       [els.ourPoolTable, els.enemyPoolTable].forEach(container => bindPoolEditor(container));
     }
 
@@ -6219,10 +6435,34 @@
     }
 
     function poolEditor(teamKey) {
+      const players = state.teams[teamKey];
+      const selectedIndex = Math.min(Math.max(Number(poolUiState.selectedPlayers[teamKey]) || 0, 0), Math.max(players.length - 1, 0));
+      poolUiState.selectedPlayers[teamKey] = selectedIndex;
+      const selectedPlayer = players[selectedIndex];
       return `
-        <div class="pool-card-list">
-          ${state.teams[teamKey].map((p, index) => poolPlayerCard(teamKey, p, index)).join("")}
+        <div class="pool-master-detail">
+          <nav class="pool-player-nav" aria-label="${teamKey === "our" ? "우리 팀" : "상대 팀"} 선수 선택">
+            ${players.map((player, index) => poolPlayerNavigationButton(teamKey, player, index, index === selectedIndex)).join("")}
+          </nav>
+          <div class="pool-player-detail">
+            ${selectedPlayer ? poolPlayerCard(teamKey, selectedPlayer, selectedIndex) : ""}
+          </div>
         </div>
+      `;
+    }
+
+    function poolPlayerNavigationButton(teamKey, player, index, selected) {
+      const count = poolCount(player);
+      return `
+        <button type="button" class="pool-player-select ${selected ? "active" : ""}"
+          data-pool-player="${teamKey}:${index}" aria-pressed="${selected}">
+          ${roleIconsHtml([player.role], { maxIcons: 1, priorityRole: player.role })}
+          <span class="pool-player-select-copy">
+            <b>${escapeHtml(player.riotId || `${ROLE_LABEL_KO[player.role] || player.role} 선수`)}</b>
+            <span>${escapeHtml(ROLE_LABEL_KO[player.role] || player.role)}</span>
+          </span>
+          <span class="pool-player-count">${count}개</span>
+        </button>
       `;
     }
 
@@ -6233,7 +6473,7 @@
       const isOpen = poolUiState.openEditors.has(editorKey);
       const analysisInfo = analysisSummary(player);
       return `
-        <article class="pool-card" data-team="${teamKey}" data-index="${index}">
+        <article class="pool-card ${isOpen ? "editing" : ""}" data-team="${teamKey}" data-index="${index}">
           <div class="pool-card-head">
             <div class="pool-card-title">
               ${roleIconsHtml([player.role], { maxIcons: 1, priorityRole: player.role })}
@@ -6328,6 +6568,13 @@
     }
 
     function bindPoolEditor(container) {
+      container.querySelectorAll("button[data-pool-player]").forEach(button => {
+        button.addEventListener("click", () => {
+          const [teamKey, index] = button.dataset.poolPlayer.split(":");
+          poolUiState.selectedPlayers[teamKey] = Number(index);
+          renderPools();
+        });
+      });
       container.querySelectorAll(".pool-add-input").forEach(input => {
         input.addEventListener("keydown", event => {
           if (event.key !== "Enter") return;
@@ -6368,6 +6615,7 @@
           const details = card?.querySelector(".pool-edit-details");
           if (!details) return;
           details.open = !details.open;
+          card.classList.toggle("editing", details.open);
           button.textContent = details.open ? "편집 닫기" : "챔프폭 편집";
         });
       });

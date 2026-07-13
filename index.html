@@ -2156,11 +2156,11 @@
       }
 
       .draft-board-panel {
-        order: 2;
+        order: 1;
       }
 
       .recommend-dock {
-        order: 1;
+        order: 2;
         position: static;
         max-height: none;
       }
@@ -2262,6 +2262,11 @@
 
       .board-head-controls {
         justify-content: flex-start;
+      }
+
+      .live-capture,
+      .bgm-controls {
+        display: none !important;
       }
 
       .panel-head {
@@ -2493,6 +2498,20 @@
       .role-pill,
       .chip {
         font-size: 11px;
+      }
+
+      header .actions {
+        display: none;
+      }
+
+      .board-head-controls .chip,
+      .board-head-controls .side-pill:not(.timer-toggle),
+      .board-head-controls #undoStep {
+        display: none;
+      }
+
+      .timer-settings {
+        display: none !important;
       }
 
       main {

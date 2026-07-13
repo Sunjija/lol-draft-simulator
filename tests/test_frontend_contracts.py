@@ -47,7 +47,7 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn(".recommend-dock {\n        order: 2;", INDEX)
         self.assertIn("position: static;", INDEX)
         self.assertIn(".draft-board-panel {\n        order: 1;", INDEX)
-        self.assertIn(".live-capture,\n      .bgm-controls {\n        display: none !important;", INDEX)
+        self.assertIn(".bgm-controls {\n        display: none !important;", INDEX)
         self.assertIn("header .actions {\n        display: none;", INDEX)
         self.assertIn(".team-board {\n        grid-template-columns: 1fr;", INDEX)
         self.assertIn('id="mobileDraftFlow"', INDEX)
@@ -191,26 +191,18 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("function runDraftSelfTests()", INDEX)
         self.assertIn("확정된 상대 서폿 라인 재밴 금지", INDEX)
 
-    def test_live_capture_scan_loop_is_user_controlled(self):
-        self.assertIn('id="liveScanCapture"', INDEX)
-        self.assertIn('id="saveLiveBoardRegion"', INDEX)
-        self.assertIn('id="syncLiveBoard"', INDEX)
-        self.assertIn('id="syncLiveTimer"', INDEX)
-        self.assertIn("scanEnabled: true", INDEX)
-        self.assertIn("boardSyncEnabled: true", INDEX)
-        self.assertIn("syncTimer: true", INDEX)
-        self.assertIn("function ensureLiveCaptureLoop", INDEX)
-        self.assertIn("function analyzeLiveBoardFrame", INDEX)
-        self.assertIn("function refineLiveClientRegion", INDEX)
-        self.assertIn("function liveClientPickSlots", INDEX)
-        self.assertIn("savedBoard.w / Math.max(1, savedBoard.h) > 2.2", INDEX)
-        self.assertIn("const rows = [0.185, 0.300, 0.415, 0.530, 0.645]", INDEX)
-        self.assertIn("function liveBoardSlotForStep", INDEX)
-        self.assertIn("function syncLiveBoardDetections", INDEX)
-        self.assertIn("liveCapture.interval = window.setInterval(() => analyzeLiveCaptureFrame({ manual: false }), 900)", INDEX)
-        self.assertIn("liveCapture.scanEnabled = els.liveScanCapture.checked", INDEX)
-        self.assertIn("state.timerMode.enabled = true", INDEX)
-        self.assertIn('liveCapture.stream ? (liveCapture.scanEnabled ? "감지 중" : "캡쳐 중") : "대기"', INDEX)
+    def test_live_capture_feature_is_removed(self):
+        for token in (
+            'id="liveCapturePanel"',
+            'id="liveScanCapture"',
+            'id="saveLiveBoardRegion"',
+            "function ensureLiveCaptureLoop",
+            "function analyzeLiveBoardFrame",
+            "function syncLiveBoardDetections",
+            "getDisplayMedia",
+            "LIVE_CAPTURE",
+        ):
+            self.assertNotIn(token, INDEX)
 
     def test_league_role_and_synergy_context_is_connected(self):
         self.assertIn('data/league_draft_context_compact.js', INDEX)

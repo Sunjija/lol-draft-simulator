@@ -44,9 +44,13 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn("@media (max-width: 980px)", INDEX)
         self.assertIn("@media (max-width: 640px)", INDEX)
         self.assertIn(".draft-layout {\n        grid-template-columns: 1fr;", INDEX)
-        self.assertIn(".recommend-dock {\n        position: static;", INDEX)
+        self.assertIn(".recommend-dock {\n        order: 1;", INDEX)
+        self.assertIn("position: static;", INDEX)
+        self.assertIn(".draft-board-panel {\n        order: 2;", INDEX)
         self.assertIn(".team-board {\n        grid-template-columns: 1fr;", INDEX)
         self.assertIn(".board {\n        overflow-x: auto;", INDEX)
+        self.assertIn(".current-turn-info {\n        order: -3;", INDEX)
+        self.assertIn(".draft-action-panel {\n        order: -2;", INDEX)
         self.assertIn(".showcase-card:nth-child(even) {\n        grid-template-columns: 1fr;", INDEX)
 
     def test_primary_ui_order_matches_draft_workflow(self):

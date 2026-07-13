@@ -919,6 +919,10 @@
       align-items: start;
     }
 
+    .draft-board-panel {
+      min-width: 0;
+    }
+
     .board-head-controls {
       flex-wrap: wrap;
       justify-content: flex-end;
@@ -1999,7 +2003,12 @@
         grid-template-columns: 1fr;
       }
 
+      .draft-board-panel {
+        order: 2;
+      }
+
       .recommend-dock {
+        order: 1;
         position: static;
         max-height: none;
       }
@@ -2113,6 +2122,18 @@
         -webkit-overflow-scrolling: touch;
       }
 
+      .current-turn-info {
+        order: -3;
+      }
+
+      .draft-action-panel {
+        order: -2;
+      }
+
+      .champ-search {
+        order: -1;
+      }
+
       .phase-strip {
         grid-template-columns: repeat(20, minmax(38px, 1fr));
         min-width: 820px;
@@ -2138,6 +2159,10 @@
 
       .dock-tabs {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .dock-body {
+        max-height: 62vh;
       }
 
       .score-grid {
@@ -2367,12 +2392,39 @@
         grid-template-columns: 34px minmax(0, 1fr) auto;
       }
 
+      .reco-card {
+        padding: 10px;
+      }
+
+      .reco-card button.primary,
+      .reco-card button:not(.secondary) {
+        min-height: 42px;
+      }
+
       .score-grid {
         grid-template-columns: 1fr;
       }
 
       .dock-tabs button {
         font-size: 11px;
+        min-height: 38px;
+      }
+
+      .dock-body {
+        max-height: 68vh;
+      }
+
+      .draft-action-panel .row,
+      .current-turn-info .row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      #autoPickCurrent,
+      #completeDraft,
+      #fillSample {
+        width: 100%;
+        min-height: 42px;
       }
 
       .pool-card {
@@ -2579,7 +2631,7 @@
     <main>
       <section id="draftView" class="view active">
         <div class="grid draft-layout">
-          <section class="panel">
+          <section class="panel draft-board-panel">
             <div class="panel-head">
               <div>
                 <div class="panel-title">밴픽 보드</div>

@@ -23,13 +23,13 @@ GitHub Pages, Cloudflare Pages, Netlify, Vercel 같은 정적 호스팅에서는
 ## 공개 URL
 
 ```text
-https://sunjija.github.io/lol-draft-simulator/
+https://draftlab-henna.vercel.app/
 ```
 
 검색 노출을 빠르게 요청하려면 Google Search Console에서 위 URL을 URL prefix 속성으로 추가하고, 아래 sitemap을 제출합니다.
 
 ```text
-https://sunjija.github.io/lol-draft-simulator/sitemap.xml
+https://draftlab-henna.vercel.app/sitemap.xml
 ```
 
 기본 검색 노출 파일:

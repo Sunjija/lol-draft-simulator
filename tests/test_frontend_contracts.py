@@ -10,7 +10,7 @@ SITEMAP = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
 
 class FrontendContractsTest(unittest.TestCase):
     def test_public_seo_metadata_is_present(self):
-        public_url = "https://sunjija.github.io/lol-draft-simulator/"
+        public_url = "https://draftlab-henna.vercel.app/"
         self.assertIn("<title>DraftLab - LoL 팀게임 밴픽 시뮬레이터</title>", INDEX)
         self.assertIn('name="description"', INDEX)
         self.assertIn(f'<link rel="canonical" href="{public_url}" />', INDEX)
@@ -20,7 +20,7 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn('property="og:image"', INDEX)
         self.assertIn('"@type": "WebApplication"', INDEX)
         self.assertIn('"name": "DraftLab"', INDEX)
-        self.assertIn("Sitemap: https://sunjija.github.io/lol-draft-simulator/sitemap.xml", ROBOTS)
+        self.assertIn("Sitemap: https://draftlab-henna.vercel.app/sitemap.xml", ROBOTS)
         self.assertIn(f"<loc>{public_url}</loc>", SITEMAP)
 
     def test_public_beta_loads_champion_icons_without_local_api(self):

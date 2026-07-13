@@ -1109,6 +1109,158 @@
       animation: currentTurnPulse 1600ms ease-in-out infinite;
     }
 
+    .mobile-draft-flow {
+      display: none;
+    }
+
+    .mobile-flow-now {
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid rgba(201, 162, 39, 0.34);
+      border-radius: 8px;
+      background: rgba(201, 162, 39, 0.08);
+    }
+
+    .mobile-flow-now-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .mobile-flow-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .mobile-flow-sub {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .mobile-flow-phases {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mobile-phase-card {
+      display: grid;
+      gap: 9px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .mobile-phase-card.current {
+      border-color: rgba(201, 162, 39, 0.62);
+      box-shadow: inset 2px 0 0 var(--gold);
+    }
+
+    .mobile-phase-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .mobile-phase-head b {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .mobile-phase-steps {
+      display: grid;
+      gap: 7px;
+    }
+
+    .mobile-step-row {
+      min-height: 44px;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel-raised);
+    }
+
+    .mobile-step-row.current {
+      border-color: var(--gold);
+      background: rgba(201, 162, 39, 0.10);
+    }
+
+    .mobile-step-row.done {
+      opacity: 0.86;
+    }
+
+    .mobile-step-code {
+      display: grid;
+      place-items: center;
+      min-height: 30px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-step-code.blue {
+      color: #dbeafe;
+      background: rgba(47, 129, 247, 0.18);
+    }
+
+    .mobile-step-code.red {
+      color: #ffe4e6;
+      background: rgba(225, 54, 75, 0.18);
+    }
+
+    .mobile-step-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .mobile-step-text {
+      min-width: 0;
+      display: grid;
+      gap: 1px;
+    }
+
+    .mobile-step-text strong {
+      font-size: 13px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-step-text span {
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-step-state {
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .mobile-step-row.current .mobile-step-state {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
     .team-board {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -2118,8 +2270,18 @@
       }
 
       .board {
-        overflow-x: auto;
+        overflow-x: visible;
         -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-draft-flow {
+        display: grid;
+        gap: 12px;
+      }
+
+      .board > .phase-strip,
+      .board > .team-board {
+        display: none;
       }
 
       .current-turn-info {
@@ -2346,7 +2508,7 @@
       }
 
       .board {
-        overflow-x: auto;
+        overflow-x: visible;
         -webkit-overflow-scrolling: touch;
       }
 
@@ -2381,6 +2543,28 @@
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+      }
+
+      .mobile-flow-now {
+        padding: 10px;
+      }
+
+      .mobile-flow-now-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mobile-phase-card {
+        padding: 9px;
+      }
+
+      .mobile-step-row {
+        grid-template-columns: 38px minmax(0, 1fr);
+      }
+
+      .mobile-step-state {
+        grid-column: 2;
+        justify-self: start;
       }
 
       .current-turn {
@@ -2690,6 +2874,7 @@
             </details>
             <div class="panel-body board">
               <div class="phase-strip" id="phaseStrip"></div>
+              <div class="mobile-draft-flow" id="mobileDraftFlow" aria-label="모바일 밴픽 흐름"></div>
               <div class="team-board">
                 <div class="team-card blue-team-card">
                   <h2><span class="blue">Blue Side</span><span class="chip" id="blueOwner">우리 팀</span></h2>
@@ -3982,7 +4167,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       [
-        "turnSub", "currentBadge", "currentTitle", "phaseStrip", "blueBans", "redBans", "bluePicks", "redPicks",
+        "turnSub", "currentBadge", "currentTitle", "phaseStrip", "mobileDraftFlow", "blueBans", "redBans", "bluePicks", "redPicks",
         "draftProgress", "ourSideLabel", "fearlessLabel", "blueOwner", "redOwner", "champGrid", "champSearch",
         "roleFilter", "pickPlayer", "pickPlayerWrap", "ourRecommendations", "enemyPredictions", "currentHint",
         "enemyLineCertaintyLabel",
@@ -4887,7 +5072,93 @@
       }).join("");
     }
 
+    function renderMobileDraftFlow() {
+      if (!els.mobileDraftFlow) return;
+      const step = getCurrentStep();
+      const phaseGroups = [
+        { title: "1페이즈 밴", range: [0, 6] },
+        { title: "1페이즈 픽", range: [6, 12] },
+        { title: "2페이즈 밴", range: [12, 16] },
+        { title: "2페이즈 픽", range: [16, 20] },
+      ];
+      const nowTitle = step
+        ? `${step.index + 1}번째 턴 · ${mobileSideLabel(step.side)} ${mobileActionLabel(step.type)}`
+        : "밴픽 완료";
+      const nowSub = step
+        ? (isOurSide(step.side)
+          ? "우리 차례입니다. 추천 후보를 적용하거나 직접 챔피언을 선택하세요."
+          : "상대 차례입니다. 예측과 다르면 실제 선택 챔피언을 직접 넣으세요.")
+        : "20턴이 모두 끝났습니다.";
+      const currentPhase = phaseGroups.find(group => step && step.index >= group.range[0] && step.index < group.range[1]);
+      const phaseHtml = phaseGroups.map(group => {
+        const steps = draftSteps.slice(group.range[0], group.range[1]);
+        const doneCount = steps.filter(item => state.actions.some(action => action.order === item.index)).length;
+        const isCurrent = currentPhase?.title === group.title;
+        return `
+          <section class="mobile-phase-card ${isCurrent ? "current" : ""}">
+            <div class="mobile-phase-head">
+              <b>${group.title}</b>
+              <span class="chip">${doneCount}/${steps.length}</span>
+            </div>
+            <div class="mobile-phase-steps">
+              ${steps.map(mobileDraftStepHtml).join("")}
+            </div>
+          </section>
+        `;
+      }).join("");
+
+      els.mobileDraftFlow.innerHTML = `
+        <section class="mobile-flow-now">
+          <div class="mobile-flow-now-head">
+            <div>
+              <div class="mobile-flow-title">${escapeHtml(nowTitle)}</div>
+              <div class="mobile-flow-sub">${escapeHtml(nowSub)}</div>
+            </div>
+            <span class="side-pill ${step?.side === "RED" ? "red-bg" : step?.side === "BLUE" ? "blue-bg" : "green-bg"}">${step ? `${step.side[0]}${step.type[0]}` : "DONE"}</span>
+          </div>
+        </section>
+        <div class="mobile-flow-phases">${phaseHtml}</div>
+      `;
+    }
+
+    function mobileDraftStepHtml(step) {
+      const action = state.actions.find(item => item.order === step.index);
+      const champ = action ? getChamp(action.championId) : null;
+      const isCurrent = state.currentStep === step.index;
+      const status = action ? "완료" : isCurrent ? "현재" : "대기";
+      const sideClass = step.side === "BLUE" ? "blue" : "red";
+      const stateClass = action ? "done" : isCurrent ? "current" : "";
+      const player = action?.playerId ? findPlayer(action.playerId) : null;
+      const subText = champ
+        ? step.type === "PICK" && player
+          ? `${player.role} · ${player.riotId}`
+          : `${mobileSideLabel(step.side)} ${mobileActionLabel(step.type)} 완료`
+        : `${mobileSideLabel(step.side)} ${mobileActionLabel(step.type)}`;
+      return `
+        <div class="mobile-step-row ${stateClass}">
+          <div class="mobile-step-code ${sideClass}">${step.side[0]}${step.type[0]}</div>
+          <div class="mobile-step-main">
+            ${champ ? champIconHtml(champ) : ""}
+            <div class="mobile-step-text">
+              <strong>${escapeHtml(champ ? champ.name : `${step.index + 1}번째 순서`)}</strong>
+              <span>${escapeHtml(subText)}</span>
+            </div>
+          </div>
+          <span class="mobile-step-state">${status}</span>
+        </div>
+      `;
+    }
+
+    function mobileSideLabel(side) {
+      return side === "BLUE" ? "블루" : "레드";
+    }
+
+    function mobileActionLabel(type) {
+      return type === "BAN" ? "밴" : "픽";
+    }
+
     function renderBoard() {
+      renderMobileDraftFlow();
       renderSlots("BLUE", "BAN", els.blueBans);
       renderSlots("RED", "BAN", els.redBans);
       renderSlots("BLUE", "PICK", els.bluePicks);

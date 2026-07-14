@@ -108,12 +108,29 @@ class FrontendContractsTest(unittest.TestCase):
         ):
             self.assertIn(token, INDEX)
 
+    def test_sample_data_starts_with_guided_onboarding(self):
+        for token in (
+            "onboardingStep: 1",
+            'id="confirmTeamSetup"',
+            'id="confirmPoolSetup"',
+            "function activateInitialWorkflowView()",
+            'setActiveView("setupView")',
+            'state.onboardingStep = 2',
+            'state.onboardingStep = 3',
+            "현재 ${teamNamed}/10명",
+            "우리 팀 ${ourPoolFilled}/5명",
+            "function renderWorkflowNavigation()",
+        ):
+            self.assertIn(token, INDEX)
+        self.assertIn('data-go-view="poolsView" ${teamConfirmed ? "" : "disabled"}', INDEX)
+        self.assertIn('data-go-view="draftView" ${poolConfirmed ? "" : "disabled"}', INDEX)
+
     def test_primary_ui_order_matches_draft_workflow(self):
         draft_tab = INDEX.index('data-view="draftView"')
         pool_tab = INDEX.index('data-view="poolsView"')
         setup_tab = INDEX.index('data-view="setupView"')
-        self.assertLess(draft_tab, pool_tab)
-        self.assertLess(pool_tab, setup_tab)
+        self.assertLess(setup_tab, pool_tab)
+        self.assertLess(pool_tab, draft_tab)
 
         setup_start = INDEX.index('<section id="setupView"')
         our_team = INDEX.index('<div class="panel-title">우리 팀</div>', setup_start)

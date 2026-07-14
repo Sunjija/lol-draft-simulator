@@ -910,6 +910,58 @@
       display: none !important;
     }
 
+    .readiness-step:disabled {
+      cursor: not-allowed;
+      opacity: 0.48;
+    }
+
+    .tab:disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+
+    .readiness-step.locked {
+      border-color: var(--line);
+      background: rgba(15, 23, 42, 0.42);
+    }
+
+    .workflow-step-bar {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 16px;
+      border: 1px solid rgba(47, 129, 247, 0.38);
+      background: rgba(47, 129, 247, 0.08);
+    }
+
+    .workflow-step-bar[hidden] {
+      display: none !important;
+    }
+
+    .workflow-step-copy {
+      display: grid;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .workflow-step-copy b {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .workflow-step-copy span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .workflow-step-bar button {
+      flex: 0 0 auto;
+      min-width: 190px;
+    }
+
     .draft-readiness {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2220,6 +2272,16 @@
     }
 
     @media (max-width: 900px) {
+      .workflow-step-bar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .workflow-step-bar button {
+        width: 100%;
+        min-width: 0;
+      }
+
       .pool-workspace-head {
         align-items: stretch;
         flex-direction: column;
@@ -3379,9 +3441,9 @@
     </header>
 
     <nav class="tabs" aria-label="화면 전환">
-      <button class="tab active" data-view="draftView">밴픽</button>
-      <button class="tab" data-view="poolsView">챔프폭</button>
       <button class="tab" data-view="setupView">팀 설정</button>
+      <button class="tab" data-view="poolsView">챔프폭</button>
+      <button class="tab active" data-view="draftView">밴픽</button>
     </nav>
 
     <main>
@@ -3544,6 +3606,14 @@
 
       <section id="setupView" class="view">
         <div class="grid setup-grid">
+          <section class="workflow-step-bar" id="teamSetupStepBar">
+            <div class="workflow-step-copy">
+              <b>1단계 · 팀 구성을 확인하세요</b>
+              <span>샘플 명단이 채워져 있습니다. 실제 참가자에 맞게 이름, 라인, 티어를 수정한 뒤 다음 단계로 이동하세요.</span>
+            </div>
+            <button type="button" class="primary" id="confirmTeamSetup">팀 구성 확인 · 다음</button>
+          </section>
+
           <div class="setup-team-pair">
             <section class="panel">
               <div class="panel-head">
@@ -3709,6 +3779,14 @@
 
       <section id="poolsView" class="view">
         <div class="pool-page">
+          <section class="workflow-step-bar" id="poolSetupStepBar">
+            <div class="workflow-step-copy">
+              <b>2단계 · 챔프폭을 확인하세요</b>
+              <span>샘플 챔프폭을 그대로 쓰거나 선수별로 수정하세요. 확인을 마치면 밴픽 추천을 시작할 수 있습니다.</span>
+            </div>
+            <button type="button" class="primary" id="confirmPoolSetup">챔프폭 확인 · 밴픽 시작</button>
+          </section>
+
           <section class="panel pool-workspace-panel">
             <div class="panel-head pool-workspace-head">
               <div>
@@ -4697,6 +4775,7 @@
         pickWeights: { ...defaultPickWeights },
         pickWeightProfileVersion: PICK_WEIGHT_PROFILE_VERSION,
         enemyLineCertainty: "estimated",
+        onboardingStep: 1,
         apiHasKey: false,
         bgm: { selectedId: "", volume: 0.35, enabled: false },
         timerMode: { enabled: false, banSeconds: 30, pickSeconds: 30 },
@@ -4724,6 +4803,7 @@
         "ourPlayersForm", "enemyPlayersForm", "ourPoolTable", "enemyPoolTable",
         "poolPresetType", "poolPresetTeam", "poolPresetMode", "applyPoolPreset", "clearPoolPresetTarget", "poolInputStatus",
         "poolTeamSwitch", "poolOurTeamStatus", "poolEnemyTeamStatus",
+        "teamSetupStepBar", "poolSetupStepBar", "confirmTeamSetup", "confirmPoolSetup",
         "fearlessChips", "fearlessCount", "fearlessHistoryPanel", "draftReadiness", "saveStatus", "blueBanCount", "redBanCount", "bluePickCount", "redPickCount", "toast",
         "ourBulkNames", "enemyBulkNames",
         "apiStatus", "riotApiKey", "riotPlatform", "apiMessage",
@@ -4742,6 +4822,7 @@
       bindEvents();
       loadFromStorage(false);
       mergeStoredAnalyses();
+      activateInitialWorkflowView();
       render();
       setRecommendDockTabForCurrentStep();
       loadChampionCatalog();
@@ -4828,9 +4909,25 @@
       }
     }
 
-    function activateView(viewId) {
+    function setActiveView(viewId) {
       document.querySelectorAll(".tab").forEach(button => button.classList.toggle("active", button.dataset.view === viewId));
       document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === viewId));
+    }
+
+    function activateInitialWorkflowView() {
+      if (state.actions.length > 0) return;
+      const step = currentOnboardingStep();
+      if (step === 1) setActiveView("setupView");
+      else if (step === 2) setActiveView("poolsView");
+    }
+
+    function currentOnboardingStep() {
+      if (state.actions.length > 0) return 3;
+      return clamp(Number(state.onboardingStep) || 1, 1, 3);
+    }
+
+    function activateView(viewId) {
+      setActiveView(viewId);
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -4856,6 +4953,20 @@
       els.draftReadiness.addEventListener("click", event => {
         const target = event.target.closest("button[data-go-view]");
         if (target) activateView(target.dataset.goView);
+      });
+
+      els.confirmTeamSetup.addEventListener("click", () => {
+        state.onboardingStep = 2;
+        saveToStorage(false);
+        activateView("poolsView");
+        toast("팀 구성을 확인했습니다. 이제 챔프폭을 확인하세요.");
+      });
+
+      els.confirmPoolSetup.addEventListener("click", () => {
+        state.onboardingStep = 3;
+        saveToStorage(false);
+        activateView("draftView");
+        toast("설정이 끝났습니다. 밴픽 추천을 시작할 수 있습니다.");
       });
 
       els.poolTeamSwitch.addEventListener("click", event => {
@@ -4997,7 +5108,8 @@
         state.teams = structuredClone(defaultPlayers);
         state.actions = [];
         state.currentStep = 0;
-        render();
+        state.onboardingStep = 1;
+        activateView("setupView");
         setRecommendDockTabForCurrentStep();
         toast("기본 데이터를 다시 채웠습니다.");
       });
@@ -5039,6 +5151,8 @@
       renderChampionNameOptions();
       renderPickWeights();
       renderFearless();
+      renderWorkflowNavigation();
+      renderWorkflowGuidance();
       renderDraftReadiness();
       renderBgmControls();
       renderDataPatchNote();
@@ -5054,20 +5168,36 @@
       if (!els.draftReadiness) return;
       const teamNamed = [...state.teams.our, ...state.teams.enemy].filter(player => player.riotId?.trim()).length;
       const ourPoolFilled = state.teams.our.filter(player => poolCount(player) > 0).length;
-      const teamReady = teamNamed === 10;
-      const poolReady = ourPoolFilled === 5;
+      const step = currentOnboardingStep();
+      const teamConfirmed = step >= 2;
+      const poolConfirmed = step >= 3;
       els.draftReadiness.hidden = state.actions.length > 0;
       els.draftReadiness.innerHTML = `
-        <button class="readiness-step ${teamReady ? "complete" : "current"}" data-go-view="setupView">
-          <span><strong>1. 팀 구성</strong>${teamNamed}/10명 입력</span><b>${teamReady ? "완료" : "설정"}</b>
+        <button class="readiness-step ${teamConfirmed ? "complete" : "current"}" data-go-view="setupView">
+          <span><strong>1. 팀 구성</strong>현재 ${teamNamed}/10명 · ${teamConfirmed ? "확인 완료" : "확인 필요"}</span><b>${teamConfirmed ? "완료" : "확인"}</b>
         </button>
-        <button class="readiness-step ${poolReady ? "complete" : (teamReady ? "current" : "")}" data-go-view="poolsView">
-          <span><strong>2. 챔프폭</strong>우리 팀 ${ourPoolFilled}/5명 입력</span><b>${poolReady ? "완료" : "편집"}</b>
+        <button class="readiness-step ${poolConfirmed ? "complete" : (teamConfirmed ? "current" : "locked")}" data-go-view="poolsView" ${teamConfirmed ? "" : "disabled"}>
+          <span><strong>2. 챔프폭</strong>우리 팀 ${ourPoolFilled}/5명 · ${poolConfirmed ? "확인 완료" : (teamConfirmed ? "확인 필요" : "1단계 후 진행")}</span><b>${poolConfirmed ? "완료" : (teamConfirmed ? "확인" : "대기")}</b>
         </button>
-        <button class="readiness-step ${teamReady && poolReady ? "current" : ""}" data-go-view="draftView">
-          <span><strong>3. 밴픽</strong>${teamReady && poolReady ? "추천 준비 완료" : "부족한 정보는 비상 후보로 보완"}</span><b>시작</b>
+        <button class="readiness-step ${poolConfirmed ? "current" : "locked"}" data-go-view="draftView" ${poolConfirmed ? "" : "disabled"}>
+          <span><strong>3. 밴픽</strong>${poolConfirmed ? "추천 준비 완료" : "앞 단계를 먼저 확인하세요"}</span><b>${poolConfirmed ? "시작" : "대기"}</b>
         </button>
       `;
+    }
+
+    function renderWorkflowGuidance() {
+      const step = currentOnboardingStep();
+      if (els.teamSetupStepBar) els.teamSetupStepBar.hidden = step !== 1;
+      if (els.poolSetupStepBar) els.poolSetupStepBar.hidden = step !== 2;
+    }
+
+    function renderWorkflowNavigation() {
+      const step = currentOnboardingStep();
+      document.querySelectorAll(".tab[data-view]").forEach(button => {
+        if (button.dataset.view === "setupView") button.disabled = false;
+        else if (button.dataset.view === "poolsView") button.disabled = step < 2;
+        else if (button.dataset.view === "draftView") button.disabled = step < 3;
+      });
     }
 
     // ── 실전 타이머 모드 ──────────────────────────────────────
@@ -9035,6 +9165,7 @@
         state.bgm = { ...freshState().bgm, ...(parsed.bgm || {}), enabled: false };
         state.timerMode = { ...freshState().timerMode, ...(parsed.timerMode || {}), enabled: false };
         state.enemyLineCertainty = ENEMY_LINE_CERTAINTY[parsed.enemyLineCertainty] ? parsed.enemyLineCertainty : "estimated";
+        state.onboardingStep = state.actions.length > 0 ? 3 : clamp(Number(parsed.onboardingStep) || 1, 1, 3);
         const storedWeights = parsed.pickWeightProfileVersion === PICK_WEIGHT_PROFILE_VERSION ? parsed.pickWeights : null;
         state.pickWeights = { ...defaultPickWeights, ...(storedWeights || {}) };
         state.pickWeightProfileVersion = PICK_WEIGHT_PROFILE_VERSION;

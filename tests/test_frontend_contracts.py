@@ -192,6 +192,39 @@ class FrontendContractsTest(unittest.TestCase):
             self.assertIn(token, INDEX)
         self.assertIn('.pool-card.editing .pool-view-list', INDEX)
 
+    def test_pool_editor_has_visual_role_filtered_champion_picker(self):
+        for token in (
+            'class="pool-picker"',
+            'class="pool-picker-filters"',
+            'class="pool-picker-search"',
+            'data-pool-picker-role=',
+            'data-pool-picker-champion=',
+            'function poolChampionPicker',
+            'function updatePoolPickerResults',
+            'aria-label="${escapeAttr(`${champ.name} 추가`)}"',
+        ):
+            self.assertIn(token, INDEX)
+        self.assertNotIn('class="pool-add-input" data-team="${teamKey}" data-index="${index}" list="championNameOptions"', INDEX)
+
+    def test_desktop_draft_order_is_a_colored_noninteractive_timeline(self):
+        for token in (
+            'class="phase-strip-legend"',
+            'class="phase-track"',
+            'class="draft-step ${sideClass} ${typeClass}',
+            'side-blue',
+            'side-red',
+            'type-ban',
+            'type-pick',
+            'BAN 밴 · PICK 픽 · 금색 테두리 현재 턴',
+        ):
+            self.assertIn(token, INDEX)
+        self.assertNotIn('<button class="step-dot', INDEX)
+
+    def test_current_turn_candidates_use_readable_vertical_cards(self):
+        self.assertIn('.turn-quick-list {\n      display: grid;\n      grid-template-columns: 1fr;', INDEX)
+        self.assertIn('class="turn-quick-score"', INDEX)
+        self.assertIn('grid-template-columns: 42px minmax(0, 1fr) auto;', INDEX)
+
     def test_pool_presets_and_clear_are_manual_pool_defaults(self):
         self.assertIn("POOL_PRESETS", INDEX)
         self.assertIn('label: "상위권 팀게임 기본"', INDEX)

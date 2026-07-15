@@ -225,6 +225,21 @@ class FrontendContractsTest(unittest.TestCase):
         self.assertIn('class="turn-quick-score"', INDEX)
         self.assertIn('grid-template-columns: 42px minmax(0, 1fr) auto;', INDEX)
 
+    def test_desktop_app_uses_a_readable_minimum_type_scale(self):
+        for token in (
+            '@media (min-width: 1181px)',
+            '.app {\n        font-size: 16px;',
+            '.app button,\n      .app input,\n      .app select {\n        font-size: 15px;',
+            '.app .panel-title {\n        font-size: 18px;',
+            '.app .slot-sub {\n        font-size: 14px;',
+            '.app .reason {\n        font-size: 14px;',
+            '.app .pool-status-card span,',
+            '.app .phase-strip-legend,',
+        ):
+            self.assertIn(token, INDEX)
+        self.assertIn('${step.side === "BLUE" ? "B" : "R"}', INDEX)
+        self.assertIn('${step.type === "BAN" ? "밴" : "픽"}', INDEX)
+
     def test_pool_presets_and_clear_are_manual_pool_defaults(self):
         self.assertIn("POOL_PRESETS", INDEX)
         self.assertIn('label: "상위권 팀게임 기본"', INDEX)

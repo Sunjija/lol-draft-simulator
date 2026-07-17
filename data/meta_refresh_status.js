@@ -4,21 +4,21 @@ window.META_REFRESH_STATUS = {
   "sourceLabel": "OP.GG 등 공개 LoL 통계 데이터, 대회 메타 데이터 참고",
   "normalizedBy": "LoL Draft Simulator scoring model",
   "patchNote": {
-    "title": "리그 오브 레전드 26.13 패치 노트",
-    "url": "https://www.leagueoflegends.com/ko-kr/news/game-updates/league-of-legends-patch-26-13-notes",
-    "publishedAt": "2026-06-23T18:00:00.000Z",
-    "dueAt": "2026-06-26T18:00:00Z"
+    "title": "리그 오브 레전드 26.14 패치 노트",
+    "url": "https://www.leagueoflegends.com/ko-kr/news/game-updates/league-of-legends-patch-26-14-notes",
+    "publishedAt": "2026-07-14T18:00:00.000Z",
+    "dueAt": "2026-07-17T18:00:00Z"
   },
   "delayDays": 3,
-  "refreshedAt": "2026-07-13T00:03:38.263059Z",
+  "refreshedAt": "2026-07-17T23:31:31.490508Z",
   "dataFiles": {
     "leagueDraftContext": {
       "path": "data/league_draft_context_compact.js",
-      "bytes": 69496
+      "bytes": 69589
     },
     "tournamentMeta": {
       "path": "data/tournament_meta_2026_compact.js",
-      "bytes": 9034
+      "bytes": 9027
     }
   },
   "notes": [
